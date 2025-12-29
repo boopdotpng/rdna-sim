@@ -1,7 +1,7 @@
 use clap::{CommandFactory, Parser};
 use std::path::PathBuf;
 
-use rdna_sim::{run_file, Architecture, WaveSize, Dim3};
+use rdna_sim::{run_file, Architecture, WaveSize, Launch};
 
 #[derive(Parser, Debug)]
 #[command(name = "rdna-sim", about = "RDNA/CDNA architecture simulator")]
@@ -19,7 +19,10 @@ struct Cli {
   debug: bool,
 
   #[arg(long, default_value="1,1,1")]
-  dim: Dim3,
+  local: Dim3,
+
+  #[arg(long, default_value="1,1,1")]
+  global: Dim3,
 }
 
 fn main() {
