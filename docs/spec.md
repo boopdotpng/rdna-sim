@@ -54,6 +54,11 @@ Behavior:
 We have to ignore some instructions, because this is not a timing simulator (maybe in the future)? So `s_delay_alu` and friends will be completely ignored. 
 Maybe we can add some artifical delay that messes up kernels that don't wait. how to do this? 
 
+### global memory + allocation
+- Parsing allocates each argument in global memory and writes initial values immediately.
+- Global memory is backed by a simple bump allocator with byte-level read/write helpers.
+- CLI exposes `--global-memsize` (MB) with a default of 32MB.
+
 ## data 
 in `data/` there are xmls for each ISA. gen_isa.py has a script that parses instructions out of one isa file into a generated rust file. is this the best approach? can we do better? we also need to de-duplicate instructions, and maybe have a "base" set of instructions that are the same across all ISAs then go beyond that. and then for intstructions that are unknown in the XML, we can handle them as they come up. 
 

@@ -1,8 +1,6 @@
-mod ir;
 pub mod isa;
 pub mod ops;
 mod parse;
-mod program;
 mod sim;
 mod wave;
 use std::ops::{Deref, DerefMut};
@@ -14,6 +12,8 @@ const VCC_HI: usize = 106;
 const VCC_LO: usize = 107;
 
 use std::{path::PathBuf, str::FromStr};
+
+use crate::sim::GlobalAlloc;
 
 use clap::ValueEnum;
 
@@ -34,11 +34,10 @@ pub enum Architecture {
 
 #[derive(Copy, Clone, Debug, Eq, PartialEq, ValueEnum)]
 pub enum WaveSize {
-    // only wave32 support for now
     #[value(name = "32", alias = "wave32", alias = "wave-32")]
     Wave32,
-    // #[value(name = "64", alias = "wave64", alias = "wave-64")]
-    // Wave64,
+    #[value(name = "64", alias = "wave64", alias = "wave-64")]
+    Wave64,
 }
 
 // arguments are stored in global memory, then a pointer to those is stored in 2 SGPRs
@@ -184,11 +183,7 @@ impl VGPRs {
 
 // includes state for the whole program
 pub struct Program {
-    // instruction list with arguments
-
-    // global memory (64MB to start, flat)
-    global_mem: Box<[u64]>,
-    // launch sizes for the program
+    pub global_mem: GlobalAlloc,
     pub local_launch_size: Dim3,
     pub global_launch_size: Dim3,
     // ? do we want to simulate traps? probably not
@@ -196,10 +191,30 @@ pub struct Program {
     // TMA - trap memory address
 }
 
-// Stub for global memory allocator - will be implemented later
-pub struct GlobalAlloc {
-    // Placeholder for memory allocator implementation
-    _placeholder: u64,
+impl Program {
+    pub fn new(global_mem_size: usize) -> Self {
+        Self {
+            global_mem: GlobalAlloc::new(global_mem_size),
+            local_launch_size: Dim3::new(1, 1, 1),
+            global_launch_size: Dim3::new(1, 1, 1),
+        }
+    }
+
+    pub fn alloc_global(&mut self, size: usize, align: usize) -> Result<u64, String> {
+        self.global_mem.alloc(size, align)
+    }
+
+    pub fn write_global(&mut self, addr: u64, data: &[u8]) -> Result<(), String> {
+        self.global_mem.write(addr, data)
+    }
+
+    pub fn write_global_zeros(&mut self, addr: u64, size: usize) -> Result<(), String> {
+        self.global_mem.write_zeros(addr, size)
+    }
+
+    pub fn read_global(&self, addr: u64, size: usize) -> Result<Vec<u8>, String> {
+        self.global_mem.read(addr, size)
+    }
 }
 
 // every wave gets a copy of this
@@ -224,39 +239,31 @@ pub struct WaveState {
 
 pub fn run_file(
     file: Option<PathBuf>,
-    arch: Architecture,
+    _arch: Architecture,
     wave_size: WaveSize,
+    global_mem_size: usize,
     _debug: bool,
 ) -> Result<(), String> {
     if let Some(file_path) = file {
-        // Parse the file using the new parsing functions
-        let program_info = parse::parse_top(&file_path)?;
-        
-        // Print parsed arguments for verification
+        let mut program = Program::new(global_mem_size);
+        let program_info = parse::parse_file(&file_path, &mut program)?;
+        program.local_launch_size = program_info.local_launch_size;
+        program.global_launch_size = program_info.global_launch_size;
+        let wave_size = program_info.wave_size.unwrap_or(wave_size);
+
         println!("Parsed arguments:");
-        for (name, type_str) in &program_info.arguments {
-            println!("  {} : {}", name, type_str);
+        for arg in &program_info.arguments {
+            println!("  {} : {} @ 0x{:x}", arg.name, arg.type_name, arg.addr);
         }
-        
+
         println!("Parsed output arguments:");
-        for (name, type_str) in &program_info.output_arguments {
-            println!("  {} : {}", name, type_str);
+        for arg in &program_info.output_arguments {
+            println!("  {} : {} @ 0x{:x}", arg.name, arg.type_name, arg.addr);
         }
-        
-        println!("Parsed print addresses:");
-        for (addr, type_str) in &program_info.print_addresses {
-            println!("  0x{:x} : {}", addr, type_str);
-        }
-        
-        println!("Local launch size: {:?}", program_info.local_launch_size);
-        println!("Global launch size: {:?}", program_info.global_launch_size);
-        
-        let program = parse::parse_into_program(program_info, arch, wave_size);
-        
-        // Here we would typically run the simulation with the launch sizes
-        // For now, we'll just print them to show they're properly initialized
-        println!("Program created with local_launch_size: {:?} and global_launch_size: {:?}", 
-                 program.local_launch_size, program.global_launch_size);
+
+        println!("Local launch size: {:?}", program.local_launch_size);
+        println!("Global launch size: {:?}", program.global_launch_size);
+        println!("Wave size: {:?}", wave_size);
     }
     // the whole parsing flow happens here
 

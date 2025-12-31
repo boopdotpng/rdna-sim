@@ -1,7 +1,7 @@
 use clap::{CommandFactory, Parser};
 use std::path::PathBuf;
 
-use rdna_sim::{run_file, Architecture, WaveSize, Launch};
+use rdna_sim::{run_file, Architecture, WaveSize};
 
 #[derive(Parser, Debug)]
 #[command(name = "rdna-sim", about = "RDNA/CDNA architecture simulator")]
@@ -18,11 +18,8 @@ struct Cli {
   #[arg(long)]
   debug: bool,
 
-  #[arg(long, default_value="1,1,1")]
-  local: Dim3,
-
-  #[arg(long, default_value="1,1,1")]
-  global: Dim3,
+  #[arg(long = "global-memsize", value_name = "MEGABYTES", default_value_t = 32)]
+  global_memsize: usize,
 }
 
 fn main() {
@@ -33,7 +30,14 @@ fn main() {
     return;
   }
   let args = Cli::parse();
-  if let Err(err) = run_file(args.file, args.arch, args.wave_size, args.debug) {
+  let global_mem_bytes = args.global_memsize * 1024 * 1024;
+  if let Err(err) = run_file(
+    args.file,
+    args.arch,
+    args.wave_size,
+    global_mem_bytes,
+    args.debug,
+  ) {
     eprintln!("{}", err);
     std::process::exit(1);
   }
