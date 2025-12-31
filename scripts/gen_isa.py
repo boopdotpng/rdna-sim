@@ -346,12 +346,23 @@ def load_instructions(
   excluded_groups = {name.upper() for name in exclude_groups}
   excluded_vmem = {name.upper() for name in exclude_vmem_subgroups}
 
+  def is_f64_instruction(inst: dict) -> bool:
+    if "F64" in inst["name"].upper():
+      return True
+    for operand in inst.get("operands", []):
+      data_format = (operand.get("data_format") or "").upper()
+      if "F64" in data_format:
+        return True
+    return False
+
   def is_allowed(inst: dict) -> bool:
     group_name, subgroup = groups.get(inst["name"], ("", ""))
     group_upper = group_name.upper()
     if group_upper in excluded_groups:
       return False
     if group_upper == "VMEM" and subgroup.upper() in excluded_vmem:
+      return False
+    if is_f64_instruction(inst):
       return False
     return True
 

@@ -997,11 +997,6 @@ pub fn op_v_ceil_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   Err(ExecError::Unimplemented("v_ceil_f32"))
 }
 
-pub fn op_v_ceil_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_ceil_f64"))
-}
-
 pub fn op_v_cls_i32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cls_i32"))
@@ -1022,11 +1017,6 @@ pub fn op_v_cmp_class_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResu
   Err(ExecError::Unimplemented("v_cmp_class_f32"))
 }
 
-pub fn op_v_cmp_class_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmp_class_f64"))
-}
-
 pub fn op_v_cmp_eq_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmp_eq_f16"))
@@ -1035,11 +1025,6 @@ pub fn op_v_cmp_eq_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult 
 pub fn op_v_cmp_eq_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmp_eq_f32"))
-}
-
-pub fn op_v_cmp_eq_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmp_eq_f64"))
 }
 
 pub fn op_v_cmp_eq_i16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
@@ -1082,11 +1067,6 @@ pub fn op_v_cmp_ge_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult 
   Err(ExecError::Unimplemented("v_cmp_ge_f32"))
 }
 
-pub fn op_v_cmp_ge_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmp_ge_f64"))
-}
-
 pub fn op_v_cmp_ge_i16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmp_ge_i16"))
@@ -1125,11 +1105,6 @@ pub fn op_v_cmp_gt_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult 
 pub fn op_v_cmp_gt_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmp_gt_f32"))
-}
-
-pub fn op_v_cmp_gt_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmp_gt_f64"))
 }
 
 pub fn op_v_cmp_gt_i16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
@@ -1172,11 +1147,6 @@ pub fn op_v_cmp_le_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult 
   Err(ExecError::Unimplemented("v_cmp_le_f32"))
 }
 
-pub fn op_v_cmp_le_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmp_le_f64"))
-}
-
 pub fn op_v_cmp_le_i16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmp_le_i16"))
@@ -1217,11 +1187,6 @@ pub fn op_v_cmp_lg_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult 
   Err(ExecError::Unimplemented("v_cmp_lg_f32"))
 }
 
-pub fn op_v_cmp_lg_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmp_lg_f64"))
-}
-
 pub fn op_v_cmp_lt_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmp_lt_f16"))
@@ -1230,11 +1195,6 @@ pub fn op_v_cmp_lt_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult 
 pub fn op_v_cmp_lt_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmp_lt_f32"))
-}
-
-pub fn op_v_cmp_lt_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmp_lt_f64"))
 }
 
 pub fn op_v_cmp_lt_i16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
@@ -1307,11 +1267,6 @@ pub fn op_v_cmp_neq_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult
   Err(ExecError::Unimplemented("v_cmp_neq_f32"))
 }
 
-pub fn op_v_cmp_neq_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmp_neq_f64"))
-}
-
 pub fn op_v_cmp_nge_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmp_nge_f16"))
@@ -1320,11 +1275,6 @@ pub fn op_v_cmp_nge_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult
 pub fn op_v_cmp_nge_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmp_nge_f32"))
-}
-
-pub fn op_v_cmp_nge_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmp_nge_f64"))
 }
 
 pub fn op_v_cmp_ngt_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
@@ -1337,11 +1287,6 @@ pub fn op_v_cmp_ngt_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult
   Err(ExecError::Unimplemented("v_cmp_ngt_f32"))
 }
 
-pub fn op_v_cmp_ngt_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmp_ngt_f64"))
-}
-
 pub fn op_v_cmp_nle_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmp_nle_f16"))
@@ -1350,11 +1295,6 @@ pub fn op_v_cmp_nle_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult
 pub fn op_v_cmp_nle_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmp_nle_f32"))
-}
-
-pub fn op_v_cmp_nle_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmp_nle_f64"))
 }
 
 pub fn op_v_cmp_nlg_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
@@ -1367,11 +1307,6 @@ pub fn op_v_cmp_nlg_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult
   Err(ExecError::Unimplemented("v_cmp_nlg_f32"))
 }
 
-pub fn op_v_cmp_nlg_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmp_nlg_f64"))
-}
-
 pub fn op_v_cmp_nlt_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmp_nlt_f16"))
@@ -1380,11 +1315,6 @@ pub fn op_v_cmp_nlt_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult
 pub fn op_v_cmp_nlt_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmp_nlt_f32"))
-}
-
-pub fn op_v_cmp_nlt_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmp_nlt_f64"))
 }
 
 pub fn op_v_cmp_o_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
@@ -1397,11 +1327,6 @@ pub fn op_v_cmp_o_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   Err(ExecError::Unimplemented("v_cmp_o_f32"))
 }
 
-pub fn op_v_cmp_o_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmp_o_f64"))
-}
-
 pub fn op_v_cmp_u_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmp_u_f16"))
@@ -1410,11 +1335,6 @@ pub fn op_v_cmp_u_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
 pub fn op_v_cmp_u_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmp_u_f32"))
-}
-
-pub fn op_v_cmp_u_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmp_u_f64"))
 }
 
 pub fn op_v_cmpx_class_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
@@ -1427,11 +1347,6 @@ pub fn op_v_cmpx_class_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecRes
   Err(ExecError::Unimplemented("v_cmpx_class_f32"))
 }
 
-pub fn op_v_cmpx_class_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmpx_class_f64"))
-}
-
 pub fn op_v_cmpx_eq_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmpx_eq_f16"))
@@ -1440,11 +1355,6 @@ pub fn op_v_cmpx_eq_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult
 pub fn op_v_cmpx_eq_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmpx_eq_f32"))
-}
-
-pub fn op_v_cmpx_eq_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmpx_eq_f64"))
 }
 
 pub fn op_v_cmpx_eq_i16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
@@ -1487,11 +1397,6 @@ pub fn op_v_cmpx_ge_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult
   Err(ExecError::Unimplemented("v_cmpx_ge_f32"))
 }
 
-pub fn op_v_cmpx_ge_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmpx_ge_f64"))
-}
-
 pub fn op_v_cmpx_ge_i16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmpx_ge_i16"))
@@ -1530,11 +1435,6 @@ pub fn op_v_cmpx_gt_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult
 pub fn op_v_cmpx_gt_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmpx_gt_f32"))
-}
-
-pub fn op_v_cmpx_gt_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmpx_gt_f64"))
 }
 
 pub fn op_v_cmpx_gt_i16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
@@ -1577,11 +1477,6 @@ pub fn op_v_cmpx_le_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult
   Err(ExecError::Unimplemented("v_cmpx_le_f32"))
 }
 
-pub fn op_v_cmpx_le_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmpx_le_f64"))
-}
-
 pub fn op_v_cmpx_le_i16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmpx_le_i16"))
@@ -1622,11 +1517,6 @@ pub fn op_v_cmpx_lg_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult
   Err(ExecError::Unimplemented("v_cmpx_lg_f32"))
 }
 
-pub fn op_v_cmpx_lg_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmpx_lg_f64"))
-}
-
 pub fn op_v_cmpx_lt_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmpx_lt_f16"))
@@ -1635,11 +1525,6 @@ pub fn op_v_cmpx_lt_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult
 pub fn op_v_cmpx_lt_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmpx_lt_f32"))
-}
-
-pub fn op_v_cmpx_lt_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmpx_lt_f64"))
 }
 
 pub fn op_v_cmpx_lt_i16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
@@ -1712,11 +1597,6 @@ pub fn op_v_cmpx_neq_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResul
   Err(ExecError::Unimplemented("v_cmpx_neq_f32"))
 }
 
-pub fn op_v_cmpx_neq_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmpx_neq_f64"))
-}
-
 pub fn op_v_cmpx_nge_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmpx_nge_f16"))
@@ -1725,11 +1605,6 @@ pub fn op_v_cmpx_nge_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResul
 pub fn op_v_cmpx_nge_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmpx_nge_f32"))
-}
-
-pub fn op_v_cmpx_nge_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmpx_nge_f64"))
 }
 
 pub fn op_v_cmpx_ngt_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
@@ -1742,11 +1617,6 @@ pub fn op_v_cmpx_ngt_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResul
   Err(ExecError::Unimplemented("v_cmpx_ngt_f32"))
 }
 
-pub fn op_v_cmpx_ngt_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmpx_ngt_f64"))
-}
-
 pub fn op_v_cmpx_nle_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmpx_nle_f16"))
@@ -1755,11 +1625,6 @@ pub fn op_v_cmpx_nle_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResul
 pub fn op_v_cmpx_nle_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmpx_nle_f32"))
-}
-
-pub fn op_v_cmpx_nle_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmpx_nle_f64"))
 }
 
 pub fn op_v_cmpx_nlg_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
@@ -1772,11 +1637,6 @@ pub fn op_v_cmpx_nlg_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResul
   Err(ExecError::Unimplemented("v_cmpx_nlg_f32"))
 }
 
-pub fn op_v_cmpx_nlg_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmpx_nlg_f64"))
-}
-
 pub fn op_v_cmpx_nlt_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmpx_nlt_f16"))
@@ -1785,11 +1645,6 @@ pub fn op_v_cmpx_nlt_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResul
 pub fn op_v_cmpx_nlt_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmpx_nlt_f32"))
-}
-
-pub fn op_v_cmpx_nlt_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmpx_nlt_f64"))
 }
 
 pub fn op_v_cmpx_o_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
@@ -1802,11 +1657,6 @@ pub fn op_v_cmpx_o_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult 
   Err(ExecError::Unimplemented("v_cmpx_o_f32"))
 }
 
-pub fn op_v_cmpx_o_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmpx_o_f64"))
-}
-
 pub fn op_v_cmpx_u_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmpx_u_f16"))
@@ -1815,11 +1665,6 @@ pub fn op_v_cmpx_u_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult 
 pub fn op_v_cmpx_u_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmpx_u_f32"))
-}
-
-pub fn op_v_cmpx_u_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmpx_u_f64"))
 }
 
 pub fn op_v_cndmask_b16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
@@ -1887,11 +1732,6 @@ pub fn op_v_cvt_f32_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult
   Err(ExecError::Unimplemented("v_cvt_f32_f16"))
 }
 
-pub fn op_v_cvt_f32_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cvt_f32_f64"))
-}
-
 pub fn op_v_cvt_f32_i32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cvt_f32_i32"))
@@ -1922,21 +1762,6 @@ pub fn op_v_cvt_f32_ubyte3(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecRes
   Err(ExecError::Unimplemented("v_cvt_f32_ubyte3"))
 }
 
-pub fn op_v_cvt_f64_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cvt_f64_f32"))
-}
-
-pub fn op_v_cvt_f64_i32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cvt_f64_i32"))
-}
-
-pub fn op_v_cvt_f64_u32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cvt_f64_u32"))
-}
-
 pub fn op_v_cvt_floor_i32_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cvt_floor_i32_f32"))
@@ -1950,11 +1775,6 @@ pub fn op_v_cvt_i16_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult
 pub fn op_v_cvt_i32_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cvt_i32_f32"))
-}
-
-pub fn op_v_cvt_i32_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cvt_i32_f64"))
 }
 
 pub fn op_v_cvt_i32_i16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
@@ -2042,11 +1862,6 @@ pub fn op_v_cvt_u32_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult
   Err(ExecError::Unimplemented("v_cvt_u32_f32"))
 }
 
-pub fn op_v_cvt_u32_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cvt_u32_f64"))
-}
-
 pub fn op_v_cvt_u32_u16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cvt_u32_u16"))
@@ -2062,29 +1877,14 @@ pub fn op_v_div_fixup_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResu
   Err(ExecError::Unimplemented("v_div_fixup_f32"))
 }
 
-pub fn op_v_div_fixup_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_div_fixup_f64"))
-}
-
 pub fn op_v_div_fmas_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_div_fmas_f32"))
 }
 
-pub fn op_v_div_fmas_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_div_fmas_f64"))
-}
-
 pub fn op_v_div_scale_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_div_scale_f32"))
-}
-
-pub fn op_v_div_scale_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_div_scale_f64"))
 }
 
 pub fn op_v_dot2_bf16_bf16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
@@ -2157,11 +1957,6 @@ pub fn op_v_floor_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   Err(ExecError::Unimplemented("v_floor_f32"))
 }
 
-pub fn op_v_floor_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_floor_f64"))
-}
-
 pub fn op_v_fma_dx9_zero_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_fma_dx9_zero_f32"))
@@ -2175,11 +1970,6 @@ pub fn op_v_fma_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
 pub fn op_v_fma_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_fma_f32"))
-}
-
-pub fn op_v_fma_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_fma_f64"))
 }
 
 pub fn op_v_fma_mix_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
@@ -2237,11 +2027,6 @@ pub fn op_v_fract_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   Err(ExecError::Unimplemented("v_fract_f32"))
 }
 
-pub fn op_v_fract_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_fract_f64"))
-}
-
 pub fn op_v_frexp_exp_i16_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_frexp_exp_i16_f16"))
@@ -2252,11 +2037,6 @@ pub fn op_v_frexp_exp_i32_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> Exec
   Err(ExecError::Unimplemented("v_frexp_exp_i32_f32"))
 }
 
-pub fn op_v_frexp_exp_i32_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_frexp_exp_i32_f64"))
-}
-
 pub fn op_v_frexp_mant_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_frexp_mant_f16"))
@@ -2265,11 +2045,6 @@ pub fn op_v_frexp_mant_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecRes
 pub fn op_v_frexp_mant_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_frexp_mant_f32"))
-}
-
-pub fn op_v_frexp_mant_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_frexp_mant_f64"))
 }
 
 pub fn op_v_interp_p10_f16_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
@@ -2310,11 +2085,6 @@ pub fn op_v_ldexp_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
 pub fn op_v_ldexp_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_ldexp_f32"))
-}
-
-pub fn op_v_ldexp_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_ldexp_f64"))
 }
 
 pub fn op_v_lerp_u8(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
@@ -2782,11 +2552,6 @@ pub fn op_v_rcp_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   Err(ExecError::Unimplemented("v_rcp_f32"))
 }
 
-pub fn op_v_rcp_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_rcp_f64"))
-}
-
 pub fn op_v_rcp_iflag_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_rcp_iflag_f32"))
@@ -2802,11 +2567,6 @@ pub fn op_v_rndne_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   Err(ExecError::Unimplemented("v_rndne_f32"))
 }
 
-pub fn op_v_rndne_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_rndne_f64"))
-}
-
 pub fn op_v_rsq_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_rsq_f16"))
@@ -2815,11 +2575,6 @@ pub fn op_v_rsq_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
 pub fn op_v_rsq_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_rsq_f32"))
-}
-
-pub fn op_v_rsq_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_rsq_f64"))
 }
 
 pub fn op_v_sad_hi_u8(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
@@ -2865,11 +2620,6 @@ pub fn op_v_sqrt_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
 pub fn op_v_sqrt_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_sqrt_f32"))
-}
-
-pub fn op_v_sqrt_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_sqrt_f64"))
 }
 
 pub fn op_v_sub_co_ci_u32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
@@ -2952,11 +2702,6 @@ pub fn op_v_swaprel_b32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult
   Err(ExecError::Unimplemented("v_swaprel_b32"))
 }
 
-pub fn op_v_trig_preop_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_trig_preop_f64"))
-}
-
 pub fn op_v_trunc_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_trunc_f16"))
@@ -2965,11 +2710,6 @@ pub fn op_v_trunc_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
 pub fn op_v_trunc_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_trunc_f32"))
-}
-
-pub fn op_v_trunc_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_trunc_f64"))
 }
 
 pub fn op_v_writelane_b32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
@@ -3202,15 +2942,12 @@ pub static OPS: &[(&str, Handler)] = &[
   ("v_bfrev_b32", op_v_bfrev_b32),
   ("v_ceil_f16", op_v_ceil_f16),
   ("v_ceil_f32", op_v_ceil_f32),
-  ("v_ceil_f64", op_v_ceil_f64),
   ("v_cls_i32", op_v_cls_i32),
   ("v_clz_i32_u32", op_v_clz_i32_u32),
   ("v_cmp_class_f16", op_v_cmp_class_f16),
   ("v_cmp_class_f32", op_v_cmp_class_f32),
-  ("v_cmp_class_f64", op_v_cmp_class_f64),
   ("v_cmp_eq_f16", op_v_cmp_eq_f16),
   ("v_cmp_eq_f32", op_v_cmp_eq_f32),
-  ("v_cmp_eq_f64", op_v_cmp_eq_f64),
   ("v_cmp_eq_i16", op_v_cmp_eq_i16),
   ("v_cmp_eq_i32", op_v_cmp_eq_i32),
   ("v_cmp_eq_i64", op_v_cmp_eq_i64),
@@ -3219,7 +2956,6 @@ pub static OPS: &[(&str, Handler)] = &[
   ("v_cmp_eq_u64", op_v_cmp_eq_u64),
   ("v_cmp_ge_f16", op_v_cmp_ge_f16),
   ("v_cmp_ge_f32", op_v_cmp_ge_f32),
-  ("v_cmp_ge_f64", op_v_cmp_ge_f64),
   ("v_cmp_ge_i16", op_v_cmp_ge_i16),
   ("v_cmp_ge_i32", op_v_cmp_ge_i32),
   ("v_cmp_ge_i64", op_v_cmp_ge_i64),
@@ -3228,7 +2964,6 @@ pub static OPS: &[(&str, Handler)] = &[
   ("v_cmp_ge_u64", op_v_cmp_ge_u64),
   ("v_cmp_gt_f16", op_v_cmp_gt_f16),
   ("v_cmp_gt_f32", op_v_cmp_gt_f32),
-  ("v_cmp_gt_f64", op_v_cmp_gt_f64),
   ("v_cmp_gt_i16", op_v_cmp_gt_i16),
   ("v_cmp_gt_i32", op_v_cmp_gt_i32),
   ("v_cmp_gt_i64", op_v_cmp_gt_i64),
@@ -3237,7 +2972,6 @@ pub static OPS: &[(&str, Handler)] = &[
   ("v_cmp_gt_u64", op_v_cmp_gt_u64),
   ("v_cmp_le_f16", op_v_cmp_le_f16),
   ("v_cmp_le_f32", op_v_cmp_le_f32),
-  ("v_cmp_le_f64", op_v_cmp_le_f64),
   ("v_cmp_le_i16", op_v_cmp_le_i16),
   ("v_cmp_le_i32", op_v_cmp_le_i32),
   ("v_cmp_le_i64", op_v_cmp_le_i64),
@@ -3246,10 +2980,8 @@ pub static OPS: &[(&str, Handler)] = &[
   ("v_cmp_le_u64", op_v_cmp_le_u64),
   ("v_cmp_lg_f16", op_v_cmp_lg_f16),
   ("v_cmp_lg_f32", op_v_cmp_lg_f32),
-  ("v_cmp_lg_f64", op_v_cmp_lg_f64),
   ("v_cmp_lt_f16", op_v_cmp_lt_f16),
   ("v_cmp_lt_f32", op_v_cmp_lt_f32),
-  ("v_cmp_lt_f64", op_v_cmp_lt_f64),
   ("v_cmp_lt_i16", op_v_cmp_lt_i16),
   ("v_cmp_lt_i32", op_v_cmp_lt_i32),
   ("v_cmp_lt_i64", op_v_cmp_lt_i64),
@@ -3264,34 +2996,24 @@ pub static OPS: &[(&str, Handler)] = &[
   ("v_cmp_ne_u64", op_v_cmp_ne_u64),
   ("v_cmp_neq_f16", op_v_cmp_neq_f16),
   ("v_cmp_neq_f32", op_v_cmp_neq_f32),
-  ("v_cmp_neq_f64", op_v_cmp_neq_f64),
   ("v_cmp_nge_f16", op_v_cmp_nge_f16),
   ("v_cmp_nge_f32", op_v_cmp_nge_f32),
-  ("v_cmp_nge_f64", op_v_cmp_nge_f64),
   ("v_cmp_ngt_f16", op_v_cmp_ngt_f16),
   ("v_cmp_ngt_f32", op_v_cmp_ngt_f32),
-  ("v_cmp_ngt_f64", op_v_cmp_ngt_f64),
   ("v_cmp_nle_f16", op_v_cmp_nle_f16),
   ("v_cmp_nle_f32", op_v_cmp_nle_f32),
-  ("v_cmp_nle_f64", op_v_cmp_nle_f64),
   ("v_cmp_nlg_f16", op_v_cmp_nlg_f16),
   ("v_cmp_nlg_f32", op_v_cmp_nlg_f32),
-  ("v_cmp_nlg_f64", op_v_cmp_nlg_f64),
   ("v_cmp_nlt_f16", op_v_cmp_nlt_f16),
   ("v_cmp_nlt_f32", op_v_cmp_nlt_f32),
-  ("v_cmp_nlt_f64", op_v_cmp_nlt_f64),
   ("v_cmp_o_f16", op_v_cmp_o_f16),
   ("v_cmp_o_f32", op_v_cmp_o_f32),
-  ("v_cmp_o_f64", op_v_cmp_o_f64),
   ("v_cmp_u_f16", op_v_cmp_u_f16),
   ("v_cmp_u_f32", op_v_cmp_u_f32),
-  ("v_cmp_u_f64", op_v_cmp_u_f64),
   ("v_cmpx_class_f16", op_v_cmpx_class_f16),
   ("v_cmpx_class_f32", op_v_cmpx_class_f32),
-  ("v_cmpx_class_f64", op_v_cmpx_class_f64),
   ("v_cmpx_eq_f16", op_v_cmpx_eq_f16),
   ("v_cmpx_eq_f32", op_v_cmpx_eq_f32),
-  ("v_cmpx_eq_f64", op_v_cmpx_eq_f64),
   ("v_cmpx_eq_i16", op_v_cmpx_eq_i16),
   ("v_cmpx_eq_i32", op_v_cmpx_eq_i32),
   ("v_cmpx_eq_i64", op_v_cmpx_eq_i64),
@@ -3300,7 +3022,6 @@ pub static OPS: &[(&str, Handler)] = &[
   ("v_cmpx_eq_u64", op_v_cmpx_eq_u64),
   ("v_cmpx_ge_f16", op_v_cmpx_ge_f16),
   ("v_cmpx_ge_f32", op_v_cmpx_ge_f32),
-  ("v_cmpx_ge_f64", op_v_cmpx_ge_f64),
   ("v_cmpx_ge_i16", op_v_cmpx_ge_i16),
   ("v_cmpx_ge_i32", op_v_cmpx_ge_i32),
   ("v_cmpx_ge_i64", op_v_cmpx_ge_i64),
@@ -3309,7 +3030,6 @@ pub static OPS: &[(&str, Handler)] = &[
   ("v_cmpx_ge_u64", op_v_cmpx_ge_u64),
   ("v_cmpx_gt_f16", op_v_cmpx_gt_f16),
   ("v_cmpx_gt_f32", op_v_cmpx_gt_f32),
-  ("v_cmpx_gt_f64", op_v_cmpx_gt_f64),
   ("v_cmpx_gt_i16", op_v_cmpx_gt_i16),
   ("v_cmpx_gt_i32", op_v_cmpx_gt_i32),
   ("v_cmpx_gt_i64", op_v_cmpx_gt_i64),
@@ -3318,7 +3038,6 @@ pub static OPS: &[(&str, Handler)] = &[
   ("v_cmpx_gt_u64", op_v_cmpx_gt_u64),
   ("v_cmpx_le_f16", op_v_cmpx_le_f16),
   ("v_cmpx_le_f32", op_v_cmpx_le_f32),
-  ("v_cmpx_le_f64", op_v_cmpx_le_f64),
   ("v_cmpx_le_i16", op_v_cmpx_le_i16),
   ("v_cmpx_le_i32", op_v_cmpx_le_i32),
   ("v_cmpx_le_i64", op_v_cmpx_le_i64),
@@ -3327,10 +3046,8 @@ pub static OPS: &[(&str, Handler)] = &[
   ("v_cmpx_le_u64", op_v_cmpx_le_u64),
   ("v_cmpx_lg_f16", op_v_cmpx_lg_f16),
   ("v_cmpx_lg_f32", op_v_cmpx_lg_f32),
-  ("v_cmpx_lg_f64", op_v_cmpx_lg_f64),
   ("v_cmpx_lt_f16", op_v_cmpx_lt_f16),
   ("v_cmpx_lt_f32", op_v_cmpx_lt_f32),
-  ("v_cmpx_lt_f64", op_v_cmpx_lt_f64),
   ("v_cmpx_lt_i16", op_v_cmpx_lt_i16),
   ("v_cmpx_lt_i32", op_v_cmpx_lt_i32),
   ("v_cmpx_lt_i64", op_v_cmpx_lt_i64),
@@ -3345,28 +3062,20 @@ pub static OPS: &[(&str, Handler)] = &[
   ("v_cmpx_ne_u64", op_v_cmpx_ne_u64),
   ("v_cmpx_neq_f16", op_v_cmpx_neq_f16),
   ("v_cmpx_neq_f32", op_v_cmpx_neq_f32),
-  ("v_cmpx_neq_f64", op_v_cmpx_neq_f64),
   ("v_cmpx_nge_f16", op_v_cmpx_nge_f16),
   ("v_cmpx_nge_f32", op_v_cmpx_nge_f32),
-  ("v_cmpx_nge_f64", op_v_cmpx_nge_f64),
   ("v_cmpx_ngt_f16", op_v_cmpx_ngt_f16),
   ("v_cmpx_ngt_f32", op_v_cmpx_ngt_f32),
-  ("v_cmpx_ngt_f64", op_v_cmpx_ngt_f64),
   ("v_cmpx_nle_f16", op_v_cmpx_nle_f16),
   ("v_cmpx_nle_f32", op_v_cmpx_nle_f32),
-  ("v_cmpx_nle_f64", op_v_cmpx_nle_f64),
   ("v_cmpx_nlg_f16", op_v_cmpx_nlg_f16),
   ("v_cmpx_nlg_f32", op_v_cmpx_nlg_f32),
-  ("v_cmpx_nlg_f64", op_v_cmpx_nlg_f64),
   ("v_cmpx_nlt_f16", op_v_cmpx_nlt_f16),
   ("v_cmpx_nlt_f32", op_v_cmpx_nlt_f32),
-  ("v_cmpx_nlt_f64", op_v_cmpx_nlt_f64),
   ("v_cmpx_o_f16", op_v_cmpx_o_f16),
   ("v_cmpx_o_f32", op_v_cmpx_o_f32),
-  ("v_cmpx_o_f64", op_v_cmpx_o_f64),
   ("v_cmpx_u_f16", op_v_cmpx_u_f16),
   ("v_cmpx_u_f32", op_v_cmpx_u_f32),
-  ("v_cmpx_u_f64", op_v_cmpx_u_f64),
   ("v_cndmask_b16", op_v_cndmask_b16),
   ("v_cndmask_b32", op_v_cndmask_b32),
   ("v_cos_f16", op_v_cos_f16),
@@ -3380,20 +3089,15 @@ pub static OPS: &[(&str, Handler)] = &[
   ("v_cvt_f16_i16", op_v_cvt_f16_i16),
   ("v_cvt_f16_u16", op_v_cvt_f16_u16),
   ("v_cvt_f32_f16", op_v_cvt_f32_f16),
-  ("v_cvt_f32_f64", op_v_cvt_f32_f64),
   ("v_cvt_f32_i32", op_v_cvt_f32_i32),
   ("v_cvt_f32_u32", op_v_cvt_f32_u32),
   ("v_cvt_f32_ubyte0", op_v_cvt_f32_ubyte0),
   ("v_cvt_f32_ubyte1", op_v_cvt_f32_ubyte1),
   ("v_cvt_f32_ubyte2", op_v_cvt_f32_ubyte2),
   ("v_cvt_f32_ubyte3", op_v_cvt_f32_ubyte3),
-  ("v_cvt_f64_f32", op_v_cvt_f64_f32),
-  ("v_cvt_f64_i32", op_v_cvt_f64_i32),
-  ("v_cvt_f64_u32", op_v_cvt_f64_u32),
   ("v_cvt_floor_i32_f32", op_v_cvt_floor_i32_f32),
   ("v_cvt_i16_f16", op_v_cvt_i16_f16),
   ("v_cvt_i32_f32", op_v_cvt_i32_f32),
-  ("v_cvt_i32_f64", op_v_cvt_i32_f64),
   ("v_cvt_i32_i16", op_v_cvt_i32_i16),
   ("v_cvt_nearest_i32_f32", op_v_cvt_nearest_i32_f32),
   ("v_cvt_norm_i16_f16", op_v_cvt_norm_i16_f16),
@@ -3411,15 +3115,11 @@ pub static OPS: &[(&str, Handler)] = &[
   ("v_cvt_pk_u8_f32", op_v_cvt_pk_u8_f32),
   ("v_cvt_u16_f16", op_v_cvt_u16_f16),
   ("v_cvt_u32_f32", op_v_cvt_u32_f32),
-  ("v_cvt_u32_f64", op_v_cvt_u32_f64),
   ("v_cvt_u32_u16", op_v_cvt_u32_u16),
   ("v_div_fixup_f16", op_v_div_fixup_f16),
   ("v_div_fixup_f32", op_v_div_fixup_f32),
-  ("v_div_fixup_f64", op_v_div_fixup_f64),
   ("v_div_fmas_f32", op_v_div_fmas_f32),
-  ("v_div_fmas_f64", op_v_div_fmas_f64),
   ("v_div_scale_f32", op_v_div_scale_f32),
-  ("v_div_scale_f64", op_v_div_scale_f64),
   ("v_dot2_bf16_bf16", op_v_dot2_bf16_bf16),
   ("v_dot2_f16_f16", op_v_dot2_f16_f16),
   ("v_dot2_f32_bf16", op_v_dot2_f32_bf16),
@@ -3434,11 +3134,9 @@ pub static OPS: &[(&str, Handler)] = &[
   ("v_exp_f32", op_v_exp_f32),
   ("v_floor_f16", op_v_floor_f16),
   ("v_floor_f32", op_v_floor_f32),
-  ("v_floor_f64", op_v_floor_f64),
   ("v_fma_dx9_zero_f32", op_v_fma_dx9_zero_f32),
   ("v_fma_f16", op_v_fma_f16),
   ("v_fma_f32", op_v_fma_f32),
-  ("v_fma_f64", op_v_fma_f64),
   ("v_fma_mix_f32", op_v_fma_mix_f32),
   ("v_fma_mixhi_f16", op_v_fma_mixhi_f16),
   ("v_fma_mixlo_f16", op_v_fma_mixlo_f16),
@@ -3450,13 +3148,10 @@ pub static OPS: &[(&str, Handler)] = &[
   ("v_fmamk_f32", op_v_fmamk_f32),
   ("v_fract_f16", op_v_fract_f16),
   ("v_fract_f32", op_v_fract_f32),
-  ("v_fract_f64", op_v_fract_f64),
   ("v_frexp_exp_i16_f16", op_v_frexp_exp_i16_f16),
   ("v_frexp_exp_i32_f32", op_v_frexp_exp_i32_f32),
-  ("v_frexp_exp_i32_f64", op_v_frexp_exp_i32_f64),
   ("v_frexp_mant_f16", op_v_frexp_mant_f16),
   ("v_frexp_mant_f32", op_v_frexp_mant_f32),
-  ("v_frexp_mant_f64", op_v_frexp_mant_f64),
   ("v_interp_p10_f16_f32", op_v_interp_p10_f16_f32),
   ("v_interp_p10_f32", op_v_interp_p10_f32),
   ("v_interp_p10_rtz_f16_f32", op_v_interp_p10_rtz_f16_f32),
@@ -3465,7 +3160,6 @@ pub static OPS: &[(&str, Handler)] = &[
   ("v_interp_p2_rtz_f16_f32", op_v_interp_p2_rtz_f16_f32),
   ("v_ldexp_f16", op_v_ldexp_f16),
   ("v_ldexp_f32", op_v_ldexp_f32),
-  ("v_ldexp_f64", op_v_ldexp_f64),
   ("v_lerp_u8", op_v_lerp_u8),
   ("v_log_f16", op_v_log_f16),
   ("v_log_f32", op_v_log_f32),
@@ -3559,14 +3253,11 @@ pub static OPS: &[(&str, Handler)] = &[
   ("v_qsad_pk_u16_u8", op_v_qsad_pk_u16_u8),
   ("v_rcp_f16", op_v_rcp_f16),
   ("v_rcp_f32", op_v_rcp_f32),
-  ("v_rcp_f64", op_v_rcp_f64),
   ("v_rcp_iflag_f32", op_v_rcp_iflag_f32),
   ("v_rndne_f16", op_v_rndne_f16),
   ("v_rndne_f32", op_v_rndne_f32),
-  ("v_rndne_f64", op_v_rndne_f64),
   ("v_rsq_f16", op_v_rsq_f16),
   ("v_rsq_f32", op_v_rsq_f32),
-  ("v_rsq_f64", op_v_rsq_f64),
   ("v_sad_hi_u8", op_v_sad_hi_u8),
   ("v_sad_u16", op_v_sad_u16),
   ("v_sad_u32", op_v_sad_u32),
@@ -3576,7 +3267,6 @@ pub static OPS: &[(&str, Handler)] = &[
   ("v_sin_f32", op_v_sin_f32),
   ("v_sqrt_f16", op_v_sqrt_f16),
   ("v_sqrt_f32", op_v_sqrt_f32),
-  ("v_sqrt_f64", op_v_sqrt_f64),
   ("v_sub_co_ci_u32", op_v_sub_co_ci_u32),
   ("v_sub_co_u32", op_v_sub_co_u32),
   ("v_sub_f16", op_v_sub_f16),
@@ -3593,10 +3283,8 @@ pub static OPS: &[(&str, Handler)] = &[
   ("v_swap_b16", op_v_swap_b16),
   ("v_swap_b32", op_v_swap_b32),
   ("v_swaprel_b32", op_v_swaprel_b32),
-  ("v_trig_preop_f64", op_v_trig_preop_f64),
   ("v_trunc_f16", op_v_trunc_f16),
   ("v_trunc_f32", op_v_trunc_f32),
-  ("v_trunc_f64", op_v_trunc_f64),
   ("v_writelane_b32", op_v_writelane_b32),
   ("v_xad_u32", op_v_xad_u32),
   ("v_xnor_b32", op_v_xnor_b32),

@@ -8,9 +8,10 @@ Example:
 ---
 arg_a: f32[16] = arange(16)
 arg_b: i32 = 3
+arg_weights: f32[4,4] = rand()
 out_y: f32[4,4]
-local = (N, 1, 1)
-global = (N, 1, 1)
+local = N, 1, 1
+global = N, 1, 1
 wave = 32
 ---
 
@@ -21,10 +22,14 @@ Rules:
 - Arrays must have a size in the header, even if they are outputs only.
 - Number parsing accepts decimal, `0x` hex, and `0b` binary. Floats use standard decimal form.
 - Initializers (`=`) are optional. If present, they must supply enough values for the flattened size.
-- `arange(n)` or `arange(start, end[, step])` produces a 1D sequence. If a shape is provided, fill it row-major.
-- `matrix(r, c[, start[, step]])` is shorthand for a row-major matrix starting at `start` (default 0).
-- `local = (x, y, z)` is threads per workgroup (CUDA block equivalent).
-- `global = (x, y, z)` is workgroups (CUDA grid equivalent).
+- If no initializer is provided, the argument is zero-initialized.
+- Literal list initializers are flat; shapes always come from the declared type.
+- `repeat(value)` fills the declared shape with a single value.
+- `arange(n)` or `arange(start, end[, step])` produces a sequential range. Works for both scalars and arrays. If the step sign doesn't match the range direction (e.g., start < end with a negative step), parsing fails.
+- `rand()` generates random values: floats in [0.0, 1.0) or integers in [0, 100).
+- `file("path", dtype)` loads raw bytes from a `.bin` file and writes them directly into global memory. The dtype must match the declared type, and the file length must match the flattened size in bytes.
+- `local = x, y, z` or `local = (x, y, z)` is threads per workgroup (CUDA block equivalent). Parentheses are optional.
+- `global = x, y, z` or `global = (x, y, z)` is workgroups (CUDA grid equivalent). Parentheses are optional.
 - `wave = 32` or `wave = 64` picks the wave size for the launch.
 
 Arguments should be copied into global memory and a 64-bit kernarg pointer should be placed in SGPRs.
@@ -57,10 +62,17 @@ Maybe we can add some artifical delay that messes up kernels that don't wait. ho
 ### global memory + allocation
 - Parsing allocates each argument in global memory and writes initial values immediately.
 - Global memory is backed by a simple bump allocator with byte-level read/write helpers.
+- `bf16` is supported only via `file("path", bf16)` initializers.
+
+Examples:
+- `weights: f32[2,2] = file("data/weights.bin", f32)`
+- `bias: i32[4] = repeat(0)`
+- `random_init: f32[100] = rand()`
 - CLI exposes `--global-memsize` (MB) with a default of 32MB.
 
 ## data 
 in `data/` there are xmls for each ISA. gen_isa.py has a script that parses instructions out of one isa file into a generated rust file. is this the best approach? can we do better? we also need to de-duplicate instructions, and maybe have a "base" set of instructions that are the same across all ISAs then go beyond that. and then for intstructions that are unknown in the XML, we can handle them as they come up. 
+F64 instructions are deliberately excluded during ISA generation because they are too slow for compute workloads.
 
 ## ultimate project goals
 

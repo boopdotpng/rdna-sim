@@ -4,17 +4,18 @@ use std::path::PathBuf;
 use rdna_sim::{run_file, Architecture, WaveSize};
 
 #[derive(Parser, Debug)]
-#[command(name = "rdna-sim", about = "RDNA/CDNA architecture simulator")]
+#[command(name = "rdna-sim", about = "rdna/cdna architecture simulator")]
 struct Cli {
   #[arg(short, long, value_enum, default_value_t = Architecture::Rdna35)]
   arch: Architecture,
 
-  #[arg(short, long, value_name = "PATH")]
+  #[arg(value_name = "PATH")]
   file: Option<PathBuf>,
 
   #[arg(long, value_enum, default_value_t = WaveSize::Wave32)]
   wave_size: WaveSize,
 
+  // launch TUI debugger, when implemented
   #[arg(long)]
   debug: bool,
 
@@ -30,7 +31,7 @@ fn main() {
     return;
   }
   let args = Cli::parse();
-  let global_mem_bytes = args.global_memsize * 1024 * 1024;
+  let global_mem_bytes = args.global_memsize * 1024 * 1024; // MB to bytes 
   if let Err(err) = run_file(
     args.file,
     args.arch,

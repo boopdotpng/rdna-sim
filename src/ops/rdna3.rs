@@ -332,11 +332,6 @@ pub fn op_ds_cmpstore_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResu
   Err(ExecError::Unimplemented("ds_cmpstore_f32"))
 }
 
-pub fn op_ds_cmpstore_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("ds_cmpstore_f64"))
-}
-
 pub fn op_ds_cmpstore_rtn_b32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("ds_cmpstore_rtn_b32"))
@@ -350,11 +345,6 @@ pub fn op_ds_cmpstore_rtn_b64(ctx: &mut ExecContext, inst: &DecodedInst) -> Exec
 pub fn op_ds_cmpstore_rtn_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("ds_cmpstore_rtn_f32"))
-}
-
-pub fn op_ds_cmpstore_rtn_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("ds_cmpstore_rtn_f64"))
 }
 
 pub fn op_ds_condxchg32_rtn_b64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
@@ -537,11 +527,6 @@ pub fn op_ds_max_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   Err(ExecError::Unimplemented("ds_max_f32"))
 }
 
-pub fn op_ds_max_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("ds_max_f64"))
-}
-
 pub fn op_ds_max_i32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("ds_max_i32"))
@@ -555,11 +540,6 @@ pub fn op_ds_max_i64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
 pub fn op_ds_max_rtn_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("ds_max_rtn_f32"))
-}
-
-pub fn op_ds_max_rtn_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("ds_max_rtn_f64"))
 }
 
 pub fn op_ds_max_rtn_i32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
@@ -597,11 +577,6 @@ pub fn op_ds_min_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   Err(ExecError::Unimplemented("ds_min_f32"))
 }
 
-pub fn op_ds_min_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("ds_min_f64"))
-}
-
 pub fn op_ds_min_i32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("ds_min_i32"))
@@ -615,11 +590,6 @@ pub fn op_ds_min_i64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
 pub fn op_ds_min_rtn_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("ds_min_rtn_f32"))
-}
-
-pub fn op_ds_min_rtn_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("ds_min_rtn_f64"))
 }
 
 pub fn op_ds_min_rtn_i32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
@@ -1867,11 +1837,6 @@ pub fn op_tbuffer_store_format_xyzw(ctx: &mut ExecContext, inst: &DecodedInst) -
   Err(ExecError::Unimplemented("tbuffer_store_format_xyzw"))
 }
 
-pub fn op_v_add_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_add_f64"))
-}
-
 pub fn op_v_cmp_f_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmp_f_f16"))
@@ -1880,11 +1845,6 @@ pub fn op_v_cmp_f_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
 pub fn op_v_cmp_f_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmp_f_f32"))
-}
-
-pub fn op_v_cmp_f_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmp_f_f64"))
 }
 
 pub fn op_v_cmp_f_i32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
@@ -1917,11 +1877,6 @@ pub fn op_v_cmp_t_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   Err(ExecError::Unimplemented("v_cmp_t_f32"))
 }
 
-pub fn op_v_cmp_t_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmp_t_f64"))
-}
-
 pub fn op_v_cmp_t_i32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmp_t_i32"))
@@ -1952,11 +1907,6 @@ pub fn op_v_cmpx_f_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult 
   Err(ExecError::Unimplemented("v_cmpx_f_f32"))
 }
 
-pub fn op_v_cmpx_f_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmpx_f_f64"))
-}
-
 pub fn op_v_cmpx_f_i32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmpx_f_i32"))
@@ -1985,11 +1935,6 @@ pub fn op_v_cmpx_t_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult 
 pub fn op_v_cmpx_t_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_cmpx_t_f32"))
-}
-
-pub fn op_v_cmpx_t_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_cmpx_t_f64"))
 }
 
 pub fn op_v_cmpx_t_i32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
@@ -2132,11 +2077,6 @@ pub fn op_v_max_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   Err(ExecError::Unimplemented("v_max_f32"))
 }
 
-pub fn op_v_max_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_max_f64"))
-}
-
 pub fn op_v_maxmin_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_maxmin_f16"))
@@ -2177,11 +2117,6 @@ pub fn op_v_min_f32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   Err(ExecError::Unimplemented("v_min_f32"))
 }
 
-pub fn op_v_min_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_min_f64"))
-}
-
 pub fn op_v_minmax_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_minmax_f16"))
@@ -2205,11 +2140,6 @@ pub fn op_v_movrelsd_2_b32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecRes
 pub fn op_v_movrelsd_b32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
   Err(ExecError::Unimplemented("v_movrelsd_b32"))
-}
-
-pub fn op_v_mul_f64(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
-  let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("v_mul_f64"))
 }
 
 pub fn op_v_pk_max_f16(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
@@ -2329,11 +2259,9 @@ pub static OPS: &[(&str, Handler)] = &[
   ("ds_cmpstore_b32", op_ds_cmpstore_b32),
   ("ds_cmpstore_b64", op_ds_cmpstore_b64),
   ("ds_cmpstore_f32", op_ds_cmpstore_f32),
-  ("ds_cmpstore_f64", op_ds_cmpstore_f64),
   ("ds_cmpstore_rtn_b32", op_ds_cmpstore_rtn_b32),
   ("ds_cmpstore_rtn_b64", op_ds_cmpstore_rtn_b64),
   ("ds_cmpstore_rtn_f32", op_ds_cmpstore_rtn_f32),
-  ("ds_cmpstore_rtn_f64", op_ds_cmpstore_rtn_f64),
   ("ds_condxchg32_rtn_b64", op_ds_condxchg32_rtn_b64),
   ("ds_consume", op_ds_consume),
   ("ds_dec_rtn_u32", op_ds_dec_rtn_u32),
@@ -2370,11 +2298,9 @@ pub static OPS: &[(&str, Handler)] = &[
   ("ds_load_u8_d16", op_ds_load_u8_d16),
   ("ds_load_u8_d16_hi", op_ds_load_u8_d16_hi),
   ("ds_max_f32", op_ds_max_f32),
-  ("ds_max_f64", op_ds_max_f64),
   ("ds_max_i32", op_ds_max_i32),
   ("ds_max_i64", op_ds_max_i64),
   ("ds_max_rtn_f32", op_ds_max_rtn_f32),
-  ("ds_max_rtn_f64", op_ds_max_rtn_f64),
   ("ds_max_rtn_i32", op_ds_max_rtn_i32),
   ("ds_max_rtn_i64", op_ds_max_rtn_i64),
   ("ds_max_rtn_u32", op_ds_max_rtn_u32),
@@ -2382,11 +2308,9 @@ pub static OPS: &[(&str, Handler)] = &[
   ("ds_max_u32", op_ds_max_u32),
   ("ds_max_u64", op_ds_max_u64),
   ("ds_min_f32", op_ds_min_f32),
-  ("ds_min_f64", op_ds_min_f64),
   ("ds_min_i32", op_ds_min_i32),
   ("ds_min_i64", op_ds_min_i64),
   ("ds_min_rtn_f32", op_ds_min_rtn_f32),
-  ("ds_min_rtn_f64", op_ds_min_rtn_f64),
   ("ds_min_rtn_i32", op_ds_min_rtn_i32),
   ("ds_min_rtn_i64", op_ds_min_rtn_i64),
   ("ds_min_rtn_u32", op_ds_min_rtn_u32),
@@ -2636,31 +2560,26 @@ pub static OPS: &[(&str, Handler)] = &[
   ("tbuffer_store_format_xy", op_tbuffer_store_format_xy),
   ("tbuffer_store_format_xyz", op_tbuffer_store_format_xyz),
   ("tbuffer_store_format_xyzw", op_tbuffer_store_format_xyzw),
-  ("v_add_f64", op_v_add_f64),
   ("v_cmp_f_f16", op_v_cmp_f_f16),
   ("v_cmp_f_f32", op_v_cmp_f_f32),
-  ("v_cmp_f_f64", op_v_cmp_f_f64),
   ("v_cmp_f_i32", op_v_cmp_f_i32),
   ("v_cmp_f_i64", op_v_cmp_f_i64),
   ("v_cmp_f_u32", op_v_cmp_f_u32),
   ("v_cmp_f_u64", op_v_cmp_f_u64),
   ("v_cmp_t_f16", op_v_cmp_t_f16),
   ("v_cmp_t_f32", op_v_cmp_t_f32),
-  ("v_cmp_t_f64", op_v_cmp_t_f64),
   ("v_cmp_t_i32", op_v_cmp_t_i32),
   ("v_cmp_t_i64", op_v_cmp_t_i64),
   ("v_cmp_t_u32", op_v_cmp_t_u32),
   ("v_cmp_t_u64", op_v_cmp_t_u64),
   ("v_cmpx_f_f16", op_v_cmpx_f_f16),
   ("v_cmpx_f_f32", op_v_cmpx_f_f32),
-  ("v_cmpx_f_f64", op_v_cmpx_f_f64),
   ("v_cmpx_f_i32", op_v_cmpx_f_i32),
   ("v_cmpx_f_i64", op_v_cmpx_f_i64),
   ("v_cmpx_f_u32", op_v_cmpx_f_u32),
   ("v_cmpx_f_u64", op_v_cmpx_f_u64),
   ("v_cmpx_t_f16", op_v_cmpx_t_f16),
   ("v_cmpx_t_f32", op_v_cmpx_t_f32),
-  ("v_cmpx_t_f64", op_v_cmpx_t_f64),
   ("v_cmpx_t_i32", op_v_cmpx_t_i32),
   ("v_cmpx_t_i64", op_v_cmpx_t_i64),
   ("v_cmpx_t_u32", op_v_cmpx_t_u32),
@@ -2689,7 +2608,6 @@ pub static OPS: &[(&str, Handler)] = &[
   ("v_max3_f32", op_v_max3_f32),
   ("v_max_f16", op_v_max_f16),
   ("v_max_f32", op_v_max_f32),
-  ("v_max_f64", op_v_max_f64),
   ("v_maxmin_f16", op_v_maxmin_f16),
   ("v_maxmin_f32", op_v_maxmin_f32),
   ("v_med3_f16", op_v_med3_f16),
@@ -2698,13 +2616,11 @@ pub static OPS: &[(&str, Handler)] = &[
   ("v_min3_f32", op_v_min3_f32),
   ("v_min_f16", op_v_min_f16),
   ("v_min_f32", op_v_min_f32),
-  ("v_min_f64", op_v_min_f64),
   ("v_minmax_f16", op_v_minmax_f16),
   ("v_minmax_f32", op_v_minmax_f32),
   ("v_movrels_b32", op_v_movrels_b32),
   ("v_movrelsd_2_b32", op_v_movrelsd_2_b32),
   ("v_movrelsd_b32", op_v_movrelsd_b32),
-  ("v_mul_f64", op_v_mul_f64),
   ("v_pk_max_f16", op_v_pk_max_f16),
   ("v_pk_min_f16", op_v_pk_min_f16),
   ("v_readfirstlane_b32", op_v_readfirstlane_b32),
