@@ -132,6 +132,8 @@ impl SGPRs {
 /*
 Each thread in the wave gets a u32. 
 v0 is usually threadIdx.x (work-item id). 
+v1 is threadIdx.y
+at least from kernels i've read
 */
 pub struct VGPRs {
     vgpr_file: Box<[u32]>,
@@ -185,9 +187,18 @@ pub struct Program {
 
     // global memory (64MB to start, flat)
     global_mem: Box<[u64]>,
+    // launch sizes for the program
+    pub local_launch_size: Dim3,
+    pub global_launch_size: Dim3,
     // ? do we want to simulate traps? probably not
     // TBA - trap base address
     // TMA - trap memory address
+}
+
+// Stub for global memory allocator - will be implemented later
+pub struct GlobalAlloc {
+    // Placeholder for memory allocator implementation
+    _placeholder: u64,
 }
 
 // every wave gets a copy of this
@@ -214,9 +225,38 @@ pub fn run_file(
     file: Option<PathBuf>,
     arch: Architecture,
     wave_size: WaveSize,
-    debug: bool,
+    _debug: bool,
 ) -> Result<(), String> {
-    let _ = (file, arch, wave_size, debug);
+    if let Some(file_path) = file {
+        // Parse the file using the new parsing functions
+        let program_info = parse::parse_top(&file_path)?;
+        
+        // Print parsed arguments for verification
+        println!("Parsed arguments:");
+        for (name, type_str) in &program_info.arguments {
+            println!("  {} : {}", name, type_str);
+        }
+        
+        println!("Parsed output arguments:");
+        for (name, type_str) in &program_info.output_arguments {
+            println!("  {} : {}", name, type_str);
+        }
+        
+        println!("Parsed print addresses:");
+        for (addr, type_str) in &program_info.print_addresses {
+            println!("  0x{:x} : {}", addr, type_str);
+        }
+        
+        println!("Local launch size: {:?}", program_info.local_launch_size);
+        println!("Global launch size: {:?}", program_info.global_launch_size);
+        
+        let program = parse::parse_into_program(program_info, arch, wave_size);
+        
+        // Here we would typically run the simulation with the launch sizes
+        // For now, we'll just print them to show they're properly initialized
+        println!("Program created with local_launch_size: {:?} and global_launch_size: {:?}", 
+                 program.local_launch_size, program.global_launch_size);
+    }
     // the whole parsing flow happens here
 
     Ok(())
