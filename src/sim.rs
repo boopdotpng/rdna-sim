@@ -1,5 +1,6 @@
 use crate::isa::InstructionCommonDef;
-use crate::{Program, WaveState};
+use crate::wave::WaveState;
+use crate::Program;
 
 #[derive(Clone, Debug)]
 pub struct GlobalAlloc {
