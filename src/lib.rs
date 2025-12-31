@@ -1,5 +1,6 @@
 mod ir;
 pub mod isa;
+pub mod ops;
 mod parse;
 mod program;
 mod sim;

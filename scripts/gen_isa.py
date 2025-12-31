@@ -2,9 +2,17 @@
 import argparse
 import os
 import xml.etree.ElementTree as ET
+from dataclasses import dataclass
 from typing import Dict, List, Tuple
 
 MAX_LINE = 150
+
+
+@dataclass(frozen=True)
+class ArchConfig:
+  arch: str
+  isa_xml: str
+  out_dir: str
 
 
 def rust_string_literal(value: str) -> str:
@@ -86,16 +94,51 @@ def unique_variants(names: List[str]) -> Dict[str, str]:
   return mapping
 
 
-def render_instruction_def(inst: dict, variant: str) -> str:
+def safe_fn_base(name: str) -> str:
+  out = []
+  for ch in name:
+    if ch.isalnum():
+      out.append(ch.lower())
+    else:
+      out.append("_")
+  return "".join(out)
+
+
+def unique_fn_names(names: List[str]) -> Dict[str, str]:
+  seen: Dict[str, int] = {}
+  mapping: Dict[str, str] = {}
+  for name in names:
+    base = "op_" + safe_fn_base(name)
+    count = seen.get(base, 0)
+    seen[base] = count + 1
+    if count == 0:
+      mapping[name] = base
+    else:
+      mapping[name] = f"{base}_{count + 1}"
+  return mapping
+
+
+def render_common_def(inst: dict) -> str:
   indent = 4
-  lines = ["  InstructionDef {", f"    name: {rust_string_literal(inst['normalized_name'])},"]
-  lines.append(f"    instruction: Instruction::{variant},")
+  lines = ["  InstructionCommonDef {"]
+  lines.append(f"    name: {rust_string_literal(inst['normalized_name'])},")
   lines.append(f"    args: {format_arg_specs(inst.get('operands', []), indent + 4, len('args: '))},")
   lines.append(
     f"    encodings: {format_str_list(inst.get('available_encodings', []), indent + 4, len('encodings: '))},"
   )
   lines.append("  },")
   return "\n".join(lines)
+
+
+def render_instruction_ref(variant: str, common_ref: str) -> str:
+  return "\n".join(
+    [
+      "  InstructionDef {",
+      f"    instruction: Instruction::{variant},",
+      f"    common: {common_ref},",
+      "  },",
+    ]
+  )
 
 
 def format_arg_specs(operands: List[dict], indent: int, prefix_len: int = 0) -> str:
@@ -130,6 +173,26 @@ def render_arg_spec(operand: dict) -> str:
     f"width: {width} "
     "}"
   )
+
+
+def arg_spec_key(operand: dict) -> Tuple[str, str, int]:
+  kind = operand_kind(operand.get("operand_type", ""))
+  if kind in {"Imm", "RegOrImm"}:
+    data_type = data_type_variant(operand.get("data_format") or "")
+  else:
+    data_type = "None"
+  size_text = operand.get("size") or ""
+  try:
+    width = int(size_text)
+  except ValueError:
+    width = 0
+  return (kind, data_type, width)
+
+
+def instruction_signature(inst: dict) -> Tuple[str, Tuple[Tuple[str, str, int], ...], Tuple[str, ...]]:
+  operands = tuple(arg_spec_key(operand) for operand in inst.get("operands", []))
+  encodings = tuple(inst.get("available_encodings", []))
+  return (inst["normalized_name"], operands, encodings)
 
 
 def data_type_variant(data_format: str) -> str:
@@ -219,7 +282,13 @@ def operand_kind(operand_type: str) -> str:
   return "Unknown"
 
 
-def load_instructions(xml_path: str) -> Tuple[Dict[str, Tuple[str, str]], List[dict]]:
+def load_instructions(
+  xml_path: str,
+  exclude_groups: List[str],
+  exclude_vmem_subgroups: List[str],
+) -> List[dict]:
+  if not os.path.exists(xml_path):
+    raise FileNotFoundError(xml_path)
   root = ET.parse(xml_path).getroot()
   groups: Dict[str, Tuple[str, str]] = {}
   instructions: List[dict] = []
@@ -273,29 +342,11 @@ def load_instructions(xml_path: str) -> Tuple[Dict[str, Tuple[str, str]], List[d
         "available_encodings": encodings,
       }
     )
-  return groups, instructions
-
-
-def generate(
-  arch: str,
-  out_dir: str,
-  isa_xml: str | None,
-  exclude_groups: List[str],
-  exclude_vmem_subgroups: List[str],
-) -> None:
-  groups = None
-  instructions: List[dict] = []
-  if isa_xml and os.path.exists(isa_xml):
-    groups, instructions = load_instructions(isa_xml)
-  else:
-    raise FileNotFoundError(isa_xml or "")
 
   excluded_groups = {name.upper() for name in exclude_groups}
   excluded_vmem = {name.upper() for name in exclude_vmem_subgroups}
 
   def is_allowed(inst: dict) -> bool:
-    if groups is None:
-      return True
     group_name, subgroup = groups.get(inst["name"], ("", ""))
     group_upper = group_name.upper()
     if group_upper in excluded_groups:
@@ -304,28 +355,95 @@ def generate(
       return False
     return True
 
-  instructions = [inst for inst in instructions if is_allowed(inst)]
-  instructions.sort(key=lambda inst: inst["name"])
+  return [inst for inst in instructions if is_allowed(inst)]
+
+
+def build_common_signatures(arch_instructions: Dict[str, List[dict]]) -> set:
+  common = None
+  for insts in arch_instructions.values():
+    signatures = {instruction_signature(inst) for inst in insts}
+    common = signatures if common is None else common & signatures
+  return common or set()
+
+
+def generate_base(
+  common_insts: List[dict],
+  out_dir: str,
+) -> Dict[Tuple[str, Tuple[Tuple[str, str, int], ...], Tuple[str, ...]], int]:
+  common_insts = sorted(common_insts, key=lambda inst: inst["normalized_name"])
+  defs_lines = ["pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &["]
+  for inst in common_insts:
+    defs_lines.append(render_common_def(inst))
+  defs_lines.append("];")
+
+  lookup_pairs = [(inst["normalized_name"], idx) for idx, inst in enumerate(common_insts)]
+  lookup_pairs.sort(key=lambda item: item[0])
+  lookup_lines = ["pub static INSTRUCTION_COMMON_BY_NAME: &[(&str, usize)] = &["]
+  for name, idx in lookup_pairs:
+    lookup_lines.append(f"  ({rust_string_literal(name)}, {idx}),")
+  lookup_lines.append("];")
+
+  lookup_fn = [
+    "pub fn lookup_common(name: &str) -> Option<&'static InstructionCommonDef> {",
+    "  INSTRUCTION_COMMON_BY_NAME",
+    "    .binary_search_by(|(n, _)| n.cmp(&name))",
+    "    .ok()",
+    "    .map(|idx| &INSTRUCTION_COMMON_DEFS[INSTRUCTION_COMMON_BY_NAME[idx].1])",
+    "}",
+    "",
+    "pub fn lookup_common_normalized(name: &str) -> Option<&'static InstructionCommonDef> {",
+    "  lookup_common(&name.to_ascii_lowercase())",
+    "}",
+  ]
+
+  out_path = os.path.join(out_dir, "generated.rs")
+  os.makedirs(out_dir, exist_ok=True)
+  with open(out_path, "w", encoding="utf-8") as f:
+    f.write("// Generated by scripts/gen_isa.py. Do not edit by hand.\n\n")
+    f.write("use crate::isa::types::{ArgKind, ArgSpec, DataType, InstructionCommonDef};\n\n")
+    f.write("\n".join(defs_lines))
+    f.write("\n\n")
+    f.write("\n".join(lookup_lines))
+    f.write("\n\n")
+    f.write("\n".join(lookup_fn))
+    f.write("\n")
+
+  return {instruction_signature(inst): idx for idx, inst in enumerate(common_insts)}
+
+
+def generate_arch(
+  config: ArchConfig,
+  instructions: List[dict],
+  common_signatures: set,
+  base_index_map: Dict[Tuple[str, Tuple[Tuple[str, str, int], ...], Tuple[str, ...]], int],
+) -> None:
+  instructions = sorted(instructions, key=lambda inst: inst["normalized_name"])
   names = [inst["normalized_name"] for inst in instructions]
   mapping = unique_variants(names)
+
+  arch_common = [inst for inst in instructions if instruction_signature(inst) not in common_signatures]
+  arch_common = sorted(arch_common, key=lambda inst: inst["normalized_name"])
+  arch_index_map = {instruction_signature(inst): idx for idx, inst in enumerate(arch_common)}
 
   enum_lines = ["#[derive(Copy, Clone, Debug, Eq, PartialEq, Hash)]", "pub enum Instruction {"]
   for inst in instructions:
     enum_lines.append(f"  {mapping[inst['normalized_name']]},")
   enum_lines.append("}")
 
-  def_lines = ["pub struct InstructionDef {",
-    "  pub name: &'static str,",
-    "  pub instruction: Instruction,",
-    "  pub args: &'static [ArgSpec],",
-    "  pub encodings: &'static [&'static str],",
-    "}",
-  ]
+  arch_defs = ["pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &["]
+  for inst in arch_common:
+    arch_defs.append(render_common_def(inst))
+  arch_defs.append("];")
 
-  defs_lines = ["pub static INSTRUCTION_DEFS: &[InstructionDef] = &["]
+  def_lines = ["pub static INSTRUCTION_DEFS: &[InstructionDef<Instruction>] = &["]
   for inst in instructions:
-    defs_lines.append(render_instruction_def(inst, mapping[inst["normalized_name"]]))
-  defs_lines.append("];")
+    signature = instruction_signature(inst)
+    if signature in base_index_map:
+      common_ref = f"&base::INSTRUCTION_COMMON_DEFS[{base_index_map[signature]}]"
+    else:
+      common_ref = f"&ARCH_COMMON_DEFS[{arch_index_map[signature]}]"
+    def_lines.append(render_instruction_ref(mapping[inst["normalized_name"]], common_ref))
+  def_lines.append("];")
 
   lookup_pairs = sorted(mapping.items(), key=lambda item: item[0])
   lookup_lines = ["pub static INSTRUCTION_BY_NAME: &[(&str, Instruction)] = &["]
@@ -346,17 +464,18 @@ def generate(
     "}",
   ]
 
-  out_path = os.path.join(out_dir, "generated.rs")
-  os.makedirs(out_dir, exist_ok=True)
+  out_path = os.path.join(config.out_dir, "generated.rs")
+  os.makedirs(config.out_dir, exist_ok=True)
   with open(out_path, "w", encoding="utf-8") as f:
     f.write("// Generated by scripts/gen_isa.py. Do not edit by hand.\n\n")
-    f.write("use crate::isa::types::{ArgKind, ArgSpec, DataType};\n\n")
-    f.write(f"pub const ARCH: &str = {rust_string_literal(arch)};\n\n")
+    f.write("use crate::isa::base;\n")
+    f.write("use crate::isa::types::{ArgKind, ArgSpec, DataType, InstructionCommonDef, InstructionDef};\n\n")
+    f.write(f"pub const ARCH: &str = {rust_string_literal(config.arch)};\n\n")
     f.write("\n".join(enum_lines))
     f.write("\n\n")
-    f.write("\n".join(def_lines))
+    f.write("\n".join(arch_defs))
     f.write("\n\n")
-    f.write("\n".join(defs_lines))
+    f.write("\n".join(def_lines))
     f.write("\n\n")
     f.write("\n".join(lookup_lines))
     f.write("\n\n")
@@ -364,21 +483,118 @@ def generate(
     f.write("\n")
 
 
+def ops_module_name(config: ArchConfig) -> str:
+  return os.path.basename(config.out_dir)
+
+
+def generate_ops_module(instructions: List[dict], out_path: str) -> None:
+  instructions = sorted(instructions, key=lambda inst: inst["normalized_name"])
+  names = [inst["normalized_name"] for inst in instructions]
+  fn_map = unique_fn_names(names)
+
+  lines = [
+    "// Generated by scripts/gen_isa.py. Do not edit by hand.",
+    "",
+    "use crate::sim::{DecodedInst, ExecContext, ExecError, ExecResult, Handler};",
+    "",
+  ]
+  for inst in instructions:
+    name = inst["normalized_name"]
+    fn_name = fn_map[name]
+    lines.append(f"pub fn {fn_name}(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {{")
+    lines.append("  let _ = (ctx, inst);")
+    lines.append(f"  Err(ExecError::Unimplemented({rust_string_literal(name)}))")
+    lines.append("}")
+    lines.append("")
+
+  lines.append("pub static OPS: &[(&str, Handler)] = &[")
+  for name in names:
+    lines.append(f"  ({rust_string_literal(name)}, {fn_map[name]}),")
+  lines.append("];")
+
+  os.makedirs(os.path.dirname(out_path), exist_ok=True)
+  with open(out_path, "w", encoding="utf-8") as f:
+    f.write("\n".join(lines))
+    f.write("\n")
+
+
+def generate_ops_mod(out_dir: str, module_names: List[str]) -> None:
+  lines = ["// Generated by scripts/gen_isa.py. Do not edit by hand."]
+  for name in module_names:
+    lines.append(f"pub mod {name};")
+  lines.append("")
+  for name in module_names:
+    alias = name.upper()
+    lines.append(f"pub use {name}::OPS as {alias}_OPS;")
+  lines.append("")
+
+  out_path = os.path.join(out_dir, "mod.rs")
+  os.makedirs(out_dir, exist_ok=True)
+  with open(out_path, "w", encoding="utf-8") as f:
+    f.write("\n".join(lines))
+    f.write("\n")
+
+
 def main() -> None:
   parser = argparse.ArgumentParser(description="Generate RDNA ISA enums and lookup tables.")
-  parser.add_argument("--isa-xml", default="./data/amdgpu_isa_rdna3_5.xml")
-  parser.add_argument("--arch", default="rdna3.5")
-  parser.add_argument("--out-dir", default="src/isa/rdna35")
+  parser.add_argument("--arch", action="append", nargs=3, metavar=("NAME", "XML", "OUT_DIR"))
+  parser.add_argument("--base-out-dir", default="src/isa/base")
+  parser.add_argument("--ops-out-dir", default="src/ops")
   parser.add_argument("--exclude-groups", default="EXPORT")
   parser.add_argument("--exclude-vmem-subgroups", default="TEXTURE,SAMPLE,BVH")
   args = parser.parse_args()
-  generate(
-    args.arch,
-    args.out_dir,
-    args.isa_xml,
-    parse_csv(args.exclude_groups),
-    parse_csv(args.exclude_vmem_subgroups),
-  )
+  if args.arch:
+    arch_configs = [ArchConfig(arch, xml, out_dir) for arch, xml, out_dir in args.arch]
+  else:
+    arch_configs = [
+      ArchConfig("rdna3", "./data/amdgpu_isa_rdna3.xml", "src/isa/rdna3"),
+      ArchConfig("rdna3.5", "./data/amdgpu_isa_rdna3_5.xml", "src/isa/rdna35"),
+      ArchConfig("rdna4", "./data/amdgpu_isa_rdna4.xml", "src/isa/rdna4"),
+    ]
+  exclude_groups = parse_csv(args.exclude_groups)
+  exclude_vmem = parse_csv(args.exclude_vmem_subgroups)
+  arch_instructions = {
+    config.arch: load_instructions(config.isa_xml, exclude_groups, exclude_vmem)
+    for config in arch_configs
+  }
+  common_signatures = build_common_signatures(arch_instructions)
+  reference_arch = arch_configs[0].arch
+  common_insts = [
+    inst for inst in arch_instructions[reference_arch]
+    if instruction_signature(inst) in common_signatures
+  ]
+  base_index_map = generate_base(common_insts, args.base_out_dir)
+  for config in arch_configs:
+    generate_arch(
+      config,
+      arch_instructions[config.arch],
+      common_signatures,
+      base_index_map,
+    )
+
+  arch_specific = {
+    config.arch: [
+      inst for inst in arch_instructions[config.arch]
+      if instruction_signature(inst) not in common_signatures
+    ]
+    for config in arch_configs
+  }
+  generate_ops_module(common_insts, os.path.join(args.ops_out_dir, "base.rs"))
+  module_names = ["base"]
+  for config in arch_configs:
+    module_name = ops_module_name(config)
+    module_names.append(module_name)
+    generate_ops_module(
+      arch_specific[config.arch],
+      os.path.join(args.ops_out_dir, f"{module_name}.rs"),
+    )
+  generate_ops_mod(args.ops_out_dir, module_names)
+
+  print(f"base: {len(common_insts)} instructions")
+  for config in arch_configs:
+    total = len(arch_instructions[config.arch])
+    unique = len(arch_specific[config.arch])
+    print(f"{config.arch}: {total} instructions ({unique} arch-specific)")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,24 @@
+---
+arg_i32: i32 = 42
+arg_hex: u32 = 0x2a
+arg_bin: u32 = 0b1010
+arg_f32: f32 = 3.5
+arg_vec: i32[8] = [0, 1, 2, 3, 4, 5, 6, 7]
+arg_arange: i32[4,4] = arange(16)
+arg_arange2: i32[4] = arange(1, 9, 2)
+arg_matrix: f32[2,3] = matrix(2, 3, 1, 1)
+out_y: f32[4,4]
+out_sum: i64[8]
+local = (8, 1, 1)
+global = (2, 1, 1)
+wave = 32
+---
+
+s_mov_b32 s0, 0
+v_mov_b32 v0, v0
+s_waitcnt lgkmcnt(0) vmcnt(0)
+s_sendmsg sendmsg(0x1, 0x2)
+
+print wave=0, thread=0, s[0:1], scc, exec
+print thread=all, v[1]
+print wave=1, thread=3, v[2], s[4], exec

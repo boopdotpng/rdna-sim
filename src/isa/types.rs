@@ -56,3 +56,16 @@ pub struct ArgSpec {
   pub data_type: DataType,
   pub width: u16,
 }
+
+#[derive(Copy, Clone, Debug)]
+pub struct InstructionCommonDef {
+  pub name: &'static str,
+  pub args: &'static [ArgSpec],
+  pub encodings: &'static [&'static str],
+}
+
+#[derive(Copy, Clone, Debug)]
+pub struct InstructionDef<I> {
+  pub instruction: I,
+  pub common: &'static InstructionCommonDef,
+}
