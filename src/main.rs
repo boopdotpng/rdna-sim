@@ -19,8 +19,13 @@ struct Cli {
   #[arg(long)]
   debug: bool,
 
+  // add argument to supress prints 
+
+  // add an argument to step through one wave -- simplified view in TUI or simple REPL (to begin)
+
   #[arg(long = "global-memsize", value_name = "MEGABYTES", default_value_t = 32)]
   global_memsize: usize,
+
 }
 
 fn main() {

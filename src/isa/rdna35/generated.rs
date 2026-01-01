@@ -1076,7 +1076,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_atomic_add_u32",
@@ -1086,7 +1087,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_atomic_add_u64",
@@ -1096,7 +1098,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_atomic_and_b32",
@@ -1106,7 +1109,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_atomic_and_b64",
@@ -1116,7 +1120,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_atomic_cmpswap_b32",
@@ -1126,7 +1131,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_atomic_cmpswap_b64",
@@ -1136,7 +1142,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_atomic_cmpswap_f32",
@@ -1146,7 +1153,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_atomic_csub_u32",
@@ -1156,7 +1164,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_atomic_dec_u32",
@@ -1166,7 +1175,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_atomic_dec_u64",
@@ -1176,7 +1186,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_atomic_inc_u32",
@@ -1186,7 +1197,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_atomic_inc_u64",
@@ -1196,7 +1208,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_atomic_max_f32",
@@ -1206,7 +1219,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_atomic_max_i32",
@@ -1216,7 +1230,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_atomic_max_i64",
@@ -1226,7 +1241,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_atomic_max_u32",
@@ -1236,7 +1252,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_atomic_max_u64",
@@ -1246,7 +1263,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_atomic_min_f32",
@@ -1256,7 +1274,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_atomic_min_i32",
@@ -1266,7 +1285,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_atomic_min_i64",
@@ -1276,7 +1296,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_atomic_min_u32",
@@ -1286,7 +1307,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_atomic_min_u64",
@@ -1296,7 +1318,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_atomic_or_b32",
@@ -1306,7 +1329,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_atomic_or_b64",
@@ -1316,7 +1340,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_atomic_sub_u32",
@@ -1326,7 +1351,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_atomic_sub_u64",
@@ -1336,7 +1362,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_atomic_swap_b32",
@@ -1346,7 +1373,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_atomic_swap_b64",
@@ -1356,7 +1384,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_atomic_xor_b32",
@@ -1366,7 +1395,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_atomic_xor_b64",
@@ -1376,7 +1406,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_load_d16_format_x",
@@ -1386,7 +1417,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_load_d16_format_xy",
@@ -1396,7 +1428,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_load_d16_format_xyz",
@@ -1406,7 +1439,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_load_d16_format_xyzw",
@@ -1416,7 +1450,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_load_d16_hi_format_x",
@@ -1426,7 +1461,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_load_format_x",
@@ -1436,7 +1472,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_load_format_xy",
@@ -1446,7 +1483,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_load_format_xyz",
@@ -1456,7 +1494,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_load_format_xyzw",
@@ -1466,7 +1505,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_load_lds_format_x",
@@ -1475,7 +1515,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_store_d16_format_x",
@@ -1485,7 +1526,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_store_d16_format_xy",
@@ -1495,7 +1537,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_store_d16_format_xyz",
@@ -1505,7 +1548,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_store_d16_format_xyzw",
@@ -1515,7 +1559,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_store_d16_hi_format_x",
@@ -1525,7 +1570,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_store_format_x",
@@ -1535,7 +1581,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_store_format_xy",
@@ -1545,7 +1592,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_store_format_xyz",
@@ -1555,7 +1603,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "buffer_store_format_xyzw",
@@ -1565,15 +1614,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MUBUF"],
-  },
-  InstructionCommonDef {
-    name: "ds_add_f32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "ds_add_gs_reg_rtn",
@@ -1581,98 +1623,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_add_rtn_f32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_add_rtn_u32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_add_rtn_u64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_add_u32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_add_u64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_and_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_and_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_and_rtn_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_and_rtn_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_append",
-    args: &[ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 }],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_bpermute_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "ds_bvh_stack_rtn_b32",
@@ -1682,25 +1634,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
         ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_cmpstore_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_cmpstore_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "ds_cmpstore_f32",
@@ -1709,27 +1644,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_cmpstore_rtn_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_cmpstore_rtn_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "ds_cmpstore_rtn_f32",
@@ -1739,268 +1655,44 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_condxchg32_rtn_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_consume",
-    args: &[ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 }],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_dec_rtn_u32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_dec_rtn_u64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_dec_u32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_dec_u64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "ds_gws_barrier",
     args: &[ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 }],
-    encodings: &["ENC_DS"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "ds_gws_init",
     args: &[ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 }],
-    encodings: &["ENC_DS"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "ds_gws_sema_br",
     args: &[ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 }],
-    encodings: &["ENC_DS"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "ds_gws_sema_p",
     args: &[],
-    encodings: &["ENC_DS"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "ds_gws_sema_release_all",
     args: &[],
-    encodings: &["ENC_DS"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "ds_gws_sema_v",
     args: &[],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_inc_rtn_u32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_inc_rtn_u64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_inc_u32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_inc_u64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_load_2addr_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_load_2addr_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_load_2addr_stride64_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_load_2addr_stride64_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_load_addtid_b32",
-    args: &[ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 }],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_load_b128",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_load_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_load_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_load_b96",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 96 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_load_i16",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_load_i8",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_load_i8_d16",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_load_i8_d16_hi",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_load_u16",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_load_u16_d16",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_load_u16_d16_hi",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_load_u8",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_load_u8_d16",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_load_u8_d16_hi",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "ds_max_f32",
@@ -2008,23 +1700,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_max_i32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_max_i64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "ds_max_rtn_f32",
@@ -2033,59 +1710,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_max_rtn_i32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_max_rtn_i64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_max_rtn_u32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_max_rtn_u64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_max_u32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_max_u64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "ds_min_f32",
@@ -2093,23 +1719,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_min_i32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_min_i64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "ds_min_rtn_f32",
@@ -2118,136 +1729,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_min_rtn_i32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_min_rtn_i64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_min_rtn_u32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_min_rtn_u64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_min_u32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_min_u64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_mskor_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_mskor_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_mskor_rtn_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_mskor_rtn_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_nop",
-    args: &[],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_or_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_or_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_or_rtn_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_or_rtn_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "ds_ordered_count",
@@ -2255,213 +1738,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_permute_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_rsub_rtn_u32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_rsub_rtn_u64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_rsub_u32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_rsub_u64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_store_2addr_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_store_2addr_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_store_2addr_stride64_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_store_2addr_stride64_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_store_addtid_b32",
-    args: &[ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 }],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_store_b128",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_store_b16",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_store_b16_d16_hi",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_store_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_store_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_store_b8",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 8 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_store_b8_d16_hi",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_store_b96",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 96 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_storexchg_2addr_rtn_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_storexchg_2addr_rtn_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_storexchg_2addr_stride64_rtn_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_storexchg_2addr_stride64_rtn_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_storexchg_rtn_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_storexchg_rtn_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "ds_sub_gs_reg_rtn",
@@ -2469,49 +1747,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_sub_rtn_u32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_sub_rtn_u64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_sub_u32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_sub_u64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_swizzle_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "ds_wrap_rtn_b32",
@@ -2521,104 +1758,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_xor_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_xor_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_xor_rtn_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "ds_xor_rtn_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_DS"],
-  },
-  InstructionCommonDef {
-    name: "flat_atomic_add_f32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_atomic_add_u32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_atomic_add_u64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_atomic_and_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_atomic_and_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_atomic_cmpswap_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_atomic_cmpswap_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
-        ],
-    encodings: &["ENC_FLAT"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "flat_atomic_cmpswap_f32",
@@ -2627,43 +1768,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_atomic_dec_u32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_atomic_dec_u64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_atomic_inc_u32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_atomic_inc_u64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "flat_atomic_max_f32",
@@ -2672,43 +1778,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_atomic_max_i32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_atomic_max_i64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_atomic_max_u32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_atomic_max_u64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "flat_atomic_min_f32",
@@ -2717,341 +1788,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_atomic_min_i32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_atomic_min_i64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_atomic_min_u32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_atomic_min_u64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_atomic_or_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_atomic_or_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_atomic_sub_u32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_atomic_sub_u64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_atomic_swap_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_atomic_swap_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_atomic_xor_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_atomic_xor_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_load_b128",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_load_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_load_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_load_b96",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 96 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_load_d16_b16",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_load_d16_hi_b16",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_load_d16_hi_i8",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_load_d16_hi_u8",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_load_d16_i8",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_load_d16_u8",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_load_i16",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_load_i8",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_load_u16",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_load_u8",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_store_b128",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_store_b16",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_store_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_store_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_store_b8",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_store_b96",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 96 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_store_d16_hi_b16",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "flat_store_d16_hi_b8",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_FLAT"],
-  },
-  InstructionCommonDef {
-    name: "global_atomic_add_f32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT_GLOBAL"],
-  },
-  InstructionCommonDef {
-    name: "global_atomic_add_u32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT_GLOBAL"],
-  },
-  InstructionCommonDef {
-    name: "global_atomic_add_u64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT_GLOBAL"],
-  },
-  InstructionCommonDef {
-    name: "global_atomic_and_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT_GLOBAL"],
-  },
-  InstructionCommonDef {
-    name: "global_atomic_and_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_atomic_cmpswap_b32",
@@ -3061,7 +1799,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_atomic_cmpswap_b64",
@@ -3071,7 +1810,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_atomic_cmpswap_f32",
@@ -3081,7 +1821,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_atomic_csub_u32",
@@ -3091,47 +1832,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
-  },
-  InstructionCommonDef {
-    name: "global_atomic_dec_u32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT_GLOBAL"],
-  },
-  InstructionCommonDef {
-    name: "global_atomic_dec_u64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT_GLOBAL"],
-  },
-  InstructionCommonDef {
-    name: "global_atomic_inc_u32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT_GLOBAL"],
-  },
-  InstructionCommonDef {
-    name: "global_atomic_inc_u64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_atomic_max_f32",
@@ -3141,47 +1843,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
-  },
-  InstructionCommonDef {
-    name: "global_atomic_max_i32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT_GLOBAL"],
-  },
-  InstructionCommonDef {
-    name: "global_atomic_max_i64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT_GLOBAL"],
-  },
-  InstructionCommonDef {
-    name: "global_atomic_max_u32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT_GLOBAL"],
-  },
-  InstructionCommonDef {
-    name: "global_atomic_max_u64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_atomic_min_f32",
@@ -3191,127 +1854,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
-  },
-  InstructionCommonDef {
-    name: "global_atomic_min_i32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT_GLOBAL"],
-  },
-  InstructionCommonDef {
-    name: "global_atomic_min_i64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT_GLOBAL"],
-  },
-  InstructionCommonDef {
-    name: "global_atomic_min_u32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT_GLOBAL"],
-  },
-  InstructionCommonDef {
-    name: "global_atomic_min_u64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT_GLOBAL"],
-  },
-  InstructionCommonDef {
-    name: "global_atomic_or_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT_GLOBAL"],
-  },
-  InstructionCommonDef {
-    name: "global_atomic_or_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT_GLOBAL"],
-  },
-  InstructionCommonDef {
-    name: "global_atomic_sub_u32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT_GLOBAL"],
-  },
-  InstructionCommonDef {
-    name: "global_atomic_sub_u64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT_GLOBAL"],
-  },
-  InstructionCommonDef {
-    name: "global_atomic_swap_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT_GLOBAL"],
-  },
-  InstructionCommonDef {
-    name: "global_atomic_swap_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT_GLOBAL"],
-  },
-  InstructionCommonDef {
-    name: "global_atomic_xor_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT_GLOBAL"],
-  },
-  InstructionCommonDef {
-    name: "global_atomic_xor_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_load_addtid_b32",
@@ -3319,7 +1863,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_load_b128",
@@ -3328,7 +1873,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_load_b32",
@@ -3337,7 +1883,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_load_b64",
@@ -3346,7 +1893,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_load_b96",
@@ -3355,7 +1903,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_load_d16_b16",
@@ -3364,7 +1913,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_load_d16_hi_b16",
@@ -3373,7 +1923,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_load_d16_hi_i8",
@@ -3382,7 +1933,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_load_d16_hi_u8",
@@ -3391,7 +1943,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_load_d16_i8",
@@ -3400,7 +1953,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_load_d16_u8",
@@ -3409,7 +1963,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_load_i16",
@@ -3418,7 +1973,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_load_i8",
@@ -3427,12 +1983,14 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_load_lds_addtid_b32",
     args: &[ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 }],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_load_lds_b32",
@@ -3440,7 +1998,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_load_lds_i16",
@@ -3448,7 +2007,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_load_lds_i8",
@@ -3456,7 +2016,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_load_lds_u16",
@@ -3464,7 +2025,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_load_lds_u8",
@@ -3472,7 +2034,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_load_u16",
@@ -3481,7 +2044,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_load_u8",
@@ -3490,7 +2054,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_store_addtid_b32",
@@ -3498,7 +2063,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_store_b128",
@@ -3507,7 +2073,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_store_b16",
@@ -3516,7 +2083,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_store_b32",
@@ -3525,7 +2093,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_store_b64",
@@ -3534,7 +2103,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_store_b8",
@@ -3543,7 +2113,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_store_b96",
@@ -3552,7 +2123,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 96 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_store_d16_hi_b16",
@@ -3561,7 +2133,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "global_store_d16_hi_b8",
@@ -3570,7 +2143,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
-    encodings: &["ENC_FLAT_GLOBAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "image_atomic_add",
@@ -3579,16 +2153,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 256 },
         ],
-    encodings: &["ENC_MIMG", "MIMG_NSA1"],
-  },
-  InstructionCommonDef {
-    name: "image_atomic_and",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 256 },
-        ],
-    encodings: &["ENC_MIMG", "MIMG_NSA1"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "image_atomic_cmpswap",
@@ -3597,7 +2163,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 256 },
         ],
-    encodings: &["ENC_MIMG", "MIMG_NSA1"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "image_atomic_dec",
@@ -3606,7 +2173,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 256 },
         ],
-    encodings: &["ENC_MIMG", "MIMG_NSA1"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "image_atomic_inc",
@@ -3615,16 +2183,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 256 },
         ],
-    encodings: &["ENC_MIMG", "MIMG_NSA1"],
-  },
-  InstructionCommonDef {
-    name: "image_atomic_or",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 256 },
-        ],
-    encodings: &["ENC_MIMG", "MIMG_NSA1"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "image_atomic_smax",
@@ -3633,7 +2193,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 256 },
         ],
-    encodings: &["ENC_MIMG", "MIMG_NSA1"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "image_atomic_smin",
@@ -3642,7 +2203,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 256 },
         ],
-    encodings: &["ENC_MIMG", "MIMG_NSA1"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "image_atomic_sub",
@@ -3651,16 +2213,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 256 },
         ],
-    encodings: &["ENC_MIMG", "MIMG_NSA1"],
-  },
-  InstructionCommonDef {
-    name: "image_atomic_swap",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 256 },
-        ],
-    encodings: &["ENC_MIMG", "MIMG_NSA1"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "image_atomic_umax",
@@ -3669,7 +2223,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 256 },
         ],
-    encodings: &["ENC_MIMG", "MIMG_NSA1"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "image_atomic_umin",
@@ -3678,21 +2233,14 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 256 },
         ],
-    encodings: &["ENC_MIMG", "MIMG_NSA1"],
-  },
-  InstructionCommonDef {
-    name: "image_atomic_xor",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 256 },
-        ],
-    encodings: &["ENC_MIMG", "MIMG_NSA1"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "lds_direct_load",
     args: &[ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 }],
-    encodings: &["ENC_LDSDIR"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "lds_param_load",
@@ -3700,52 +2248,58 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Mem, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_LDSDIR"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_add_f16",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_SOP2", "SOP2_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_add_f32",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_SOP2", "SOP2_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_add_i32",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
         ],
-    encodings: &["ENC_SOP2", "SOP2_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_add_u32",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
-    encodings: &["ENC_SOP2", "SOP2_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_addc_u32",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
-    encodings: &["ENC_SOP2", "SOP2_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_addk_i32",
@@ -3753,290 +2307,328 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::I16, width: 16 },
         ],
-    encodings: &["ENC_SOPK"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_atc_probe",
     args: &[
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::B8, width: 8 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Mem, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B32, width: 32 },
         ],
-    encodings: &["ENC_SMEM"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_atc_probe_buffer",
     args: &[
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::B8, width: 8 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
-          ArgSpec { kind: ArgKind::Mem, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B32, width: 32 },
         ],
-    encodings: &["ENC_SMEM"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_barrier",
     args: &[],
-    encodings: &["ENC_SOPP"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cbranch_cdbgsys",
     args: &[ArgSpec { kind: ArgKind::Label, data_type: DataType::None, width: 16 }],
-    encodings: &["ENC_SOPP"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cbranch_cdbgsys_and_user",
     args: &[ArgSpec { kind: ArgKind::Label, data_type: DataType::None, width: 16 }],
-    encodings: &["ENC_SOPP"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cbranch_cdbgsys_or_user",
     args: &[ArgSpec { kind: ArgKind::Label, data_type: DataType::None, width: 16 }],
-    encodings: &["ENC_SOPP"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cbranch_cdbguser",
     args: &[ArgSpec { kind: ArgKind::Label, data_type: DataType::None, width: 16 }],
-    encodings: &["ENC_SOPP"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_ceil_f16",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_SOP1", "SOP1_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_ceil_f32",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_SOP1", "SOP1_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmp_eq_f16",
     args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_SOPC", "SOPC_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmp_eq_f32",
     args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_SOPC", "SOPC_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmp_ge_f16",
     args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_SOPC", "SOPC_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmp_ge_f32",
     args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_SOPC", "SOPC_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmp_gt_f16",
     args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_SOPC", "SOPC_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmp_gt_f32",
     args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_SOPC", "SOPC_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmp_le_f16",
     args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_SOPC", "SOPC_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmp_le_f32",
     args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_SOPC", "SOPC_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmp_lg_f16",
     args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_SOPC", "SOPC_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmp_lg_f32",
     args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_SOPC", "SOPC_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmp_lt_f16",
     args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_SOPC", "SOPC_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmp_lt_f32",
     args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_SOPC", "SOPC_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmp_neq_f16",
     args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_SOPC", "SOPC_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmp_neq_f32",
     args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_SOPC", "SOPC_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmp_nge_f16",
     args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_SOPC", "SOPC_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmp_nge_f32",
     args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_SOPC", "SOPC_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmp_ngt_f16",
     args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_SOPC", "SOPC_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmp_ngt_f32",
     args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_SOPC", "SOPC_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmp_nle_f16",
     args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_SOPC", "SOPC_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmp_nle_f32",
     args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_SOPC", "SOPC_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmp_nlg_f16",
     args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_SOPC", "SOPC_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmp_nlg_f32",
     args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_SOPC", "SOPC_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmp_nlt_f16",
     args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_SOPC", "SOPC_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmp_nlt_f32",
     args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_SOPC", "SOPC_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmp_o_f16",
     args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_SOPC", "SOPC_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmp_o_f32",
     args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_SOPC", "SOPC_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmp_u_f16",
     args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_SOPC", "SOPC_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmp_u_f32",
     args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_SOPC", "SOPC_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmpk_eq_i32",
@@ -4044,7 +2636,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::I16, width: 16 },
         ],
-    encodings: &["ENC_SOPK"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmpk_eq_u32",
@@ -4052,7 +2645,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::U16, width: 16 },
         ],
-    encodings: &["ENC_SOPK"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmpk_ge_i32",
@@ -4060,7 +2654,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::I16, width: 16 },
         ],
-    encodings: &["ENC_SOPK"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmpk_ge_u32",
@@ -4068,7 +2663,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::U16, width: 16 },
         ],
-    encodings: &["ENC_SOPK"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmpk_gt_i32",
@@ -4076,7 +2672,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::I16, width: 16 },
         ],
-    encodings: &["ENC_SOPK"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmpk_gt_u32",
@@ -4084,7 +2681,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::U16, width: 16 },
         ],
-    encodings: &["ENC_SOPK"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmpk_le_i32",
@@ -4092,7 +2690,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::I16, width: 16 },
         ],
-    encodings: &["ENC_SOPK"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmpk_le_u32",
@@ -4100,7 +2699,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::U16, width: 16 },
         ],
-    encodings: &["ENC_SOPK"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmpk_lg_i32",
@@ -4108,7 +2708,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::I16, width: 16 },
         ],
-    encodings: &["ENC_SOPK"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmpk_lg_u32",
@@ -4116,7 +2717,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::U16, width: 16 },
         ],
-    encodings: &["ENC_SOPK"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmpk_lt_i32",
@@ -4124,7 +2726,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::I16, width: 16 },
         ],
-    encodings: &["ENC_SOPK"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cmpk_lt_u32",
@@ -4132,316 +2735,329 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::U16, width: 16 },
         ],
-    encodings: &["ENC_SOPK"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cvt_f16_f32",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_SOP1", "SOP1_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cvt_f32_f16",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_SOP1", "SOP1_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cvt_f32_i32",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
         ],
-    encodings: &["ENC_SOP1", "SOP1_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cvt_f32_u32",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
-    encodings: &["ENC_SOP1", "SOP1_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cvt_hi_f32_f16",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_SOP1", "SOP1_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cvt_i32_f32",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_SOP1", "SOP1_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cvt_pk_rtz_f16_f32",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_SOP2", "SOP2_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_cvt_u32_f32",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_SOP1", "SOP1_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_endpgm_ordered_ps_done",
     args: &[],
-    encodings: &["ENC_SOPP"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_floor_f16",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_SOP1", "SOP1_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_floor_f32",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_SOP1", "SOP1_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_fmaak_f32",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["SOP2_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_fmac_f16",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_SOP2", "SOP2_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_fmac_f32",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_SOP2", "SOP2_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_fmamk_f32",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::F32, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["SOP2_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_gl1_inv",
     args: &[],
-    encodings: &["ENC_SMEM"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_max_f16",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_SOP2", "SOP2_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_max_f32",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_SOP2", "SOP2_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_min_f16",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_SOP2", "SOP2_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_min_f32",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_SOP2", "SOP2_INST_LITERAL"],
-  },
-  InstructionCommonDef {
-    name: "s_movrels_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_SOP1", "SOP1_INST_LITERAL"],
-  },
-  InstructionCommonDef {
-    name: "s_movrels_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["ENC_SOP1", "SOP1_INST_LITERAL"],
-  },
-  InstructionCommonDef {
-    name: "s_movrelsd_2_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_SOP1", "SOP1_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_mul_f16",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_SOP2", "SOP2_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_mul_f32",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_SOP2", "SOP2_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_rndne_f16",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_SOP1", "SOP1_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_rndne_f32",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_SOP1", "SOP1_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_set_inst_prefetch_distance",
     args: &[ArgSpec { kind: ArgKind::Imm, data_type: DataType::B16, width: 16 }],
-    encodings: &["ENC_SOPP"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_sleep",
     args: &[ArgSpec { kind: ArgKind::Imm, data_type: DataType::B16, width: 16 }],
-    encodings: &["ENC_SOPP"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_sub_f16",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_SOP2", "SOP2_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_sub_f32",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_SOP2", "SOP2_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_sub_i32",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
         ],
-    encodings: &["ENC_SOP2", "SOP2_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_sub_u32",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
-    encodings: &["ENC_SOP2", "SOP2_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_subb_u32",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
-    encodings: &["ENC_SOP2", "SOP2_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_trunc_f16",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_SOP1", "SOP1_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_trunc_f32",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_SOP1", "SOP1_INST_LITERAL"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_wait_event",
     args: &[ArgSpec { kind: ArgKind::Unknown, data_type: DataType::None, width: 16 }],
-    encodings: &["ENC_SOPP"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_waitcnt",
-    args: &[ArgSpec { kind: ArgKind::Unknown, data_type: DataType::None, width: 16 }],
-    encodings: &["ENC_SOPP"],
+    args: &[ArgSpec { kind: ArgKind::Imm, data_type: DataType::B16, width: 16 }],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_waitcnt_depctr",
-    args: &[ArgSpec { kind: ArgKind::Unknown, data_type: DataType::None, width: 16 }],
-    encodings: &["ENC_SOPP"],
+    args: &[ArgSpec { kind: ArgKind::Imm, data_type: DataType::B16, width: 16 }],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_waitcnt_expcnt",
@@ -4449,7 +3065,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::B16, width: 16 },
         ],
-    encodings: &["ENC_SOPK"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_waitcnt_lgkmcnt",
@@ -4457,7 +3074,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::B16, width: 16 },
         ],
-    encodings: &["ENC_SOPK"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_waitcnt_vmcnt",
@@ -4465,7 +3083,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::B16, width: 16 },
         ],
-    encodings: &["ENC_SOPK"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "s_waitcnt_vscnt",
@@ -4473,7 +3092,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::B16, width: 16 },
         ],
-    encodings: &["ENC_SOPK"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "scratch_load_b128",
@@ -4482,7 +3102,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_FLAT_SCRATCH"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "scratch_load_b32",
@@ -4491,7 +3112,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_FLAT_SCRATCH"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "scratch_load_b64",
@@ -4500,7 +3122,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_FLAT_SCRATCH"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "scratch_load_b96",
@@ -4509,7 +3132,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_FLAT_SCRATCH"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "scratch_load_d16_b16",
@@ -4518,7 +3142,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_FLAT_SCRATCH"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "scratch_load_d16_hi_b16",
@@ -4527,7 +3152,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_FLAT_SCRATCH"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "scratch_load_d16_hi_i8",
@@ -4536,7 +3162,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_FLAT_SCRATCH"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "scratch_load_d16_hi_u8",
@@ -4545,7 +3172,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_FLAT_SCRATCH"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "scratch_load_d16_i8",
@@ -4554,7 +3182,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_FLAT_SCRATCH"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "scratch_load_d16_u8",
@@ -4563,7 +3192,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_FLAT_SCRATCH"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "scratch_load_i16",
@@ -4572,7 +3202,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_FLAT_SCRATCH"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "scratch_load_i8",
@@ -4581,7 +3212,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_FLAT_SCRATCH"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "scratch_load_lds_b32",
@@ -4589,7 +3221,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_FLAT_SCRATCH"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "scratch_load_lds_i16",
@@ -4597,7 +3230,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_FLAT_SCRATCH"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "scratch_load_lds_i8",
@@ -4605,7 +3239,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_FLAT_SCRATCH"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "scratch_load_lds_u16",
@@ -4613,7 +3248,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_FLAT_SCRATCH"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "scratch_load_lds_u8",
@@ -4621,7 +3257,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_FLAT_SCRATCH"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "scratch_load_u16",
@@ -4630,7 +3267,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_FLAT_SCRATCH"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "scratch_load_u8",
@@ -4639,7 +3277,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_FLAT_SCRATCH"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "scratch_store_b128",
@@ -4648,7 +3287,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_FLAT_SCRATCH"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "scratch_store_b16",
@@ -4657,7 +3297,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_FLAT_SCRATCH"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "scratch_store_b32",
@@ -4666,7 +3307,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_FLAT_SCRATCH"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "scratch_store_b64",
@@ -4675,7 +3317,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_FLAT_SCRATCH"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "scratch_store_b8",
@@ -4684,7 +3327,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_FLAT_SCRATCH"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "scratch_store_b96",
@@ -4693,7 +3337,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 96 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_FLAT_SCRATCH"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "scratch_store_d16_hi_b16",
@@ -4702,7 +3347,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_FLAT_SCRATCH"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "scratch_store_d16_hi_b8",
@@ -4711,7 +3357,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_FLAT_SCRATCH"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "tbuffer_load_d16_format_x",
@@ -4721,7 +3368,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MTBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "tbuffer_load_d16_format_xy",
@@ -4731,7 +3379,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MTBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "tbuffer_load_d16_format_xyz",
@@ -4741,7 +3390,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MTBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "tbuffer_load_d16_format_xyzw",
@@ -4751,7 +3401,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MTBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "tbuffer_load_format_x",
@@ -4761,7 +3412,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MTBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "tbuffer_load_format_xy",
@@ -4771,7 +3423,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MTBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "tbuffer_load_format_xyz",
@@ -4781,7 +3434,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MTBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "tbuffer_load_format_xyzw",
@@ -4791,7 +3445,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MTBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "tbuffer_store_d16_format_x",
@@ -4801,7 +3456,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MTBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "tbuffer_store_d16_format_xy",
@@ -4811,7 +3467,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MTBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "tbuffer_store_d16_format_xyz",
@@ -4821,7 +3478,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MTBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "tbuffer_store_d16_format_xyzw",
@@ -4831,7 +3489,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MTBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "tbuffer_store_format_x",
@@ -4841,7 +3500,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MTBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "tbuffer_store_format_xy",
@@ -4851,7 +3511,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MTBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "tbuffer_store_format_xyz",
@@ -4861,7 +3522,8 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MTBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "tbuffer_store_format_xyzw",
@@ -4871,809 +3533,482 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["ENC_MTBUF"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "v_cmp_f_f16",
     args: &[
-          ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &[
-          "ENC_VOP3",
-          "ENC_VOPC",
-          "VOP3_INST_LITERAL",
-          "VOP3_VOP_DPP16",
-          "VOP3_VOP_DPP8",
-          "VOPC_INST_LITERAL",
-          "VOPC_VOP_DPP16",
-          "VOPC_VOP_DPP8",
-        ],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_cmp_f_f32",
     args: &[
-          ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &[
-          "ENC_VOP3",
-          "ENC_VOPC",
-          "VOP3_INST_LITERAL",
-          "VOP3_VOP_DPP16",
-          "VOP3_VOP_DPP8",
-          "VOPC_INST_LITERAL",
-          "VOPC_VOP_DPP16",
-          "VOPC_VOP_DPP8",
-        ],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_cmp_f_i32",
     args: &[
-          ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
-    encodings: &[
-          "ENC_VOP3",
-          "ENC_VOPC",
-          "VOP3_INST_LITERAL",
-          "VOP3_VOP_DPP16",
-          "VOP3_VOP_DPP8",
-          "VOPC_INST_LITERAL",
-          "VOPC_VOP_DPP16",
-          "VOPC_VOP_DPP8",
-        ],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_cmp_f_i64",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::I64, width: 64 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::I64, width: 64 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
         ],
-    encodings: &["ENC_VOP3", "ENC_VOPC", "VOP3_INST_LITERAL", "VOPC_INST_LITERAL"],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_cmp_f_u32",
     args: &[
-          ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
-    encodings: &[
-          "ENC_VOP3",
-          "ENC_VOPC",
-          "VOP3_INST_LITERAL",
-          "VOP3_VOP_DPP16",
-          "VOP3_VOP_DPP8",
-          "VOPC_INST_LITERAL",
-          "VOPC_VOP_DPP16",
-          "VOPC_VOP_DPP8",
-        ],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_cmp_f_u64",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::U64, width: 64 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::U64, width: 64 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
         ],
-    encodings: &["ENC_VOP3", "ENC_VOPC", "VOP3_INST_LITERAL", "VOPC_INST_LITERAL"],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_cmp_t_f16",
     args: &[
-          ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &[
-          "ENC_VOP3",
-          "ENC_VOPC",
-          "VOP3_INST_LITERAL",
-          "VOP3_VOP_DPP16",
-          "VOP3_VOP_DPP8",
-          "VOPC_INST_LITERAL",
-          "VOPC_VOP_DPP16",
-          "VOPC_VOP_DPP8",
-        ],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_cmp_t_f32",
     args: &[
-          ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &[
-          "ENC_VOP3",
-          "ENC_VOPC",
-          "VOP3_INST_LITERAL",
-          "VOP3_VOP_DPP16",
-          "VOP3_VOP_DPP8",
-          "VOPC_INST_LITERAL",
-          "VOPC_VOP_DPP16",
-          "VOPC_VOP_DPP8",
-        ],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_cmp_t_i32",
     args: &[
-          ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
-    encodings: &[
-          "ENC_VOP3",
-          "ENC_VOPC",
-          "VOP3_INST_LITERAL",
-          "VOP3_VOP_DPP16",
-          "VOP3_VOP_DPP8",
-          "VOPC_INST_LITERAL",
-          "VOPC_VOP_DPP16",
-          "VOPC_VOP_DPP8",
-        ],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_cmp_t_i64",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::I64, width: 64 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::I64, width: 64 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
         ],
-    encodings: &["ENC_VOP3", "ENC_VOPC", "VOP3_INST_LITERAL", "VOPC_INST_LITERAL"],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_cmp_t_u32",
     args: &[
-          ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
-    encodings: &[
-          "ENC_VOP3",
-          "ENC_VOPC",
-          "VOP3_INST_LITERAL",
-          "VOP3_VOP_DPP16",
-          "VOP3_VOP_DPP8",
-          "VOPC_INST_LITERAL",
-          "VOPC_VOP_DPP16",
-          "VOPC_VOP_DPP8",
-        ],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_cmp_t_u64",
     args: &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::U64, width: 64 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::U64, width: 64 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
         ],
-    encodings: &["ENC_VOP3", "ENC_VOPC", "VOP3_INST_LITERAL", "VOPC_INST_LITERAL"],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_cmpx_f_f16",
     args: &[
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &[
-          "ENC_VOP3",
-          "ENC_VOPC",
-          "VOP3_INST_LITERAL",
-          "VOP3_VOP_DPP16",
-          "VOP3_VOP_DPP8",
-          "VOPC_INST_LITERAL",
-          "VOPC_VOP_DPP16",
-          "VOPC_VOP_DPP8",
-        ],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_cmpx_f_f32",
     args: &[
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &[
-          "ENC_VOP3",
-          "ENC_VOPC",
-          "VOP3_INST_LITERAL",
-          "VOP3_VOP_DPP16",
-          "VOP3_VOP_DPP8",
-          "VOPC_INST_LITERAL",
-          "VOPC_VOP_DPP16",
-          "VOPC_VOP_DPP8",
-        ],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_cmpx_f_i32",
     args: &[
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
-    encodings: &[
-          "ENC_VOP3",
-          "ENC_VOPC",
-          "VOP3_INST_LITERAL",
-          "VOP3_VOP_DPP16",
-          "VOP3_VOP_DPP8",
-          "VOPC_INST_LITERAL",
-          "VOPC_VOP_DPP16",
-          "VOPC_VOP_DPP8",
-        ],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_cmpx_f_i64",
     args: &[
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::I64, width: 64 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::I64, width: 64 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
         ],
-    encodings: &["ENC_VOP3", "ENC_VOPC", "VOP3_INST_LITERAL", "VOPC_INST_LITERAL"],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_cmpx_f_u32",
     args: &[
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
-    encodings: &[
-          "ENC_VOP3",
-          "ENC_VOPC",
-          "VOP3_INST_LITERAL",
-          "VOP3_VOP_DPP16",
-          "VOP3_VOP_DPP8",
-          "VOPC_INST_LITERAL",
-          "VOPC_VOP_DPP16",
-          "VOPC_VOP_DPP8",
-        ],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_cmpx_f_u64",
     args: &[
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::U64, width: 64 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::U64, width: 64 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
         ],
-    encodings: &["ENC_VOP3", "ENC_VOPC", "VOP3_INST_LITERAL", "VOPC_INST_LITERAL"],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_cmpx_t_f16",
     args: &[
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &[
-          "ENC_VOP3",
-          "ENC_VOPC",
-          "VOP3_INST_LITERAL",
-          "VOP3_VOP_DPP16",
-          "VOP3_VOP_DPP8",
-          "VOPC_INST_LITERAL",
-          "VOPC_VOP_DPP16",
-          "VOPC_VOP_DPP8",
-        ],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_cmpx_t_f32",
     args: &[
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &[
-          "ENC_VOP3",
-          "ENC_VOPC",
-          "VOP3_INST_LITERAL",
-          "VOP3_VOP_DPP16",
-          "VOP3_VOP_DPP8",
-          "VOPC_INST_LITERAL",
-          "VOPC_VOP_DPP16",
-          "VOPC_VOP_DPP8",
-        ],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_cmpx_t_i32",
     args: &[
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
-    encodings: &[
-          "ENC_VOP3",
-          "ENC_VOPC",
-          "VOP3_INST_LITERAL",
-          "VOP3_VOP_DPP16",
-          "VOP3_VOP_DPP8",
-          "VOPC_INST_LITERAL",
-          "VOPC_VOP_DPP16",
-          "VOPC_VOP_DPP8",
-        ],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_cmpx_t_i64",
     args: &[
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::I64, width: 64 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::I64, width: 64 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
         ],
-    encodings: &["ENC_VOP3", "ENC_VOPC", "VOP3_INST_LITERAL", "VOPC_INST_LITERAL"],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_cmpx_t_u32",
     args: &[
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
-    encodings: &[
-          "ENC_VOP3",
-          "ENC_VOPC",
-          "VOP3_INST_LITERAL",
-          "VOP3_VOP_DPP16",
-          "VOP3_VOP_DPP8",
-          "VOPC_INST_LITERAL",
-          "VOPC_VOP_DPP16",
-          "VOPC_VOP_DPP8",
-        ],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_cmpx_t_u64",
     args: &[
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::U64, width: 64 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::U64, width: 64 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
         ],
-    encodings: &["ENC_VOP3", "ENC_VOPC", "VOP3_INST_LITERAL", "VOPC_INST_LITERAL"],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_dot2acc_f32_f16",
     args: &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_VOP2", "VOP2_INST_LITERAL", "VOP2_VOP_DPP16", "VOP2_VOP_DPP8"],
-  },
-  InstructionCommonDef {
-    name: "v_dual_add_f32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2F16, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["VOPDXY"],
-  },
-  InstructionCommonDef {
-    name: "v_dual_add_nc_u32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::U32, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["VOPDXY"],
-  },
-  InstructionCommonDef {
-    name: "v_dual_and_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::B32, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["VOPDXY"],
-  },
-  InstructionCommonDef {
-    name: "v_dual_cndmask_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::B32, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 64 },
-        ],
-    encodings: &["VOPDXY"],
-  },
-  InstructionCommonDef {
-    name: "v_dual_dot2acc_f32_bf16",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::Pk2BF16, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["VOPDXY"],
-  },
-  InstructionCommonDef {
-    name: "v_dual_dot2acc_f32_f16",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::Pk2F16, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["VOPDXY"],
-  },
-  InstructionCommonDef {
-    name: "v_dual_fmac_f32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F32, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["VOPDXY"],
-  },
-  InstructionCommonDef {
-    name: "v_dual_lshlrev_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::B32, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["VOPDXY"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "v_dual_max_f32",
     args: &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["VOPDXY"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "v_dual_min_f32",
     args: &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
-    encodings: &["VOPDXY"],
-  },
-  InstructionCommonDef {
-    name: "v_dual_mov_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::B32, width: 32 },
-        ],
-    encodings: &["VOPDXY"],
-  },
-  InstructionCommonDef {
-    name: "v_dual_mul_dx9_zero_f32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F32, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["VOPDXY"],
-  },
-  InstructionCommonDef {
-    name: "v_dual_mul_f32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F32, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["VOPDXY"],
-  },
-  InstructionCommonDef {
-    name: "v_dual_sub_f32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F32, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["VOPDXY"],
-  },
-  InstructionCommonDef {
-    name: "v_dual_subrev_f32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F32, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["VOPDXY"],
+    supports_abs: false,
+    supports_neg: false,
   },
   InstructionCommonDef {
     name: "v_fmac_dx9_zero_f32",
     args: &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F32, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_VOP2", "ENC_VOP3", "VOP2_INST_LITERAL", "VOP3_INST_LITERAL"],
-  },
-  InstructionCommonDef {
-    name: "v_lshlrev_b64",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::U32, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::U64, width: 64 },
-        ],
-    encodings: &["ENC_VOP3", "VOP3_INST_LITERAL"],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_mad_i64_i32",
     args: &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::I32, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::I32, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::I64, width: 64 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
         ],
-    encodings: &["VOP3_SDST_ENC", "VOP3_SDST_ENC_INST_LITERAL"],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_mad_u64_u32",
     args: &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::U32, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::U32, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::U64, width: 64 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
         ],
-    encodings: &["VOP3_SDST_ENC", "VOP3_SDST_ENC_INST_LITERAL"],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_max3_f16",
     args: &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F16, width: 16 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F16, width: 16 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_VOP3", "VOP3_INST_LITERAL", "VOP3_VOP_DPP16", "VOP3_VOP_DPP8"],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_max3_f32",
     args: &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F32, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F32, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_VOP3", "VOP3_INST_LITERAL", "VOP3_VOP_DPP16", "VOP3_VOP_DPP8"],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_max_f16",
     args: &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &[
-          "ENC_VOP2",
-          "ENC_VOP3",
-          "VOP2_INST_LITERAL",
-          "VOP2_VOP_DPP16",
-          "VOP2_VOP_DPP8",
-          "VOP3_INST_LITERAL",
-          "VOP3_VOP_DPP16",
-          "VOP3_VOP_DPP8",
-        ],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_max_f32",
     args: &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &[
-          "ENC_VOP2",
-          "ENC_VOP3",
-          "VOP2_INST_LITERAL",
-          "VOP2_VOP_DPP16",
-          "VOP2_VOP_DPP8",
-          "VOP3_INST_LITERAL",
-          "VOP3_VOP_DPP16",
-          "VOP3_VOP_DPP8",
-        ],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_maxmin_f16",
     args: &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F16, width: 16 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F16, width: 16 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_VOP3", "VOP3_INST_LITERAL", "VOP3_VOP_DPP16", "VOP3_VOP_DPP8"],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_maxmin_f32",
     args: &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F32, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F32, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_VOP3", "VOP3_INST_LITERAL", "VOP3_VOP_DPP16", "VOP3_VOP_DPP8"],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_med3_f16",
     args: &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F16, width: 16 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F16, width: 16 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_VOP3", "VOP3_INST_LITERAL", "VOP3_VOP_DPP16", "VOP3_VOP_DPP8"],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_med3_f32",
     args: &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F32, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F32, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_VOP3", "VOP3_INST_LITERAL", "VOP3_VOP_DPP16", "VOP3_VOP_DPP8"],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_min3_f16",
     args: &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F16, width: 16 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F16, width: 16 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_VOP3", "VOP3_INST_LITERAL", "VOP3_VOP_DPP16", "VOP3_VOP_DPP8"],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_min3_f32",
     args: &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F32, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F32, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_VOP3", "VOP3_INST_LITERAL", "VOP3_VOP_DPP16", "VOP3_VOP_DPP8"],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_min_f16",
     args: &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &[
-          "ENC_VOP2",
-          "ENC_VOP3",
-          "VOP2_INST_LITERAL",
-          "VOP2_VOP_DPP16",
-          "VOP2_VOP_DPP8",
-          "VOP3_INST_LITERAL",
-          "VOP3_VOP_DPP16",
-          "VOP3_VOP_DPP8",
-        ],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_min_f32",
     args: &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &[
-          "ENC_VOP2",
-          "ENC_VOP3",
-          "VOP2_INST_LITERAL",
-          "VOP2_VOP_DPP16",
-          "VOP2_VOP_DPP8",
-          "VOP3_INST_LITERAL",
-          "VOP3_VOP_DPP16",
-          "VOP3_VOP_DPP8",
-        ],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_minmax_f16",
     args: &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F16, width: 16 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F16, width: 16 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
-    encodings: &["ENC_VOP3", "VOP3_INST_LITERAL", "VOP3_VOP_DPP16", "VOP3_VOP_DPP8"],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_minmax_f32",
     args: &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F32, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F32, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
-    encodings: &["ENC_VOP3", "VOP3_INST_LITERAL", "VOP3_VOP_DPP16", "VOP3_VOP_DPP8"],
-  },
-  InstructionCommonDef {
-    name: "v_movrels_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &[
-          "ENC_VOP1",
-          "ENC_VOP3",
-          "VOP1_INST_LITERAL",
-          "VOP1_VOP_DPP16",
-          "VOP1_VOP_DPP8",
-          "VOP3_INST_LITERAL",
-          "VOP3_VOP_DPP16",
-          "VOP3_VOP_DPP8",
-        ],
-  },
-  InstructionCommonDef {
-    name: "v_movrelsd_2_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &[
-          "ENC_VOP1",
-          "ENC_VOP3",
-          "VOP1_INST_LITERAL",
-          "VOP1_VOP_DPP16",
-          "VOP1_VOP_DPP8",
-          "VOP3_INST_LITERAL",
-          "VOP3_VOP_DPP16",
-          "VOP3_VOP_DPP8",
-        ],
-  },
-  InstructionCommonDef {
-    name: "v_movrelsd_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &[
-          "ENC_VOP1",
-          "ENC_VOP3",
-          "VOP1_INST_LITERAL",
-          "VOP1_VOP_DPP16",
-          "VOP1_VOP_DPP8",
-          "VOP3_INST_LITERAL",
-          "VOP3_VOP_DPP16",
-          "VOP3_VOP_DPP8",
-        ],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_pk_max_f16",
     args: &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::Pk2F16, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::Pk2F16, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2F16, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2F16, width: 32 },
         ],
-    encodings: &["ENC_VOP3P", "VOP3P_INST_LITERAL"],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_pk_min_f16",
     args: &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::Pk2F16, width: 32 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::Pk2F16, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2F16, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2F16, width: 32 },
         ],
-    encodings: &["ENC_VOP3P", "VOP3P_INST_LITERAL"],
-  },
-  InstructionCommonDef {
-    name: "v_readfirstlane_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_VOP1", "ENC_VOP3", "VOP1_INST_LITERAL", "VOP3_INST_LITERAL"],
-  },
-  InstructionCommonDef {
-    name: "v_readlane_b32",
-    args: &[
-          ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
-          ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
-        ],
-    encodings: &["ENC_VOP3", "VOP3_INST_LITERAL"],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_wmma_bf16_16x16x16_bf16",
@@ -5681,9 +4016,10 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 256 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 256 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 256 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::Unknown, width: 256 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Unknown, width: 256 },
         ],
-    encodings: &["ENC_VOP3P"],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_wmma_f16_16x16x16_f16",
@@ -5691,9 +4027,10 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 256 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 256 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 256 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::Unknown, width: 256 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Unknown, width: 256 },
         ],
-    encodings: &["ENC_VOP3P"],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_wmma_f32_16x16x16_bf16",
@@ -5701,9 +4038,10 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 256 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 256 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 256 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::Unknown, width: 256 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Unknown, width: 256 },
         ],
-    encodings: &["ENC_VOP3P"],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_wmma_f32_16x16x16_f16",
@@ -5711,9 +4049,10 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 256 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 256 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 256 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::Unknown, width: 256 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Unknown, width: 256 },
         ],
-    encodings: &["ENC_VOP3P"],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_wmma_i32_16x16x16_iu4",
@@ -5721,9 +4060,10 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 256 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::Unknown, width: 256 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Unknown, width: 256 },
         ],
-    encodings: &["ENC_VOP3P"],
+    supports_abs: true,
+    supports_neg: true,
   },
   InstructionCommonDef {
     name: "v_wmma_i32_16x16x16_iu8",
@@ -5731,9 +4071,10 @@ pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 256 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
-          ArgSpec { kind: ArgKind::RegOrImm, data_type: DataType::Unknown, width: 256 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Unknown, width: 256 },
         ],
-    encodings: &["ENC_VOP3P"],
+    supports_abs: true,
+    supports_neg: true,
   },
 ];
 
@@ -5940,4035 +4281,4035 @@ pub static INSTRUCTION_DEFS: &[InstructionDef<Instruction>] = &[
   },
   InstructionDef {
     instruction: Instruction::DsAddF32,
-    common: &ARCH_COMMON_DEFS[50],
-  },
-  InstructionDef {
-    instruction: Instruction::DsAddGsRegRtn,
-    common: &ARCH_COMMON_DEFS[51],
-  },
-  InstructionDef {
-    instruction: Instruction::DsAddRtnF32,
-    common: &ARCH_COMMON_DEFS[52],
-  },
-  InstructionDef {
-    instruction: Instruction::DsAddRtnU32,
-    common: &ARCH_COMMON_DEFS[53],
-  },
-  InstructionDef {
-    instruction: Instruction::DsAddRtnU64,
-    common: &ARCH_COMMON_DEFS[54],
-  },
-  InstructionDef {
-    instruction: Instruction::DsAddU32,
-    common: &ARCH_COMMON_DEFS[55],
-  },
-  InstructionDef {
-    instruction: Instruction::DsAddU64,
-    common: &ARCH_COMMON_DEFS[56],
-  },
-  InstructionDef {
-    instruction: Instruction::DsAndB32,
-    common: &ARCH_COMMON_DEFS[57],
-  },
-  InstructionDef {
-    instruction: Instruction::DsAndB64,
-    common: &ARCH_COMMON_DEFS[58],
-  },
-  InstructionDef {
-    instruction: Instruction::DsAndRtnB32,
-    common: &ARCH_COMMON_DEFS[59],
-  },
-  InstructionDef {
-    instruction: Instruction::DsAndRtnB64,
-    common: &ARCH_COMMON_DEFS[60],
-  },
-  InstructionDef {
-    instruction: Instruction::DsAppend,
-    common: &ARCH_COMMON_DEFS[61],
-  },
-  InstructionDef {
-    instruction: Instruction::DsBpermuteB32,
-    common: &ARCH_COMMON_DEFS[62],
-  },
-  InstructionDef {
-    instruction: Instruction::DsBvhStackRtnB32,
-    common: &ARCH_COMMON_DEFS[63],
-  },
-  InstructionDef {
-    instruction: Instruction::DsCmpstoreB32,
-    common: &ARCH_COMMON_DEFS[64],
-  },
-  InstructionDef {
-    instruction: Instruction::DsCmpstoreB64,
-    common: &ARCH_COMMON_DEFS[65],
-  },
-  InstructionDef {
-    instruction: Instruction::DsCmpstoreF32,
-    common: &ARCH_COMMON_DEFS[66],
-  },
-  InstructionDef {
-    instruction: Instruction::DsCmpstoreRtnB32,
-    common: &ARCH_COMMON_DEFS[67],
-  },
-  InstructionDef {
-    instruction: Instruction::DsCmpstoreRtnB64,
-    common: &ARCH_COMMON_DEFS[68],
-  },
-  InstructionDef {
-    instruction: Instruction::DsCmpstoreRtnF32,
-    common: &ARCH_COMMON_DEFS[69],
-  },
-  InstructionDef {
-    instruction: Instruction::DsCondxchg32RtnB64,
-    common: &ARCH_COMMON_DEFS[70],
-  },
-  InstructionDef {
-    instruction: Instruction::DsConsume,
-    common: &ARCH_COMMON_DEFS[71],
-  },
-  InstructionDef {
-    instruction: Instruction::DsDecRtnU32,
-    common: &ARCH_COMMON_DEFS[72],
-  },
-  InstructionDef {
-    instruction: Instruction::DsDecRtnU64,
-    common: &ARCH_COMMON_DEFS[73],
-  },
-  InstructionDef {
-    instruction: Instruction::DsDecU32,
-    common: &ARCH_COMMON_DEFS[74],
-  },
-  InstructionDef {
-    instruction: Instruction::DsDecU64,
-    common: &ARCH_COMMON_DEFS[75],
-  },
-  InstructionDef {
-    instruction: Instruction::DsGwsBarrier,
-    common: &ARCH_COMMON_DEFS[76],
-  },
-  InstructionDef {
-    instruction: Instruction::DsGwsInit,
-    common: &ARCH_COMMON_DEFS[77],
-  },
-  InstructionDef {
-    instruction: Instruction::DsGwsSemaBr,
-    common: &ARCH_COMMON_DEFS[78],
-  },
-  InstructionDef {
-    instruction: Instruction::DsGwsSemaP,
-    common: &ARCH_COMMON_DEFS[79],
-  },
-  InstructionDef {
-    instruction: Instruction::DsGwsSemaReleaseAll,
-    common: &ARCH_COMMON_DEFS[80],
-  },
-  InstructionDef {
-    instruction: Instruction::DsGwsSemaV,
-    common: &ARCH_COMMON_DEFS[81],
-  },
-  InstructionDef {
-    instruction: Instruction::DsIncRtnU32,
-    common: &ARCH_COMMON_DEFS[82],
-  },
-  InstructionDef {
-    instruction: Instruction::DsIncRtnU64,
-    common: &ARCH_COMMON_DEFS[83],
-  },
-  InstructionDef {
-    instruction: Instruction::DsIncU32,
-    common: &ARCH_COMMON_DEFS[84],
-  },
-  InstructionDef {
-    instruction: Instruction::DsIncU64,
-    common: &ARCH_COMMON_DEFS[85],
-  },
-  InstructionDef {
-    instruction: Instruction::DsLoadN2addrB32,
-    common: &ARCH_COMMON_DEFS[86],
-  },
-  InstructionDef {
-    instruction: Instruction::DsLoadN2addrB64,
-    common: &ARCH_COMMON_DEFS[87],
-  },
-  InstructionDef {
-    instruction: Instruction::DsLoadN2addrStride64B32,
-    common: &ARCH_COMMON_DEFS[88],
-  },
-  InstructionDef {
-    instruction: Instruction::DsLoadN2addrStride64B64,
-    common: &ARCH_COMMON_DEFS[89],
-  },
-  InstructionDef {
-    instruction: Instruction::DsLoadAddtidB32,
-    common: &ARCH_COMMON_DEFS[90],
-  },
-  InstructionDef {
-    instruction: Instruction::DsLoadB128,
-    common: &ARCH_COMMON_DEFS[91],
-  },
-  InstructionDef {
-    instruction: Instruction::DsLoadB32,
-    common: &ARCH_COMMON_DEFS[92],
-  },
-  InstructionDef {
-    instruction: Instruction::DsLoadB64,
-    common: &ARCH_COMMON_DEFS[93],
-  },
-  InstructionDef {
-    instruction: Instruction::DsLoadB96,
-    common: &ARCH_COMMON_DEFS[94],
-  },
-  InstructionDef {
-    instruction: Instruction::DsLoadI16,
-    common: &ARCH_COMMON_DEFS[95],
-  },
-  InstructionDef {
-    instruction: Instruction::DsLoadI8,
-    common: &ARCH_COMMON_DEFS[96],
-  },
-  InstructionDef {
-    instruction: Instruction::DsLoadI8D16,
-    common: &ARCH_COMMON_DEFS[97],
-  },
-  InstructionDef {
-    instruction: Instruction::DsLoadI8D16Hi,
-    common: &ARCH_COMMON_DEFS[98],
-  },
-  InstructionDef {
-    instruction: Instruction::DsLoadU16,
-    common: &ARCH_COMMON_DEFS[99],
-  },
-  InstructionDef {
-    instruction: Instruction::DsLoadU16D16,
-    common: &ARCH_COMMON_DEFS[100],
-  },
-  InstructionDef {
-    instruction: Instruction::DsLoadU16D16Hi,
-    common: &ARCH_COMMON_DEFS[101],
-  },
-  InstructionDef {
-    instruction: Instruction::DsLoadU8,
-    common: &ARCH_COMMON_DEFS[102],
-  },
-  InstructionDef {
-    instruction: Instruction::DsLoadU8D16,
-    common: &ARCH_COMMON_DEFS[103],
-  },
-  InstructionDef {
-    instruction: Instruction::DsLoadU8D16Hi,
-    common: &ARCH_COMMON_DEFS[104],
-  },
-  InstructionDef {
-    instruction: Instruction::DsMaxF32,
-    common: &ARCH_COMMON_DEFS[105],
-  },
-  InstructionDef {
-    instruction: Instruction::DsMaxI32,
-    common: &ARCH_COMMON_DEFS[106],
-  },
-  InstructionDef {
-    instruction: Instruction::DsMaxI64,
-    common: &ARCH_COMMON_DEFS[107],
-  },
-  InstructionDef {
-    instruction: Instruction::DsMaxRtnF32,
-    common: &ARCH_COMMON_DEFS[108],
-  },
-  InstructionDef {
-    instruction: Instruction::DsMaxRtnI32,
-    common: &ARCH_COMMON_DEFS[109],
-  },
-  InstructionDef {
-    instruction: Instruction::DsMaxRtnI64,
-    common: &ARCH_COMMON_DEFS[110],
-  },
-  InstructionDef {
-    instruction: Instruction::DsMaxRtnU32,
-    common: &ARCH_COMMON_DEFS[111],
-  },
-  InstructionDef {
-    instruction: Instruction::DsMaxRtnU64,
-    common: &ARCH_COMMON_DEFS[112],
-  },
-  InstructionDef {
-    instruction: Instruction::DsMaxU32,
-    common: &ARCH_COMMON_DEFS[113],
-  },
-  InstructionDef {
-    instruction: Instruction::DsMaxU64,
-    common: &ARCH_COMMON_DEFS[114],
-  },
-  InstructionDef {
-    instruction: Instruction::DsMinF32,
-    common: &ARCH_COMMON_DEFS[115],
-  },
-  InstructionDef {
-    instruction: Instruction::DsMinI32,
-    common: &ARCH_COMMON_DEFS[116],
-  },
-  InstructionDef {
-    instruction: Instruction::DsMinI64,
-    common: &ARCH_COMMON_DEFS[117],
-  },
-  InstructionDef {
-    instruction: Instruction::DsMinRtnF32,
-    common: &ARCH_COMMON_DEFS[118],
-  },
-  InstructionDef {
-    instruction: Instruction::DsMinRtnI32,
-    common: &ARCH_COMMON_DEFS[119],
-  },
-  InstructionDef {
-    instruction: Instruction::DsMinRtnI64,
-    common: &ARCH_COMMON_DEFS[120],
-  },
-  InstructionDef {
-    instruction: Instruction::DsMinRtnU32,
-    common: &ARCH_COMMON_DEFS[121],
-  },
-  InstructionDef {
-    instruction: Instruction::DsMinRtnU64,
-    common: &ARCH_COMMON_DEFS[122],
-  },
-  InstructionDef {
-    instruction: Instruction::DsMinU32,
-    common: &ARCH_COMMON_DEFS[123],
-  },
-  InstructionDef {
-    instruction: Instruction::DsMinU64,
-    common: &ARCH_COMMON_DEFS[124],
-  },
-  InstructionDef {
-    instruction: Instruction::DsMskorB32,
-    common: &ARCH_COMMON_DEFS[125],
-  },
-  InstructionDef {
-    instruction: Instruction::DsMskorB64,
-    common: &ARCH_COMMON_DEFS[126],
-  },
-  InstructionDef {
-    instruction: Instruction::DsMskorRtnB32,
-    common: &ARCH_COMMON_DEFS[127],
-  },
-  InstructionDef {
-    instruction: Instruction::DsMskorRtnB64,
-    common: &ARCH_COMMON_DEFS[128],
-  },
-  InstructionDef {
-    instruction: Instruction::DsNop,
-    common: &ARCH_COMMON_DEFS[129],
-  },
-  InstructionDef {
-    instruction: Instruction::DsOrB32,
-    common: &ARCH_COMMON_DEFS[130],
-  },
-  InstructionDef {
-    instruction: Instruction::DsOrB64,
-    common: &ARCH_COMMON_DEFS[131],
-  },
-  InstructionDef {
-    instruction: Instruction::DsOrRtnB32,
-    common: &ARCH_COMMON_DEFS[132],
-  },
-  InstructionDef {
-    instruction: Instruction::DsOrRtnB64,
-    common: &ARCH_COMMON_DEFS[133],
-  },
-  InstructionDef {
-    instruction: Instruction::DsOrderedCount,
-    common: &ARCH_COMMON_DEFS[134],
-  },
-  InstructionDef {
-    instruction: Instruction::DsPermuteB32,
-    common: &ARCH_COMMON_DEFS[135],
-  },
-  InstructionDef {
-    instruction: Instruction::DsRsubRtnU32,
-    common: &ARCH_COMMON_DEFS[136],
-  },
-  InstructionDef {
-    instruction: Instruction::DsRsubRtnU64,
-    common: &ARCH_COMMON_DEFS[137],
-  },
-  InstructionDef {
-    instruction: Instruction::DsRsubU32,
-    common: &ARCH_COMMON_DEFS[138],
-  },
-  InstructionDef {
-    instruction: Instruction::DsRsubU64,
-    common: &ARCH_COMMON_DEFS[139],
-  },
-  InstructionDef {
-    instruction: Instruction::DsStoreN2addrB32,
-    common: &ARCH_COMMON_DEFS[140],
-  },
-  InstructionDef {
-    instruction: Instruction::DsStoreN2addrB64,
-    common: &ARCH_COMMON_DEFS[141],
-  },
-  InstructionDef {
-    instruction: Instruction::DsStoreN2addrStride64B32,
-    common: &ARCH_COMMON_DEFS[142],
-  },
-  InstructionDef {
-    instruction: Instruction::DsStoreN2addrStride64B64,
-    common: &ARCH_COMMON_DEFS[143],
-  },
-  InstructionDef {
-    instruction: Instruction::DsStoreAddtidB32,
-    common: &ARCH_COMMON_DEFS[144],
-  },
-  InstructionDef {
-    instruction: Instruction::DsStoreB128,
-    common: &ARCH_COMMON_DEFS[145],
-  },
-  InstructionDef {
-    instruction: Instruction::DsStoreB16,
-    common: &ARCH_COMMON_DEFS[146],
-  },
-  InstructionDef {
-    instruction: Instruction::DsStoreB16D16Hi,
-    common: &ARCH_COMMON_DEFS[147],
-  },
-  InstructionDef {
-    instruction: Instruction::DsStoreB32,
-    common: &ARCH_COMMON_DEFS[148],
-  },
-  InstructionDef {
-    instruction: Instruction::DsStoreB64,
-    common: &ARCH_COMMON_DEFS[149],
-  },
-  InstructionDef {
-    instruction: Instruction::DsStoreB8,
-    common: &ARCH_COMMON_DEFS[150],
-  },
-  InstructionDef {
-    instruction: Instruction::DsStoreB8D16Hi,
-    common: &ARCH_COMMON_DEFS[151],
-  },
-  InstructionDef {
-    instruction: Instruction::DsStoreB96,
-    common: &ARCH_COMMON_DEFS[152],
-  },
-  InstructionDef {
-    instruction: Instruction::DsStorexchgN2addrRtnB32,
-    common: &ARCH_COMMON_DEFS[153],
-  },
-  InstructionDef {
-    instruction: Instruction::DsStorexchgN2addrRtnB64,
-    common: &ARCH_COMMON_DEFS[154],
-  },
-  InstructionDef {
-    instruction: Instruction::DsStorexchgN2addrStride64RtnB32,
-    common: &ARCH_COMMON_DEFS[155],
-  },
-  InstructionDef {
-    instruction: Instruction::DsStorexchgN2addrStride64RtnB64,
-    common: &ARCH_COMMON_DEFS[156],
-  },
-  InstructionDef {
-    instruction: Instruction::DsStorexchgRtnB32,
-    common: &ARCH_COMMON_DEFS[157],
-  },
-  InstructionDef {
-    instruction: Instruction::DsStorexchgRtnB64,
-    common: &ARCH_COMMON_DEFS[158],
-  },
-  InstructionDef {
-    instruction: Instruction::DsSubGsRegRtn,
-    common: &ARCH_COMMON_DEFS[159],
-  },
-  InstructionDef {
-    instruction: Instruction::DsSubRtnU32,
-    common: &ARCH_COMMON_DEFS[160],
-  },
-  InstructionDef {
-    instruction: Instruction::DsSubRtnU64,
-    common: &ARCH_COMMON_DEFS[161],
-  },
-  InstructionDef {
-    instruction: Instruction::DsSubU32,
-    common: &ARCH_COMMON_DEFS[162],
-  },
-  InstructionDef {
-    instruction: Instruction::DsSubU64,
-    common: &ARCH_COMMON_DEFS[163],
-  },
-  InstructionDef {
-    instruction: Instruction::DsSwizzleB32,
-    common: &ARCH_COMMON_DEFS[164],
-  },
-  InstructionDef {
-    instruction: Instruction::DsWrapRtnB32,
-    common: &ARCH_COMMON_DEFS[165],
-  },
-  InstructionDef {
-    instruction: Instruction::DsXorB32,
-    common: &ARCH_COMMON_DEFS[166],
-  },
-  InstructionDef {
-    instruction: Instruction::DsXorB64,
-    common: &ARCH_COMMON_DEFS[167],
-  },
-  InstructionDef {
-    instruction: Instruction::DsXorRtnB32,
-    common: &ARCH_COMMON_DEFS[168],
-  },
-  InstructionDef {
-    instruction: Instruction::DsXorRtnB64,
-    common: &ARCH_COMMON_DEFS[169],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatAtomicAddF32,
-    common: &ARCH_COMMON_DEFS[170],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatAtomicAddU32,
-    common: &ARCH_COMMON_DEFS[171],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatAtomicAddU64,
-    common: &ARCH_COMMON_DEFS[172],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatAtomicAndB32,
-    common: &ARCH_COMMON_DEFS[173],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatAtomicAndB64,
-    common: &ARCH_COMMON_DEFS[174],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatAtomicCmpswapB32,
-    common: &ARCH_COMMON_DEFS[175],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatAtomicCmpswapB64,
-    common: &ARCH_COMMON_DEFS[176],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatAtomicCmpswapF32,
-    common: &ARCH_COMMON_DEFS[177],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatAtomicDecU32,
-    common: &ARCH_COMMON_DEFS[178],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatAtomicDecU64,
-    common: &ARCH_COMMON_DEFS[179],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatAtomicIncU32,
-    common: &ARCH_COMMON_DEFS[180],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatAtomicIncU64,
-    common: &ARCH_COMMON_DEFS[181],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatAtomicMaxF32,
-    common: &ARCH_COMMON_DEFS[182],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatAtomicMaxI32,
-    common: &ARCH_COMMON_DEFS[183],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatAtomicMaxI64,
-    common: &ARCH_COMMON_DEFS[184],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatAtomicMaxU32,
-    common: &ARCH_COMMON_DEFS[185],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatAtomicMaxU64,
-    common: &ARCH_COMMON_DEFS[186],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatAtomicMinF32,
-    common: &ARCH_COMMON_DEFS[187],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatAtomicMinI32,
-    common: &ARCH_COMMON_DEFS[188],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatAtomicMinI64,
-    common: &ARCH_COMMON_DEFS[189],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatAtomicMinU32,
-    common: &ARCH_COMMON_DEFS[190],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatAtomicMinU64,
-    common: &ARCH_COMMON_DEFS[191],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatAtomicOrB32,
-    common: &ARCH_COMMON_DEFS[192],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatAtomicOrB64,
-    common: &ARCH_COMMON_DEFS[193],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatAtomicSubU32,
-    common: &ARCH_COMMON_DEFS[194],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatAtomicSubU64,
-    common: &ARCH_COMMON_DEFS[195],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatAtomicSwapB32,
-    common: &ARCH_COMMON_DEFS[196],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatAtomicSwapB64,
-    common: &ARCH_COMMON_DEFS[197],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatAtomicXorB32,
-    common: &ARCH_COMMON_DEFS[198],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatAtomicXorB64,
-    common: &ARCH_COMMON_DEFS[199],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatLoadB128,
-    common: &ARCH_COMMON_DEFS[200],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatLoadB32,
-    common: &ARCH_COMMON_DEFS[201],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatLoadB64,
-    common: &ARCH_COMMON_DEFS[202],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatLoadB96,
-    common: &ARCH_COMMON_DEFS[203],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatLoadD16B16,
-    common: &ARCH_COMMON_DEFS[204],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatLoadD16HiB16,
-    common: &ARCH_COMMON_DEFS[205],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatLoadD16HiI8,
-    common: &ARCH_COMMON_DEFS[206],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatLoadD16HiU8,
-    common: &ARCH_COMMON_DEFS[207],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatLoadD16I8,
-    common: &ARCH_COMMON_DEFS[208],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatLoadD16U8,
-    common: &ARCH_COMMON_DEFS[209],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatLoadI16,
-    common: &ARCH_COMMON_DEFS[210],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatLoadI8,
-    common: &ARCH_COMMON_DEFS[211],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatLoadU16,
-    common: &ARCH_COMMON_DEFS[212],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatLoadU8,
-    common: &ARCH_COMMON_DEFS[213],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatStoreB128,
-    common: &ARCH_COMMON_DEFS[214],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatStoreB16,
-    common: &ARCH_COMMON_DEFS[215],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatStoreB32,
-    common: &ARCH_COMMON_DEFS[216],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatStoreB64,
-    common: &ARCH_COMMON_DEFS[217],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatStoreB8,
-    common: &ARCH_COMMON_DEFS[218],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatStoreB96,
-    common: &ARCH_COMMON_DEFS[219],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatStoreD16HiB16,
-    common: &ARCH_COMMON_DEFS[220],
-  },
-  InstructionDef {
-    instruction: Instruction::FlatStoreD16HiB8,
-    common: &ARCH_COMMON_DEFS[221],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicAddF32,
-    common: &ARCH_COMMON_DEFS[222],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicAddU32,
-    common: &ARCH_COMMON_DEFS[223],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicAddU64,
-    common: &ARCH_COMMON_DEFS[224],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicAndB32,
-    common: &ARCH_COMMON_DEFS[225],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicAndB64,
-    common: &ARCH_COMMON_DEFS[226],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicCmpswapB32,
-    common: &ARCH_COMMON_DEFS[227],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicCmpswapB64,
-    common: &ARCH_COMMON_DEFS[228],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicCmpswapF32,
-    common: &ARCH_COMMON_DEFS[229],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicCsubU32,
-    common: &ARCH_COMMON_DEFS[230],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicDecU32,
-    common: &ARCH_COMMON_DEFS[231],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicDecU64,
-    common: &ARCH_COMMON_DEFS[232],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicIncU32,
-    common: &ARCH_COMMON_DEFS[233],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicIncU64,
-    common: &ARCH_COMMON_DEFS[234],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicMaxF32,
-    common: &ARCH_COMMON_DEFS[235],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicMaxI32,
-    common: &ARCH_COMMON_DEFS[236],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicMaxI64,
-    common: &ARCH_COMMON_DEFS[237],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicMaxU32,
-    common: &ARCH_COMMON_DEFS[238],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicMaxU64,
-    common: &ARCH_COMMON_DEFS[239],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicMinF32,
-    common: &ARCH_COMMON_DEFS[240],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicMinI32,
-    common: &ARCH_COMMON_DEFS[241],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicMinI64,
-    common: &ARCH_COMMON_DEFS[242],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicMinU32,
-    common: &ARCH_COMMON_DEFS[243],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicMinU64,
-    common: &ARCH_COMMON_DEFS[244],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicOrB32,
-    common: &ARCH_COMMON_DEFS[245],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicOrB64,
-    common: &ARCH_COMMON_DEFS[246],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicSubU32,
-    common: &ARCH_COMMON_DEFS[247],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicSubU64,
-    common: &ARCH_COMMON_DEFS[248],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicSwapB32,
-    common: &ARCH_COMMON_DEFS[249],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicSwapB64,
-    common: &ARCH_COMMON_DEFS[250],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicXorB32,
-    common: &ARCH_COMMON_DEFS[251],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalAtomicXorB64,
-    common: &ARCH_COMMON_DEFS[252],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalLoadAddtidB32,
-    common: &ARCH_COMMON_DEFS[253],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalLoadB128,
-    common: &ARCH_COMMON_DEFS[254],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalLoadB32,
-    common: &ARCH_COMMON_DEFS[255],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalLoadB64,
-    common: &ARCH_COMMON_DEFS[256],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalLoadB96,
-    common: &ARCH_COMMON_DEFS[257],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalLoadD16B16,
-    common: &ARCH_COMMON_DEFS[258],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalLoadD16HiB16,
-    common: &ARCH_COMMON_DEFS[259],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalLoadD16HiI8,
-    common: &ARCH_COMMON_DEFS[260],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalLoadD16HiU8,
-    common: &ARCH_COMMON_DEFS[261],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalLoadD16I8,
-    common: &ARCH_COMMON_DEFS[262],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalLoadD16U8,
-    common: &ARCH_COMMON_DEFS[263],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalLoadI16,
-    common: &ARCH_COMMON_DEFS[264],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalLoadI8,
-    common: &ARCH_COMMON_DEFS[265],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalLoadLdsAddtidB32,
-    common: &ARCH_COMMON_DEFS[266],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalLoadLdsB32,
-    common: &ARCH_COMMON_DEFS[267],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalLoadLdsI16,
-    common: &ARCH_COMMON_DEFS[268],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalLoadLdsI8,
-    common: &ARCH_COMMON_DEFS[269],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalLoadLdsU16,
-    common: &ARCH_COMMON_DEFS[270],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalLoadLdsU8,
-    common: &ARCH_COMMON_DEFS[271],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalLoadU16,
-    common: &ARCH_COMMON_DEFS[272],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalLoadU8,
-    common: &ARCH_COMMON_DEFS[273],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalStoreAddtidB32,
-    common: &ARCH_COMMON_DEFS[274],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalStoreB128,
-    common: &ARCH_COMMON_DEFS[275],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalStoreB16,
-    common: &ARCH_COMMON_DEFS[276],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalStoreB32,
-    common: &ARCH_COMMON_DEFS[277],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalStoreB64,
-    common: &ARCH_COMMON_DEFS[278],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalStoreB8,
-    common: &ARCH_COMMON_DEFS[279],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalStoreB96,
-    common: &ARCH_COMMON_DEFS[280],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalStoreD16HiB16,
-    common: &ARCH_COMMON_DEFS[281],
-  },
-  InstructionDef {
-    instruction: Instruction::GlobalStoreD16HiB8,
-    common: &ARCH_COMMON_DEFS[282],
-  },
-  InstructionDef {
-    instruction: Instruction::ImageAtomicAdd,
-    common: &ARCH_COMMON_DEFS[283],
-  },
-  InstructionDef {
-    instruction: Instruction::ImageAtomicAnd,
-    common: &ARCH_COMMON_DEFS[284],
-  },
-  InstructionDef {
-    instruction: Instruction::ImageAtomicCmpswap,
-    common: &ARCH_COMMON_DEFS[285],
-  },
-  InstructionDef {
-    instruction: Instruction::ImageAtomicDec,
-    common: &ARCH_COMMON_DEFS[286],
-  },
-  InstructionDef {
-    instruction: Instruction::ImageAtomicInc,
-    common: &ARCH_COMMON_DEFS[287],
-  },
-  InstructionDef {
-    instruction: Instruction::ImageAtomicOr,
-    common: &ARCH_COMMON_DEFS[288],
-  },
-  InstructionDef {
-    instruction: Instruction::ImageAtomicSmax,
-    common: &ARCH_COMMON_DEFS[289],
-  },
-  InstructionDef {
-    instruction: Instruction::ImageAtomicSmin,
-    common: &ARCH_COMMON_DEFS[290],
-  },
-  InstructionDef {
-    instruction: Instruction::ImageAtomicSub,
-    common: &ARCH_COMMON_DEFS[291],
-  },
-  InstructionDef {
-    instruction: Instruction::ImageAtomicSwap,
-    common: &ARCH_COMMON_DEFS[292],
-  },
-  InstructionDef {
-    instruction: Instruction::ImageAtomicUmax,
-    common: &ARCH_COMMON_DEFS[293],
-  },
-  InstructionDef {
-    instruction: Instruction::ImageAtomicUmin,
-    common: &ARCH_COMMON_DEFS[294],
-  },
-  InstructionDef {
-    instruction: Instruction::ImageAtomicXor,
-    common: &ARCH_COMMON_DEFS[295],
-  },
-  InstructionDef {
-    instruction: Instruction::LdsDirectLoad,
-    common: &ARCH_COMMON_DEFS[296],
-  },
-  InstructionDef {
-    instruction: Instruction::LdsParamLoad,
-    common: &ARCH_COMMON_DEFS[297],
-  },
-  InstructionDef {
-    instruction: Instruction::SAbsI32,
     common: &base::INSTRUCTION_COMMON_DEFS[0],
   },
   InstructionDef {
-    instruction: Instruction::SAbsdiffI32,
+    instruction: Instruction::DsAddGsRegRtn,
+    common: &ARCH_COMMON_DEFS[50],
+  },
+  InstructionDef {
+    instruction: Instruction::DsAddRtnF32,
     common: &base::INSTRUCTION_COMMON_DEFS[1],
   },
   InstructionDef {
-    instruction: Instruction::SAddF16,
-    common: &ARCH_COMMON_DEFS[298],
-  },
-  InstructionDef {
-    instruction: Instruction::SAddF32,
-    common: &ARCH_COMMON_DEFS[299],
-  },
-  InstructionDef {
-    instruction: Instruction::SAddI32,
-    common: &ARCH_COMMON_DEFS[300],
-  },
-  InstructionDef {
-    instruction: Instruction::SAddU32,
-    common: &ARCH_COMMON_DEFS[301],
-  },
-  InstructionDef {
-    instruction: Instruction::SAddcU32,
-    common: &ARCH_COMMON_DEFS[302],
-  },
-  InstructionDef {
-    instruction: Instruction::SAddkI32,
-    common: &ARCH_COMMON_DEFS[303],
-  },
-  InstructionDef {
-    instruction: Instruction::SAndB32,
+    instruction: Instruction::DsAddRtnU32,
     common: &base::INSTRUCTION_COMMON_DEFS[2],
   },
   InstructionDef {
-    instruction: Instruction::SAndB64,
+    instruction: Instruction::DsAddRtnU64,
     common: &base::INSTRUCTION_COMMON_DEFS[3],
   },
   InstructionDef {
-    instruction: Instruction::SAndNot0SaveexecB32,
+    instruction: Instruction::DsAddU32,
     common: &base::INSTRUCTION_COMMON_DEFS[4],
   },
   InstructionDef {
-    instruction: Instruction::SAndNot0SaveexecB64,
+    instruction: Instruction::DsAddU64,
     common: &base::INSTRUCTION_COMMON_DEFS[5],
   },
   InstructionDef {
-    instruction: Instruction::SAndNot0WrexecB32,
+    instruction: Instruction::DsAndB32,
     common: &base::INSTRUCTION_COMMON_DEFS[6],
   },
   InstructionDef {
-    instruction: Instruction::SAndNot0WrexecB64,
+    instruction: Instruction::DsAndB64,
     common: &base::INSTRUCTION_COMMON_DEFS[7],
   },
   InstructionDef {
-    instruction: Instruction::SAndNot1B32,
+    instruction: Instruction::DsAndRtnB32,
     common: &base::INSTRUCTION_COMMON_DEFS[8],
   },
   InstructionDef {
-    instruction: Instruction::SAndNot1B64,
+    instruction: Instruction::DsAndRtnB64,
     common: &base::INSTRUCTION_COMMON_DEFS[9],
   },
   InstructionDef {
-    instruction: Instruction::SAndNot1SaveexecB32,
+    instruction: Instruction::DsAppend,
     common: &base::INSTRUCTION_COMMON_DEFS[10],
   },
   InstructionDef {
-    instruction: Instruction::SAndNot1SaveexecB64,
+    instruction: Instruction::DsBpermuteB32,
     common: &base::INSTRUCTION_COMMON_DEFS[11],
   },
   InstructionDef {
-    instruction: Instruction::SAndNot1WrexecB32,
+    instruction: Instruction::DsBvhStackRtnB32,
+    common: &ARCH_COMMON_DEFS[51],
+  },
+  InstructionDef {
+    instruction: Instruction::DsCmpstoreB32,
     common: &base::INSTRUCTION_COMMON_DEFS[12],
   },
   InstructionDef {
-    instruction: Instruction::SAndNot1WrexecB64,
+    instruction: Instruction::DsCmpstoreB64,
     common: &base::INSTRUCTION_COMMON_DEFS[13],
   },
   InstructionDef {
-    instruction: Instruction::SAndSaveexecB32,
+    instruction: Instruction::DsCmpstoreF32,
+    common: &ARCH_COMMON_DEFS[52],
+  },
+  InstructionDef {
+    instruction: Instruction::DsCmpstoreRtnB32,
     common: &base::INSTRUCTION_COMMON_DEFS[14],
   },
   InstructionDef {
-    instruction: Instruction::SAndSaveexecB64,
+    instruction: Instruction::DsCmpstoreRtnB64,
     common: &base::INSTRUCTION_COMMON_DEFS[15],
   },
   InstructionDef {
-    instruction: Instruction::SAshrI32,
+    instruction: Instruction::DsCmpstoreRtnF32,
+    common: &ARCH_COMMON_DEFS[53],
+  },
+  InstructionDef {
+    instruction: Instruction::DsCondxchg32RtnB64,
     common: &base::INSTRUCTION_COMMON_DEFS[16],
   },
   InstructionDef {
-    instruction: Instruction::SAshrI64,
+    instruction: Instruction::DsConsume,
     common: &base::INSTRUCTION_COMMON_DEFS[17],
   },
   InstructionDef {
-    instruction: Instruction::SAtcProbe,
-    common: &ARCH_COMMON_DEFS[304],
-  },
-  InstructionDef {
-    instruction: Instruction::SAtcProbeBuffer,
-    common: &ARCH_COMMON_DEFS[305],
-  },
-  InstructionDef {
-    instruction: Instruction::SBarrier,
-    common: &ARCH_COMMON_DEFS[306],
-  },
-  InstructionDef {
-    instruction: Instruction::SBcnt0I32B32,
+    instruction: Instruction::DsDecRtnU32,
     common: &base::INSTRUCTION_COMMON_DEFS[18],
   },
   InstructionDef {
-    instruction: Instruction::SBcnt0I32B64,
+    instruction: Instruction::DsDecRtnU64,
     common: &base::INSTRUCTION_COMMON_DEFS[19],
   },
   InstructionDef {
-    instruction: Instruction::SBcnt1I32B32,
+    instruction: Instruction::DsDecU32,
     common: &base::INSTRUCTION_COMMON_DEFS[20],
   },
   InstructionDef {
-    instruction: Instruction::SBcnt1I32B64,
+    instruction: Instruction::DsDecU64,
     common: &base::INSTRUCTION_COMMON_DEFS[21],
   },
   InstructionDef {
-    instruction: Instruction::SBfeI32,
+    instruction: Instruction::DsGwsBarrier,
+    common: &ARCH_COMMON_DEFS[54],
+  },
+  InstructionDef {
+    instruction: Instruction::DsGwsInit,
+    common: &ARCH_COMMON_DEFS[55],
+  },
+  InstructionDef {
+    instruction: Instruction::DsGwsSemaBr,
+    common: &ARCH_COMMON_DEFS[56],
+  },
+  InstructionDef {
+    instruction: Instruction::DsGwsSemaP,
+    common: &ARCH_COMMON_DEFS[57],
+  },
+  InstructionDef {
+    instruction: Instruction::DsGwsSemaReleaseAll,
+    common: &ARCH_COMMON_DEFS[58],
+  },
+  InstructionDef {
+    instruction: Instruction::DsGwsSemaV,
+    common: &ARCH_COMMON_DEFS[59],
+  },
+  InstructionDef {
+    instruction: Instruction::DsIncRtnU32,
     common: &base::INSTRUCTION_COMMON_DEFS[22],
   },
   InstructionDef {
-    instruction: Instruction::SBfeI64,
+    instruction: Instruction::DsIncRtnU64,
     common: &base::INSTRUCTION_COMMON_DEFS[23],
   },
   InstructionDef {
-    instruction: Instruction::SBfeU32,
+    instruction: Instruction::DsIncU32,
     common: &base::INSTRUCTION_COMMON_DEFS[24],
   },
   InstructionDef {
-    instruction: Instruction::SBfeU64,
+    instruction: Instruction::DsIncU64,
     common: &base::INSTRUCTION_COMMON_DEFS[25],
   },
   InstructionDef {
-    instruction: Instruction::SBfmB32,
+    instruction: Instruction::DsLoadN2addrB32,
     common: &base::INSTRUCTION_COMMON_DEFS[26],
   },
   InstructionDef {
-    instruction: Instruction::SBfmB64,
+    instruction: Instruction::DsLoadN2addrB64,
     common: &base::INSTRUCTION_COMMON_DEFS[27],
   },
   InstructionDef {
-    instruction: Instruction::SBitcmp0B32,
+    instruction: Instruction::DsLoadN2addrStride64B32,
     common: &base::INSTRUCTION_COMMON_DEFS[28],
   },
   InstructionDef {
-    instruction: Instruction::SBitcmp0B64,
+    instruction: Instruction::DsLoadN2addrStride64B64,
     common: &base::INSTRUCTION_COMMON_DEFS[29],
   },
   InstructionDef {
-    instruction: Instruction::SBitcmp1B32,
+    instruction: Instruction::DsLoadAddtidB32,
     common: &base::INSTRUCTION_COMMON_DEFS[30],
   },
   InstructionDef {
-    instruction: Instruction::SBitcmp1B64,
+    instruction: Instruction::DsLoadB128,
     common: &base::INSTRUCTION_COMMON_DEFS[31],
   },
   InstructionDef {
-    instruction: Instruction::SBitreplicateB64B32,
+    instruction: Instruction::DsLoadB32,
     common: &base::INSTRUCTION_COMMON_DEFS[32],
   },
   InstructionDef {
-    instruction: Instruction::SBitset0B32,
+    instruction: Instruction::DsLoadB64,
     common: &base::INSTRUCTION_COMMON_DEFS[33],
   },
   InstructionDef {
-    instruction: Instruction::SBitset0B64,
+    instruction: Instruction::DsLoadB96,
     common: &base::INSTRUCTION_COMMON_DEFS[34],
   },
   InstructionDef {
-    instruction: Instruction::SBitset1B32,
+    instruction: Instruction::DsLoadI16,
     common: &base::INSTRUCTION_COMMON_DEFS[35],
   },
   InstructionDef {
-    instruction: Instruction::SBitset1B64,
+    instruction: Instruction::DsLoadI8,
     common: &base::INSTRUCTION_COMMON_DEFS[36],
   },
   InstructionDef {
-    instruction: Instruction::SBranch,
+    instruction: Instruction::DsLoadI8D16,
     common: &base::INSTRUCTION_COMMON_DEFS[37],
   },
   InstructionDef {
-    instruction: Instruction::SBrevB32,
+    instruction: Instruction::DsLoadI8D16Hi,
     common: &base::INSTRUCTION_COMMON_DEFS[38],
   },
   InstructionDef {
-    instruction: Instruction::SBrevB64,
+    instruction: Instruction::DsLoadU16,
     common: &base::INSTRUCTION_COMMON_DEFS[39],
   },
   InstructionDef {
-    instruction: Instruction::SBufferLoadB128,
+    instruction: Instruction::DsLoadU16D16,
     common: &base::INSTRUCTION_COMMON_DEFS[40],
   },
   InstructionDef {
-    instruction: Instruction::SBufferLoadB256,
+    instruction: Instruction::DsLoadU16D16Hi,
     common: &base::INSTRUCTION_COMMON_DEFS[41],
   },
   InstructionDef {
-    instruction: Instruction::SBufferLoadB32,
+    instruction: Instruction::DsLoadU8,
     common: &base::INSTRUCTION_COMMON_DEFS[42],
   },
   InstructionDef {
-    instruction: Instruction::SBufferLoadB512,
+    instruction: Instruction::DsLoadU8D16,
     common: &base::INSTRUCTION_COMMON_DEFS[43],
   },
   InstructionDef {
-    instruction: Instruction::SBufferLoadB64,
+    instruction: Instruction::DsLoadU8D16Hi,
     common: &base::INSTRUCTION_COMMON_DEFS[44],
   },
   InstructionDef {
-    instruction: Instruction::SCallB64,
+    instruction: Instruction::DsMaxF32,
+    common: &ARCH_COMMON_DEFS[60],
+  },
+  InstructionDef {
+    instruction: Instruction::DsMaxI32,
     common: &base::INSTRUCTION_COMMON_DEFS[45],
   },
   InstructionDef {
-    instruction: Instruction::SCbranchCdbgsys,
-    common: &ARCH_COMMON_DEFS[307],
-  },
-  InstructionDef {
-    instruction: Instruction::SCbranchCdbgsysAndUser,
-    common: &ARCH_COMMON_DEFS[308],
-  },
-  InstructionDef {
-    instruction: Instruction::SCbranchCdbgsysOrUser,
-    common: &ARCH_COMMON_DEFS[309],
-  },
-  InstructionDef {
-    instruction: Instruction::SCbranchCdbguser,
-    common: &ARCH_COMMON_DEFS[310],
-  },
-  InstructionDef {
-    instruction: Instruction::SCbranchExecnz,
+    instruction: Instruction::DsMaxI64,
     common: &base::INSTRUCTION_COMMON_DEFS[46],
   },
   InstructionDef {
-    instruction: Instruction::SCbranchExecz,
+    instruction: Instruction::DsMaxRtnF32,
+    common: &ARCH_COMMON_DEFS[61],
+  },
+  InstructionDef {
+    instruction: Instruction::DsMaxRtnI32,
     common: &base::INSTRUCTION_COMMON_DEFS[47],
   },
   InstructionDef {
-    instruction: Instruction::SCbranchScc0,
+    instruction: Instruction::DsMaxRtnI64,
     common: &base::INSTRUCTION_COMMON_DEFS[48],
   },
   InstructionDef {
-    instruction: Instruction::SCbranchScc1,
+    instruction: Instruction::DsMaxRtnU32,
     common: &base::INSTRUCTION_COMMON_DEFS[49],
   },
   InstructionDef {
-    instruction: Instruction::SCbranchVccnz,
+    instruction: Instruction::DsMaxRtnU64,
     common: &base::INSTRUCTION_COMMON_DEFS[50],
   },
   InstructionDef {
-    instruction: Instruction::SCbranchVccz,
+    instruction: Instruction::DsMaxU32,
     common: &base::INSTRUCTION_COMMON_DEFS[51],
   },
   InstructionDef {
-    instruction: Instruction::SCeilF16,
-    common: &ARCH_COMMON_DEFS[311],
-  },
-  InstructionDef {
-    instruction: Instruction::SCeilF32,
-    common: &ARCH_COMMON_DEFS[312],
-  },
-  InstructionDef {
-    instruction: Instruction::SClause,
+    instruction: Instruction::DsMaxU64,
     common: &base::INSTRUCTION_COMMON_DEFS[52],
   },
   InstructionDef {
-    instruction: Instruction::SClsI32,
+    instruction: Instruction::DsMinF32,
+    common: &ARCH_COMMON_DEFS[62],
+  },
+  InstructionDef {
+    instruction: Instruction::DsMinI32,
     common: &base::INSTRUCTION_COMMON_DEFS[53],
   },
   InstructionDef {
-    instruction: Instruction::SClsI32I64,
+    instruction: Instruction::DsMinI64,
     common: &base::INSTRUCTION_COMMON_DEFS[54],
   },
   InstructionDef {
-    instruction: Instruction::SClzI32U32,
+    instruction: Instruction::DsMinRtnF32,
+    common: &ARCH_COMMON_DEFS[63],
+  },
+  InstructionDef {
+    instruction: Instruction::DsMinRtnI32,
     common: &base::INSTRUCTION_COMMON_DEFS[55],
   },
   InstructionDef {
-    instruction: Instruction::SClzI32U64,
+    instruction: Instruction::DsMinRtnI64,
     common: &base::INSTRUCTION_COMMON_DEFS[56],
   },
   InstructionDef {
-    instruction: Instruction::SCmovB32,
+    instruction: Instruction::DsMinRtnU32,
     common: &base::INSTRUCTION_COMMON_DEFS[57],
   },
   InstructionDef {
-    instruction: Instruction::SCmovB64,
+    instruction: Instruction::DsMinRtnU64,
     common: &base::INSTRUCTION_COMMON_DEFS[58],
   },
   InstructionDef {
-    instruction: Instruction::SCmovkI32,
+    instruction: Instruction::DsMinU32,
     common: &base::INSTRUCTION_COMMON_DEFS[59],
   },
   InstructionDef {
-    instruction: Instruction::SCmpEqF16,
-    common: &ARCH_COMMON_DEFS[313],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpEqF32,
-    common: &ARCH_COMMON_DEFS[314],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpEqI32,
+    instruction: Instruction::DsMinU64,
     common: &base::INSTRUCTION_COMMON_DEFS[60],
   },
   InstructionDef {
-    instruction: Instruction::SCmpEqU32,
+    instruction: Instruction::DsMskorB32,
     common: &base::INSTRUCTION_COMMON_DEFS[61],
   },
   InstructionDef {
-    instruction: Instruction::SCmpEqU64,
+    instruction: Instruction::DsMskorB64,
     common: &base::INSTRUCTION_COMMON_DEFS[62],
   },
   InstructionDef {
-    instruction: Instruction::SCmpGeF16,
-    common: &ARCH_COMMON_DEFS[315],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpGeF32,
-    common: &ARCH_COMMON_DEFS[316],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpGeI32,
+    instruction: Instruction::DsMskorRtnB32,
     common: &base::INSTRUCTION_COMMON_DEFS[63],
   },
   InstructionDef {
-    instruction: Instruction::SCmpGeU32,
+    instruction: Instruction::DsMskorRtnB64,
     common: &base::INSTRUCTION_COMMON_DEFS[64],
   },
   InstructionDef {
-    instruction: Instruction::SCmpGtF16,
-    common: &ARCH_COMMON_DEFS[317],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpGtF32,
-    common: &ARCH_COMMON_DEFS[318],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpGtI32,
+    instruction: Instruction::DsNop,
     common: &base::INSTRUCTION_COMMON_DEFS[65],
   },
   InstructionDef {
-    instruction: Instruction::SCmpGtU32,
+    instruction: Instruction::DsOrB32,
     common: &base::INSTRUCTION_COMMON_DEFS[66],
   },
   InstructionDef {
-    instruction: Instruction::SCmpLeF16,
-    common: &ARCH_COMMON_DEFS[319],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpLeF32,
-    common: &ARCH_COMMON_DEFS[320],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpLeI32,
+    instruction: Instruction::DsOrB64,
     common: &base::INSTRUCTION_COMMON_DEFS[67],
   },
   InstructionDef {
-    instruction: Instruction::SCmpLeU32,
+    instruction: Instruction::DsOrRtnB32,
     common: &base::INSTRUCTION_COMMON_DEFS[68],
   },
   InstructionDef {
-    instruction: Instruction::SCmpLgF16,
-    common: &ARCH_COMMON_DEFS[321],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpLgF32,
-    common: &ARCH_COMMON_DEFS[322],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpLgI32,
+    instruction: Instruction::DsOrRtnB64,
     common: &base::INSTRUCTION_COMMON_DEFS[69],
   },
   InstructionDef {
-    instruction: Instruction::SCmpLgU32,
+    instruction: Instruction::DsOrderedCount,
+    common: &ARCH_COMMON_DEFS[64],
+  },
+  InstructionDef {
+    instruction: Instruction::DsPermuteB32,
     common: &base::INSTRUCTION_COMMON_DEFS[70],
   },
   InstructionDef {
-    instruction: Instruction::SCmpLgU64,
+    instruction: Instruction::DsRsubRtnU32,
     common: &base::INSTRUCTION_COMMON_DEFS[71],
   },
   InstructionDef {
-    instruction: Instruction::SCmpLtF16,
-    common: &ARCH_COMMON_DEFS[323],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpLtF32,
-    common: &ARCH_COMMON_DEFS[324],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpLtI32,
+    instruction: Instruction::DsRsubRtnU64,
     common: &base::INSTRUCTION_COMMON_DEFS[72],
   },
   InstructionDef {
-    instruction: Instruction::SCmpLtU32,
+    instruction: Instruction::DsRsubU32,
     common: &base::INSTRUCTION_COMMON_DEFS[73],
   },
   InstructionDef {
-    instruction: Instruction::SCmpNeqF16,
-    common: &ARCH_COMMON_DEFS[325],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpNeqF32,
-    common: &ARCH_COMMON_DEFS[326],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpNgeF16,
-    common: &ARCH_COMMON_DEFS[327],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpNgeF32,
-    common: &ARCH_COMMON_DEFS[328],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpNgtF16,
-    common: &ARCH_COMMON_DEFS[329],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpNgtF32,
-    common: &ARCH_COMMON_DEFS[330],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpNleF16,
-    common: &ARCH_COMMON_DEFS[331],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpNleF32,
-    common: &ARCH_COMMON_DEFS[332],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpNlgF16,
-    common: &ARCH_COMMON_DEFS[333],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpNlgF32,
-    common: &ARCH_COMMON_DEFS[334],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpNltF16,
-    common: &ARCH_COMMON_DEFS[335],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpNltF32,
-    common: &ARCH_COMMON_DEFS[336],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpOF16,
-    common: &ARCH_COMMON_DEFS[337],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpOF32,
-    common: &ARCH_COMMON_DEFS[338],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpUF16,
-    common: &ARCH_COMMON_DEFS[339],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpUF32,
-    common: &ARCH_COMMON_DEFS[340],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpkEqI32,
-    common: &ARCH_COMMON_DEFS[341],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpkEqU32,
-    common: &ARCH_COMMON_DEFS[342],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpkGeI32,
-    common: &ARCH_COMMON_DEFS[343],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpkGeU32,
-    common: &ARCH_COMMON_DEFS[344],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpkGtI32,
-    common: &ARCH_COMMON_DEFS[345],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpkGtU32,
-    common: &ARCH_COMMON_DEFS[346],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpkLeI32,
-    common: &ARCH_COMMON_DEFS[347],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpkLeU32,
-    common: &ARCH_COMMON_DEFS[348],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpkLgI32,
-    common: &ARCH_COMMON_DEFS[349],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpkLgU32,
-    common: &ARCH_COMMON_DEFS[350],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpkLtI32,
-    common: &ARCH_COMMON_DEFS[351],
-  },
-  InstructionDef {
-    instruction: Instruction::SCmpkLtU32,
-    common: &ARCH_COMMON_DEFS[352],
-  },
-  InstructionDef {
-    instruction: Instruction::SCodeEnd,
+    instruction: Instruction::DsRsubU64,
     common: &base::INSTRUCTION_COMMON_DEFS[74],
   },
   InstructionDef {
-    instruction: Instruction::SCselectB32,
+    instruction: Instruction::DsStoreN2addrB32,
     common: &base::INSTRUCTION_COMMON_DEFS[75],
   },
   InstructionDef {
-    instruction: Instruction::SCselectB64,
+    instruction: Instruction::DsStoreN2addrB64,
     common: &base::INSTRUCTION_COMMON_DEFS[76],
   },
   InstructionDef {
-    instruction: Instruction::SCtzI32B32,
+    instruction: Instruction::DsStoreN2addrStride64B32,
     common: &base::INSTRUCTION_COMMON_DEFS[77],
   },
   InstructionDef {
-    instruction: Instruction::SCtzI32B64,
+    instruction: Instruction::DsStoreN2addrStride64B64,
     common: &base::INSTRUCTION_COMMON_DEFS[78],
   },
   InstructionDef {
-    instruction: Instruction::SCvtF16F32,
-    common: &ARCH_COMMON_DEFS[353],
-  },
-  InstructionDef {
-    instruction: Instruction::SCvtF32F16,
-    common: &ARCH_COMMON_DEFS[354],
-  },
-  InstructionDef {
-    instruction: Instruction::SCvtF32I32,
-    common: &ARCH_COMMON_DEFS[355],
-  },
-  InstructionDef {
-    instruction: Instruction::SCvtF32U32,
-    common: &ARCH_COMMON_DEFS[356],
-  },
-  InstructionDef {
-    instruction: Instruction::SCvtHiF32F16,
-    common: &ARCH_COMMON_DEFS[357],
-  },
-  InstructionDef {
-    instruction: Instruction::SCvtI32F32,
-    common: &ARCH_COMMON_DEFS[358],
-  },
-  InstructionDef {
-    instruction: Instruction::SCvtPkRtzF16F32,
-    common: &ARCH_COMMON_DEFS[359],
-  },
-  InstructionDef {
-    instruction: Instruction::SCvtU32F32,
-    common: &ARCH_COMMON_DEFS[360],
-  },
-  InstructionDef {
-    instruction: Instruction::SDcacheInv,
+    instruction: Instruction::DsStoreAddtidB32,
     common: &base::INSTRUCTION_COMMON_DEFS[79],
   },
   InstructionDef {
-    instruction: Instruction::SDecperflevel,
+    instruction: Instruction::DsStoreB128,
     common: &base::INSTRUCTION_COMMON_DEFS[80],
   },
   InstructionDef {
-    instruction: Instruction::SDelayAlu,
+    instruction: Instruction::DsStoreB16,
     common: &base::INSTRUCTION_COMMON_DEFS[81],
   },
   InstructionDef {
-    instruction: Instruction::SDenormMode,
+    instruction: Instruction::DsStoreB16D16Hi,
     common: &base::INSTRUCTION_COMMON_DEFS[82],
   },
   InstructionDef {
-    instruction: Instruction::SEndpgm,
+    instruction: Instruction::DsStoreB32,
     common: &base::INSTRUCTION_COMMON_DEFS[83],
   },
   InstructionDef {
-    instruction: Instruction::SEndpgmOrderedPsDone,
-    common: &ARCH_COMMON_DEFS[361],
-  },
-  InstructionDef {
-    instruction: Instruction::SEndpgmSaved,
+    instruction: Instruction::DsStoreB64,
     common: &base::INSTRUCTION_COMMON_DEFS[84],
   },
   InstructionDef {
-    instruction: Instruction::SFloorF16,
-    common: &ARCH_COMMON_DEFS[362],
-  },
-  InstructionDef {
-    instruction: Instruction::SFloorF32,
-    common: &ARCH_COMMON_DEFS[363],
-  },
-  InstructionDef {
-    instruction: Instruction::SFmaakF32,
-    common: &ARCH_COMMON_DEFS[364],
-  },
-  InstructionDef {
-    instruction: Instruction::SFmacF16,
-    common: &ARCH_COMMON_DEFS[365],
-  },
-  InstructionDef {
-    instruction: Instruction::SFmacF32,
-    common: &ARCH_COMMON_DEFS[366],
-  },
-  InstructionDef {
-    instruction: Instruction::SFmamkF32,
-    common: &ARCH_COMMON_DEFS[367],
-  },
-  InstructionDef {
-    instruction: Instruction::SGetpcB64,
+    instruction: Instruction::DsStoreB8,
     common: &base::INSTRUCTION_COMMON_DEFS[85],
   },
   InstructionDef {
-    instruction: Instruction::SGetregB32,
+    instruction: Instruction::DsStoreB8D16Hi,
     common: &base::INSTRUCTION_COMMON_DEFS[86],
   },
   InstructionDef {
-    instruction: Instruction::SGl1Inv,
-    common: &ARCH_COMMON_DEFS[368],
-  },
-  InstructionDef {
-    instruction: Instruction::SIcacheInv,
+    instruction: Instruction::DsStoreB96,
     common: &base::INSTRUCTION_COMMON_DEFS[87],
   },
   InstructionDef {
-    instruction: Instruction::SIncperflevel,
+    instruction: Instruction::DsStorexchgN2addrRtnB32,
     common: &base::INSTRUCTION_COMMON_DEFS[88],
   },
   InstructionDef {
-    instruction: Instruction::SLoadB128,
+    instruction: Instruction::DsStorexchgN2addrRtnB64,
     common: &base::INSTRUCTION_COMMON_DEFS[89],
   },
   InstructionDef {
-    instruction: Instruction::SLoadB256,
+    instruction: Instruction::DsStorexchgN2addrStride64RtnB32,
     common: &base::INSTRUCTION_COMMON_DEFS[90],
   },
   InstructionDef {
-    instruction: Instruction::SLoadB32,
+    instruction: Instruction::DsStorexchgN2addrStride64RtnB64,
     common: &base::INSTRUCTION_COMMON_DEFS[91],
   },
   InstructionDef {
-    instruction: Instruction::SLoadB512,
+    instruction: Instruction::DsStorexchgRtnB32,
     common: &base::INSTRUCTION_COMMON_DEFS[92],
   },
   InstructionDef {
-    instruction: Instruction::SLoadB64,
+    instruction: Instruction::DsStorexchgRtnB64,
     common: &base::INSTRUCTION_COMMON_DEFS[93],
   },
   InstructionDef {
-    instruction: Instruction::SLshl1AddU32,
+    instruction: Instruction::DsSubGsRegRtn,
+    common: &ARCH_COMMON_DEFS[65],
+  },
+  InstructionDef {
+    instruction: Instruction::DsSubRtnU32,
     common: &base::INSTRUCTION_COMMON_DEFS[94],
   },
   InstructionDef {
-    instruction: Instruction::SLshl2AddU32,
+    instruction: Instruction::DsSubRtnU64,
     common: &base::INSTRUCTION_COMMON_DEFS[95],
   },
   InstructionDef {
-    instruction: Instruction::SLshl3AddU32,
+    instruction: Instruction::DsSubU32,
     common: &base::INSTRUCTION_COMMON_DEFS[96],
   },
   InstructionDef {
-    instruction: Instruction::SLshl4AddU32,
+    instruction: Instruction::DsSubU64,
     common: &base::INSTRUCTION_COMMON_DEFS[97],
   },
   InstructionDef {
-    instruction: Instruction::SLshlB32,
+    instruction: Instruction::DsSwizzleB32,
     common: &base::INSTRUCTION_COMMON_DEFS[98],
   },
   InstructionDef {
-    instruction: Instruction::SLshlB64,
+    instruction: Instruction::DsWrapRtnB32,
+    common: &ARCH_COMMON_DEFS[66],
+  },
+  InstructionDef {
+    instruction: Instruction::DsXorB32,
     common: &base::INSTRUCTION_COMMON_DEFS[99],
   },
   InstructionDef {
-    instruction: Instruction::SLshrB32,
+    instruction: Instruction::DsXorB64,
     common: &base::INSTRUCTION_COMMON_DEFS[100],
   },
   InstructionDef {
-    instruction: Instruction::SLshrB64,
+    instruction: Instruction::DsXorRtnB32,
     common: &base::INSTRUCTION_COMMON_DEFS[101],
   },
   InstructionDef {
-    instruction: Instruction::SMaxF16,
-    common: &ARCH_COMMON_DEFS[369],
-  },
-  InstructionDef {
-    instruction: Instruction::SMaxF32,
-    common: &ARCH_COMMON_DEFS[370],
-  },
-  InstructionDef {
-    instruction: Instruction::SMaxI32,
+    instruction: Instruction::DsXorRtnB64,
     common: &base::INSTRUCTION_COMMON_DEFS[102],
   },
   InstructionDef {
-    instruction: Instruction::SMaxU32,
+    instruction: Instruction::FlatAtomicAddF32,
     common: &base::INSTRUCTION_COMMON_DEFS[103],
   },
   InstructionDef {
-    instruction: Instruction::SMinF16,
-    common: &ARCH_COMMON_DEFS[371],
-  },
-  InstructionDef {
-    instruction: Instruction::SMinF32,
-    common: &ARCH_COMMON_DEFS[372],
-  },
-  InstructionDef {
-    instruction: Instruction::SMinI32,
+    instruction: Instruction::FlatAtomicAddU32,
     common: &base::INSTRUCTION_COMMON_DEFS[104],
   },
   InstructionDef {
-    instruction: Instruction::SMinU32,
+    instruction: Instruction::FlatAtomicAddU64,
     common: &base::INSTRUCTION_COMMON_DEFS[105],
   },
   InstructionDef {
-    instruction: Instruction::SMovB32,
+    instruction: Instruction::FlatAtomicAndB32,
     common: &base::INSTRUCTION_COMMON_DEFS[106],
   },
   InstructionDef {
-    instruction: Instruction::SMovB64,
+    instruction: Instruction::FlatAtomicAndB64,
     common: &base::INSTRUCTION_COMMON_DEFS[107],
   },
   InstructionDef {
-    instruction: Instruction::SMovkI32,
+    instruction: Instruction::FlatAtomicCmpswapB32,
     common: &base::INSTRUCTION_COMMON_DEFS[108],
   },
   InstructionDef {
-    instruction: Instruction::SMovreldB32,
+    instruction: Instruction::FlatAtomicCmpswapB64,
     common: &base::INSTRUCTION_COMMON_DEFS[109],
   },
   InstructionDef {
-    instruction: Instruction::SMovreldB64,
+    instruction: Instruction::FlatAtomicCmpswapF32,
+    common: &ARCH_COMMON_DEFS[67],
+  },
+  InstructionDef {
+    instruction: Instruction::FlatAtomicDecU32,
     common: &base::INSTRUCTION_COMMON_DEFS[110],
   },
   InstructionDef {
-    instruction: Instruction::SMovrelsB32,
-    common: &ARCH_COMMON_DEFS[373],
-  },
-  InstructionDef {
-    instruction: Instruction::SMovrelsB64,
-    common: &ARCH_COMMON_DEFS[374],
-  },
-  InstructionDef {
-    instruction: Instruction::SMovrelsdN2B32,
-    common: &ARCH_COMMON_DEFS[375],
-  },
-  InstructionDef {
-    instruction: Instruction::SMulF16,
-    common: &ARCH_COMMON_DEFS[376],
-  },
-  InstructionDef {
-    instruction: Instruction::SMulF32,
-    common: &ARCH_COMMON_DEFS[377],
-  },
-  InstructionDef {
-    instruction: Instruction::SMulHiI32,
+    instruction: Instruction::FlatAtomicDecU64,
     common: &base::INSTRUCTION_COMMON_DEFS[111],
   },
   InstructionDef {
-    instruction: Instruction::SMulHiU32,
+    instruction: Instruction::FlatAtomicIncU32,
     common: &base::INSTRUCTION_COMMON_DEFS[112],
   },
   InstructionDef {
-    instruction: Instruction::SMulI32,
+    instruction: Instruction::FlatAtomicIncU64,
     common: &base::INSTRUCTION_COMMON_DEFS[113],
   },
   InstructionDef {
-    instruction: Instruction::SMulkI32,
+    instruction: Instruction::FlatAtomicMaxF32,
+    common: &ARCH_COMMON_DEFS[68],
+  },
+  InstructionDef {
+    instruction: Instruction::FlatAtomicMaxI32,
     common: &base::INSTRUCTION_COMMON_DEFS[114],
   },
   InstructionDef {
-    instruction: Instruction::SNandB32,
+    instruction: Instruction::FlatAtomicMaxI64,
     common: &base::INSTRUCTION_COMMON_DEFS[115],
   },
   InstructionDef {
-    instruction: Instruction::SNandB64,
+    instruction: Instruction::FlatAtomicMaxU32,
     common: &base::INSTRUCTION_COMMON_DEFS[116],
   },
   InstructionDef {
-    instruction: Instruction::SNandSaveexecB32,
+    instruction: Instruction::FlatAtomicMaxU64,
     common: &base::INSTRUCTION_COMMON_DEFS[117],
   },
   InstructionDef {
-    instruction: Instruction::SNandSaveexecB64,
+    instruction: Instruction::FlatAtomicMinF32,
+    common: &ARCH_COMMON_DEFS[69],
+  },
+  InstructionDef {
+    instruction: Instruction::FlatAtomicMinI32,
     common: &base::INSTRUCTION_COMMON_DEFS[118],
   },
   InstructionDef {
-    instruction: Instruction::SNop,
+    instruction: Instruction::FlatAtomicMinI64,
     common: &base::INSTRUCTION_COMMON_DEFS[119],
   },
   InstructionDef {
-    instruction: Instruction::SNorB32,
+    instruction: Instruction::FlatAtomicMinU32,
     common: &base::INSTRUCTION_COMMON_DEFS[120],
   },
   InstructionDef {
-    instruction: Instruction::SNorB64,
+    instruction: Instruction::FlatAtomicMinU64,
     common: &base::INSTRUCTION_COMMON_DEFS[121],
   },
   InstructionDef {
-    instruction: Instruction::SNorSaveexecB32,
+    instruction: Instruction::FlatAtomicOrB32,
     common: &base::INSTRUCTION_COMMON_DEFS[122],
   },
   InstructionDef {
-    instruction: Instruction::SNorSaveexecB64,
+    instruction: Instruction::FlatAtomicOrB64,
     common: &base::INSTRUCTION_COMMON_DEFS[123],
   },
   InstructionDef {
-    instruction: Instruction::SNotB32,
+    instruction: Instruction::FlatAtomicSubU32,
     common: &base::INSTRUCTION_COMMON_DEFS[124],
   },
   InstructionDef {
-    instruction: Instruction::SNotB64,
+    instruction: Instruction::FlatAtomicSubU64,
     common: &base::INSTRUCTION_COMMON_DEFS[125],
   },
   InstructionDef {
-    instruction: Instruction::SOrB32,
+    instruction: Instruction::FlatAtomicSwapB32,
     common: &base::INSTRUCTION_COMMON_DEFS[126],
   },
   InstructionDef {
-    instruction: Instruction::SOrB64,
+    instruction: Instruction::FlatAtomicSwapB64,
     common: &base::INSTRUCTION_COMMON_DEFS[127],
   },
   InstructionDef {
-    instruction: Instruction::SOrNot0SaveexecB32,
+    instruction: Instruction::FlatAtomicXorB32,
     common: &base::INSTRUCTION_COMMON_DEFS[128],
   },
   InstructionDef {
-    instruction: Instruction::SOrNot0SaveexecB64,
+    instruction: Instruction::FlatAtomicXorB64,
     common: &base::INSTRUCTION_COMMON_DEFS[129],
   },
   InstructionDef {
-    instruction: Instruction::SOrNot1B32,
+    instruction: Instruction::FlatLoadB128,
     common: &base::INSTRUCTION_COMMON_DEFS[130],
   },
   InstructionDef {
-    instruction: Instruction::SOrNot1B64,
+    instruction: Instruction::FlatLoadB32,
     common: &base::INSTRUCTION_COMMON_DEFS[131],
   },
   InstructionDef {
-    instruction: Instruction::SOrNot1SaveexecB32,
+    instruction: Instruction::FlatLoadB64,
     common: &base::INSTRUCTION_COMMON_DEFS[132],
   },
   InstructionDef {
-    instruction: Instruction::SOrNot1SaveexecB64,
+    instruction: Instruction::FlatLoadB96,
     common: &base::INSTRUCTION_COMMON_DEFS[133],
   },
   InstructionDef {
-    instruction: Instruction::SOrSaveexecB32,
+    instruction: Instruction::FlatLoadD16B16,
     common: &base::INSTRUCTION_COMMON_DEFS[134],
   },
   InstructionDef {
-    instruction: Instruction::SOrSaveexecB64,
+    instruction: Instruction::FlatLoadD16HiB16,
     common: &base::INSTRUCTION_COMMON_DEFS[135],
   },
   InstructionDef {
-    instruction: Instruction::SPackHhB32B16,
+    instruction: Instruction::FlatLoadD16HiI8,
     common: &base::INSTRUCTION_COMMON_DEFS[136],
   },
   InstructionDef {
-    instruction: Instruction::SPackHlB32B16,
+    instruction: Instruction::FlatLoadD16HiU8,
     common: &base::INSTRUCTION_COMMON_DEFS[137],
   },
   InstructionDef {
-    instruction: Instruction::SPackLhB32B16,
+    instruction: Instruction::FlatLoadD16I8,
     common: &base::INSTRUCTION_COMMON_DEFS[138],
   },
   InstructionDef {
-    instruction: Instruction::SPackLlB32B16,
+    instruction: Instruction::FlatLoadD16U8,
     common: &base::INSTRUCTION_COMMON_DEFS[139],
   },
   InstructionDef {
-    instruction: Instruction::SQuadmaskB32,
+    instruction: Instruction::FlatLoadI16,
     common: &base::INSTRUCTION_COMMON_DEFS[140],
   },
   InstructionDef {
-    instruction: Instruction::SQuadmaskB64,
+    instruction: Instruction::FlatLoadI8,
     common: &base::INSTRUCTION_COMMON_DEFS[141],
   },
   InstructionDef {
-    instruction: Instruction::SRfeB64,
+    instruction: Instruction::FlatLoadU16,
     common: &base::INSTRUCTION_COMMON_DEFS[142],
   },
   InstructionDef {
-    instruction: Instruction::SRndneF16,
-    common: &ARCH_COMMON_DEFS[378],
-  },
-  InstructionDef {
-    instruction: Instruction::SRndneF32,
-    common: &ARCH_COMMON_DEFS[379],
-  },
-  InstructionDef {
-    instruction: Instruction::SRoundMode,
+    instruction: Instruction::FlatLoadU8,
     common: &base::INSTRUCTION_COMMON_DEFS[143],
   },
   InstructionDef {
-    instruction: Instruction::SSendmsg,
+    instruction: Instruction::FlatStoreB128,
     common: &base::INSTRUCTION_COMMON_DEFS[144],
   },
   InstructionDef {
-    instruction: Instruction::SSendmsgRtnB32,
+    instruction: Instruction::FlatStoreB16,
     common: &base::INSTRUCTION_COMMON_DEFS[145],
   },
   InstructionDef {
-    instruction: Instruction::SSendmsgRtnB64,
+    instruction: Instruction::FlatStoreB32,
     common: &base::INSTRUCTION_COMMON_DEFS[146],
   },
   InstructionDef {
-    instruction: Instruction::SSendmsghalt,
+    instruction: Instruction::FlatStoreB64,
     common: &base::INSTRUCTION_COMMON_DEFS[147],
   },
   InstructionDef {
-    instruction: Instruction::SSetInstPrefetchDistance,
-    common: &ARCH_COMMON_DEFS[380],
-  },
-  InstructionDef {
-    instruction: Instruction::SSethalt,
+    instruction: Instruction::FlatStoreB8,
     common: &base::INSTRUCTION_COMMON_DEFS[148],
   },
   InstructionDef {
-    instruction: Instruction::SSetkill,
+    instruction: Instruction::FlatStoreB96,
     common: &base::INSTRUCTION_COMMON_DEFS[149],
   },
   InstructionDef {
-    instruction: Instruction::SSetpcB64,
+    instruction: Instruction::FlatStoreD16HiB16,
     common: &base::INSTRUCTION_COMMON_DEFS[150],
   },
   InstructionDef {
-    instruction: Instruction::SSetprio,
+    instruction: Instruction::FlatStoreD16HiB8,
     common: &base::INSTRUCTION_COMMON_DEFS[151],
   },
   InstructionDef {
-    instruction: Instruction::SSetregB32,
+    instruction: Instruction::GlobalAtomicAddF32,
     common: &base::INSTRUCTION_COMMON_DEFS[152],
   },
   InstructionDef {
-    instruction: Instruction::SSetregImm32B32,
+    instruction: Instruction::GlobalAtomicAddU32,
     common: &base::INSTRUCTION_COMMON_DEFS[153],
   },
   InstructionDef {
-    instruction: Instruction::SSextI32I16,
+    instruction: Instruction::GlobalAtomicAddU64,
     common: &base::INSTRUCTION_COMMON_DEFS[154],
   },
   InstructionDef {
-    instruction: Instruction::SSextI32I8,
+    instruction: Instruction::GlobalAtomicAndB32,
     common: &base::INSTRUCTION_COMMON_DEFS[155],
   },
   InstructionDef {
-    instruction: Instruction::SSleep,
-    common: &ARCH_COMMON_DEFS[381],
-  },
-  InstructionDef {
-    instruction: Instruction::SSubF16,
-    common: &ARCH_COMMON_DEFS[382],
-  },
-  InstructionDef {
-    instruction: Instruction::SSubF32,
-    common: &ARCH_COMMON_DEFS[383],
-  },
-  InstructionDef {
-    instruction: Instruction::SSubI32,
-    common: &ARCH_COMMON_DEFS[384],
-  },
-  InstructionDef {
-    instruction: Instruction::SSubU32,
-    common: &ARCH_COMMON_DEFS[385],
-  },
-  InstructionDef {
-    instruction: Instruction::SSubbU32,
-    common: &ARCH_COMMON_DEFS[386],
-  },
-  InstructionDef {
-    instruction: Instruction::SSwappcB64,
+    instruction: Instruction::GlobalAtomicAndB64,
     common: &base::INSTRUCTION_COMMON_DEFS[156],
   },
   InstructionDef {
-    instruction: Instruction::STrap,
+    instruction: Instruction::GlobalAtomicCmpswapB32,
+    common: &ARCH_COMMON_DEFS[70],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalAtomicCmpswapB64,
+    common: &ARCH_COMMON_DEFS[71],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalAtomicCmpswapF32,
+    common: &ARCH_COMMON_DEFS[72],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalAtomicCsubU32,
+    common: &ARCH_COMMON_DEFS[73],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalAtomicDecU32,
     common: &base::INSTRUCTION_COMMON_DEFS[157],
   },
   InstructionDef {
-    instruction: Instruction::STruncF16,
-    common: &ARCH_COMMON_DEFS[387],
-  },
-  InstructionDef {
-    instruction: Instruction::STruncF32,
-    common: &ARCH_COMMON_DEFS[388],
-  },
-  InstructionDef {
-    instruction: Instruction::STtracedata,
+    instruction: Instruction::GlobalAtomicDecU64,
     common: &base::INSTRUCTION_COMMON_DEFS[158],
   },
   InstructionDef {
-    instruction: Instruction::STtracedataImm,
+    instruction: Instruction::GlobalAtomicIncU32,
     common: &base::INSTRUCTION_COMMON_DEFS[159],
   },
   InstructionDef {
-    instruction: Instruction::SVersion,
+    instruction: Instruction::GlobalAtomicIncU64,
     common: &base::INSTRUCTION_COMMON_DEFS[160],
   },
   InstructionDef {
-    instruction: Instruction::SWaitEvent,
-    common: &ARCH_COMMON_DEFS[389],
+    instruction: Instruction::GlobalAtomicMaxF32,
+    common: &ARCH_COMMON_DEFS[74],
   },
   InstructionDef {
-    instruction: Instruction::SWaitIdle,
+    instruction: Instruction::GlobalAtomicMaxI32,
     common: &base::INSTRUCTION_COMMON_DEFS[161],
   },
   InstructionDef {
-    instruction: Instruction::SWaitcnt,
-    common: &ARCH_COMMON_DEFS[390],
-  },
-  InstructionDef {
-    instruction: Instruction::SWaitcntDepctr,
-    common: &ARCH_COMMON_DEFS[391],
-  },
-  InstructionDef {
-    instruction: Instruction::SWaitcntExpcnt,
-    common: &ARCH_COMMON_DEFS[392],
-  },
-  InstructionDef {
-    instruction: Instruction::SWaitcntLgkmcnt,
-    common: &ARCH_COMMON_DEFS[393],
-  },
-  InstructionDef {
-    instruction: Instruction::SWaitcntVmcnt,
-    common: &ARCH_COMMON_DEFS[394],
-  },
-  InstructionDef {
-    instruction: Instruction::SWaitcntVscnt,
-    common: &ARCH_COMMON_DEFS[395],
-  },
-  InstructionDef {
-    instruction: Instruction::SWakeup,
+    instruction: Instruction::GlobalAtomicMaxI64,
     common: &base::INSTRUCTION_COMMON_DEFS[162],
   },
   InstructionDef {
-    instruction: Instruction::SWqmB32,
+    instruction: Instruction::GlobalAtomicMaxU32,
     common: &base::INSTRUCTION_COMMON_DEFS[163],
   },
   InstructionDef {
-    instruction: Instruction::SWqmB64,
+    instruction: Instruction::GlobalAtomicMaxU64,
     common: &base::INSTRUCTION_COMMON_DEFS[164],
   },
   InstructionDef {
-    instruction: Instruction::SXnorB32,
+    instruction: Instruction::GlobalAtomicMinF32,
+    common: &ARCH_COMMON_DEFS[75],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalAtomicMinI32,
     common: &base::INSTRUCTION_COMMON_DEFS[165],
   },
   InstructionDef {
-    instruction: Instruction::SXnorB64,
+    instruction: Instruction::GlobalAtomicMinI64,
     common: &base::INSTRUCTION_COMMON_DEFS[166],
   },
   InstructionDef {
-    instruction: Instruction::SXnorSaveexecB32,
+    instruction: Instruction::GlobalAtomicMinU32,
     common: &base::INSTRUCTION_COMMON_DEFS[167],
   },
   InstructionDef {
-    instruction: Instruction::SXnorSaveexecB64,
+    instruction: Instruction::GlobalAtomicMinU64,
     common: &base::INSTRUCTION_COMMON_DEFS[168],
   },
   InstructionDef {
-    instruction: Instruction::SXorB32,
+    instruction: Instruction::GlobalAtomicOrB32,
     common: &base::INSTRUCTION_COMMON_DEFS[169],
   },
   InstructionDef {
-    instruction: Instruction::SXorB64,
+    instruction: Instruction::GlobalAtomicOrB64,
     common: &base::INSTRUCTION_COMMON_DEFS[170],
   },
   InstructionDef {
-    instruction: Instruction::SXorSaveexecB32,
+    instruction: Instruction::GlobalAtomicSubU32,
     common: &base::INSTRUCTION_COMMON_DEFS[171],
   },
   InstructionDef {
-    instruction: Instruction::SXorSaveexecB64,
+    instruction: Instruction::GlobalAtomicSubU64,
     common: &base::INSTRUCTION_COMMON_DEFS[172],
   },
   InstructionDef {
-    instruction: Instruction::ScratchLoadB128,
-    common: &ARCH_COMMON_DEFS[396],
-  },
-  InstructionDef {
-    instruction: Instruction::ScratchLoadB32,
-    common: &ARCH_COMMON_DEFS[397],
-  },
-  InstructionDef {
-    instruction: Instruction::ScratchLoadB64,
-    common: &ARCH_COMMON_DEFS[398],
-  },
-  InstructionDef {
-    instruction: Instruction::ScratchLoadB96,
-    common: &ARCH_COMMON_DEFS[399],
-  },
-  InstructionDef {
-    instruction: Instruction::ScratchLoadD16B16,
-    common: &ARCH_COMMON_DEFS[400],
-  },
-  InstructionDef {
-    instruction: Instruction::ScratchLoadD16HiB16,
-    common: &ARCH_COMMON_DEFS[401],
-  },
-  InstructionDef {
-    instruction: Instruction::ScratchLoadD16HiI8,
-    common: &ARCH_COMMON_DEFS[402],
-  },
-  InstructionDef {
-    instruction: Instruction::ScratchLoadD16HiU8,
-    common: &ARCH_COMMON_DEFS[403],
-  },
-  InstructionDef {
-    instruction: Instruction::ScratchLoadD16I8,
-    common: &ARCH_COMMON_DEFS[404],
-  },
-  InstructionDef {
-    instruction: Instruction::ScratchLoadD16U8,
-    common: &ARCH_COMMON_DEFS[405],
-  },
-  InstructionDef {
-    instruction: Instruction::ScratchLoadI16,
-    common: &ARCH_COMMON_DEFS[406],
-  },
-  InstructionDef {
-    instruction: Instruction::ScratchLoadI8,
-    common: &ARCH_COMMON_DEFS[407],
-  },
-  InstructionDef {
-    instruction: Instruction::ScratchLoadLdsB32,
-    common: &ARCH_COMMON_DEFS[408],
-  },
-  InstructionDef {
-    instruction: Instruction::ScratchLoadLdsI16,
-    common: &ARCH_COMMON_DEFS[409],
-  },
-  InstructionDef {
-    instruction: Instruction::ScratchLoadLdsI8,
-    common: &ARCH_COMMON_DEFS[410],
-  },
-  InstructionDef {
-    instruction: Instruction::ScratchLoadLdsU16,
-    common: &ARCH_COMMON_DEFS[411],
-  },
-  InstructionDef {
-    instruction: Instruction::ScratchLoadLdsU8,
-    common: &ARCH_COMMON_DEFS[412],
-  },
-  InstructionDef {
-    instruction: Instruction::ScratchLoadU16,
-    common: &ARCH_COMMON_DEFS[413],
-  },
-  InstructionDef {
-    instruction: Instruction::ScratchLoadU8,
-    common: &ARCH_COMMON_DEFS[414],
-  },
-  InstructionDef {
-    instruction: Instruction::ScratchStoreB128,
-    common: &ARCH_COMMON_DEFS[415],
-  },
-  InstructionDef {
-    instruction: Instruction::ScratchStoreB16,
-    common: &ARCH_COMMON_DEFS[416],
-  },
-  InstructionDef {
-    instruction: Instruction::ScratchStoreB32,
-    common: &ARCH_COMMON_DEFS[417],
-  },
-  InstructionDef {
-    instruction: Instruction::ScratchStoreB64,
-    common: &ARCH_COMMON_DEFS[418],
-  },
-  InstructionDef {
-    instruction: Instruction::ScratchStoreB8,
-    common: &ARCH_COMMON_DEFS[419],
-  },
-  InstructionDef {
-    instruction: Instruction::ScratchStoreB96,
-    common: &ARCH_COMMON_DEFS[420],
-  },
-  InstructionDef {
-    instruction: Instruction::ScratchStoreD16HiB16,
-    common: &ARCH_COMMON_DEFS[421],
-  },
-  InstructionDef {
-    instruction: Instruction::ScratchStoreD16HiB8,
-    common: &ARCH_COMMON_DEFS[422],
-  },
-  InstructionDef {
-    instruction: Instruction::TbufferLoadD16FormatX,
-    common: &ARCH_COMMON_DEFS[423],
-  },
-  InstructionDef {
-    instruction: Instruction::TbufferLoadD16FormatXy,
-    common: &ARCH_COMMON_DEFS[424],
-  },
-  InstructionDef {
-    instruction: Instruction::TbufferLoadD16FormatXyz,
-    common: &ARCH_COMMON_DEFS[425],
-  },
-  InstructionDef {
-    instruction: Instruction::TbufferLoadD16FormatXyzw,
-    common: &ARCH_COMMON_DEFS[426],
-  },
-  InstructionDef {
-    instruction: Instruction::TbufferLoadFormatX,
-    common: &ARCH_COMMON_DEFS[427],
-  },
-  InstructionDef {
-    instruction: Instruction::TbufferLoadFormatXy,
-    common: &ARCH_COMMON_DEFS[428],
-  },
-  InstructionDef {
-    instruction: Instruction::TbufferLoadFormatXyz,
-    common: &ARCH_COMMON_DEFS[429],
-  },
-  InstructionDef {
-    instruction: Instruction::TbufferLoadFormatXyzw,
-    common: &ARCH_COMMON_DEFS[430],
-  },
-  InstructionDef {
-    instruction: Instruction::TbufferStoreD16FormatX,
-    common: &ARCH_COMMON_DEFS[431],
-  },
-  InstructionDef {
-    instruction: Instruction::TbufferStoreD16FormatXy,
-    common: &ARCH_COMMON_DEFS[432],
-  },
-  InstructionDef {
-    instruction: Instruction::TbufferStoreD16FormatXyz,
-    common: &ARCH_COMMON_DEFS[433],
-  },
-  InstructionDef {
-    instruction: Instruction::TbufferStoreD16FormatXyzw,
-    common: &ARCH_COMMON_DEFS[434],
-  },
-  InstructionDef {
-    instruction: Instruction::TbufferStoreFormatX,
-    common: &ARCH_COMMON_DEFS[435],
-  },
-  InstructionDef {
-    instruction: Instruction::TbufferStoreFormatXy,
-    common: &ARCH_COMMON_DEFS[436],
-  },
-  InstructionDef {
-    instruction: Instruction::TbufferStoreFormatXyz,
-    common: &ARCH_COMMON_DEFS[437],
-  },
-  InstructionDef {
-    instruction: Instruction::TbufferStoreFormatXyzw,
-    common: &ARCH_COMMON_DEFS[438],
-  },
-  InstructionDef {
-    instruction: Instruction::VAdd3U32,
+    instruction: Instruction::GlobalAtomicSwapB32,
     common: &base::INSTRUCTION_COMMON_DEFS[173],
   },
   InstructionDef {
-    instruction: Instruction::VAddCoCiU32,
+    instruction: Instruction::GlobalAtomicSwapB64,
     common: &base::INSTRUCTION_COMMON_DEFS[174],
   },
   InstructionDef {
-    instruction: Instruction::VAddCoU32,
+    instruction: Instruction::GlobalAtomicXorB32,
     common: &base::INSTRUCTION_COMMON_DEFS[175],
   },
   InstructionDef {
-    instruction: Instruction::VAddF16,
+    instruction: Instruction::GlobalAtomicXorB64,
     common: &base::INSTRUCTION_COMMON_DEFS[176],
   },
   InstructionDef {
-    instruction: Instruction::VAddF32,
+    instruction: Instruction::GlobalLoadAddtidB32,
+    common: &ARCH_COMMON_DEFS[76],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalLoadB128,
+    common: &ARCH_COMMON_DEFS[77],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalLoadB32,
+    common: &ARCH_COMMON_DEFS[78],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalLoadB64,
+    common: &ARCH_COMMON_DEFS[79],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalLoadB96,
+    common: &ARCH_COMMON_DEFS[80],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalLoadD16B16,
+    common: &ARCH_COMMON_DEFS[81],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalLoadD16HiB16,
+    common: &ARCH_COMMON_DEFS[82],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalLoadD16HiI8,
+    common: &ARCH_COMMON_DEFS[83],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalLoadD16HiU8,
+    common: &ARCH_COMMON_DEFS[84],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalLoadD16I8,
+    common: &ARCH_COMMON_DEFS[85],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalLoadD16U8,
+    common: &ARCH_COMMON_DEFS[86],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalLoadI16,
+    common: &ARCH_COMMON_DEFS[87],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalLoadI8,
+    common: &ARCH_COMMON_DEFS[88],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalLoadLdsAddtidB32,
+    common: &ARCH_COMMON_DEFS[89],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalLoadLdsB32,
+    common: &ARCH_COMMON_DEFS[90],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalLoadLdsI16,
+    common: &ARCH_COMMON_DEFS[91],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalLoadLdsI8,
+    common: &ARCH_COMMON_DEFS[92],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalLoadLdsU16,
+    common: &ARCH_COMMON_DEFS[93],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalLoadLdsU8,
+    common: &ARCH_COMMON_DEFS[94],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalLoadU16,
+    common: &ARCH_COMMON_DEFS[95],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalLoadU8,
+    common: &ARCH_COMMON_DEFS[96],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalStoreAddtidB32,
+    common: &ARCH_COMMON_DEFS[97],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalStoreB128,
+    common: &ARCH_COMMON_DEFS[98],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalStoreB16,
+    common: &ARCH_COMMON_DEFS[99],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalStoreB32,
+    common: &ARCH_COMMON_DEFS[100],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalStoreB64,
+    common: &ARCH_COMMON_DEFS[101],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalStoreB8,
+    common: &ARCH_COMMON_DEFS[102],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalStoreB96,
+    common: &ARCH_COMMON_DEFS[103],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalStoreD16HiB16,
+    common: &ARCH_COMMON_DEFS[104],
+  },
+  InstructionDef {
+    instruction: Instruction::GlobalStoreD16HiB8,
+    common: &ARCH_COMMON_DEFS[105],
+  },
+  InstructionDef {
+    instruction: Instruction::ImageAtomicAdd,
+    common: &ARCH_COMMON_DEFS[106],
+  },
+  InstructionDef {
+    instruction: Instruction::ImageAtomicAnd,
     common: &base::INSTRUCTION_COMMON_DEFS[177],
   },
   InstructionDef {
-    instruction: Instruction::VAddLshlU32,
+    instruction: Instruction::ImageAtomicCmpswap,
+    common: &ARCH_COMMON_DEFS[107],
+  },
+  InstructionDef {
+    instruction: Instruction::ImageAtomicDec,
+    common: &ARCH_COMMON_DEFS[108],
+  },
+  InstructionDef {
+    instruction: Instruction::ImageAtomicInc,
+    common: &ARCH_COMMON_DEFS[109],
+  },
+  InstructionDef {
+    instruction: Instruction::ImageAtomicOr,
     common: &base::INSTRUCTION_COMMON_DEFS[178],
   },
   InstructionDef {
-    instruction: Instruction::VAddNcI16,
+    instruction: Instruction::ImageAtomicSmax,
+    common: &ARCH_COMMON_DEFS[110],
+  },
+  InstructionDef {
+    instruction: Instruction::ImageAtomicSmin,
+    common: &ARCH_COMMON_DEFS[111],
+  },
+  InstructionDef {
+    instruction: Instruction::ImageAtomicSub,
+    common: &ARCH_COMMON_DEFS[112],
+  },
+  InstructionDef {
+    instruction: Instruction::ImageAtomicSwap,
     common: &base::INSTRUCTION_COMMON_DEFS[179],
   },
   InstructionDef {
-    instruction: Instruction::VAddNcI32,
+    instruction: Instruction::ImageAtomicUmax,
+    common: &ARCH_COMMON_DEFS[113],
+  },
+  InstructionDef {
+    instruction: Instruction::ImageAtomicUmin,
+    common: &ARCH_COMMON_DEFS[114],
+  },
+  InstructionDef {
+    instruction: Instruction::ImageAtomicXor,
     common: &base::INSTRUCTION_COMMON_DEFS[180],
   },
   InstructionDef {
-    instruction: Instruction::VAddNcU16,
+    instruction: Instruction::LdsDirectLoad,
+    common: &ARCH_COMMON_DEFS[115],
+  },
+  InstructionDef {
+    instruction: Instruction::LdsParamLoad,
+    common: &ARCH_COMMON_DEFS[116],
+  },
+  InstructionDef {
+    instruction: Instruction::SAbsI32,
     common: &base::INSTRUCTION_COMMON_DEFS[181],
   },
   InstructionDef {
-    instruction: Instruction::VAddNcU32,
+    instruction: Instruction::SAbsdiffI32,
     common: &base::INSTRUCTION_COMMON_DEFS[182],
   },
   InstructionDef {
-    instruction: Instruction::VAlignbitB32,
+    instruction: Instruction::SAddF16,
+    common: &ARCH_COMMON_DEFS[117],
+  },
+  InstructionDef {
+    instruction: Instruction::SAddF32,
+    common: &ARCH_COMMON_DEFS[118],
+  },
+  InstructionDef {
+    instruction: Instruction::SAddI32,
+    common: &ARCH_COMMON_DEFS[119],
+  },
+  InstructionDef {
+    instruction: Instruction::SAddU32,
+    common: &ARCH_COMMON_DEFS[120],
+  },
+  InstructionDef {
+    instruction: Instruction::SAddcU32,
+    common: &ARCH_COMMON_DEFS[121],
+  },
+  InstructionDef {
+    instruction: Instruction::SAddkI32,
+    common: &ARCH_COMMON_DEFS[122],
+  },
+  InstructionDef {
+    instruction: Instruction::SAndB32,
     common: &base::INSTRUCTION_COMMON_DEFS[183],
   },
   InstructionDef {
-    instruction: Instruction::VAlignbyteB32,
+    instruction: Instruction::SAndB64,
     common: &base::INSTRUCTION_COMMON_DEFS[184],
   },
   InstructionDef {
-    instruction: Instruction::VAndB16,
+    instruction: Instruction::SAndNot0SaveexecB32,
     common: &base::INSTRUCTION_COMMON_DEFS[185],
   },
   InstructionDef {
-    instruction: Instruction::VAndB32,
+    instruction: Instruction::SAndNot0SaveexecB64,
     common: &base::INSTRUCTION_COMMON_DEFS[186],
   },
   InstructionDef {
-    instruction: Instruction::VAndOrB32,
+    instruction: Instruction::SAndNot0WrexecB32,
     common: &base::INSTRUCTION_COMMON_DEFS[187],
   },
   InstructionDef {
-    instruction: Instruction::VAshrrevI16,
+    instruction: Instruction::SAndNot0WrexecB64,
     common: &base::INSTRUCTION_COMMON_DEFS[188],
   },
   InstructionDef {
-    instruction: Instruction::VAshrrevI32,
+    instruction: Instruction::SAndNot1B32,
     common: &base::INSTRUCTION_COMMON_DEFS[189],
   },
   InstructionDef {
-    instruction: Instruction::VAshrrevI64,
+    instruction: Instruction::SAndNot1B64,
     common: &base::INSTRUCTION_COMMON_DEFS[190],
   },
   InstructionDef {
-    instruction: Instruction::VBcntU32B32,
+    instruction: Instruction::SAndNot1SaveexecB32,
     common: &base::INSTRUCTION_COMMON_DEFS[191],
   },
   InstructionDef {
-    instruction: Instruction::VBfeI32,
+    instruction: Instruction::SAndNot1SaveexecB64,
     common: &base::INSTRUCTION_COMMON_DEFS[192],
   },
   InstructionDef {
-    instruction: Instruction::VBfeU32,
+    instruction: Instruction::SAndNot1WrexecB32,
     common: &base::INSTRUCTION_COMMON_DEFS[193],
   },
   InstructionDef {
-    instruction: Instruction::VBfiB32,
+    instruction: Instruction::SAndNot1WrexecB64,
     common: &base::INSTRUCTION_COMMON_DEFS[194],
   },
   InstructionDef {
-    instruction: Instruction::VBfmB32,
+    instruction: Instruction::SAndSaveexecB32,
     common: &base::INSTRUCTION_COMMON_DEFS[195],
   },
   InstructionDef {
-    instruction: Instruction::VBfrevB32,
+    instruction: Instruction::SAndSaveexecB64,
     common: &base::INSTRUCTION_COMMON_DEFS[196],
   },
   InstructionDef {
-    instruction: Instruction::VCeilF16,
+    instruction: Instruction::SAshrI32,
     common: &base::INSTRUCTION_COMMON_DEFS[197],
   },
   InstructionDef {
-    instruction: Instruction::VCeilF32,
+    instruction: Instruction::SAshrI64,
     common: &base::INSTRUCTION_COMMON_DEFS[198],
   },
   InstructionDef {
-    instruction: Instruction::VClsI32,
+    instruction: Instruction::SAtcProbe,
+    common: &ARCH_COMMON_DEFS[123],
+  },
+  InstructionDef {
+    instruction: Instruction::SAtcProbeBuffer,
+    common: &ARCH_COMMON_DEFS[124],
+  },
+  InstructionDef {
+    instruction: Instruction::SBarrier,
+    common: &ARCH_COMMON_DEFS[125],
+  },
+  InstructionDef {
+    instruction: Instruction::SBcnt0I32B32,
     common: &base::INSTRUCTION_COMMON_DEFS[199],
   },
   InstructionDef {
-    instruction: Instruction::VClzI32U32,
+    instruction: Instruction::SBcnt0I32B64,
     common: &base::INSTRUCTION_COMMON_DEFS[200],
   },
   InstructionDef {
-    instruction: Instruction::VCmpClassF16,
+    instruction: Instruction::SBcnt1I32B32,
     common: &base::INSTRUCTION_COMMON_DEFS[201],
   },
   InstructionDef {
-    instruction: Instruction::VCmpClassF32,
+    instruction: Instruction::SBcnt1I32B64,
     common: &base::INSTRUCTION_COMMON_DEFS[202],
   },
   InstructionDef {
-    instruction: Instruction::VCmpEqF16,
+    instruction: Instruction::SBfeI32,
     common: &base::INSTRUCTION_COMMON_DEFS[203],
   },
   InstructionDef {
-    instruction: Instruction::VCmpEqF32,
+    instruction: Instruction::SBfeI64,
     common: &base::INSTRUCTION_COMMON_DEFS[204],
   },
   InstructionDef {
-    instruction: Instruction::VCmpEqI16,
+    instruction: Instruction::SBfeU32,
     common: &base::INSTRUCTION_COMMON_DEFS[205],
   },
   InstructionDef {
-    instruction: Instruction::VCmpEqI32,
+    instruction: Instruction::SBfeU64,
     common: &base::INSTRUCTION_COMMON_DEFS[206],
   },
   InstructionDef {
-    instruction: Instruction::VCmpEqI64,
+    instruction: Instruction::SBfmB32,
     common: &base::INSTRUCTION_COMMON_DEFS[207],
   },
   InstructionDef {
-    instruction: Instruction::VCmpEqU16,
+    instruction: Instruction::SBfmB64,
     common: &base::INSTRUCTION_COMMON_DEFS[208],
   },
   InstructionDef {
-    instruction: Instruction::VCmpEqU32,
+    instruction: Instruction::SBitcmp0B32,
     common: &base::INSTRUCTION_COMMON_DEFS[209],
   },
   InstructionDef {
-    instruction: Instruction::VCmpEqU64,
+    instruction: Instruction::SBitcmp0B64,
     common: &base::INSTRUCTION_COMMON_DEFS[210],
   },
   InstructionDef {
-    instruction: Instruction::VCmpFF16,
-    common: &ARCH_COMMON_DEFS[439],
-  },
-  InstructionDef {
-    instruction: Instruction::VCmpFF32,
-    common: &ARCH_COMMON_DEFS[440],
-  },
-  InstructionDef {
-    instruction: Instruction::VCmpFI32,
-    common: &ARCH_COMMON_DEFS[441],
-  },
-  InstructionDef {
-    instruction: Instruction::VCmpFI64,
-    common: &ARCH_COMMON_DEFS[442],
-  },
-  InstructionDef {
-    instruction: Instruction::VCmpFU32,
-    common: &ARCH_COMMON_DEFS[443],
-  },
-  InstructionDef {
-    instruction: Instruction::VCmpFU64,
-    common: &ARCH_COMMON_DEFS[444],
-  },
-  InstructionDef {
-    instruction: Instruction::VCmpGeF16,
+    instruction: Instruction::SBitcmp1B32,
     common: &base::INSTRUCTION_COMMON_DEFS[211],
   },
   InstructionDef {
-    instruction: Instruction::VCmpGeF32,
+    instruction: Instruction::SBitcmp1B64,
     common: &base::INSTRUCTION_COMMON_DEFS[212],
   },
   InstructionDef {
-    instruction: Instruction::VCmpGeI16,
+    instruction: Instruction::SBitreplicateB64B32,
     common: &base::INSTRUCTION_COMMON_DEFS[213],
   },
   InstructionDef {
-    instruction: Instruction::VCmpGeI32,
+    instruction: Instruction::SBitset0B32,
     common: &base::INSTRUCTION_COMMON_DEFS[214],
   },
   InstructionDef {
-    instruction: Instruction::VCmpGeI64,
+    instruction: Instruction::SBitset0B64,
     common: &base::INSTRUCTION_COMMON_DEFS[215],
   },
   InstructionDef {
-    instruction: Instruction::VCmpGeU16,
+    instruction: Instruction::SBitset1B32,
     common: &base::INSTRUCTION_COMMON_DEFS[216],
   },
   InstructionDef {
-    instruction: Instruction::VCmpGeU32,
+    instruction: Instruction::SBitset1B64,
     common: &base::INSTRUCTION_COMMON_DEFS[217],
   },
   InstructionDef {
-    instruction: Instruction::VCmpGeU64,
+    instruction: Instruction::SBranch,
     common: &base::INSTRUCTION_COMMON_DEFS[218],
   },
   InstructionDef {
-    instruction: Instruction::VCmpGtF16,
+    instruction: Instruction::SBrevB32,
     common: &base::INSTRUCTION_COMMON_DEFS[219],
   },
   InstructionDef {
-    instruction: Instruction::VCmpGtF32,
+    instruction: Instruction::SBrevB64,
     common: &base::INSTRUCTION_COMMON_DEFS[220],
   },
   InstructionDef {
-    instruction: Instruction::VCmpGtI16,
+    instruction: Instruction::SBufferLoadB128,
     common: &base::INSTRUCTION_COMMON_DEFS[221],
   },
   InstructionDef {
-    instruction: Instruction::VCmpGtI32,
+    instruction: Instruction::SBufferLoadB256,
     common: &base::INSTRUCTION_COMMON_DEFS[222],
   },
   InstructionDef {
-    instruction: Instruction::VCmpGtI64,
+    instruction: Instruction::SBufferLoadB32,
     common: &base::INSTRUCTION_COMMON_DEFS[223],
   },
   InstructionDef {
-    instruction: Instruction::VCmpGtU16,
+    instruction: Instruction::SBufferLoadB512,
     common: &base::INSTRUCTION_COMMON_DEFS[224],
   },
   InstructionDef {
-    instruction: Instruction::VCmpGtU32,
+    instruction: Instruction::SBufferLoadB64,
     common: &base::INSTRUCTION_COMMON_DEFS[225],
   },
   InstructionDef {
-    instruction: Instruction::VCmpGtU64,
+    instruction: Instruction::SCallB64,
     common: &base::INSTRUCTION_COMMON_DEFS[226],
   },
   InstructionDef {
-    instruction: Instruction::VCmpLeF16,
+    instruction: Instruction::SCbranchCdbgsys,
+    common: &ARCH_COMMON_DEFS[126],
+  },
+  InstructionDef {
+    instruction: Instruction::SCbranchCdbgsysAndUser,
+    common: &ARCH_COMMON_DEFS[127],
+  },
+  InstructionDef {
+    instruction: Instruction::SCbranchCdbgsysOrUser,
+    common: &ARCH_COMMON_DEFS[128],
+  },
+  InstructionDef {
+    instruction: Instruction::SCbranchCdbguser,
+    common: &ARCH_COMMON_DEFS[129],
+  },
+  InstructionDef {
+    instruction: Instruction::SCbranchExecnz,
     common: &base::INSTRUCTION_COMMON_DEFS[227],
   },
   InstructionDef {
-    instruction: Instruction::VCmpLeF32,
+    instruction: Instruction::SCbranchExecz,
     common: &base::INSTRUCTION_COMMON_DEFS[228],
   },
   InstructionDef {
-    instruction: Instruction::VCmpLeI16,
+    instruction: Instruction::SCbranchScc0,
     common: &base::INSTRUCTION_COMMON_DEFS[229],
   },
   InstructionDef {
-    instruction: Instruction::VCmpLeI32,
+    instruction: Instruction::SCbranchScc1,
     common: &base::INSTRUCTION_COMMON_DEFS[230],
   },
   InstructionDef {
-    instruction: Instruction::VCmpLeI64,
+    instruction: Instruction::SCbranchVccnz,
     common: &base::INSTRUCTION_COMMON_DEFS[231],
   },
   InstructionDef {
-    instruction: Instruction::VCmpLeU16,
+    instruction: Instruction::SCbranchVccz,
     common: &base::INSTRUCTION_COMMON_DEFS[232],
   },
   InstructionDef {
-    instruction: Instruction::VCmpLeU32,
+    instruction: Instruction::SCeilF16,
+    common: &ARCH_COMMON_DEFS[130],
+  },
+  InstructionDef {
+    instruction: Instruction::SCeilF32,
+    common: &ARCH_COMMON_DEFS[131],
+  },
+  InstructionDef {
+    instruction: Instruction::SClause,
     common: &base::INSTRUCTION_COMMON_DEFS[233],
   },
   InstructionDef {
-    instruction: Instruction::VCmpLeU64,
+    instruction: Instruction::SClsI32,
     common: &base::INSTRUCTION_COMMON_DEFS[234],
   },
   InstructionDef {
-    instruction: Instruction::VCmpLgF16,
+    instruction: Instruction::SClsI32I64,
     common: &base::INSTRUCTION_COMMON_DEFS[235],
   },
   InstructionDef {
-    instruction: Instruction::VCmpLgF32,
+    instruction: Instruction::SClzI32U32,
     common: &base::INSTRUCTION_COMMON_DEFS[236],
   },
   InstructionDef {
-    instruction: Instruction::VCmpLtF16,
+    instruction: Instruction::SClzI32U64,
     common: &base::INSTRUCTION_COMMON_DEFS[237],
   },
   InstructionDef {
-    instruction: Instruction::VCmpLtF32,
+    instruction: Instruction::SCmovB32,
     common: &base::INSTRUCTION_COMMON_DEFS[238],
   },
   InstructionDef {
-    instruction: Instruction::VCmpLtI16,
+    instruction: Instruction::SCmovB64,
     common: &base::INSTRUCTION_COMMON_DEFS[239],
   },
   InstructionDef {
-    instruction: Instruction::VCmpLtI32,
+    instruction: Instruction::SCmovkI32,
     common: &base::INSTRUCTION_COMMON_DEFS[240],
   },
   InstructionDef {
-    instruction: Instruction::VCmpLtI64,
+    instruction: Instruction::SCmpEqF16,
+    common: &ARCH_COMMON_DEFS[132],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpEqF32,
+    common: &ARCH_COMMON_DEFS[133],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpEqI32,
     common: &base::INSTRUCTION_COMMON_DEFS[241],
   },
   InstructionDef {
-    instruction: Instruction::VCmpLtU16,
+    instruction: Instruction::SCmpEqU32,
     common: &base::INSTRUCTION_COMMON_DEFS[242],
   },
   InstructionDef {
-    instruction: Instruction::VCmpLtU32,
+    instruction: Instruction::SCmpEqU64,
     common: &base::INSTRUCTION_COMMON_DEFS[243],
   },
   InstructionDef {
-    instruction: Instruction::VCmpLtU64,
+    instruction: Instruction::SCmpGeF16,
+    common: &ARCH_COMMON_DEFS[134],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpGeF32,
+    common: &ARCH_COMMON_DEFS[135],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpGeI32,
     common: &base::INSTRUCTION_COMMON_DEFS[244],
   },
   InstructionDef {
-    instruction: Instruction::VCmpNeI16,
+    instruction: Instruction::SCmpGeU32,
     common: &base::INSTRUCTION_COMMON_DEFS[245],
   },
   InstructionDef {
-    instruction: Instruction::VCmpNeI32,
+    instruction: Instruction::SCmpGtF16,
+    common: &ARCH_COMMON_DEFS[136],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpGtF32,
+    common: &ARCH_COMMON_DEFS[137],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpGtI32,
     common: &base::INSTRUCTION_COMMON_DEFS[246],
   },
   InstructionDef {
-    instruction: Instruction::VCmpNeI64,
+    instruction: Instruction::SCmpGtU32,
     common: &base::INSTRUCTION_COMMON_DEFS[247],
   },
   InstructionDef {
-    instruction: Instruction::VCmpNeU16,
+    instruction: Instruction::SCmpLeF16,
+    common: &ARCH_COMMON_DEFS[138],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpLeF32,
+    common: &ARCH_COMMON_DEFS[139],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpLeI32,
     common: &base::INSTRUCTION_COMMON_DEFS[248],
   },
   InstructionDef {
-    instruction: Instruction::VCmpNeU32,
+    instruction: Instruction::SCmpLeU32,
     common: &base::INSTRUCTION_COMMON_DEFS[249],
   },
   InstructionDef {
-    instruction: Instruction::VCmpNeU64,
+    instruction: Instruction::SCmpLgF16,
+    common: &ARCH_COMMON_DEFS[140],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpLgF32,
+    common: &ARCH_COMMON_DEFS[141],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpLgI32,
     common: &base::INSTRUCTION_COMMON_DEFS[250],
   },
   InstructionDef {
-    instruction: Instruction::VCmpNeqF16,
+    instruction: Instruction::SCmpLgU32,
     common: &base::INSTRUCTION_COMMON_DEFS[251],
   },
   InstructionDef {
-    instruction: Instruction::VCmpNeqF32,
+    instruction: Instruction::SCmpLgU64,
     common: &base::INSTRUCTION_COMMON_DEFS[252],
   },
   InstructionDef {
-    instruction: Instruction::VCmpNgeF16,
+    instruction: Instruction::SCmpLtF16,
+    common: &ARCH_COMMON_DEFS[142],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpLtF32,
+    common: &ARCH_COMMON_DEFS[143],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpLtI32,
     common: &base::INSTRUCTION_COMMON_DEFS[253],
   },
   InstructionDef {
-    instruction: Instruction::VCmpNgeF32,
+    instruction: Instruction::SCmpLtU32,
     common: &base::INSTRUCTION_COMMON_DEFS[254],
   },
   InstructionDef {
-    instruction: Instruction::VCmpNgtF16,
+    instruction: Instruction::SCmpNeqF16,
+    common: &ARCH_COMMON_DEFS[144],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpNeqF32,
+    common: &ARCH_COMMON_DEFS[145],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpNgeF16,
+    common: &ARCH_COMMON_DEFS[146],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpNgeF32,
+    common: &ARCH_COMMON_DEFS[147],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpNgtF16,
+    common: &ARCH_COMMON_DEFS[148],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpNgtF32,
+    common: &ARCH_COMMON_DEFS[149],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpNleF16,
+    common: &ARCH_COMMON_DEFS[150],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpNleF32,
+    common: &ARCH_COMMON_DEFS[151],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpNlgF16,
+    common: &ARCH_COMMON_DEFS[152],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpNlgF32,
+    common: &ARCH_COMMON_DEFS[153],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpNltF16,
+    common: &ARCH_COMMON_DEFS[154],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpNltF32,
+    common: &ARCH_COMMON_DEFS[155],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpOF16,
+    common: &ARCH_COMMON_DEFS[156],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpOF32,
+    common: &ARCH_COMMON_DEFS[157],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpUF16,
+    common: &ARCH_COMMON_DEFS[158],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpUF32,
+    common: &ARCH_COMMON_DEFS[159],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpkEqI32,
+    common: &ARCH_COMMON_DEFS[160],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpkEqU32,
+    common: &ARCH_COMMON_DEFS[161],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpkGeI32,
+    common: &ARCH_COMMON_DEFS[162],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpkGeU32,
+    common: &ARCH_COMMON_DEFS[163],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpkGtI32,
+    common: &ARCH_COMMON_DEFS[164],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpkGtU32,
+    common: &ARCH_COMMON_DEFS[165],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpkLeI32,
+    common: &ARCH_COMMON_DEFS[166],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpkLeU32,
+    common: &ARCH_COMMON_DEFS[167],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpkLgI32,
+    common: &ARCH_COMMON_DEFS[168],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpkLgU32,
+    common: &ARCH_COMMON_DEFS[169],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpkLtI32,
+    common: &ARCH_COMMON_DEFS[170],
+  },
+  InstructionDef {
+    instruction: Instruction::SCmpkLtU32,
+    common: &ARCH_COMMON_DEFS[171],
+  },
+  InstructionDef {
+    instruction: Instruction::SCodeEnd,
     common: &base::INSTRUCTION_COMMON_DEFS[255],
   },
   InstructionDef {
-    instruction: Instruction::VCmpNgtF32,
+    instruction: Instruction::SCselectB32,
     common: &base::INSTRUCTION_COMMON_DEFS[256],
   },
   InstructionDef {
-    instruction: Instruction::VCmpNleF16,
+    instruction: Instruction::SCselectB64,
     common: &base::INSTRUCTION_COMMON_DEFS[257],
   },
   InstructionDef {
-    instruction: Instruction::VCmpNleF32,
+    instruction: Instruction::SCtzI32B32,
     common: &base::INSTRUCTION_COMMON_DEFS[258],
   },
   InstructionDef {
-    instruction: Instruction::VCmpNlgF16,
+    instruction: Instruction::SCtzI32B64,
     common: &base::INSTRUCTION_COMMON_DEFS[259],
   },
   InstructionDef {
-    instruction: Instruction::VCmpNlgF32,
+    instruction: Instruction::SCvtF16F32,
+    common: &ARCH_COMMON_DEFS[172],
+  },
+  InstructionDef {
+    instruction: Instruction::SCvtF32F16,
+    common: &ARCH_COMMON_DEFS[173],
+  },
+  InstructionDef {
+    instruction: Instruction::SCvtF32I32,
+    common: &ARCH_COMMON_DEFS[174],
+  },
+  InstructionDef {
+    instruction: Instruction::SCvtF32U32,
+    common: &ARCH_COMMON_DEFS[175],
+  },
+  InstructionDef {
+    instruction: Instruction::SCvtHiF32F16,
+    common: &ARCH_COMMON_DEFS[176],
+  },
+  InstructionDef {
+    instruction: Instruction::SCvtI32F32,
+    common: &ARCH_COMMON_DEFS[177],
+  },
+  InstructionDef {
+    instruction: Instruction::SCvtPkRtzF16F32,
+    common: &ARCH_COMMON_DEFS[178],
+  },
+  InstructionDef {
+    instruction: Instruction::SCvtU32F32,
+    common: &ARCH_COMMON_DEFS[179],
+  },
+  InstructionDef {
+    instruction: Instruction::SDcacheInv,
     common: &base::INSTRUCTION_COMMON_DEFS[260],
   },
   InstructionDef {
-    instruction: Instruction::VCmpNltF16,
+    instruction: Instruction::SDecperflevel,
     common: &base::INSTRUCTION_COMMON_DEFS[261],
   },
   InstructionDef {
-    instruction: Instruction::VCmpNltF32,
+    instruction: Instruction::SDelayAlu,
     common: &base::INSTRUCTION_COMMON_DEFS[262],
   },
   InstructionDef {
-    instruction: Instruction::VCmpOF16,
+    instruction: Instruction::SDenormMode,
     common: &base::INSTRUCTION_COMMON_DEFS[263],
   },
   InstructionDef {
-    instruction: Instruction::VCmpOF32,
+    instruction: Instruction::SEndpgm,
     common: &base::INSTRUCTION_COMMON_DEFS[264],
   },
   InstructionDef {
-    instruction: Instruction::VCmpTF16,
-    common: &ARCH_COMMON_DEFS[445],
+    instruction: Instruction::SEndpgmOrderedPsDone,
+    common: &ARCH_COMMON_DEFS[180],
   },
   InstructionDef {
-    instruction: Instruction::VCmpTF32,
-    common: &ARCH_COMMON_DEFS[446],
-  },
-  InstructionDef {
-    instruction: Instruction::VCmpTI32,
-    common: &ARCH_COMMON_DEFS[447],
-  },
-  InstructionDef {
-    instruction: Instruction::VCmpTI64,
-    common: &ARCH_COMMON_DEFS[448],
-  },
-  InstructionDef {
-    instruction: Instruction::VCmpTU32,
-    common: &ARCH_COMMON_DEFS[449],
-  },
-  InstructionDef {
-    instruction: Instruction::VCmpTU64,
-    common: &ARCH_COMMON_DEFS[450],
-  },
-  InstructionDef {
-    instruction: Instruction::VCmpUF16,
+    instruction: Instruction::SEndpgmSaved,
     common: &base::INSTRUCTION_COMMON_DEFS[265],
   },
   InstructionDef {
-    instruction: Instruction::VCmpUF32,
+    instruction: Instruction::SFloorF16,
+    common: &ARCH_COMMON_DEFS[181],
+  },
+  InstructionDef {
+    instruction: Instruction::SFloorF32,
+    common: &ARCH_COMMON_DEFS[182],
+  },
+  InstructionDef {
+    instruction: Instruction::SFmaakF32,
+    common: &ARCH_COMMON_DEFS[183],
+  },
+  InstructionDef {
+    instruction: Instruction::SFmacF16,
+    common: &ARCH_COMMON_DEFS[184],
+  },
+  InstructionDef {
+    instruction: Instruction::SFmacF32,
+    common: &ARCH_COMMON_DEFS[185],
+  },
+  InstructionDef {
+    instruction: Instruction::SFmamkF32,
+    common: &ARCH_COMMON_DEFS[186],
+  },
+  InstructionDef {
+    instruction: Instruction::SGetpcB64,
     common: &base::INSTRUCTION_COMMON_DEFS[266],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxClassF16,
+    instruction: Instruction::SGetregB32,
     common: &base::INSTRUCTION_COMMON_DEFS[267],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxClassF32,
+    instruction: Instruction::SGl1Inv,
+    common: &ARCH_COMMON_DEFS[187],
+  },
+  InstructionDef {
+    instruction: Instruction::SIcacheInv,
     common: &base::INSTRUCTION_COMMON_DEFS[268],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxEqF16,
+    instruction: Instruction::SIncperflevel,
     common: &base::INSTRUCTION_COMMON_DEFS[269],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxEqF32,
+    instruction: Instruction::SLoadB128,
     common: &base::INSTRUCTION_COMMON_DEFS[270],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxEqI16,
+    instruction: Instruction::SLoadB256,
     common: &base::INSTRUCTION_COMMON_DEFS[271],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxEqI32,
+    instruction: Instruction::SLoadB32,
     common: &base::INSTRUCTION_COMMON_DEFS[272],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxEqI64,
+    instruction: Instruction::SLoadB512,
     common: &base::INSTRUCTION_COMMON_DEFS[273],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxEqU16,
+    instruction: Instruction::SLoadB64,
     common: &base::INSTRUCTION_COMMON_DEFS[274],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxEqU32,
+    instruction: Instruction::SLshl1AddU32,
     common: &base::INSTRUCTION_COMMON_DEFS[275],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxEqU64,
+    instruction: Instruction::SLshl2AddU32,
     common: &base::INSTRUCTION_COMMON_DEFS[276],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxFF16,
-    common: &ARCH_COMMON_DEFS[451],
-  },
-  InstructionDef {
-    instruction: Instruction::VCmpxFF32,
-    common: &ARCH_COMMON_DEFS[452],
-  },
-  InstructionDef {
-    instruction: Instruction::VCmpxFI32,
-    common: &ARCH_COMMON_DEFS[453],
-  },
-  InstructionDef {
-    instruction: Instruction::VCmpxFI64,
-    common: &ARCH_COMMON_DEFS[454],
-  },
-  InstructionDef {
-    instruction: Instruction::VCmpxFU32,
-    common: &ARCH_COMMON_DEFS[455],
-  },
-  InstructionDef {
-    instruction: Instruction::VCmpxFU64,
-    common: &ARCH_COMMON_DEFS[456],
-  },
-  InstructionDef {
-    instruction: Instruction::VCmpxGeF16,
+    instruction: Instruction::SLshl3AddU32,
     common: &base::INSTRUCTION_COMMON_DEFS[277],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxGeF32,
+    instruction: Instruction::SLshl4AddU32,
     common: &base::INSTRUCTION_COMMON_DEFS[278],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxGeI16,
+    instruction: Instruction::SLshlB32,
     common: &base::INSTRUCTION_COMMON_DEFS[279],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxGeI32,
+    instruction: Instruction::SLshlB64,
     common: &base::INSTRUCTION_COMMON_DEFS[280],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxGeI64,
+    instruction: Instruction::SLshrB32,
     common: &base::INSTRUCTION_COMMON_DEFS[281],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxGeU16,
+    instruction: Instruction::SLshrB64,
     common: &base::INSTRUCTION_COMMON_DEFS[282],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxGeU32,
+    instruction: Instruction::SMaxF16,
+    common: &ARCH_COMMON_DEFS[188],
+  },
+  InstructionDef {
+    instruction: Instruction::SMaxF32,
+    common: &ARCH_COMMON_DEFS[189],
+  },
+  InstructionDef {
+    instruction: Instruction::SMaxI32,
     common: &base::INSTRUCTION_COMMON_DEFS[283],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxGeU64,
+    instruction: Instruction::SMaxU32,
     common: &base::INSTRUCTION_COMMON_DEFS[284],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxGtF16,
+    instruction: Instruction::SMinF16,
+    common: &ARCH_COMMON_DEFS[190],
+  },
+  InstructionDef {
+    instruction: Instruction::SMinF32,
+    common: &ARCH_COMMON_DEFS[191],
+  },
+  InstructionDef {
+    instruction: Instruction::SMinI32,
     common: &base::INSTRUCTION_COMMON_DEFS[285],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxGtF32,
+    instruction: Instruction::SMinU32,
     common: &base::INSTRUCTION_COMMON_DEFS[286],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxGtI16,
+    instruction: Instruction::SMovB32,
     common: &base::INSTRUCTION_COMMON_DEFS[287],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxGtI32,
+    instruction: Instruction::SMovB64,
     common: &base::INSTRUCTION_COMMON_DEFS[288],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxGtI64,
+    instruction: Instruction::SMovkI32,
     common: &base::INSTRUCTION_COMMON_DEFS[289],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxGtU16,
+    instruction: Instruction::SMovreldB32,
     common: &base::INSTRUCTION_COMMON_DEFS[290],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxGtU32,
+    instruction: Instruction::SMovreldB64,
     common: &base::INSTRUCTION_COMMON_DEFS[291],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxGtU64,
+    instruction: Instruction::SMovrelsB32,
     common: &base::INSTRUCTION_COMMON_DEFS[292],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxLeF16,
+    instruction: Instruction::SMovrelsB64,
     common: &base::INSTRUCTION_COMMON_DEFS[293],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxLeF32,
+    instruction: Instruction::SMovrelsdN2B32,
     common: &base::INSTRUCTION_COMMON_DEFS[294],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxLeI16,
+    instruction: Instruction::SMulF16,
+    common: &ARCH_COMMON_DEFS[192],
+  },
+  InstructionDef {
+    instruction: Instruction::SMulF32,
+    common: &ARCH_COMMON_DEFS[193],
+  },
+  InstructionDef {
+    instruction: Instruction::SMulHiI32,
     common: &base::INSTRUCTION_COMMON_DEFS[295],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxLeI32,
+    instruction: Instruction::SMulHiU32,
     common: &base::INSTRUCTION_COMMON_DEFS[296],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxLeI64,
+    instruction: Instruction::SMulI32,
     common: &base::INSTRUCTION_COMMON_DEFS[297],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxLeU16,
+    instruction: Instruction::SMulkI32,
     common: &base::INSTRUCTION_COMMON_DEFS[298],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxLeU32,
+    instruction: Instruction::SNandB32,
     common: &base::INSTRUCTION_COMMON_DEFS[299],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxLeU64,
+    instruction: Instruction::SNandB64,
     common: &base::INSTRUCTION_COMMON_DEFS[300],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxLgF16,
+    instruction: Instruction::SNandSaveexecB32,
     common: &base::INSTRUCTION_COMMON_DEFS[301],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxLgF32,
+    instruction: Instruction::SNandSaveexecB64,
     common: &base::INSTRUCTION_COMMON_DEFS[302],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxLtF16,
+    instruction: Instruction::SNop,
     common: &base::INSTRUCTION_COMMON_DEFS[303],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxLtF32,
+    instruction: Instruction::SNorB32,
     common: &base::INSTRUCTION_COMMON_DEFS[304],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxLtI16,
+    instruction: Instruction::SNorB64,
     common: &base::INSTRUCTION_COMMON_DEFS[305],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxLtI32,
+    instruction: Instruction::SNorSaveexecB32,
     common: &base::INSTRUCTION_COMMON_DEFS[306],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxLtI64,
+    instruction: Instruction::SNorSaveexecB64,
     common: &base::INSTRUCTION_COMMON_DEFS[307],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxLtU16,
+    instruction: Instruction::SNotB32,
     common: &base::INSTRUCTION_COMMON_DEFS[308],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxLtU32,
+    instruction: Instruction::SNotB64,
     common: &base::INSTRUCTION_COMMON_DEFS[309],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxLtU64,
+    instruction: Instruction::SOrB32,
     common: &base::INSTRUCTION_COMMON_DEFS[310],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxNeI16,
+    instruction: Instruction::SOrB64,
     common: &base::INSTRUCTION_COMMON_DEFS[311],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxNeI32,
+    instruction: Instruction::SOrNot0SaveexecB32,
     common: &base::INSTRUCTION_COMMON_DEFS[312],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxNeI64,
+    instruction: Instruction::SOrNot0SaveexecB64,
     common: &base::INSTRUCTION_COMMON_DEFS[313],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxNeU16,
+    instruction: Instruction::SOrNot1B32,
     common: &base::INSTRUCTION_COMMON_DEFS[314],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxNeU32,
+    instruction: Instruction::SOrNot1B64,
     common: &base::INSTRUCTION_COMMON_DEFS[315],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxNeU64,
+    instruction: Instruction::SOrNot1SaveexecB32,
     common: &base::INSTRUCTION_COMMON_DEFS[316],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxNeqF16,
+    instruction: Instruction::SOrNot1SaveexecB64,
     common: &base::INSTRUCTION_COMMON_DEFS[317],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxNeqF32,
+    instruction: Instruction::SOrSaveexecB32,
     common: &base::INSTRUCTION_COMMON_DEFS[318],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxNgeF16,
+    instruction: Instruction::SOrSaveexecB64,
     common: &base::INSTRUCTION_COMMON_DEFS[319],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxNgeF32,
+    instruction: Instruction::SPackHhB32B16,
     common: &base::INSTRUCTION_COMMON_DEFS[320],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxNgtF16,
+    instruction: Instruction::SPackHlB32B16,
     common: &base::INSTRUCTION_COMMON_DEFS[321],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxNgtF32,
+    instruction: Instruction::SPackLhB32B16,
     common: &base::INSTRUCTION_COMMON_DEFS[322],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxNleF16,
+    instruction: Instruction::SPackLlB32B16,
     common: &base::INSTRUCTION_COMMON_DEFS[323],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxNleF32,
+    instruction: Instruction::SQuadmaskB32,
     common: &base::INSTRUCTION_COMMON_DEFS[324],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxNlgF16,
+    instruction: Instruction::SQuadmaskB64,
     common: &base::INSTRUCTION_COMMON_DEFS[325],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxNlgF32,
+    instruction: Instruction::SRfeB64,
     common: &base::INSTRUCTION_COMMON_DEFS[326],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxNltF16,
+    instruction: Instruction::SRndneF16,
+    common: &ARCH_COMMON_DEFS[194],
+  },
+  InstructionDef {
+    instruction: Instruction::SRndneF32,
+    common: &ARCH_COMMON_DEFS[195],
+  },
+  InstructionDef {
+    instruction: Instruction::SRoundMode,
     common: &base::INSTRUCTION_COMMON_DEFS[327],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxNltF32,
+    instruction: Instruction::SSendmsg,
     common: &base::INSTRUCTION_COMMON_DEFS[328],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxOF16,
+    instruction: Instruction::SSendmsgRtnB32,
     common: &base::INSTRUCTION_COMMON_DEFS[329],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxOF32,
+    instruction: Instruction::SSendmsgRtnB64,
     common: &base::INSTRUCTION_COMMON_DEFS[330],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxTF16,
-    common: &ARCH_COMMON_DEFS[457],
-  },
-  InstructionDef {
-    instruction: Instruction::VCmpxTF32,
-    common: &ARCH_COMMON_DEFS[458],
-  },
-  InstructionDef {
-    instruction: Instruction::VCmpxTI32,
-    common: &ARCH_COMMON_DEFS[459],
-  },
-  InstructionDef {
-    instruction: Instruction::VCmpxTI64,
-    common: &ARCH_COMMON_DEFS[460],
-  },
-  InstructionDef {
-    instruction: Instruction::VCmpxTU32,
-    common: &ARCH_COMMON_DEFS[461],
-  },
-  InstructionDef {
-    instruction: Instruction::VCmpxTU64,
-    common: &ARCH_COMMON_DEFS[462],
-  },
-  InstructionDef {
-    instruction: Instruction::VCmpxUF16,
+    instruction: Instruction::SSendmsghalt,
     common: &base::INSTRUCTION_COMMON_DEFS[331],
   },
   InstructionDef {
-    instruction: Instruction::VCmpxUF32,
+    instruction: Instruction::SSetInstPrefetchDistance,
+    common: &ARCH_COMMON_DEFS[196],
+  },
+  InstructionDef {
+    instruction: Instruction::SSethalt,
     common: &base::INSTRUCTION_COMMON_DEFS[332],
   },
   InstructionDef {
-    instruction: Instruction::VCndmaskB16,
+    instruction: Instruction::SSetkill,
     common: &base::INSTRUCTION_COMMON_DEFS[333],
   },
   InstructionDef {
-    instruction: Instruction::VCndmaskB32,
+    instruction: Instruction::SSetpcB64,
     common: &base::INSTRUCTION_COMMON_DEFS[334],
   },
   InstructionDef {
-    instruction: Instruction::VCosF16,
+    instruction: Instruction::SSetprio,
     common: &base::INSTRUCTION_COMMON_DEFS[335],
   },
   InstructionDef {
-    instruction: Instruction::VCosF32,
+    instruction: Instruction::SSetregB32,
     common: &base::INSTRUCTION_COMMON_DEFS[336],
   },
   InstructionDef {
-    instruction: Instruction::VCtzI32B32,
+    instruction: Instruction::SSetregImm32B32,
     common: &base::INSTRUCTION_COMMON_DEFS[337],
   },
   InstructionDef {
-    instruction: Instruction::VCubeidF32,
+    instruction: Instruction::SSextI32I16,
     common: &base::INSTRUCTION_COMMON_DEFS[338],
   },
   InstructionDef {
-    instruction: Instruction::VCubemaF32,
+    instruction: Instruction::SSextI32I8,
     common: &base::INSTRUCTION_COMMON_DEFS[339],
   },
   InstructionDef {
-    instruction: Instruction::VCubescF32,
+    instruction: Instruction::SSleep,
+    common: &ARCH_COMMON_DEFS[197],
+  },
+  InstructionDef {
+    instruction: Instruction::SSubF16,
+    common: &ARCH_COMMON_DEFS[198],
+  },
+  InstructionDef {
+    instruction: Instruction::SSubF32,
+    common: &ARCH_COMMON_DEFS[199],
+  },
+  InstructionDef {
+    instruction: Instruction::SSubI32,
+    common: &ARCH_COMMON_DEFS[200],
+  },
+  InstructionDef {
+    instruction: Instruction::SSubU32,
+    common: &ARCH_COMMON_DEFS[201],
+  },
+  InstructionDef {
+    instruction: Instruction::SSubbU32,
+    common: &ARCH_COMMON_DEFS[202],
+  },
+  InstructionDef {
+    instruction: Instruction::SSwappcB64,
     common: &base::INSTRUCTION_COMMON_DEFS[340],
   },
   InstructionDef {
-    instruction: Instruction::VCubetcF32,
+    instruction: Instruction::STrap,
     common: &base::INSTRUCTION_COMMON_DEFS[341],
   },
   InstructionDef {
-    instruction: Instruction::VCvtF16F32,
+    instruction: Instruction::STruncF16,
+    common: &ARCH_COMMON_DEFS[203],
+  },
+  InstructionDef {
+    instruction: Instruction::STruncF32,
+    common: &ARCH_COMMON_DEFS[204],
+  },
+  InstructionDef {
+    instruction: Instruction::STtracedata,
     common: &base::INSTRUCTION_COMMON_DEFS[342],
   },
   InstructionDef {
-    instruction: Instruction::VCvtF16I16,
+    instruction: Instruction::STtracedataImm,
     common: &base::INSTRUCTION_COMMON_DEFS[343],
   },
   InstructionDef {
-    instruction: Instruction::VCvtF16U16,
+    instruction: Instruction::SVersion,
     common: &base::INSTRUCTION_COMMON_DEFS[344],
   },
   InstructionDef {
-    instruction: Instruction::VCvtF32F16,
+    instruction: Instruction::SWaitEvent,
+    common: &ARCH_COMMON_DEFS[205],
+  },
+  InstructionDef {
+    instruction: Instruction::SWaitIdle,
     common: &base::INSTRUCTION_COMMON_DEFS[345],
   },
   InstructionDef {
-    instruction: Instruction::VCvtF32I32,
+    instruction: Instruction::SWaitcnt,
+    common: &ARCH_COMMON_DEFS[206],
+  },
+  InstructionDef {
+    instruction: Instruction::SWaitcntDepctr,
+    common: &ARCH_COMMON_DEFS[207],
+  },
+  InstructionDef {
+    instruction: Instruction::SWaitcntExpcnt,
+    common: &ARCH_COMMON_DEFS[208],
+  },
+  InstructionDef {
+    instruction: Instruction::SWaitcntLgkmcnt,
+    common: &ARCH_COMMON_DEFS[209],
+  },
+  InstructionDef {
+    instruction: Instruction::SWaitcntVmcnt,
+    common: &ARCH_COMMON_DEFS[210],
+  },
+  InstructionDef {
+    instruction: Instruction::SWaitcntVscnt,
+    common: &ARCH_COMMON_DEFS[211],
+  },
+  InstructionDef {
+    instruction: Instruction::SWakeup,
     common: &base::INSTRUCTION_COMMON_DEFS[346],
   },
   InstructionDef {
-    instruction: Instruction::VCvtF32U32,
+    instruction: Instruction::SWqmB32,
     common: &base::INSTRUCTION_COMMON_DEFS[347],
   },
   InstructionDef {
-    instruction: Instruction::VCvtF32Ubyte0,
+    instruction: Instruction::SWqmB64,
     common: &base::INSTRUCTION_COMMON_DEFS[348],
   },
   InstructionDef {
-    instruction: Instruction::VCvtF32Ubyte1,
+    instruction: Instruction::SXnorB32,
     common: &base::INSTRUCTION_COMMON_DEFS[349],
   },
   InstructionDef {
-    instruction: Instruction::VCvtF32Ubyte2,
+    instruction: Instruction::SXnorB64,
     common: &base::INSTRUCTION_COMMON_DEFS[350],
   },
   InstructionDef {
-    instruction: Instruction::VCvtF32Ubyte3,
+    instruction: Instruction::SXnorSaveexecB32,
     common: &base::INSTRUCTION_COMMON_DEFS[351],
   },
   InstructionDef {
-    instruction: Instruction::VCvtFloorI32F32,
+    instruction: Instruction::SXnorSaveexecB64,
     common: &base::INSTRUCTION_COMMON_DEFS[352],
   },
   InstructionDef {
-    instruction: Instruction::VCvtI16F16,
+    instruction: Instruction::SXorB32,
     common: &base::INSTRUCTION_COMMON_DEFS[353],
   },
   InstructionDef {
-    instruction: Instruction::VCvtI32F32,
+    instruction: Instruction::SXorB64,
     common: &base::INSTRUCTION_COMMON_DEFS[354],
   },
   InstructionDef {
-    instruction: Instruction::VCvtI32I16,
+    instruction: Instruction::SXorSaveexecB32,
     common: &base::INSTRUCTION_COMMON_DEFS[355],
   },
   InstructionDef {
-    instruction: Instruction::VCvtNearestI32F32,
+    instruction: Instruction::SXorSaveexecB64,
     common: &base::INSTRUCTION_COMMON_DEFS[356],
   },
   InstructionDef {
-    instruction: Instruction::VCvtNormI16F16,
+    instruction: Instruction::ScratchLoadB128,
+    common: &ARCH_COMMON_DEFS[212],
+  },
+  InstructionDef {
+    instruction: Instruction::ScratchLoadB32,
+    common: &ARCH_COMMON_DEFS[213],
+  },
+  InstructionDef {
+    instruction: Instruction::ScratchLoadB64,
+    common: &ARCH_COMMON_DEFS[214],
+  },
+  InstructionDef {
+    instruction: Instruction::ScratchLoadB96,
+    common: &ARCH_COMMON_DEFS[215],
+  },
+  InstructionDef {
+    instruction: Instruction::ScratchLoadD16B16,
+    common: &ARCH_COMMON_DEFS[216],
+  },
+  InstructionDef {
+    instruction: Instruction::ScratchLoadD16HiB16,
+    common: &ARCH_COMMON_DEFS[217],
+  },
+  InstructionDef {
+    instruction: Instruction::ScratchLoadD16HiI8,
+    common: &ARCH_COMMON_DEFS[218],
+  },
+  InstructionDef {
+    instruction: Instruction::ScratchLoadD16HiU8,
+    common: &ARCH_COMMON_DEFS[219],
+  },
+  InstructionDef {
+    instruction: Instruction::ScratchLoadD16I8,
+    common: &ARCH_COMMON_DEFS[220],
+  },
+  InstructionDef {
+    instruction: Instruction::ScratchLoadD16U8,
+    common: &ARCH_COMMON_DEFS[221],
+  },
+  InstructionDef {
+    instruction: Instruction::ScratchLoadI16,
+    common: &ARCH_COMMON_DEFS[222],
+  },
+  InstructionDef {
+    instruction: Instruction::ScratchLoadI8,
+    common: &ARCH_COMMON_DEFS[223],
+  },
+  InstructionDef {
+    instruction: Instruction::ScratchLoadLdsB32,
+    common: &ARCH_COMMON_DEFS[224],
+  },
+  InstructionDef {
+    instruction: Instruction::ScratchLoadLdsI16,
+    common: &ARCH_COMMON_DEFS[225],
+  },
+  InstructionDef {
+    instruction: Instruction::ScratchLoadLdsI8,
+    common: &ARCH_COMMON_DEFS[226],
+  },
+  InstructionDef {
+    instruction: Instruction::ScratchLoadLdsU16,
+    common: &ARCH_COMMON_DEFS[227],
+  },
+  InstructionDef {
+    instruction: Instruction::ScratchLoadLdsU8,
+    common: &ARCH_COMMON_DEFS[228],
+  },
+  InstructionDef {
+    instruction: Instruction::ScratchLoadU16,
+    common: &ARCH_COMMON_DEFS[229],
+  },
+  InstructionDef {
+    instruction: Instruction::ScratchLoadU8,
+    common: &ARCH_COMMON_DEFS[230],
+  },
+  InstructionDef {
+    instruction: Instruction::ScratchStoreB128,
+    common: &ARCH_COMMON_DEFS[231],
+  },
+  InstructionDef {
+    instruction: Instruction::ScratchStoreB16,
+    common: &ARCH_COMMON_DEFS[232],
+  },
+  InstructionDef {
+    instruction: Instruction::ScratchStoreB32,
+    common: &ARCH_COMMON_DEFS[233],
+  },
+  InstructionDef {
+    instruction: Instruction::ScratchStoreB64,
+    common: &ARCH_COMMON_DEFS[234],
+  },
+  InstructionDef {
+    instruction: Instruction::ScratchStoreB8,
+    common: &ARCH_COMMON_DEFS[235],
+  },
+  InstructionDef {
+    instruction: Instruction::ScratchStoreB96,
+    common: &ARCH_COMMON_DEFS[236],
+  },
+  InstructionDef {
+    instruction: Instruction::ScratchStoreD16HiB16,
+    common: &ARCH_COMMON_DEFS[237],
+  },
+  InstructionDef {
+    instruction: Instruction::ScratchStoreD16HiB8,
+    common: &ARCH_COMMON_DEFS[238],
+  },
+  InstructionDef {
+    instruction: Instruction::TbufferLoadD16FormatX,
+    common: &ARCH_COMMON_DEFS[239],
+  },
+  InstructionDef {
+    instruction: Instruction::TbufferLoadD16FormatXy,
+    common: &ARCH_COMMON_DEFS[240],
+  },
+  InstructionDef {
+    instruction: Instruction::TbufferLoadD16FormatXyz,
+    common: &ARCH_COMMON_DEFS[241],
+  },
+  InstructionDef {
+    instruction: Instruction::TbufferLoadD16FormatXyzw,
+    common: &ARCH_COMMON_DEFS[242],
+  },
+  InstructionDef {
+    instruction: Instruction::TbufferLoadFormatX,
+    common: &ARCH_COMMON_DEFS[243],
+  },
+  InstructionDef {
+    instruction: Instruction::TbufferLoadFormatXy,
+    common: &ARCH_COMMON_DEFS[244],
+  },
+  InstructionDef {
+    instruction: Instruction::TbufferLoadFormatXyz,
+    common: &ARCH_COMMON_DEFS[245],
+  },
+  InstructionDef {
+    instruction: Instruction::TbufferLoadFormatXyzw,
+    common: &ARCH_COMMON_DEFS[246],
+  },
+  InstructionDef {
+    instruction: Instruction::TbufferStoreD16FormatX,
+    common: &ARCH_COMMON_DEFS[247],
+  },
+  InstructionDef {
+    instruction: Instruction::TbufferStoreD16FormatXy,
+    common: &ARCH_COMMON_DEFS[248],
+  },
+  InstructionDef {
+    instruction: Instruction::TbufferStoreD16FormatXyz,
+    common: &ARCH_COMMON_DEFS[249],
+  },
+  InstructionDef {
+    instruction: Instruction::TbufferStoreD16FormatXyzw,
+    common: &ARCH_COMMON_DEFS[250],
+  },
+  InstructionDef {
+    instruction: Instruction::TbufferStoreFormatX,
+    common: &ARCH_COMMON_DEFS[251],
+  },
+  InstructionDef {
+    instruction: Instruction::TbufferStoreFormatXy,
+    common: &ARCH_COMMON_DEFS[252],
+  },
+  InstructionDef {
+    instruction: Instruction::TbufferStoreFormatXyz,
+    common: &ARCH_COMMON_DEFS[253],
+  },
+  InstructionDef {
+    instruction: Instruction::TbufferStoreFormatXyzw,
+    common: &ARCH_COMMON_DEFS[254],
+  },
+  InstructionDef {
+    instruction: Instruction::VAdd3U32,
     common: &base::INSTRUCTION_COMMON_DEFS[357],
   },
   InstructionDef {
-    instruction: Instruction::VCvtNormU16F16,
+    instruction: Instruction::VAddCoCiU32,
     common: &base::INSTRUCTION_COMMON_DEFS[358],
   },
   InstructionDef {
-    instruction: Instruction::VCvtOffF32I4,
+    instruction: Instruction::VAddCoU32,
     common: &base::INSTRUCTION_COMMON_DEFS[359],
   },
   InstructionDef {
-    instruction: Instruction::VCvtPkI16F32,
+    instruction: Instruction::VAddF16,
     common: &base::INSTRUCTION_COMMON_DEFS[360],
   },
   InstructionDef {
-    instruction: Instruction::VCvtPkI16I32,
+    instruction: Instruction::VAddF32,
     common: &base::INSTRUCTION_COMMON_DEFS[361],
   },
   InstructionDef {
-    instruction: Instruction::VCvtPkNormI16F16,
+    instruction: Instruction::VAddLshlU32,
     common: &base::INSTRUCTION_COMMON_DEFS[362],
   },
   InstructionDef {
-    instruction: Instruction::VCvtPkNormI16F32,
+    instruction: Instruction::VAddNcI16,
     common: &base::INSTRUCTION_COMMON_DEFS[363],
   },
   InstructionDef {
-    instruction: Instruction::VCvtPkNormU16F16,
+    instruction: Instruction::VAddNcI32,
     common: &base::INSTRUCTION_COMMON_DEFS[364],
   },
   InstructionDef {
-    instruction: Instruction::VCvtPkNormU16F32,
+    instruction: Instruction::VAddNcU16,
     common: &base::INSTRUCTION_COMMON_DEFS[365],
   },
   InstructionDef {
-    instruction: Instruction::VCvtPkRtzF16F32,
+    instruction: Instruction::VAddNcU32,
     common: &base::INSTRUCTION_COMMON_DEFS[366],
   },
   InstructionDef {
-    instruction: Instruction::VCvtPkU16F32,
+    instruction: Instruction::VAlignbitB32,
     common: &base::INSTRUCTION_COMMON_DEFS[367],
   },
   InstructionDef {
-    instruction: Instruction::VCvtPkU16U32,
+    instruction: Instruction::VAlignbyteB32,
     common: &base::INSTRUCTION_COMMON_DEFS[368],
   },
   InstructionDef {
-    instruction: Instruction::VCvtPkU8F32,
+    instruction: Instruction::VAndB16,
     common: &base::INSTRUCTION_COMMON_DEFS[369],
   },
   InstructionDef {
-    instruction: Instruction::VCvtU16F16,
+    instruction: Instruction::VAndB32,
     common: &base::INSTRUCTION_COMMON_DEFS[370],
   },
   InstructionDef {
-    instruction: Instruction::VCvtU32F32,
+    instruction: Instruction::VAndOrB32,
     common: &base::INSTRUCTION_COMMON_DEFS[371],
   },
   InstructionDef {
-    instruction: Instruction::VCvtU32U16,
+    instruction: Instruction::VAshrrevI16,
     common: &base::INSTRUCTION_COMMON_DEFS[372],
   },
   InstructionDef {
-    instruction: Instruction::VDivFixupF16,
+    instruction: Instruction::VAshrrevI32,
     common: &base::INSTRUCTION_COMMON_DEFS[373],
   },
   InstructionDef {
-    instruction: Instruction::VDivFixupF32,
+    instruction: Instruction::VAshrrevI64,
     common: &base::INSTRUCTION_COMMON_DEFS[374],
   },
   InstructionDef {
-    instruction: Instruction::VDivFmasF32,
+    instruction: Instruction::VBcntU32B32,
     common: &base::INSTRUCTION_COMMON_DEFS[375],
   },
   InstructionDef {
-    instruction: Instruction::VDivScaleF32,
+    instruction: Instruction::VBfeI32,
     common: &base::INSTRUCTION_COMMON_DEFS[376],
   },
   InstructionDef {
-    instruction: Instruction::VDot2Bf16Bf16,
+    instruction: Instruction::VBfeU32,
     common: &base::INSTRUCTION_COMMON_DEFS[377],
   },
   InstructionDef {
-    instruction: Instruction::VDot2F16F16,
+    instruction: Instruction::VBfiB32,
     common: &base::INSTRUCTION_COMMON_DEFS[378],
   },
   InstructionDef {
-    instruction: Instruction::VDot2F32Bf16,
+    instruction: Instruction::VBfmB32,
     common: &base::INSTRUCTION_COMMON_DEFS[379],
   },
   InstructionDef {
-    instruction: Instruction::VDot2F32F16,
+    instruction: Instruction::VBfrevB32,
     common: &base::INSTRUCTION_COMMON_DEFS[380],
   },
   InstructionDef {
-    instruction: Instruction::VDot2accF32F16,
-    common: &ARCH_COMMON_DEFS[463],
-  },
-  InstructionDef {
-    instruction: Instruction::VDot4I32Iu8,
+    instruction: Instruction::VCeilF16,
     common: &base::INSTRUCTION_COMMON_DEFS[381],
   },
   InstructionDef {
-    instruction: Instruction::VDot4U32U8,
+    instruction: Instruction::VCeilF32,
     common: &base::INSTRUCTION_COMMON_DEFS[382],
   },
   InstructionDef {
-    instruction: Instruction::VDot8I32Iu4,
+    instruction: Instruction::VClsI32,
     common: &base::INSTRUCTION_COMMON_DEFS[383],
   },
   InstructionDef {
-    instruction: Instruction::VDot8U32U4,
+    instruction: Instruction::VClzI32U32,
     common: &base::INSTRUCTION_COMMON_DEFS[384],
   },
   InstructionDef {
-    instruction: Instruction::VDualAddF32,
-    common: &ARCH_COMMON_DEFS[464],
-  },
-  InstructionDef {
-    instruction: Instruction::VDualAddNcU32,
-    common: &ARCH_COMMON_DEFS[465],
-  },
-  InstructionDef {
-    instruction: Instruction::VDualAndB32,
-    common: &ARCH_COMMON_DEFS[466],
-  },
-  InstructionDef {
-    instruction: Instruction::VDualCndmaskB32,
-    common: &ARCH_COMMON_DEFS[467],
-  },
-  InstructionDef {
-    instruction: Instruction::VDualDot2accF32Bf16,
-    common: &ARCH_COMMON_DEFS[468],
-  },
-  InstructionDef {
-    instruction: Instruction::VDualDot2accF32F16,
-    common: &ARCH_COMMON_DEFS[469],
-  },
-  InstructionDef {
-    instruction: Instruction::VDualFmaakF32,
+    instruction: Instruction::VCmpClassF16,
     common: &base::INSTRUCTION_COMMON_DEFS[385],
   },
   InstructionDef {
-    instruction: Instruction::VDualFmacF32,
-    common: &ARCH_COMMON_DEFS[470],
-  },
-  InstructionDef {
-    instruction: Instruction::VDualFmamkF32,
+    instruction: Instruction::VCmpClassF32,
     common: &base::INSTRUCTION_COMMON_DEFS[386],
   },
   InstructionDef {
-    instruction: Instruction::VDualLshlrevB32,
-    common: &ARCH_COMMON_DEFS[471],
-  },
-  InstructionDef {
-    instruction: Instruction::VDualMaxF32,
-    common: &ARCH_COMMON_DEFS[472],
-  },
-  InstructionDef {
-    instruction: Instruction::VDualMinF32,
-    common: &ARCH_COMMON_DEFS[473],
-  },
-  InstructionDef {
-    instruction: Instruction::VDualMovB32,
-    common: &ARCH_COMMON_DEFS[474],
-  },
-  InstructionDef {
-    instruction: Instruction::VDualMulDx9ZeroF32,
-    common: &ARCH_COMMON_DEFS[475],
-  },
-  InstructionDef {
-    instruction: Instruction::VDualMulF32,
-    common: &ARCH_COMMON_DEFS[476],
-  },
-  InstructionDef {
-    instruction: Instruction::VDualSubF32,
-    common: &ARCH_COMMON_DEFS[477],
-  },
-  InstructionDef {
-    instruction: Instruction::VDualSubrevF32,
-    common: &ARCH_COMMON_DEFS[478],
-  },
-  InstructionDef {
-    instruction: Instruction::VExpF16,
+    instruction: Instruction::VCmpEqF16,
     common: &base::INSTRUCTION_COMMON_DEFS[387],
   },
   InstructionDef {
-    instruction: Instruction::VExpF32,
+    instruction: Instruction::VCmpEqF32,
     common: &base::INSTRUCTION_COMMON_DEFS[388],
   },
   InstructionDef {
-    instruction: Instruction::VFloorF16,
+    instruction: Instruction::VCmpEqI16,
     common: &base::INSTRUCTION_COMMON_DEFS[389],
   },
   InstructionDef {
-    instruction: Instruction::VFloorF32,
+    instruction: Instruction::VCmpEqI32,
     common: &base::INSTRUCTION_COMMON_DEFS[390],
   },
   InstructionDef {
-    instruction: Instruction::VFmaDx9ZeroF32,
+    instruction: Instruction::VCmpEqI64,
     common: &base::INSTRUCTION_COMMON_DEFS[391],
   },
   InstructionDef {
-    instruction: Instruction::VFmaF16,
+    instruction: Instruction::VCmpEqU16,
     common: &base::INSTRUCTION_COMMON_DEFS[392],
   },
   InstructionDef {
-    instruction: Instruction::VFmaF32,
+    instruction: Instruction::VCmpEqU32,
     common: &base::INSTRUCTION_COMMON_DEFS[393],
   },
   InstructionDef {
-    instruction: Instruction::VFmaMixF32,
+    instruction: Instruction::VCmpEqU64,
     common: &base::INSTRUCTION_COMMON_DEFS[394],
   },
   InstructionDef {
-    instruction: Instruction::VFmaMixhiF16,
+    instruction: Instruction::VCmpFF16,
+    common: &ARCH_COMMON_DEFS[255],
+  },
+  InstructionDef {
+    instruction: Instruction::VCmpFF32,
+    common: &ARCH_COMMON_DEFS[256],
+  },
+  InstructionDef {
+    instruction: Instruction::VCmpFI32,
+    common: &ARCH_COMMON_DEFS[257],
+  },
+  InstructionDef {
+    instruction: Instruction::VCmpFI64,
+    common: &ARCH_COMMON_DEFS[258],
+  },
+  InstructionDef {
+    instruction: Instruction::VCmpFU32,
+    common: &ARCH_COMMON_DEFS[259],
+  },
+  InstructionDef {
+    instruction: Instruction::VCmpFU64,
+    common: &ARCH_COMMON_DEFS[260],
+  },
+  InstructionDef {
+    instruction: Instruction::VCmpGeF16,
     common: &base::INSTRUCTION_COMMON_DEFS[395],
   },
   InstructionDef {
-    instruction: Instruction::VFmaMixloF16,
+    instruction: Instruction::VCmpGeF32,
     common: &base::INSTRUCTION_COMMON_DEFS[396],
   },
   InstructionDef {
-    instruction: Instruction::VFmaakF16,
+    instruction: Instruction::VCmpGeI16,
     common: &base::INSTRUCTION_COMMON_DEFS[397],
   },
   InstructionDef {
-    instruction: Instruction::VFmaakF32,
+    instruction: Instruction::VCmpGeI32,
     common: &base::INSTRUCTION_COMMON_DEFS[398],
   },
   InstructionDef {
-    instruction: Instruction::VFmacDx9ZeroF32,
-    common: &ARCH_COMMON_DEFS[479],
-  },
-  InstructionDef {
-    instruction: Instruction::VFmacF16,
+    instruction: Instruction::VCmpGeI64,
     common: &base::INSTRUCTION_COMMON_DEFS[399],
   },
   InstructionDef {
-    instruction: Instruction::VFmacF32,
+    instruction: Instruction::VCmpGeU16,
     common: &base::INSTRUCTION_COMMON_DEFS[400],
   },
   InstructionDef {
-    instruction: Instruction::VFmamkF16,
+    instruction: Instruction::VCmpGeU32,
     common: &base::INSTRUCTION_COMMON_DEFS[401],
   },
   InstructionDef {
-    instruction: Instruction::VFmamkF32,
+    instruction: Instruction::VCmpGeU64,
     common: &base::INSTRUCTION_COMMON_DEFS[402],
   },
   InstructionDef {
-    instruction: Instruction::VFractF16,
+    instruction: Instruction::VCmpGtF16,
     common: &base::INSTRUCTION_COMMON_DEFS[403],
   },
   InstructionDef {
-    instruction: Instruction::VFractF32,
+    instruction: Instruction::VCmpGtF32,
     common: &base::INSTRUCTION_COMMON_DEFS[404],
   },
   InstructionDef {
-    instruction: Instruction::VFrexpExpI16F16,
+    instruction: Instruction::VCmpGtI16,
     common: &base::INSTRUCTION_COMMON_DEFS[405],
   },
   InstructionDef {
-    instruction: Instruction::VFrexpExpI32F32,
+    instruction: Instruction::VCmpGtI32,
     common: &base::INSTRUCTION_COMMON_DEFS[406],
   },
   InstructionDef {
-    instruction: Instruction::VFrexpMantF16,
+    instruction: Instruction::VCmpGtI64,
     common: &base::INSTRUCTION_COMMON_DEFS[407],
   },
   InstructionDef {
-    instruction: Instruction::VFrexpMantF32,
+    instruction: Instruction::VCmpGtU16,
     common: &base::INSTRUCTION_COMMON_DEFS[408],
   },
   InstructionDef {
-    instruction: Instruction::VInterpP10F16F32,
+    instruction: Instruction::VCmpGtU32,
     common: &base::INSTRUCTION_COMMON_DEFS[409],
   },
   InstructionDef {
-    instruction: Instruction::VInterpP10F32,
+    instruction: Instruction::VCmpGtU64,
     common: &base::INSTRUCTION_COMMON_DEFS[410],
   },
   InstructionDef {
-    instruction: Instruction::VInterpP10RtzF16F32,
+    instruction: Instruction::VCmpLeF16,
     common: &base::INSTRUCTION_COMMON_DEFS[411],
   },
   InstructionDef {
-    instruction: Instruction::VInterpP2F16F32,
+    instruction: Instruction::VCmpLeF32,
     common: &base::INSTRUCTION_COMMON_DEFS[412],
   },
   InstructionDef {
-    instruction: Instruction::VInterpP2F32,
+    instruction: Instruction::VCmpLeI16,
     common: &base::INSTRUCTION_COMMON_DEFS[413],
   },
   InstructionDef {
-    instruction: Instruction::VInterpP2RtzF16F32,
+    instruction: Instruction::VCmpLeI32,
     common: &base::INSTRUCTION_COMMON_DEFS[414],
   },
   InstructionDef {
-    instruction: Instruction::VLdexpF16,
+    instruction: Instruction::VCmpLeI64,
     common: &base::INSTRUCTION_COMMON_DEFS[415],
   },
   InstructionDef {
-    instruction: Instruction::VLdexpF32,
+    instruction: Instruction::VCmpLeU16,
     common: &base::INSTRUCTION_COMMON_DEFS[416],
   },
   InstructionDef {
-    instruction: Instruction::VLerpU8,
+    instruction: Instruction::VCmpLeU32,
     common: &base::INSTRUCTION_COMMON_DEFS[417],
   },
   InstructionDef {
-    instruction: Instruction::VLogF16,
+    instruction: Instruction::VCmpLeU64,
     common: &base::INSTRUCTION_COMMON_DEFS[418],
   },
   InstructionDef {
-    instruction: Instruction::VLogF32,
+    instruction: Instruction::VCmpLgF16,
     common: &base::INSTRUCTION_COMMON_DEFS[419],
   },
   InstructionDef {
-    instruction: Instruction::VLshlAddU32,
+    instruction: Instruction::VCmpLgF32,
     common: &base::INSTRUCTION_COMMON_DEFS[420],
   },
   InstructionDef {
-    instruction: Instruction::VLshlOrB32,
+    instruction: Instruction::VCmpLtF16,
     common: &base::INSTRUCTION_COMMON_DEFS[421],
   },
   InstructionDef {
-    instruction: Instruction::VLshlrevB16,
+    instruction: Instruction::VCmpLtF32,
     common: &base::INSTRUCTION_COMMON_DEFS[422],
   },
   InstructionDef {
-    instruction: Instruction::VLshlrevB32,
+    instruction: Instruction::VCmpLtI16,
     common: &base::INSTRUCTION_COMMON_DEFS[423],
   },
   InstructionDef {
-    instruction: Instruction::VLshlrevB64,
-    common: &ARCH_COMMON_DEFS[480],
-  },
-  InstructionDef {
-    instruction: Instruction::VLshrrevB16,
+    instruction: Instruction::VCmpLtI32,
     common: &base::INSTRUCTION_COMMON_DEFS[424],
   },
   InstructionDef {
-    instruction: Instruction::VLshrrevB32,
+    instruction: Instruction::VCmpLtI64,
     common: &base::INSTRUCTION_COMMON_DEFS[425],
   },
   InstructionDef {
-    instruction: Instruction::VLshrrevB64,
+    instruction: Instruction::VCmpLtU16,
     common: &base::INSTRUCTION_COMMON_DEFS[426],
   },
   InstructionDef {
-    instruction: Instruction::VMadI16,
+    instruction: Instruction::VCmpLtU32,
     common: &base::INSTRUCTION_COMMON_DEFS[427],
   },
   InstructionDef {
-    instruction: Instruction::VMadI32I16,
+    instruction: Instruction::VCmpLtU64,
     common: &base::INSTRUCTION_COMMON_DEFS[428],
   },
   InstructionDef {
-    instruction: Instruction::VMadI32I24,
+    instruction: Instruction::VCmpNeI16,
     common: &base::INSTRUCTION_COMMON_DEFS[429],
   },
   InstructionDef {
-    instruction: Instruction::VMadI64I32,
-    common: &ARCH_COMMON_DEFS[481],
-  },
-  InstructionDef {
-    instruction: Instruction::VMadU16,
+    instruction: Instruction::VCmpNeI32,
     common: &base::INSTRUCTION_COMMON_DEFS[430],
   },
   InstructionDef {
-    instruction: Instruction::VMadU32U16,
+    instruction: Instruction::VCmpNeI64,
     common: &base::INSTRUCTION_COMMON_DEFS[431],
   },
   InstructionDef {
-    instruction: Instruction::VMadU32U24,
+    instruction: Instruction::VCmpNeU16,
     common: &base::INSTRUCTION_COMMON_DEFS[432],
   },
   InstructionDef {
-    instruction: Instruction::VMadU64U32,
-    common: &ARCH_COMMON_DEFS[482],
-  },
-  InstructionDef {
-    instruction: Instruction::VMax3F16,
-    common: &ARCH_COMMON_DEFS[483],
-  },
-  InstructionDef {
-    instruction: Instruction::VMax3F32,
-    common: &ARCH_COMMON_DEFS[484],
-  },
-  InstructionDef {
-    instruction: Instruction::VMax3I16,
+    instruction: Instruction::VCmpNeU32,
     common: &base::INSTRUCTION_COMMON_DEFS[433],
   },
   InstructionDef {
-    instruction: Instruction::VMax3I32,
+    instruction: Instruction::VCmpNeU64,
     common: &base::INSTRUCTION_COMMON_DEFS[434],
   },
   InstructionDef {
-    instruction: Instruction::VMax3U16,
+    instruction: Instruction::VCmpNeqF16,
     common: &base::INSTRUCTION_COMMON_DEFS[435],
   },
   InstructionDef {
-    instruction: Instruction::VMax3U32,
+    instruction: Instruction::VCmpNeqF32,
     common: &base::INSTRUCTION_COMMON_DEFS[436],
   },
   InstructionDef {
-    instruction: Instruction::VMaxF16,
-    common: &ARCH_COMMON_DEFS[485],
-  },
-  InstructionDef {
-    instruction: Instruction::VMaxF32,
-    common: &ARCH_COMMON_DEFS[486],
-  },
-  InstructionDef {
-    instruction: Instruction::VMaxI16,
+    instruction: Instruction::VCmpNgeF16,
     common: &base::INSTRUCTION_COMMON_DEFS[437],
   },
   InstructionDef {
-    instruction: Instruction::VMaxI32,
+    instruction: Instruction::VCmpNgeF32,
     common: &base::INSTRUCTION_COMMON_DEFS[438],
   },
   InstructionDef {
-    instruction: Instruction::VMaxU16,
+    instruction: Instruction::VCmpNgtF16,
     common: &base::INSTRUCTION_COMMON_DEFS[439],
   },
   InstructionDef {
-    instruction: Instruction::VMaxU32,
+    instruction: Instruction::VCmpNgtF32,
     common: &base::INSTRUCTION_COMMON_DEFS[440],
   },
   InstructionDef {
-    instruction: Instruction::VMaxminF16,
-    common: &ARCH_COMMON_DEFS[487],
-  },
-  InstructionDef {
-    instruction: Instruction::VMaxminF32,
-    common: &ARCH_COMMON_DEFS[488],
-  },
-  InstructionDef {
-    instruction: Instruction::VMaxminI32,
+    instruction: Instruction::VCmpNleF16,
     common: &base::INSTRUCTION_COMMON_DEFS[441],
   },
   InstructionDef {
-    instruction: Instruction::VMaxminU32,
+    instruction: Instruction::VCmpNleF32,
     common: &base::INSTRUCTION_COMMON_DEFS[442],
   },
   InstructionDef {
-    instruction: Instruction::VMbcntHiU32B32,
+    instruction: Instruction::VCmpNlgF16,
     common: &base::INSTRUCTION_COMMON_DEFS[443],
   },
   InstructionDef {
-    instruction: Instruction::VMbcntLoU32B32,
+    instruction: Instruction::VCmpNlgF32,
     common: &base::INSTRUCTION_COMMON_DEFS[444],
   },
   InstructionDef {
-    instruction: Instruction::VMed3F16,
-    common: &ARCH_COMMON_DEFS[489],
-  },
-  InstructionDef {
-    instruction: Instruction::VMed3F32,
-    common: &ARCH_COMMON_DEFS[490],
-  },
-  InstructionDef {
-    instruction: Instruction::VMed3I16,
+    instruction: Instruction::VCmpNltF16,
     common: &base::INSTRUCTION_COMMON_DEFS[445],
   },
   InstructionDef {
-    instruction: Instruction::VMed3I32,
+    instruction: Instruction::VCmpNltF32,
     common: &base::INSTRUCTION_COMMON_DEFS[446],
   },
   InstructionDef {
-    instruction: Instruction::VMed3U16,
+    instruction: Instruction::VCmpOF16,
     common: &base::INSTRUCTION_COMMON_DEFS[447],
   },
   InstructionDef {
-    instruction: Instruction::VMed3U32,
+    instruction: Instruction::VCmpOF32,
     common: &base::INSTRUCTION_COMMON_DEFS[448],
   },
   InstructionDef {
-    instruction: Instruction::VMin3F16,
-    common: &ARCH_COMMON_DEFS[491],
+    instruction: Instruction::VCmpTF16,
+    common: &ARCH_COMMON_DEFS[261],
   },
   InstructionDef {
-    instruction: Instruction::VMin3F32,
-    common: &ARCH_COMMON_DEFS[492],
+    instruction: Instruction::VCmpTF32,
+    common: &ARCH_COMMON_DEFS[262],
   },
   InstructionDef {
-    instruction: Instruction::VMin3I16,
+    instruction: Instruction::VCmpTI32,
+    common: &ARCH_COMMON_DEFS[263],
+  },
+  InstructionDef {
+    instruction: Instruction::VCmpTI64,
+    common: &ARCH_COMMON_DEFS[264],
+  },
+  InstructionDef {
+    instruction: Instruction::VCmpTU32,
+    common: &ARCH_COMMON_DEFS[265],
+  },
+  InstructionDef {
+    instruction: Instruction::VCmpTU64,
+    common: &ARCH_COMMON_DEFS[266],
+  },
+  InstructionDef {
+    instruction: Instruction::VCmpUF16,
     common: &base::INSTRUCTION_COMMON_DEFS[449],
   },
   InstructionDef {
-    instruction: Instruction::VMin3I32,
+    instruction: Instruction::VCmpUF32,
     common: &base::INSTRUCTION_COMMON_DEFS[450],
   },
   InstructionDef {
-    instruction: Instruction::VMin3U16,
+    instruction: Instruction::VCmpxClassF16,
     common: &base::INSTRUCTION_COMMON_DEFS[451],
   },
   InstructionDef {
-    instruction: Instruction::VMin3U32,
+    instruction: Instruction::VCmpxClassF32,
     common: &base::INSTRUCTION_COMMON_DEFS[452],
   },
   InstructionDef {
-    instruction: Instruction::VMinF16,
-    common: &ARCH_COMMON_DEFS[493],
-  },
-  InstructionDef {
-    instruction: Instruction::VMinF32,
-    common: &ARCH_COMMON_DEFS[494],
-  },
-  InstructionDef {
-    instruction: Instruction::VMinI16,
+    instruction: Instruction::VCmpxEqF16,
     common: &base::INSTRUCTION_COMMON_DEFS[453],
   },
   InstructionDef {
-    instruction: Instruction::VMinI32,
+    instruction: Instruction::VCmpxEqF32,
     common: &base::INSTRUCTION_COMMON_DEFS[454],
   },
   InstructionDef {
-    instruction: Instruction::VMinU16,
+    instruction: Instruction::VCmpxEqI16,
     common: &base::INSTRUCTION_COMMON_DEFS[455],
   },
   InstructionDef {
-    instruction: Instruction::VMinU32,
+    instruction: Instruction::VCmpxEqI32,
     common: &base::INSTRUCTION_COMMON_DEFS[456],
   },
   InstructionDef {
-    instruction: Instruction::VMinmaxF16,
-    common: &ARCH_COMMON_DEFS[495],
-  },
-  InstructionDef {
-    instruction: Instruction::VMinmaxF32,
-    common: &ARCH_COMMON_DEFS[496],
-  },
-  InstructionDef {
-    instruction: Instruction::VMinmaxI32,
+    instruction: Instruction::VCmpxEqI64,
     common: &base::INSTRUCTION_COMMON_DEFS[457],
   },
   InstructionDef {
-    instruction: Instruction::VMinmaxU32,
+    instruction: Instruction::VCmpxEqU16,
     common: &base::INSTRUCTION_COMMON_DEFS[458],
   },
   InstructionDef {
-    instruction: Instruction::VMovB16,
+    instruction: Instruction::VCmpxEqU32,
     common: &base::INSTRUCTION_COMMON_DEFS[459],
   },
   InstructionDef {
-    instruction: Instruction::VMovB32,
+    instruction: Instruction::VCmpxEqU64,
     common: &base::INSTRUCTION_COMMON_DEFS[460],
   },
   InstructionDef {
-    instruction: Instruction::VMovreldB32,
+    instruction: Instruction::VCmpxFF16,
+    common: &ARCH_COMMON_DEFS[267],
+  },
+  InstructionDef {
+    instruction: Instruction::VCmpxFF32,
+    common: &ARCH_COMMON_DEFS[268],
+  },
+  InstructionDef {
+    instruction: Instruction::VCmpxFI32,
+    common: &ARCH_COMMON_DEFS[269],
+  },
+  InstructionDef {
+    instruction: Instruction::VCmpxFI64,
+    common: &ARCH_COMMON_DEFS[270],
+  },
+  InstructionDef {
+    instruction: Instruction::VCmpxFU32,
+    common: &ARCH_COMMON_DEFS[271],
+  },
+  InstructionDef {
+    instruction: Instruction::VCmpxFU64,
+    common: &ARCH_COMMON_DEFS[272],
+  },
+  InstructionDef {
+    instruction: Instruction::VCmpxGeF16,
     common: &base::INSTRUCTION_COMMON_DEFS[461],
   },
   InstructionDef {
-    instruction: Instruction::VMovrelsB32,
-    common: &ARCH_COMMON_DEFS[497],
-  },
-  InstructionDef {
-    instruction: Instruction::VMovrelsdN2B32,
-    common: &ARCH_COMMON_DEFS[498],
-  },
-  InstructionDef {
-    instruction: Instruction::VMovrelsdB32,
-    common: &ARCH_COMMON_DEFS[499],
-  },
-  InstructionDef {
-    instruction: Instruction::VMqsadPkU16U8,
+    instruction: Instruction::VCmpxGeF32,
     common: &base::INSTRUCTION_COMMON_DEFS[462],
   },
   InstructionDef {
-    instruction: Instruction::VMqsadU32U8,
+    instruction: Instruction::VCmpxGeI16,
     common: &base::INSTRUCTION_COMMON_DEFS[463],
   },
   InstructionDef {
-    instruction: Instruction::VMsadU8,
+    instruction: Instruction::VCmpxGeI32,
     common: &base::INSTRUCTION_COMMON_DEFS[464],
   },
   InstructionDef {
-    instruction: Instruction::VMulDx9ZeroF32,
+    instruction: Instruction::VCmpxGeI64,
     common: &base::INSTRUCTION_COMMON_DEFS[465],
   },
   InstructionDef {
-    instruction: Instruction::VMulF16,
+    instruction: Instruction::VCmpxGeU16,
     common: &base::INSTRUCTION_COMMON_DEFS[466],
   },
   InstructionDef {
-    instruction: Instruction::VMulF32,
+    instruction: Instruction::VCmpxGeU32,
     common: &base::INSTRUCTION_COMMON_DEFS[467],
   },
   InstructionDef {
-    instruction: Instruction::VMulHiI32,
+    instruction: Instruction::VCmpxGeU64,
     common: &base::INSTRUCTION_COMMON_DEFS[468],
   },
   InstructionDef {
-    instruction: Instruction::VMulHiI32I24,
+    instruction: Instruction::VCmpxGtF16,
     common: &base::INSTRUCTION_COMMON_DEFS[469],
   },
   InstructionDef {
-    instruction: Instruction::VMulHiU32,
+    instruction: Instruction::VCmpxGtF32,
     common: &base::INSTRUCTION_COMMON_DEFS[470],
   },
   InstructionDef {
-    instruction: Instruction::VMulHiU32U24,
+    instruction: Instruction::VCmpxGtI16,
     common: &base::INSTRUCTION_COMMON_DEFS[471],
   },
   InstructionDef {
-    instruction: Instruction::VMulI32I24,
+    instruction: Instruction::VCmpxGtI32,
     common: &base::INSTRUCTION_COMMON_DEFS[472],
   },
   InstructionDef {
-    instruction: Instruction::VMulLoU16,
+    instruction: Instruction::VCmpxGtI64,
     common: &base::INSTRUCTION_COMMON_DEFS[473],
   },
   InstructionDef {
-    instruction: Instruction::VMulLoU32,
+    instruction: Instruction::VCmpxGtU16,
     common: &base::INSTRUCTION_COMMON_DEFS[474],
   },
   InstructionDef {
-    instruction: Instruction::VMulU32U24,
+    instruction: Instruction::VCmpxGtU32,
     common: &base::INSTRUCTION_COMMON_DEFS[475],
   },
   InstructionDef {
-    instruction: Instruction::VMullitF32,
+    instruction: Instruction::VCmpxGtU64,
     common: &base::INSTRUCTION_COMMON_DEFS[476],
   },
   InstructionDef {
-    instruction: Instruction::VNop,
+    instruction: Instruction::VCmpxLeF16,
     common: &base::INSTRUCTION_COMMON_DEFS[477],
   },
   InstructionDef {
-    instruction: Instruction::VNotB16,
+    instruction: Instruction::VCmpxLeF32,
     common: &base::INSTRUCTION_COMMON_DEFS[478],
   },
   InstructionDef {
-    instruction: Instruction::VNotB32,
+    instruction: Instruction::VCmpxLeI16,
     common: &base::INSTRUCTION_COMMON_DEFS[479],
   },
   InstructionDef {
-    instruction: Instruction::VOr3B32,
+    instruction: Instruction::VCmpxLeI32,
     common: &base::INSTRUCTION_COMMON_DEFS[480],
   },
   InstructionDef {
-    instruction: Instruction::VOrB16,
+    instruction: Instruction::VCmpxLeI64,
     common: &base::INSTRUCTION_COMMON_DEFS[481],
   },
   InstructionDef {
-    instruction: Instruction::VOrB32,
+    instruction: Instruction::VCmpxLeU16,
     common: &base::INSTRUCTION_COMMON_DEFS[482],
   },
   InstructionDef {
-    instruction: Instruction::VPackB32F16,
+    instruction: Instruction::VCmpxLeU32,
     common: &base::INSTRUCTION_COMMON_DEFS[483],
   },
   InstructionDef {
-    instruction: Instruction::VPermB32,
+    instruction: Instruction::VCmpxLeU64,
     common: &base::INSTRUCTION_COMMON_DEFS[484],
   },
   InstructionDef {
-    instruction: Instruction::VPermlane16B32,
+    instruction: Instruction::VCmpxLgF16,
     common: &base::INSTRUCTION_COMMON_DEFS[485],
   },
   InstructionDef {
-    instruction: Instruction::VPermlane64B32,
+    instruction: Instruction::VCmpxLgF32,
     common: &base::INSTRUCTION_COMMON_DEFS[486],
   },
   InstructionDef {
-    instruction: Instruction::VPermlanex16B32,
+    instruction: Instruction::VCmpxLtF16,
     common: &base::INSTRUCTION_COMMON_DEFS[487],
   },
   InstructionDef {
-    instruction: Instruction::VPipeflush,
+    instruction: Instruction::VCmpxLtF32,
     common: &base::INSTRUCTION_COMMON_DEFS[488],
   },
   InstructionDef {
-    instruction: Instruction::VPkAddF16,
+    instruction: Instruction::VCmpxLtI16,
     common: &base::INSTRUCTION_COMMON_DEFS[489],
   },
   InstructionDef {
-    instruction: Instruction::VPkAddI16,
+    instruction: Instruction::VCmpxLtI32,
     common: &base::INSTRUCTION_COMMON_DEFS[490],
   },
   InstructionDef {
-    instruction: Instruction::VPkAddU16,
+    instruction: Instruction::VCmpxLtI64,
     common: &base::INSTRUCTION_COMMON_DEFS[491],
   },
   InstructionDef {
-    instruction: Instruction::VPkAshrrevI16,
+    instruction: Instruction::VCmpxLtU16,
     common: &base::INSTRUCTION_COMMON_DEFS[492],
   },
   InstructionDef {
-    instruction: Instruction::VPkFmaF16,
+    instruction: Instruction::VCmpxLtU32,
     common: &base::INSTRUCTION_COMMON_DEFS[493],
   },
   InstructionDef {
-    instruction: Instruction::VPkFmacF16,
+    instruction: Instruction::VCmpxLtU64,
     common: &base::INSTRUCTION_COMMON_DEFS[494],
   },
   InstructionDef {
-    instruction: Instruction::VPkLshlrevB16,
+    instruction: Instruction::VCmpxNeI16,
     common: &base::INSTRUCTION_COMMON_DEFS[495],
   },
   InstructionDef {
-    instruction: Instruction::VPkLshrrevB16,
+    instruction: Instruction::VCmpxNeI32,
     common: &base::INSTRUCTION_COMMON_DEFS[496],
   },
   InstructionDef {
-    instruction: Instruction::VPkMadI16,
+    instruction: Instruction::VCmpxNeI64,
     common: &base::INSTRUCTION_COMMON_DEFS[497],
   },
   InstructionDef {
-    instruction: Instruction::VPkMadU16,
+    instruction: Instruction::VCmpxNeU16,
     common: &base::INSTRUCTION_COMMON_DEFS[498],
   },
   InstructionDef {
-    instruction: Instruction::VPkMaxF16,
-    common: &ARCH_COMMON_DEFS[500],
-  },
-  InstructionDef {
-    instruction: Instruction::VPkMaxI16,
+    instruction: Instruction::VCmpxNeU32,
     common: &base::INSTRUCTION_COMMON_DEFS[499],
   },
   InstructionDef {
-    instruction: Instruction::VPkMaxU16,
+    instruction: Instruction::VCmpxNeU64,
     common: &base::INSTRUCTION_COMMON_DEFS[500],
   },
   InstructionDef {
-    instruction: Instruction::VPkMinF16,
-    common: &ARCH_COMMON_DEFS[501],
-  },
-  InstructionDef {
-    instruction: Instruction::VPkMinI16,
+    instruction: Instruction::VCmpxNeqF16,
     common: &base::INSTRUCTION_COMMON_DEFS[501],
   },
   InstructionDef {
-    instruction: Instruction::VPkMinU16,
+    instruction: Instruction::VCmpxNeqF32,
     common: &base::INSTRUCTION_COMMON_DEFS[502],
   },
   InstructionDef {
-    instruction: Instruction::VPkMulF16,
+    instruction: Instruction::VCmpxNgeF16,
     common: &base::INSTRUCTION_COMMON_DEFS[503],
   },
   InstructionDef {
-    instruction: Instruction::VPkMulLoU16,
+    instruction: Instruction::VCmpxNgeF32,
     common: &base::INSTRUCTION_COMMON_DEFS[504],
   },
   InstructionDef {
-    instruction: Instruction::VPkSubI16,
+    instruction: Instruction::VCmpxNgtF16,
     common: &base::INSTRUCTION_COMMON_DEFS[505],
   },
   InstructionDef {
-    instruction: Instruction::VPkSubU16,
+    instruction: Instruction::VCmpxNgtF32,
     common: &base::INSTRUCTION_COMMON_DEFS[506],
   },
   InstructionDef {
-    instruction: Instruction::VQsadPkU16U8,
+    instruction: Instruction::VCmpxNleF16,
     common: &base::INSTRUCTION_COMMON_DEFS[507],
   },
   InstructionDef {
-    instruction: Instruction::VRcpF16,
+    instruction: Instruction::VCmpxNleF32,
     common: &base::INSTRUCTION_COMMON_DEFS[508],
   },
   InstructionDef {
-    instruction: Instruction::VRcpF32,
+    instruction: Instruction::VCmpxNlgF16,
     common: &base::INSTRUCTION_COMMON_DEFS[509],
   },
   InstructionDef {
-    instruction: Instruction::VRcpIflagF32,
+    instruction: Instruction::VCmpxNlgF32,
     common: &base::INSTRUCTION_COMMON_DEFS[510],
   },
   InstructionDef {
-    instruction: Instruction::VReadfirstlaneB32,
-    common: &ARCH_COMMON_DEFS[502],
-  },
-  InstructionDef {
-    instruction: Instruction::VReadlaneB32,
-    common: &ARCH_COMMON_DEFS[503],
-  },
-  InstructionDef {
-    instruction: Instruction::VRndneF16,
+    instruction: Instruction::VCmpxNltF16,
     common: &base::INSTRUCTION_COMMON_DEFS[511],
   },
   InstructionDef {
-    instruction: Instruction::VRndneF32,
+    instruction: Instruction::VCmpxNltF32,
     common: &base::INSTRUCTION_COMMON_DEFS[512],
   },
   InstructionDef {
-    instruction: Instruction::VRsqF16,
+    instruction: Instruction::VCmpxOF16,
     common: &base::INSTRUCTION_COMMON_DEFS[513],
   },
   InstructionDef {
-    instruction: Instruction::VRsqF32,
+    instruction: Instruction::VCmpxOF32,
     common: &base::INSTRUCTION_COMMON_DEFS[514],
   },
   InstructionDef {
-    instruction: Instruction::VSadHiU8,
+    instruction: Instruction::VCmpxTF16,
+    common: &ARCH_COMMON_DEFS[273],
+  },
+  InstructionDef {
+    instruction: Instruction::VCmpxTF32,
+    common: &ARCH_COMMON_DEFS[274],
+  },
+  InstructionDef {
+    instruction: Instruction::VCmpxTI32,
+    common: &ARCH_COMMON_DEFS[275],
+  },
+  InstructionDef {
+    instruction: Instruction::VCmpxTI64,
+    common: &ARCH_COMMON_DEFS[276],
+  },
+  InstructionDef {
+    instruction: Instruction::VCmpxTU32,
+    common: &ARCH_COMMON_DEFS[277],
+  },
+  InstructionDef {
+    instruction: Instruction::VCmpxTU64,
+    common: &ARCH_COMMON_DEFS[278],
+  },
+  InstructionDef {
+    instruction: Instruction::VCmpxUF16,
     common: &base::INSTRUCTION_COMMON_DEFS[515],
   },
   InstructionDef {
-    instruction: Instruction::VSadU16,
+    instruction: Instruction::VCmpxUF32,
     common: &base::INSTRUCTION_COMMON_DEFS[516],
   },
   InstructionDef {
-    instruction: Instruction::VSadU32,
+    instruction: Instruction::VCndmaskB16,
     common: &base::INSTRUCTION_COMMON_DEFS[517],
   },
   InstructionDef {
-    instruction: Instruction::VSadU8,
+    instruction: Instruction::VCndmaskB32,
     common: &base::INSTRUCTION_COMMON_DEFS[518],
   },
   InstructionDef {
-    instruction: Instruction::VSatPkU8I16,
+    instruction: Instruction::VCosF16,
     common: &base::INSTRUCTION_COMMON_DEFS[519],
   },
   InstructionDef {
-    instruction: Instruction::VSinF16,
+    instruction: Instruction::VCosF32,
     common: &base::INSTRUCTION_COMMON_DEFS[520],
   },
   InstructionDef {
-    instruction: Instruction::VSinF32,
+    instruction: Instruction::VCtzI32B32,
     common: &base::INSTRUCTION_COMMON_DEFS[521],
   },
   InstructionDef {
-    instruction: Instruction::VSqrtF16,
+    instruction: Instruction::VCubeidF32,
     common: &base::INSTRUCTION_COMMON_DEFS[522],
   },
   InstructionDef {
-    instruction: Instruction::VSqrtF32,
+    instruction: Instruction::VCubemaF32,
     common: &base::INSTRUCTION_COMMON_DEFS[523],
   },
   InstructionDef {
-    instruction: Instruction::VSubCoCiU32,
+    instruction: Instruction::VCubescF32,
     common: &base::INSTRUCTION_COMMON_DEFS[524],
   },
   InstructionDef {
-    instruction: Instruction::VSubCoU32,
+    instruction: Instruction::VCubetcF32,
     common: &base::INSTRUCTION_COMMON_DEFS[525],
   },
   InstructionDef {
-    instruction: Instruction::VSubF16,
+    instruction: Instruction::VCvtF16F32,
     common: &base::INSTRUCTION_COMMON_DEFS[526],
   },
   InstructionDef {
-    instruction: Instruction::VSubF32,
+    instruction: Instruction::VCvtF16I16,
     common: &base::INSTRUCTION_COMMON_DEFS[527],
   },
   InstructionDef {
-    instruction: Instruction::VSubNcI16,
+    instruction: Instruction::VCvtF16U16,
     common: &base::INSTRUCTION_COMMON_DEFS[528],
   },
   InstructionDef {
-    instruction: Instruction::VSubNcI32,
+    instruction: Instruction::VCvtF32F16,
     common: &base::INSTRUCTION_COMMON_DEFS[529],
   },
   InstructionDef {
-    instruction: Instruction::VSubNcU16,
+    instruction: Instruction::VCvtF32I32,
     common: &base::INSTRUCTION_COMMON_DEFS[530],
   },
   InstructionDef {
-    instruction: Instruction::VSubNcU32,
+    instruction: Instruction::VCvtF32U32,
     common: &base::INSTRUCTION_COMMON_DEFS[531],
   },
   InstructionDef {
-    instruction: Instruction::VSubrevCoCiU32,
+    instruction: Instruction::VCvtF32Ubyte0,
     common: &base::INSTRUCTION_COMMON_DEFS[532],
   },
   InstructionDef {
-    instruction: Instruction::VSubrevCoU32,
+    instruction: Instruction::VCvtF32Ubyte1,
     common: &base::INSTRUCTION_COMMON_DEFS[533],
   },
   InstructionDef {
-    instruction: Instruction::VSubrevF16,
+    instruction: Instruction::VCvtF32Ubyte2,
     common: &base::INSTRUCTION_COMMON_DEFS[534],
   },
   InstructionDef {
-    instruction: Instruction::VSubrevF32,
+    instruction: Instruction::VCvtF32Ubyte3,
     common: &base::INSTRUCTION_COMMON_DEFS[535],
   },
   InstructionDef {
-    instruction: Instruction::VSubrevNcU32,
+    instruction: Instruction::VCvtFloorI32F32,
     common: &base::INSTRUCTION_COMMON_DEFS[536],
   },
   InstructionDef {
-    instruction: Instruction::VSwapB16,
+    instruction: Instruction::VCvtI16F16,
     common: &base::INSTRUCTION_COMMON_DEFS[537],
   },
   InstructionDef {
-    instruction: Instruction::VSwapB32,
+    instruction: Instruction::VCvtI32F32,
     common: &base::INSTRUCTION_COMMON_DEFS[538],
   },
   InstructionDef {
-    instruction: Instruction::VSwaprelB32,
+    instruction: Instruction::VCvtI32I16,
     common: &base::INSTRUCTION_COMMON_DEFS[539],
   },
   InstructionDef {
-    instruction: Instruction::VTruncF16,
+    instruction: Instruction::VCvtNearestI32F32,
     common: &base::INSTRUCTION_COMMON_DEFS[540],
   },
   InstructionDef {
-    instruction: Instruction::VTruncF32,
+    instruction: Instruction::VCvtNormI16F16,
     common: &base::INSTRUCTION_COMMON_DEFS[541],
   },
   InstructionDef {
-    instruction: Instruction::VWmmaBf16N16x16x16Bf16,
-    common: &ARCH_COMMON_DEFS[504],
-  },
-  InstructionDef {
-    instruction: Instruction::VWmmaF16N16x16x16F16,
-    common: &ARCH_COMMON_DEFS[505],
-  },
-  InstructionDef {
-    instruction: Instruction::VWmmaF32N16x16x16Bf16,
-    common: &ARCH_COMMON_DEFS[506],
-  },
-  InstructionDef {
-    instruction: Instruction::VWmmaF32N16x16x16F16,
-    common: &ARCH_COMMON_DEFS[507],
-  },
-  InstructionDef {
-    instruction: Instruction::VWmmaI32N16x16x16Iu4,
-    common: &ARCH_COMMON_DEFS[508],
-  },
-  InstructionDef {
-    instruction: Instruction::VWmmaI32N16x16x16Iu8,
-    common: &ARCH_COMMON_DEFS[509],
-  },
-  InstructionDef {
-    instruction: Instruction::VWritelaneB32,
+    instruction: Instruction::VCvtNormU16F16,
     common: &base::INSTRUCTION_COMMON_DEFS[542],
   },
   InstructionDef {
-    instruction: Instruction::VXadU32,
+    instruction: Instruction::VCvtOffF32I4,
     common: &base::INSTRUCTION_COMMON_DEFS[543],
   },
   InstructionDef {
-    instruction: Instruction::VXnorB32,
+    instruction: Instruction::VCvtPkI16F32,
     common: &base::INSTRUCTION_COMMON_DEFS[544],
   },
   InstructionDef {
-    instruction: Instruction::VXor3B32,
+    instruction: Instruction::VCvtPkI16I32,
     common: &base::INSTRUCTION_COMMON_DEFS[545],
   },
   InstructionDef {
-    instruction: Instruction::VXorB16,
+    instruction: Instruction::VCvtPkNormI16F16,
     common: &base::INSTRUCTION_COMMON_DEFS[546],
   },
   InstructionDef {
-    instruction: Instruction::VXorB32,
+    instruction: Instruction::VCvtPkNormI16F32,
     common: &base::INSTRUCTION_COMMON_DEFS[547],
+  },
+  InstructionDef {
+    instruction: Instruction::VCvtPkNormU16F16,
+    common: &base::INSTRUCTION_COMMON_DEFS[548],
+  },
+  InstructionDef {
+    instruction: Instruction::VCvtPkNormU16F32,
+    common: &base::INSTRUCTION_COMMON_DEFS[549],
+  },
+  InstructionDef {
+    instruction: Instruction::VCvtPkRtzF16F32,
+    common: &base::INSTRUCTION_COMMON_DEFS[550],
+  },
+  InstructionDef {
+    instruction: Instruction::VCvtPkU16F32,
+    common: &base::INSTRUCTION_COMMON_DEFS[551],
+  },
+  InstructionDef {
+    instruction: Instruction::VCvtPkU16U32,
+    common: &base::INSTRUCTION_COMMON_DEFS[552],
+  },
+  InstructionDef {
+    instruction: Instruction::VCvtPkU8F32,
+    common: &base::INSTRUCTION_COMMON_DEFS[553],
+  },
+  InstructionDef {
+    instruction: Instruction::VCvtU16F16,
+    common: &base::INSTRUCTION_COMMON_DEFS[554],
+  },
+  InstructionDef {
+    instruction: Instruction::VCvtU32F32,
+    common: &base::INSTRUCTION_COMMON_DEFS[555],
+  },
+  InstructionDef {
+    instruction: Instruction::VCvtU32U16,
+    common: &base::INSTRUCTION_COMMON_DEFS[556],
+  },
+  InstructionDef {
+    instruction: Instruction::VDivFixupF16,
+    common: &base::INSTRUCTION_COMMON_DEFS[557],
+  },
+  InstructionDef {
+    instruction: Instruction::VDivFixupF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[558],
+  },
+  InstructionDef {
+    instruction: Instruction::VDivFmasF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[559],
+  },
+  InstructionDef {
+    instruction: Instruction::VDivScaleF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[560],
+  },
+  InstructionDef {
+    instruction: Instruction::VDot2Bf16Bf16,
+    common: &base::INSTRUCTION_COMMON_DEFS[561],
+  },
+  InstructionDef {
+    instruction: Instruction::VDot2F16F16,
+    common: &base::INSTRUCTION_COMMON_DEFS[562],
+  },
+  InstructionDef {
+    instruction: Instruction::VDot2F32Bf16,
+    common: &base::INSTRUCTION_COMMON_DEFS[563],
+  },
+  InstructionDef {
+    instruction: Instruction::VDot2F32F16,
+    common: &base::INSTRUCTION_COMMON_DEFS[564],
+  },
+  InstructionDef {
+    instruction: Instruction::VDot2accF32F16,
+    common: &ARCH_COMMON_DEFS[279],
+  },
+  InstructionDef {
+    instruction: Instruction::VDot4I32Iu8,
+    common: &base::INSTRUCTION_COMMON_DEFS[565],
+  },
+  InstructionDef {
+    instruction: Instruction::VDot4U32U8,
+    common: &base::INSTRUCTION_COMMON_DEFS[566],
+  },
+  InstructionDef {
+    instruction: Instruction::VDot8I32Iu4,
+    common: &base::INSTRUCTION_COMMON_DEFS[567],
+  },
+  InstructionDef {
+    instruction: Instruction::VDot8U32U4,
+    common: &base::INSTRUCTION_COMMON_DEFS[568],
+  },
+  InstructionDef {
+    instruction: Instruction::VDualAddF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[569],
+  },
+  InstructionDef {
+    instruction: Instruction::VDualAddNcU32,
+    common: &base::INSTRUCTION_COMMON_DEFS[570],
+  },
+  InstructionDef {
+    instruction: Instruction::VDualAndB32,
+    common: &base::INSTRUCTION_COMMON_DEFS[571],
+  },
+  InstructionDef {
+    instruction: Instruction::VDualCndmaskB32,
+    common: &base::INSTRUCTION_COMMON_DEFS[572],
+  },
+  InstructionDef {
+    instruction: Instruction::VDualDot2accF32Bf16,
+    common: &base::INSTRUCTION_COMMON_DEFS[573],
+  },
+  InstructionDef {
+    instruction: Instruction::VDualDot2accF32F16,
+    common: &base::INSTRUCTION_COMMON_DEFS[574],
+  },
+  InstructionDef {
+    instruction: Instruction::VDualFmaakF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[575],
+  },
+  InstructionDef {
+    instruction: Instruction::VDualFmacF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[576],
+  },
+  InstructionDef {
+    instruction: Instruction::VDualFmamkF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[577],
+  },
+  InstructionDef {
+    instruction: Instruction::VDualLshlrevB32,
+    common: &base::INSTRUCTION_COMMON_DEFS[578],
+  },
+  InstructionDef {
+    instruction: Instruction::VDualMaxF32,
+    common: &ARCH_COMMON_DEFS[280],
+  },
+  InstructionDef {
+    instruction: Instruction::VDualMinF32,
+    common: &ARCH_COMMON_DEFS[281],
+  },
+  InstructionDef {
+    instruction: Instruction::VDualMovB32,
+    common: &base::INSTRUCTION_COMMON_DEFS[579],
+  },
+  InstructionDef {
+    instruction: Instruction::VDualMulDx9ZeroF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[580],
+  },
+  InstructionDef {
+    instruction: Instruction::VDualMulF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[581],
+  },
+  InstructionDef {
+    instruction: Instruction::VDualSubF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[582],
+  },
+  InstructionDef {
+    instruction: Instruction::VDualSubrevF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[583],
+  },
+  InstructionDef {
+    instruction: Instruction::VExpF16,
+    common: &base::INSTRUCTION_COMMON_DEFS[584],
+  },
+  InstructionDef {
+    instruction: Instruction::VExpF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[585],
+  },
+  InstructionDef {
+    instruction: Instruction::VFloorF16,
+    common: &base::INSTRUCTION_COMMON_DEFS[586],
+  },
+  InstructionDef {
+    instruction: Instruction::VFloorF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[587],
+  },
+  InstructionDef {
+    instruction: Instruction::VFmaDx9ZeroF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[588],
+  },
+  InstructionDef {
+    instruction: Instruction::VFmaF16,
+    common: &base::INSTRUCTION_COMMON_DEFS[589],
+  },
+  InstructionDef {
+    instruction: Instruction::VFmaF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[590],
+  },
+  InstructionDef {
+    instruction: Instruction::VFmaMixF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[591],
+  },
+  InstructionDef {
+    instruction: Instruction::VFmaMixhiF16,
+    common: &base::INSTRUCTION_COMMON_DEFS[592],
+  },
+  InstructionDef {
+    instruction: Instruction::VFmaMixloF16,
+    common: &base::INSTRUCTION_COMMON_DEFS[593],
+  },
+  InstructionDef {
+    instruction: Instruction::VFmaakF16,
+    common: &base::INSTRUCTION_COMMON_DEFS[594],
+  },
+  InstructionDef {
+    instruction: Instruction::VFmaakF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[595],
+  },
+  InstructionDef {
+    instruction: Instruction::VFmacDx9ZeroF32,
+    common: &ARCH_COMMON_DEFS[282],
+  },
+  InstructionDef {
+    instruction: Instruction::VFmacF16,
+    common: &base::INSTRUCTION_COMMON_DEFS[596],
+  },
+  InstructionDef {
+    instruction: Instruction::VFmacF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[597],
+  },
+  InstructionDef {
+    instruction: Instruction::VFmamkF16,
+    common: &base::INSTRUCTION_COMMON_DEFS[598],
+  },
+  InstructionDef {
+    instruction: Instruction::VFmamkF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[599],
+  },
+  InstructionDef {
+    instruction: Instruction::VFractF16,
+    common: &base::INSTRUCTION_COMMON_DEFS[600],
+  },
+  InstructionDef {
+    instruction: Instruction::VFractF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[601],
+  },
+  InstructionDef {
+    instruction: Instruction::VFrexpExpI16F16,
+    common: &base::INSTRUCTION_COMMON_DEFS[602],
+  },
+  InstructionDef {
+    instruction: Instruction::VFrexpExpI32F32,
+    common: &base::INSTRUCTION_COMMON_DEFS[603],
+  },
+  InstructionDef {
+    instruction: Instruction::VFrexpMantF16,
+    common: &base::INSTRUCTION_COMMON_DEFS[604],
+  },
+  InstructionDef {
+    instruction: Instruction::VFrexpMantF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[605],
+  },
+  InstructionDef {
+    instruction: Instruction::VInterpP10F16F32,
+    common: &base::INSTRUCTION_COMMON_DEFS[606],
+  },
+  InstructionDef {
+    instruction: Instruction::VInterpP10F32,
+    common: &base::INSTRUCTION_COMMON_DEFS[607],
+  },
+  InstructionDef {
+    instruction: Instruction::VInterpP10RtzF16F32,
+    common: &base::INSTRUCTION_COMMON_DEFS[608],
+  },
+  InstructionDef {
+    instruction: Instruction::VInterpP2F16F32,
+    common: &base::INSTRUCTION_COMMON_DEFS[609],
+  },
+  InstructionDef {
+    instruction: Instruction::VInterpP2F32,
+    common: &base::INSTRUCTION_COMMON_DEFS[610],
+  },
+  InstructionDef {
+    instruction: Instruction::VInterpP2RtzF16F32,
+    common: &base::INSTRUCTION_COMMON_DEFS[611],
+  },
+  InstructionDef {
+    instruction: Instruction::VLdexpF16,
+    common: &base::INSTRUCTION_COMMON_DEFS[612],
+  },
+  InstructionDef {
+    instruction: Instruction::VLdexpF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[613],
+  },
+  InstructionDef {
+    instruction: Instruction::VLerpU8,
+    common: &base::INSTRUCTION_COMMON_DEFS[614],
+  },
+  InstructionDef {
+    instruction: Instruction::VLogF16,
+    common: &base::INSTRUCTION_COMMON_DEFS[615],
+  },
+  InstructionDef {
+    instruction: Instruction::VLogF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[616],
+  },
+  InstructionDef {
+    instruction: Instruction::VLshlAddU32,
+    common: &base::INSTRUCTION_COMMON_DEFS[617],
+  },
+  InstructionDef {
+    instruction: Instruction::VLshlOrB32,
+    common: &base::INSTRUCTION_COMMON_DEFS[618],
+  },
+  InstructionDef {
+    instruction: Instruction::VLshlrevB16,
+    common: &base::INSTRUCTION_COMMON_DEFS[619],
+  },
+  InstructionDef {
+    instruction: Instruction::VLshlrevB32,
+    common: &base::INSTRUCTION_COMMON_DEFS[620],
+  },
+  InstructionDef {
+    instruction: Instruction::VLshlrevB64,
+    common: &base::INSTRUCTION_COMMON_DEFS[621],
+  },
+  InstructionDef {
+    instruction: Instruction::VLshrrevB16,
+    common: &base::INSTRUCTION_COMMON_DEFS[622],
+  },
+  InstructionDef {
+    instruction: Instruction::VLshrrevB32,
+    common: &base::INSTRUCTION_COMMON_DEFS[623],
+  },
+  InstructionDef {
+    instruction: Instruction::VLshrrevB64,
+    common: &base::INSTRUCTION_COMMON_DEFS[624],
+  },
+  InstructionDef {
+    instruction: Instruction::VMadI16,
+    common: &base::INSTRUCTION_COMMON_DEFS[625],
+  },
+  InstructionDef {
+    instruction: Instruction::VMadI32I16,
+    common: &base::INSTRUCTION_COMMON_DEFS[626],
+  },
+  InstructionDef {
+    instruction: Instruction::VMadI32I24,
+    common: &base::INSTRUCTION_COMMON_DEFS[627],
+  },
+  InstructionDef {
+    instruction: Instruction::VMadI64I32,
+    common: &ARCH_COMMON_DEFS[283],
+  },
+  InstructionDef {
+    instruction: Instruction::VMadU16,
+    common: &base::INSTRUCTION_COMMON_DEFS[628],
+  },
+  InstructionDef {
+    instruction: Instruction::VMadU32U16,
+    common: &base::INSTRUCTION_COMMON_DEFS[629],
+  },
+  InstructionDef {
+    instruction: Instruction::VMadU32U24,
+    common: &base::INSTRUCTION_COMMON_DEFS[630],
+  },
+  InstructionDef {
+    instruction: Instruction::VMadU64U32,
+    common: &ARCH_COMMON_DEFS[284],
+  },
+  InstructionDef {
+    instruction: Instruction::VMax3F16,
+    common: &ARCH_COMMON_DEFS[285],
+  },
+  InstructionDef {
+    instruction: Instruction::VMax3F32,
+    common: &ARCH_COMMON_DEFS[286],
+  },
+  InstructionDef {
+    instruction: Instruction::VMax3I16,
+    common: &base::INSTRUCTION_COMMON_DEFS[631],
+  },
+  InstructionDef {
+    instruction: Instruction::VMax3I32,
+    common: &base::INSTRUCTION_COMMON_DEFS[632],
+  },
+  InstructionDef {
+    instruction: Instruction::VMax3U16,
+    common: &base::INSTRUCTION_COMMON_DEFS[633],
+  },
+  InstructionDef {
+    instruction: Instruction::VMax3U32,
+    common: &base::INSTRUCTION_COMMON_DEFS[634],
+  },
+  InstructionDef {
+    instruction: Instruction::VMaxF16,
+    common: &ARCH_COMMON_DEFS[287],
+  },
+  InstructionDef {
+    instruction: Instruction::VMaxF32,
+    common: &ARCH_COMMON_DEFS[288],
+  },
+  InstructionDef {
+    instruction: Instruction::VMaxI16,
+    common: &base::INSTRUCTION_COMMON_DEFS[635],
+  },
+  InstructionDef {
+    instruction: Instruction::VMaxI32,
+    common: &base::INSTRUCTION_COMMON_DEFS[636],
+  },
+  InstructionDef {
+    instruction: Instruction::VMaxU16,
+    common: &base::INSTRUCTION_COMMON_DEFS[637],
+  },
+  InstructionDef {
+    instruction: Instruction::VMaxU32,
+    common: &base::INSTRUCTION_COMMON_DEFS[638],
+  },
+  InstructionDef {
+    instruction: Instruction::VMaxminF16,
+    common: &ARCH_COMMON_DEFS[289],
+  },
+  InstructionDef {
+    instruction: Instruction::VMaxminF32,
+    common: &ARCH_COMMON_DEFS[290],
+  },
+  InstructionDef {
+    instruction: Instruction::VMaxminI32,
+    common: &base::INSTRUCTION_COMMON_DEFS[639],
+  },
+  InstructionDef {
+    instruction: Instruction::VMaxminU32,
+    common: &base::INSTRUCTION_COMMON_DEFS[640],
+  },
+  InstructionDef {
+    instruction: Instruction::VMbcntHiU32B32,
+    common: &base::INSTRUCTION_COMMON_DEFS[641],
+  },
+  InstructionDef {
+    instruction: Instruction::VMbcntLoU32B32,
+    common: &base::INSTRUCTION_COMMON_DEFS[642],
+  },
+  InstructionDef {
+    instruction: Instruction::VMed3F16,
+    common: &ARCH_COMMON_DEFS[291],
+  },
+  InstructionDef {
+    instruction: Instruction::VMed3F32,
+    common: &ARCH_COMMON_DEFS[292],
+  },
+  InstructionDef {
+    instruction: Instruction::VMed3I16,
+    common: &base::INSTRUCTION_COMMON_DEFS[643],
+  },
+  InstructionDef {
+    instruction: Instruction::VMed3I32,
+    common: &base::INSTRUCTION_COMMON_DEFS[644],
+  },
+  InstructionDef {
+    instruction: Instruction::VMed3U16,
+    common: &base::INSTRUCTION_COMMON_DEFS[645],
+  },
+  InstructionDef {
+    instruction: Instruction::VMed3U32,
+    common: &base::INSTRUCTION_COMMON_DEFS[646],
+  },
+  InstructionDef {
+    instruction: Instruction::VMin3F16,
+    common: &ARCH_COMMON_DEFS[293],
+  },
+  InstructionDef {
+    instruction: Instruction::VMin3F32,
+    common: &ARCH_COMMON_DEFS[294],
+  },
+  InstructionDef {
+    instruction: Instruction::VMin3I16,
+    common: &base::INSTRUCTION_COMMON_DEFS[647],
+  },
+  InstructionDef {
+    instruction: Instruction::VMin3I32,
+    common: &base::INSTRUCTION_COMMON_DEFS[648],
+  },
+  InstructionDef {
+    instruction: Instruction::VMin3U16,
+    common: &base::INSTRUCTION_COMMON_DEFS[649],
+  },
+  InstructionDef {
+    instruction: Instruction::VMin3U32,
+    common: &base::INSTRUCTION_COMMON_DEFS[650],
+  },
+  InstructionDef {
+    instruction: Instruction::VMinF16,
+    common: &ARCH_COMMON_DEFS[295],
+  },
+  InstructionDef {
+    instruction: Instruction::VMinF32,
+    common: &ARCH_COMMON_DEFS[296],
+  },
+  InstructionDef {
+    instruction: Instruction::VMinI16,
+    common: &base::INSTRUCTION_COMMON_DEFS[651],
+  },
+  InstructionDef {
+    instruction: Instruction::VMinI32,
+    common: &base::INSTRUCTION_COMMON_DEFS[652],
+  },
+  InstructionDef {
+    instruction: Instruction::VMinU16,
+    common: &base::INSTRUCTION_COMMON_DEFS[653],
+  },
+  InstructionDef {
+    instruction: Instruction::VMinU32,
+    common: &base::INSTRUCTION_COMMON_DEFS[654],
+  },
+  InstructionDef {
+    instruction: Instruction::VMinmaxF16,
+    common: &ARCH_COMMON_DEFS[297],
+  },
+  InstructionDef {
+    instruction: Instruction::VMinmaxF32,
+    common: &ARCH_COMMON_DEFS[298],
+  },
+  InstructionDef {
+    instruction: Instruction::VMinmaxI32,
+    common: &base::INSTRUCTION_COMMON_DEFS[655],
+  },
+  InstructionDef {
+    instruction: Instruction::VMinmaxU32,
+    common: &base::INSTRUCTION_COMMON_DEFS[656],
+  },
+  InstructionDef {
+    instruction: Instruction::VMovB16,
+    common: &base::INSTRUCTION_COMMON_DEFS[657],
+  },
+  InstructionDef {
+    instruction: Instruction::VMovB32,
+    common: &base::INSTRUCTION_COMMON_DEFS[658],
+  },
+  InstructionDef {
+    instruction: Instruction::VMovreldB32,
+    common: &base::INSTRUCTION_COMMON_DEFS[659],
+  },
+  InstructionDef {
+    instruction: Instruction::VMovrelsB32,
+    common: &base::INSTRUCTION_COMMON_DEFS[660],
+  },
+  InstructionDef {
+    instruction: Instruction::VMovrelsdN2B32,
+    common: &base::INSTRUCTION_COMMON_DEFS[661],
+  },
+  InstructionDef {
+    instruction: Instruction::VMovrelsdB32,
+    common: &base::INSTRUCTION_COMMON_DEFS[662],
+  },
+  InstructionDef {
+    instruction: Instruction::VMqsadPkU16U8,
+    common: &base::INSTRUCTION_COMMON_DEFS[663],
+  },
+  InstructionDef {
+    instruction: Instruction::VMqsadU32U8,
+    common: &base::INSTRUCTION_COMMON_DEFS[664],
+  },
+  InstructionDef {
+    instruction: Instruction::VMsadU8,
+    common: &base::INSTRUCTION_COMMON_DEFS[665],
+  },
+  InstructionDef {
+    instruction: Instruction::VMulDx9ZeroF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[666],
+  },
+  InstructionDef {
+    instruction: Instruction::VMulF16,
+    common: &base::INSTRUCTION_COMMON_DEFS[667],
+  },
+  InstructionDef {
+    instruction: Instruction::VMulF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[668],
+  },
+  InstructionDef {
+    instruction: Instruction::VMulHiI32,
+    common: &base::INSTRUCTION_COMMON_DEFS[669],
+  },
+  InstructionDef {
+    instruction: Instruction::VMulHiI32I24,
+    common: &base::INSTRUCTION_COMMON_DEFS[670],
+  },
+  InstructionDef {
+    instruction: Instruction::VMulHiU32,
+    common: &base::INSTRUCTION_COMMON_DEFS[671],
+  },
+  InstructionDef {
+    instruction: Instruction::VMulHiU32U24,
+    common: &base::INSTRUCTION_COMMON_DEFS[672],
+  },
+  InstructionDef {
+    instruction: Instruction::VMulI32I24,
+    common: &base::INSTRUCTION_COMMON_DEFS[673],
+  },
+  InstructionDef {
+    instruction: Instruction::VMulLoU16,
+    common: &base::INSTRUCTION_COMMON_DEFS[674],
+  },
+  InstructionDef {
+    instruction: Instruction::VMulLoU32,
+    common: &base::INSTRUCTION_COMMON_DEFS[675],
+  },
+  InstructionDef {
+    instruction: Instruction::VMulU32U24,
+    common: &base::INSTRUCTION_COMMON_DEFS[676],
+  },
+  InstructionDef {
+    instruction: Instruction::VMullitF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[677],
+  },
+  InstructionDef {
+    instruction: Instruction::VNop,
+    common: &base::INSTRUCTION_COMMON_DEFS[678],
+  },
+  InstructionDef {
+    instruction: Instruction::VNotB16,
+    common: &base::INSTRUCTION_COMMON_DEFS[679],
+  },
+  InstructionDef {
+    instruction: Instruction::VNotB32,
+    common: &base::INSTRUCTION_COMMON_DEFS[680],
+  },
+  InstructionDef {
+    instruction: Instruction::VOr3B32,
+    common: &base::INSTRUCTION_COMMON_DEFS[681],
+  },
+  InstructionDef {
+    instruction: Instruction::VOrB16,
+    common: &base::INSTRUCTION_COMMON_DEFS[682],
+  },
+  InstructionDef {
+    instruction: Instruction::VOrB32,
+    common: &base::INSTRUCTION_COMMON_DEFS[683],
+  },
+  InstructionDef {
+    instruction: Instruction::VPackB32F16,
+    common: &base::INSTRUCTION_COMMON_DEFS[684],
+  },
+  InstructionDef {
+    instruction: Instruction::VPermB32,
+    common: &base::INSTRUCTION_COMMON_DEFS[685],
+  },
+  InstructionDef {
+    instruction: Instruction::VPermlane16B32,
+    common: &base::INSTRUCTION_COMMON_DEFS[686],
+  },
+  InstructionDef {
+    instruction: Instruction::VPermlane64B32,
+    common: &base::INSTRUCTION_COMMON_DEFS[687],
+  },
+  InstructionDef {
+    instruction: Instruction::VPermlanex16B32,
+    common: &base::INSTRUCTION_COMMON_DEFS[688],
+  },
+  InstructionDef {
+    instruction: Instruction::VPipeflush,
+    common: &base::INSTRUCTION_COMMON_DEFS[689],
+  },
+  InstructionDef {
+    instruction: Instruction::VPkAddF16,
+    common: &base::INSTRUCTION_COMMON_DEFS[690],
+  },
+  InstructionDef {
+    instruction: Instruction::VPkAddI16,
+    common: &base::INSTRUCTION_COMMON_DEFS[691],
+  },
+  InstructionDef {
+    instruction: Instruction::VPkAddU16,
+    common: &base::INSTRUCTION_COMMON_DEFS[692],
+  },
+  InstructionDef {
+    instruction: Instruction::VPkAshrrevI16,
+    common: &base::INSTRUCTION_COMMON_DEFS[693],
+  },
+  InstructionDef {
+    instruction: Instruction::VPkFmaF16,
+    common: &base::INSTRUCTION_COMMON_DEFS[694],
+  },
+  InstructionDef {
+    instruction: Instruction::VPkFmacF16,
+    common: &base::INSTRUCTION_COMMON_DEFS[695],
+  },
+  InstructionDef {
+    instruction: Instruction::VPkLshlrevB16,
+    common: &base::INSTRUCTION_COMMON_DEFS[696],
+  },
+  InstructionDef {
+    instruction: Instruction::VPkLshrrevB16,
+    common: &base::INSTRUCTION_COMMON_DEFS[697],
+  },
+  InstructionDef {
+    instruction: Instruction::VPkMadI16,
+    common: &base::INSTRUCTION_COMMON_DEFS[698],
+  },
+  InstructionDef {
+    instruction: Instruction::VPkMadU16,
+    common: &base::INSTRUCTION_COMMON_DEFS[699],
+  },
+  InstructionDef {
+    instruction: Instruction::VPkMaxF16,
+    common: &ARCH_COMMON_DEFS[299],
+  },
+  InstructionDef {
+    instruction: Instruction::VPkMaxI16,
+    common: &base::INSTRUCTION_COMMON_DEFS[700],
+  },
+  InstructionDef {
+    instruction: Instruction::VPkMaxU16,
+    common: &base::INSTRUCTION_COMMON_DEFS[701],
+  },
+  InstructionDef {
+    instruction: Instruction::VPkMinF16,
+    common: &ARCH_COMMON_DEFS[300],
+  },
+  InstructionDef {
+    instruction: Instruction::VPkMinI16,
+    common: &base::INSTRUCTION_COMMON_DEFS[702],
+  },
+  InstructionDef {
+    instruction: Instruction::VPkMinU16,
+    common: &base::INSTRUCTION_COMMON_DEFS[703],
+  },
+  InstructionDef {
+    instruction: Instruction::VPkMulF16,
+    common: &base::INSTRUCTION_COMMON_DEFS[704],
+  },
+  InstructionDef {
+    instruction: Instruction::VPkMulLoU16,
+    common: &base::INSTRUCTION_COMMON_DEFS[705],
+  },
+  InstructionDef {
+    instruction: Instruction::VPkSubI16,
+    common: &base::INSTRUCTION_COMMON_DEFS[706],
+  },
+  InstructionDef {
+    instruction: Instruction::VPkSubU16,
+    common: &base::INSTRUCTION_COMMON_DEFS[707],
+  },
+  InstructionDef {
+    instruction: Instruction::VQsadPkU16U8,
+    common: &base::INSTRUCTION_COMMON_DEFS[708],
+  },
+  InstructionDef {
+    instruction: Instruction::VRcpF16,
+    common: &base::INSTRUCTION_COMMON_DEFS[709],
+  },
+  InstructionDef {
+    instruction: Instruction::VRcpF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[710],
+  },
+  InstructionDef {
+    instruction: Instruction::VRcpIflagF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[711],
+  },
+  InstructionDef {
+    instruction: Instruction::VReadfirstlaneB32,
+    common: &base::INSTRUCTION_COMMON_DEFS[712],
+  },
+  InstructionDef {
+    instruction: Instruction::VReadlaneB32,
+    common: &base::INSTRUCTION_COMMON_DEFS[713],
+  },
+  InstructionDef {
+    instruction: Instruction::VRndneF16,
+    common: &base::INSTRUCTION_COMMON_DEFS[714],
+  },
+  InstructionDef {
+    instruction: Instruction::VRndneF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[715],
+  },
+  InstructionDef {
+    instruction: Instruction::VRsqF16,
+    common: &base::INSTRUCTION_COMMON_DEFS[716],
+  },
+  InstructionDef {
+    instruction: Instruction::VRsqF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[717],
+  },
+  InstructionDef {
+    instruction: Instruction::VSadHiU8,
+    common: &base::INSTRUCTION_COMMON_DEFS[718],
+  },
+  InstructionDef {
+    instruction: Instruction::VSadU16,
+    common: &base::INSTRUCTION_COMMON_DEFS[719],
+  },
+  InstructionDef {
+    instruction: Instruction::VSadU32,
+    common: &base::INSTRUCTION_COMMON_DEFS[720],
+  },
+  InstructionDef {
+    instruction: Instruction::VSadU8,
+    common: &base::INSTRUCTION_COMMON_DEFS[721],
+  },
+  InstructionDef {
+    instruction: Instruction::VSatPkU8I16,
+    common: &base::INSTRUCTION_COMMON_DEFS[722],
+  },
+  InstructionDef {
+    instruction: Instruction::VSinF16,
+    common: &base::INSTRUCTION_COMMON_DEFS[723],
+  },
+  InstructionDef {
+    instruction: Instruction::VSinF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[724],
+  },
+  InstructionDef {
+    instruction: Instruction::VSqrtF16,
+    common: &base::INSTRUCTION_COMMON_DEFS[725],
+  },
+  InstructionDef {
+    instruction: Instruction::VSqrtF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[726],
+  },
+  InstructionDef {
+    instruction: Instruction::VSubCoCiU32,
+    common: &base::INSTRUCTION_COMMON_DEFS[727],
+  },
+  InstructionDef {
+    instruction: Instruction::VSubCoU32,
+    common: &base::INSTRUCTION_COMMON_DEFS[728],
+  },
+  InstructionDef {
+    instruction: Instruction::VSubF16,
+    common: &base::INSTRUCTION_COMMON_DEFS[729],
+  },
+  InstructionDef {
+    instruction: Instruction::VSubF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[730],
+  },
+  InstructionDef {
+    instruction: Instruction::VSubNcI16,
+    common: &base::INSTRUCTION_COMMON_DEFS[731],
+  },
+  InstructionDef {
+    instruction: Instruction::VSubNcI32,
+    common: &base::INSTRUCTION_COMMON_DEFS[732],
+  },
+  InstructionDef {
+    instruction: Instruction::VSubNcU16,
+    common: &base::INSTRUCTION_COMMON_DEFS[733],
+  },
+  InstructionDef {
+    instruction: Instruction::VSubNcU32,
+    common: &base::INSTRUCTION_COMMON_DEFS[734],
+  },
+  InstructionDef {
+    instruction: Instruction::VSubrevCoCiU32,
+    common: &base::INSTRUCTION_COMMON_DEFS[735],
+  },
+  InstructionDef {
+    instruction: Instruction::VSubrevCoU32,
+    common: &base::INSTRUCTION_COMMON_DEFS[736],
+  },
+  InstructionDef {
+    instruction: Instruction::VSubrevF16,
+    common: &base::INSTRUCTION_COMMON_DEFS[737],
+  },
+  InstructionDef {
+    instruction: Instruction::VSubrevF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[738],
+  },
+  InstructionDef {
+    instruction: Instruction::VSubrevNcU32,
+    common: &base::INSTRUCTION_COMMON_DEFS[739],
+  },
+  InstructionDef {
+    instruction: Instruction::VSwapB16,
+    common: &base::INSTRUCTION_COMMON_DEFS[740],
+  },
+  InstructionDef {
+    instruction: Instruction::VSwapB32,
+    common: &base::INSTRUCTION_COMMON_DEFS[741],
+  },
+  InstructionDef {
+    instruction: Instruction::VSwaprelB32,
+    common: &base::INSTRUCTION_COMMON_DEFS[742],
+  },
+  InstructionDef {
+    instruction: Instruction::VTruncF16,
+    common: &base::INSTRUCTION_COMMON_DEFS[743],
+  },
+  InstructionDef {
+    instruction: Instruction::VTruncF32,
+    common: &base::INSTRUCTION_COMMON_DEFS[744],
+  },
+  InstructionDef {
+    instruction: Instruction::VWmmaBf16N16x16x16Bf16,
+    common: &ARCH_COMMON_DEFS[301],
+  },
+  InstructionDef {
+    instruction: Instruction::VWmmaF16N16x16x16F16,
+    common: &ARCH_COMMON_DEFS[302],
+  },
+  InstructionDef {
+    instruction: Instruction::VWmmaF32N16x16x16Bf16,
+    common: &ARCH_COMMON_DEFS[303],
+  },
+  InstructionDef {
+    instruction: Instruction::VWmmaF32N16x16x16F16,
+    common: &ARCH_COMMON_DEFS[304],
+  },
+  InstructionDef {
+    instruction: Instruction::VWmmaI32N16x16x16Iu4,
+    common: &ARCH_COMMON_DEFS[305],
+  },
+  InstructionDef {
+    instruction: Instruction::VWmmaI32N16x16x16Iu8,
+    common: &ARCH_COMMON_DEFS[306],
+  },
+  InstructionDef {
+    instruction: Instruction::VWritelaneB32,
+    common: &base::INSTRUCTION_COMMON_DEFS[745],
+  },
+  InstructionDef {
+    instruction: Instruction::VXadU32,
+    common: &base::INSTRUCTION_COMMON_DEFS[746],
+  },
+  InstructionDef {
+    instruction: Instruction::VXnorB32,
+    common: &base::INSTRUCTION_COMMON_DEFS[747],
+  },
+  InstructionDef {
+    instruction: Instruction::VXor3B32,
+    common: &base::INSTRUCTION_COMMON_DEFS[748],
+  },
+  InstructionDef {
+    instruction: Instruction::VXorB16,
+    common: &base::INSTRUCTION_COMMON_DEFS[749],
+  },
+  InstructionDef {
+    instruction: Instruction::VXorB32,
+    common: &base::INSTRUCTION_COMMON_DEFS[750],
   },
 ];
 
@@ -11042,4 +9383,12 @@ pub fn lookup(name: &str) -> Option<Instruction> {
 
 pub fn lookup_normalized(name: &str) -> Option<Instruction> {
   lookup(&name.to_ascii_lowercase())
+}
+
+pub fn lookup_common_def(name: &str) -> Option<&'static InstructionCommonDef> {
+  let instruction = lookup_normalized(name)?;
+  INSTRUCTION_DEFS
+    .iter()
+    .find(|def| def.instruction == instruction)
+    .map(|def| def.common)
 }

@@ -1,123 +1,198 @@
-use crate::isa::InstructionCommonDef;
+use half::bf16;
+
+use crate::isa::types::InstructionCommonDef;
+use crate::parse_instruction::SpecialRegister;
 use crate::wave::WaveState;
 use crate::Program;
 
+/// Common memory operations trait for both global memory and LDS
+pub trait MemoryOps {
+    fn memory(&self) -> &[u8];
+    fn memory_mut(&mut self) -> &mut [u8];
+
+    fn write(&mut self, addr: u64, data: &[u8]) -> Result<(), String> {
+        let start = addr as usize;
+        let end = start
+            .checked_add(data.len())
+            .ok_or_else(|| "memory write overflow".to_string())?;
+        if end > self.memory().len() {
+            return Err(format!(
+                "memory write out of bounds: {}..{} (len {})",
+                start,
+                end,
+                self.memory().len()
+            ));
+        }
+        self.memory_mut()[start..end].copy_from_slice(data);
+        Ok(())
+    }
+
+    fn write_zeros(&mut self, addr: u64, size: usize) -> Result<(), String> {
+        let start = addr as usize;
+        let end = start
+            .checked_add(size)
+            .ok_or_else(|| "memory write overflow".to_string())?;
+        if end > self.memory().len() {
+            return Err(format!(
+                "memory write out of bounds: {}..{} (len {})",
+                start,
+                end,
+                self.memory().len()
+            ));
+        }
+        self.memory_mut()[start..end].fill(0);
+        Ok(())
+    }
+
+    fn read(&self, addr: u64, size: usize) -> Result<Vec<u8>, String> {
+        let start = addr as usize;
+        let end = start
+            .checked_add(size)
+            .ok_or_else(|| "memory read overflow".to_string())?;
+        if end > self.memory().len() {
+            return Err(format!(
+                "memory read out of bounds: {}..{} (len {})",
+                start,
+                end,
+                self.memory().len()
+            ));
+        }
+        Ok(self.memory()[start..end].to_vec())
+    }
+
+    fn read_u8(&self, addr: u64) -> Result<u8, String> {
+        Ok(self.read(addr, 1)?[0])
+    }
+
+    fn read_i8(&self, addr: u64) -> Result<i8, String> {
+        Ok(self.read_u8(addr)? as i8)
+    }
+
+    fn read_u16(&self, addr: u64) -> Result<u16, String> {
+        let bytes = self.read(addr, 2)?;
+        Ok(u16::from_le_bytes([bytes[0], bytes[1]]))
+    }
+
+    fn read_i16(&self, addr: u64) -> Result<i16, String> {
+        Ok(self.read_u16(addr)? as i16)
+    }
+
+    fn read_u32(&self, addr: u64) -> Result<u32, String> {
+        let bytes = self.read(addr, 4)?;
+        Ok(u32::from_le_bytes([bytes[0], bytes[1], bytes[2], bytes[3]]))
+    }
+
+    fn read_i32(&self, addr: u64) -> Result<i32, String> {
+        Ok(self.read_u32(addr)? as i32)
+    }
+
+    fn read_u64(&self, addr: u64) -> Result<u64, String> {
+        let bytes = self.read(addr, 8)?;
+        Ok(u64::from_le_bytes([
+            bytes[0], bytes[1], bytes[2], bytes[3],
+            bytes[4], bytes[5], bytes[6], bytes[7],
+        ]))
+    }
+
+    fn read_i64(&self, addr: u64) -> Result<i64, String> {
+        Ok(self.read_u64(addr)? as i64)
+    }
+
+    fn read_f32(&self, addr: u64) -> Result<f32, String> {
+        let bytes = self.read(addr, 4)?;
+        Ok(f32::from_le_bytes([bytes[0], bytes[1], bytes[2], bytes[3]]))
+    }
+
+    fn read_bf16(&self, addr: u64) -> Result<f32, String> {
+        let bits = self.read_u16(addr)?;
+        Ok(bf16::from_bits(bits).to_f32())
+    }
+
+    fn write_bf16(&mut self, addr: u64, value: f32) -> Result<(), String> {
+        let bytes = bf16::from_f32(value).to_bits().to_le_bytes();
+        self.write(addr, &bytes)
+    }
+}
+
 #[derive(Clone, Debug)]
 pub struct GlobalAlloc {
-    pub(crate) memory: Box<[u8]>, // not dynamic. u8 is divisible by all byte-widths used, f32, f16, etc. 
+    pub(crate) memory: Box<[u8]>, // not dynamic. u8 is divisible by all byte-widths used, f32, f16, etc.
     pub(crate) next: usize, // next available address for allocation
 }
 
+impl MemoryOps for GlobalAlloc {
+    fn memory(&self) -> &[u8] {
+        &self.memory
+    }
+
+    fn memory_mut(&mut self) -> &mut [u8] {
+        &mut self.memory
+    }
+}
+
 impl GlobalAlloc {
-  pub fn alloc(&mut self, size: usize, align: usize) -> Result<u64, String> {
-    let align = align.max(1);
-    let aligned = (self.next + align - 1) / align * align;
-    let end = aligned
-      .checked_add(size)
-      .ok_or_else(|| "global alloc overflow".to_string())?;
-    if end > self.memory.len() {
-      return Err(format!(
-        "global alloc out of memory: need {}, have {}",
-        end,
-        self.memory.len()
-      ));
+    pub fn alloc(&mut self, size: usize, align: usize) -> Result<u64, String> {
+        let align = align.max(1);
+        let aligned = (self.next + align - 1) / align * align;
+        let end = aligned
+            .checked_add(size)
+            .ok_or_else(|| "global alloc overflow".to_string())?;
+        if end > self.memory.len() {
+            return Err(format!(
+                "global alloc out of memory: need {}, have {}",
+                end,
+                self.memory.len()
+            ));
+        }
+        self.next = end;
+        Ok(aligned as u64)
     }
-    self.next = end;
-    Ok(aligned as u64)
-  }
+}
 
-  pub fn write(&mut self, addr: u64, data: &[u8]) -> Result<(), String> {
-    let start = addr as usize;
-    let end = start
-      .checked_add(data.len())
-      .ok_or_else(|| "global write overflow".to_string())?;
-    if end > self.memory.len() {
-      return Err(format!(
-        "global write out of bounds: {}..{} (len {})",
-        start,
-        end,
-        self.memory.len()
-      ));
+/// Local Data Store (LDS) - shared memory visible to all threads in a workgroup
+/// Allocated and aligned in u32 (4-byte) chunks
+#[derive(Clone, Debug)]
+pub struct LDS {
+    pub(crate) memory: Box<[u8]>,
+    pub(crate) next: usize, // next available address for allocation
+}
+
+impl MemoryOps for LDS {
+    fn memory(&self) -> &[u8] {
+        &self.memory
     }
-    self.memory[start..end].copy_from_slice(data);
-    Ok(())
-  }
 
-  pub fn write_zeros(&mut self, addr: u64, size: usize) -> Result<(), String> {
-    let start = addr as usize;
-    let end = start
-      .checked_add(size)
-      .ok_or_else(|| "global write overflow".to_string())?;
-    if end > self.memory.len() {
-      return Err(format!(
-        "global write out of bounds: {}..{} (len {})",
-        start,
-        end,
-        self.memory.len()
-      ));
+    fn memory_mut(&mut self) -> &mut [u8] {
+        &mut self.memory
     }
-    self.memory[start..end].fill(0);
-    Ok(())
-  }
+}
 
-  pub fn read(&self, addr: u64, size: usize) -> Result<Vec<u8>, String> {
-    let start = addr as usize;
-    let end = start
-      .checked_add(size)
-      .ok_or_else(|| "global read overflow".to_string())?;
-    if end > self.memory.len() {
-      return Err(format!(
-        "global read out of bounds: {}..{} (len {})",
-        start,
-        end,
-        self.memory.len()
-      ));
+impl LDS {
+    pub fn new(size: usize) -> Self {
+        Self {
+            memory: vec![0u8; size].into_boxed_slice(),
+            next: 0,
+        }
     }
-    Ok(self.memory[start..end].to_vec())
-  }
 
-  pub fn read_u8(&self, addr: u64) -> Result<u8, String> {
-    Ok(self.read(addr, 1)?[0])
-  }
-
-  pub fn read_i8(&self, addr: u64) -> Result<i8, String> {
-    Ok(self.read_u8(addr)? as i8)
-  }
-
-  pub fn read_u16(&self, addr: u64) -> Result<u16, String> {
-    let bytes = self.read(addr, 2)?;
-    Ok(u16::from_le_bytes([bytes[0], bytes[1]]))
-  }
-
-  pub fn read_i16(&self, addr: u64) -> Result<i16, String> {
-    Ok(self.read_u16(addr)? as i16)
-  }
-
-  pub fn read_u32(&self, addr: u64) -> Result<u32, String> {
-    let bytes = self.read(addr, 4)?;
-    Ok(u32::from_le_bytes([bytes[0], bytes[1], bytes[2], bytes[3]]))
-  }
-
-  pub fn read_i32(&self, addr: u64) -> Result<i32, String> {
-    Ok(self.read_u32(addr)? as i32)
-  }
-
-  pub fn read_u64(&self, addr: u64) -> Result<u64, String> {
-    let bytes = self.read(addr, 8)?;
-    Ok(u64::from_le_bytes([
-      bytes[0], bytes[1], bytes[2], bytes[3],
-      bytes[4], bytes[5], bytes[6], bytes[7],
-    ]))
-  }
-
-  pub fn read_i64(&self, addr: u64) -> Result<i64, String> {
-    Ok(self.read_u64(addr)? as i64)
-  }
-
-  pub fn read_f32(&self, addr: u64) -> Result<f32, String> {
-    let bytes = self.read(addr, 4)?;
-    Ok(f32::from_le_bytes([bytes[0], bytes[1], bytes[2], bytes[3]]))
-  }
+    /// Allocate LDS memory with 4-byte minimum alignment
+    pub fn alloc(&mut self, size: usize, align: usize) -> Result<u64, String> {
+        // LDS requires minimum 4-byte alignment
+        let align = align.max(4);
+        let aligned = (self.next + align - 1) / align * align;
+        let end = aligned
+            .checked_add(size)
+            .ok_or_else(|| "LDS alloc overflow".to_string())?;
+        if end > self.memory.len() {
+            return Err(format!(
+                "LDS alloc out of memory: need {}, have {}",
+                end,
+                self.memory.len()
+            ));
+        }
+        self.next = end;
+        Ok(aligned as u64)
+    }
 }
 
 pub fn generate_arange(start: i32, end: i32, step: i32) -> Result<Vec<i32>, String> {
@@ -150,7 +225,41 @@ pub enum ExecError {
 
 pub type ExecResult = Result<(), ExecError>;
 
-pub struct DecodedInst;
+#[derive(Clone, Debug)]
+pub struct DecodedInst {
+    /// Instruction metadata
+    pub name: String,
+    pub def: &'static InstructionCommonDef,
+    pub line_num: usize,  // Source line number for error reporting
+
+    /// Decoded operand values
+    pub operands: Vec<DecodedOperand>,
+}
+
+#[derive(Clone, Debug)]
+pub enum DecodedOperand {
+    // Register references (just the index, not the value)
+    Sgpr(u16),
+    SgprRange(u16, u16),  // start, end (inclusive)
+    Vgpr(u16),
+    VgprRange(u16, u16),
+    SpecialReg(SpecialRegister),
+
+    // Immediate values (already converted to runtime type)
+    ImmU32(u32),
+    ImmI32(i32),
+    ImmF32(f32),
+
+    // Memory/addressing
+    Offset(u32),
+
+    // Flags (for cache policies, addressing modes, etc.)
+    Flag(String),
+
+    // Modifiers wrapping other operands
+    Negate(Box<DecodedOperand>),
+    Abs(Box<DecodedOperand>),
+}
 
 pub struct ExecContext<'a> {
     pub wave: &'a mut WaveState,
@@ -176,10 +285,6 @@ pub fn dispatch(
 }
 
 
-// local data store (shared memory, visible to every thread in the WGP)
-pub struct LDS {
-
-}
 
 #[cfg(test)]
 mod tests {
@@ -498,6 +603,20 @@ mod tests {
     }
 
     #[test]
+    fn test_read_write_bf16() {
+        let mut alloc = new_alloc(1024);
+
+        let addr = alloc.alloc(2, 2).unwrap();
+        alloc.write_bf16(addr, -1.75).unwrap();
+
+        let value = alloc.read_bf16(addr).unwrap();
+        assert!((value + 1.75).abs() < 0.01);
+
+        let raw = bf16::from_f32(-1.75).to_bits().to_le_bytes();
+        assert_eq!(alloc.memory[addr as usize..addr as usize + 2], raw);
+    }
+
+    #[test]
     fn test_alloc_write_read_integration() {
         let mut alloc = new_alloc(1024);
 
@@ -642,5 +761,191 @@ mod tests {
         let result = generate_arange(-2, 4, -1);
         assert!(result.is_err());
         assert!(result.unwrap_err().contains("wrong sign"));
+    }
+
+    // LDS tests - reusing patterns from GlobalAlloc tests
+
+    #[test]
+    fn test_lds_alloc_basic() {
+        let mut lds = LDS::new(1024);
+
+        // First allocation should start at 0
+        let addr = lds.alloc(16, 4).unwrap();
+        assert_eq!(addr, 0);
+        assert_eq!(lds.next, 16);
+
+        // Second allocation should follow immediately
+        let addr2 = lds.alloc(32, 4).unwrap();
+        assert_eq!(addr2, 16);
+        assert_eq!(lds.next, 48);
+    }
+
+    #[test]
+    fn test_lds_alloc_minimum_alignment() {
+        let mut lds = LDS::new(1024);
+
+        // Even with 1-byte alignment request, LDS enforces 4-byte minimum
+        let addr = lds.alloc(1, 1).unwrap();
+        assert_eq!(addr, 0);
+        assert_eq!(lds.next, 1);
+
+        // Next allocation with 1-byte request should align to 4
+        let addr2 = lds.alloc(1, 1).unwrap();
+        assert_eq!(addr2, 4);
+        assert_eq!(lds.next, 5);
+    }
+
+    #[test]
+    fn test_lds_alloc_alignment() {
+        let mut lds = LDS::new(1024);
+
+        // Allocate 1 byte (will be 4-byte aligned minimum)
+        let addr1 = lds.alloc(1, 4).unwrap();
+        assert_eq!(addr1, 0);
+        assert_eq!(lds.next, 1);
+
+        // Allocate with 8-byte alignment
+        let addr2 = lds.alloc(4, 8).unwrap();
+        assert_eq!(addr2, 8);
+        assert_eq!(lds.next, 12);
+
+        // Allocate with 16-byte alignment
+        let addr3 = lds.alloc(8, 16).unwrap();
+        assert_eq!(addr3, 16);
+        assert_eq!(lds.next, 24);
+    }
+
+    #[test]
+    fn test_lds_alloc_out_of_memory() {
+        let mut lds = LDS::new(100);
+
+        // Allocate most of the space
+        lds.alloc(90, 4).unwrap();
+
+        // This should fail - not enough space left
+        let result = lds.alloc(20, 4);
+        assert!(result.is_err());
+        assert!(result.unwrap_err().contains("out of memory"));
+    }
+
+    #[test]
+    fn test_lds_alloc_overflow() {
+        let mut lds = LDS::new(100);
+
+        // Allocate something first
+        lds.alloc(10, 4).unwrap();
+
+        // Try to allocate a size that would overflow
+        let result = lds.alloc(usize::MAX - 5, 4);
+        assert!(result.is_err());
+        assert!(result.unwrap_err().contains("overflow"));
+    }
+
+    #[test]
+    fn test_lds_write_read_basic() {
+        let mut lds = LDS::new(1024);
+
+        let data = vec![1, 2, 3, 4, 5];
+        lds.write(0, &data).unwrap();
+
+        // Verify data was written
+        assert_eq!(lds.memory[0], 1);
+        assert_eq!(lds.memory[1], 2);
+        assert_eq!(lds.memory[2], 3);
+        assert_eq!(lds.memory[3], 4);
+        assert_eq!(lds.memory[4], 5);
+
+        // Read it back
+        let read_data = lds.read(0, 5).unwrap();
+        assert_eq!(read_data, vec![1, 2, 3, 4, 5]);
+    }
+
+    #[test]
+    fn test_lds_write_zeros() {
+        let mut lds = LDS::new(1024);
+
+        // Write some non-zero data first
+        lds.memory[10] = 42;
+        lds.memory[11] = 43;
+        lds.memory[12] = 44;
+
+        // Zero it out
+        lds.write_zeros(10, 3).unwrap();
+
+        assert_eq!(lds.memory[10], 0);
+        assert_eq!(lds.memory[11], 0);
+        assert_eq!(lds.memory[12], 0);
+    }
+
+    #[test]
+    fn test_lds_read_typed_values() {
+        let mut lds = LDS::new(1024);
+
+        // Test u32
+        let addr_u32 = lds.alloc(4, 4).unwrap();
+        lds.write(addr_u32, &0xDEADBEEFu32.to_le_bytes()).unwrap();
+        assert_eq!(lds.read_u32(addr_u32).unwrap(), 0xDEADBEEF);
+
+        // Test i32
+        let addr_i32 = lds.alloc(4, 4).unwrap();
+        lds.write(addr_i32, &(-42i32).to_le_bytes()).unwrap();
+        assert_eq!(lds.read_i32(addr_i32).unwrap(), -42);
+
+        // Test f32
+        let addr_f32 = lds.alloc(4, 4).unwrap();
+        lds.write(addr_f32, &3.14159f32.to_le_bytes()).unwrap();
+        let value = lds.read_f32(addr_f32).unwrap();
+        assert!((value - 3.14159).abs() < 0.0001);
+    }
+
+    #[test]
+    fn test_lds_read_write_bf16() {
+        let mut lds = LDS::new(1024);
+
+        let addr = lds.alloc(2, 4).unwrap();
+        lds.write_bf16(addr, -1.75).unwrap();
+
+        let value = lds.read_bf16(addr).unwrap();
+        assert!((value + 1.75).abs() < 0.01);
+    }
+
+    #[test]
+    fn test_lds_alloc_write_read_integration() {
+        let mut lds = LDS::new(1024);
+
+        // Allocate space for multiple values
+        let addr1 = lds.alloc(4, 4).unwrap();
+        let addr2 = lds.alloc(4, 4).unwrap();
+        let addr3 = lds.alloc(8, 8).unwrap();
+
+        // Write different typed values
+        lds.write(addr1, &100u32.to_le_bytes()).unwrap();
+        lds.write(addr2, &(-200i32).to_le_bytes()).unwrap();
+        lds.write(addr3, &123456789u64.to_le_bytes()).unwrap();
+
+        // Read them back
+        assert_eq!(lds.read_u32(addr1).unwrap(), 100);
+        assert_eq!(lds.read_i32(addr2).unwrap(), -200);
+        assert_eq!(lds.read_u64(addr3).unwrap(), 123456789);
+    }
+
+    #[test]
+    fn test_lds_out_of_bounds() {
+        let lds = LDS::new(100);
+
+        // Read out of bounds
+        let result = lds.read(98, 5);
+        assert!(result.is_err());
+        assert!(result.unwrap_err().contains("out of bounds"));
+    }
+
+    #[test]
+    fn test_lds_write_out_of_bounds() {
+        let mut lds = LDS::new(100);
+
+        let data = vec![1, 2, 3, 4, 5];
+        let result = lds.write(98, &data);
+        assert!(result.is_err());
+        assert!(result.unwrap_err().contains("out of bounds"));
     }
 }

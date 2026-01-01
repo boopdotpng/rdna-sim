@@ -2,21 +2,26 @@ use std::fs;
 use std::path::Path;
 use std::str::FromStr;
 
-use crate::sim::generate_arange;
-use crate::{Dim3, Program, WaveSize};
+use half::bf16;
+
+use crate::decode::{decode_instruction, format_decode_error};
+use crate::isa::types::InstructionCommonDef;
+use crate::parse_instruction::parse_instruction;
+use crate::sim::{generate_arange, DecodedInst};
+use crate::{Architecture, Dim3, Program, WaveSize};
 
 #[derive(Clone, Debug)]
 pub struct ArgInfo {
     pub name: String,
     pub type_name: String,
-    pub shape: Vec<usize>, // user can pass in [3,3] as a shape, we need to save so that it prints neatly at the end
+    pub shape: Vec<usize>, // user can pass in [3,3] as a shape, we need to save that per argument so that it prints neatly at the end
     pub addr: u64, 
     pub len: usize,
 }
 
 #[derive(Clone, Debug)]
 pub struct ProgramInfo {
-    pub instructions: Vec<String>,
+    pub instructions: Vec<DecodedInst>,
     pub arguments: Vec<ArgInfo>,
     pub output_arguments: Vec<ArgInfo>,
     pub local_launch_size: Dim3,
@@ -43,15 +48,19 @@ enum Number {
     Float(f32),
 }
 
-pub fn parse_file(file_path: &Path, program: &mut Program) -> Result<ProgramInfo, String> {
+pub fn parse_file(
+    file_path: &Path,
+    program: &mut Program,
+    arch: Architecture,
+) -> Result<ProgramInfo, String> {
     let content = fs::read_to_string(file_path)
         .map_err(|e| format!("Failed to read file {}: {}", file_path.display(), e))?;
 
     let mut instructions = Vec::new();
     let mut arguments = Vec::new();
     let mut output_arguments = Vec::new();
-    let mut local_launch_size = Dim3::new(1, 1, 1);
-    let mut global_launch_size = Dim3::new(1, 1, 1);
+    let mut local_launch_size = Dim3::new(64, 1, 1);
+    let mut global_launch_size = Dim3::new(64, 1, 1);
     let mut wave_size = None;
 
     let mut in_header = false;
@@ -83,6 +92,7 @@ pub fn parse_file(file_path: &Path, program: &mut Program) -> Result<ProgramInfo
                         let val = value.parse::<u32>().map_err(|_| {
                             format!("line {}: invalid wave size '{}'", line_no + 1, value)
                         })?;
+                        // update to include wave64 support when added
                         wave_size = match val {
                             32 => Some(WaveSize::Wave32),
                             64 => {
@@ -114,7 +124,25 @@ pub fn parse_file(file_path: &Path, program: &mut Program) -> Result<ProgramInfo
                 return Err(format!("line {}: malformed header entry", line_no + 1));
             }
         } else {
-            instructions.push(line.to_string());
+            // Skip print directives for now (will be handled later via wavestate)
+            if line.starts_with("print") {
+                continue;
+            }
+
+            // Parse the instruction text
+            let parsed = parse_instruction(line)
+                .map_err(|e| format!("line {}: {}", line_no + 1, e))?;
+
+            // Look up instruction definition
+            let def = lookup_instruction_def(&parsed.name, arch)
+                .ok_or_else(|| format!("line {}: unknown instruction '{}'",
+                                       line_no + 1, parsed.name))?;
+
+            // Decode and validate
+            let decoded = decode_instruction(&parsed, def, line_no + 1)
+                .map_err(|e| format_decode_error(e))?;
+
+            instructions.push(decoded);
         }
     }
 
@@ -180,9 +208,6 @@ fn parse_argument(name: &str, value: &str, program: &mut Program) -> Result<ArgI
       }
       program.write_global(addr, &bytes)?;
     } else {
-      if spec.is_bfloat {
-        return Err("bf16 initializers must use file(...)".to_string());
-      }
       let values = parse_initializer(init, &spec, len, &shape)?;
       let bytes = encode_values(&values, &spec)?;
       if bytes.len() != byte_len {
@@ -294,7 +319,7 @@ fn parse_initializer(
   use rand::Rng;
 
   let value = value.trim();
-  let mut numbers = if let Some(inner) = value.strip_prefix('[').and_then(|v| v.strip_suffix(']')) {
+  let numbers = if let Some(inner) = value.strip_prefix('[').and_then(|v| v.strip_suffix(']')) {
     parse_number_list(inner)?
   } else if let Some(args) = value.strip_prefix("repeat(").and_then(|v| v.strip_suffix(')')) {
     let args = parse_call_tokens(args);
@@ -326,12 +351,10 @@ fn parse_initializer(
   } else if value.strip_prefix("rand(").and_then(|v| v.strip_suffix(')')).is_some() {
     let mut rng = rand::thread_rng();
     if spec.is_float {
-      // Generate random floats in [0.0, 1.0)
       (0..expected_len)
         .map(|_| Number::Float(rng.r#gen::<f32>()))
         .collect()
     } else {
-      // Generate random integers in [0, 100) for practicality
       (0..expected_len)
         .map(|_| Number::Int(rng.gen_range(0..100) as i64))
         .collect()
@@ -346,12 +369,6 @@ fn parse_initializer(
       numbers.len(),
       expected_len
     ));
-  }
-
-  if !spec.is_float {
-    for num in &mut numbers {
-      *num = Number::Int(number_to_int(num)?);
-    }
   }
 
   Ok(numbers)
@@ -438,60 +455,118 @@ fn parse_number(value: &str) -> Result<Number, String> {
     Ok(Number::Int(sign * parsed))
 }
 
-fn number_to_int(value: &Number) -> Result<i64, String> {
-    match *value {
-        Number::Int(v) => Ok(v),
-        Number::Float(v) => {
-            if v.fract() != 0.0 {
-                Err("integer value required".to_string())
+struct ValueEncoder<'a> {
+    spec: &'a TypeSpec,
+    bytes: Vec<u8>,
+}
+
+impl<'a> ValueEncoder<'a> {
+    fn new(spec: &'a TypeSpec, capacity: usize) -> Self {
+        Self {
+            spec,
+            bytes: Vec::with_capacity(capacity * spec.element_size()),
+        }
+    }
+
+    fn encode_value(&mut self, value: &Number) -> Result<(), String> {
+        if self.spec.is_float {
+            let float_val = match *value {
+                Number::Int(v) => v as f32,
+                Number::Float(v) => v,
+            };
+
+            match (self.spec.bits, self.spec.is_bfloat) {
+                (16, true) => {
+                    self.bytes.extend_from_slice(
+                        &bf16::from_f32(float_val).to_bits().to_le_bytes()
+                    );
+                }
+                (32, false) => {
+                    self.bytes.extend_from_slice(&float_val.to_le_bytes());
+                }
+                _ => {
+                    return Err(format!(
+                        "unsupported float type: {} bits, bfloat={}",
+                        self.spec.bits, self.spec.is_bfloat
+                    ));
+                }
+            }
+        } else {
+            let int_val = match *value {
+                Number::Int(v) => v,
+                Number::Float(v) => {
+                    if v.fract() != 0.0 {
+                        return Err(format!(
+                            "cannot convert {:.3} to integer type {}",
+                            v, self.spec.name
+                        ));
+                    }
+                    v as i64
+                }
+            };
+
+            if self.spec.is_signed {
+                match self.spec.bits {
+                    8 => self.bytes.extend_from_slice(&(int_val as i8).to_le_bytes()),
+                    16 => self.bytes.extend_from_slice(&(int_val as i16).to_le_bytes()),
+                    32 => self.bytes.extend_from_slice(&(int_val as i32).to_le_bytes()),
+                    64 => self.bytes.extend_from_slice(&int_val.to_le_bytes()),
+                    _ => {
+                        return Err(format!(
+                            "unsupported signed integer width: {} bits",
+                            self.spec.bits
+                        ));
+                    }
+                }
             } else {
-                Ok(v as i64)
+                if int_val < 0 {
+                    return Err("unsigned value must be >= 0".to_string());
+                }
+                let uint_val = int_val as u64;
+
+                match self.spec.bits {
+                    8 => self.bytes.extend_from_slice(&(uint_val as u8).to_le_bytes()),
+                    16 => self.bytes.extend_from_slice(&(uint_val as u16).to_le_bytes()),
+                    32 => self.bytes.extend_from_slice(&(uint_val as u32).to_le_bytes()),
+                    64 => self.bytes.extend_from_slice(&uint_val.to_le_bytes()),
+                    _ => {
+                        return Err(format!(
+                            "unsupported unsigned integer width: {} bits",
+                            self.spec.bits
+                        ));
+                    }
+                }
             }
         }
+
+        Ok(())
+    }
+
+    fn into_bytes(self) -> Vec<u8> {
+        self.bytes
     }
 }
 
 fn encode_values(values: &[Number], spec: &TypeSpec) -> Result<Vec<u8>, String> {
-  if spec.is_bfloat {
-    return Err("bf16 requires file(...) initializer".to_string());
-  }
-  let mut out = Vec::with_capacity(values.len() * spec.element_size());
-  for value in values {
-    if spec.is_float {
-      let float_val = match *value {
-        Number::Int(v) => v as f32,
-        Number::Float(v) => v,
-      };
-      match spec.bits {
-        32 => out.extend_from_slice(&float_val.to_le_bytes()),
-        _ => return Err(format!("unsupported float width {}", spec.bits)),
-      }
-    } else {
-      let int_val = number_to_int(value)?;
-      if spec.is_signed {
-        match spec.bits {
-          8 => out.extend_from_slice(&(int_val as i8).to_le_bytes()),
-          16 => out.extend_from_slice(&(int_val as i16).to_le_bytes()),
-          32 => out.extend_from_slice(&(int_val as i32).to_le_bytes()),
-          64 => out.extend_from_slice(&(int_val as i64).to_le_bytes()),
-          _ => return Err(format!("unsupported int width {}", spec.bits)),
-        }
-      } else {
-        if int_val < 0 {
-          return Err("unsigned value must be >= 0".to_string());
-        }
-        let uval = int_val as u64;
-        match spec.bits {
-          8 => out.extend_from_slice(&(uval as u8).to_le_bytes()),
-          16 => out.extend_from_slice(&(uval as u16).to_le_bytes()),
-          32 => out.extend_from_slice(&(uval as u32).to_le_bytes()),
-          64 => out.extend_from_slice(&(uval as u64).to_le_bytes()),
-          _ => return Err(format!("unsupported int width {}", spec.bits)),
-        }
-      }
+    let mut encoder = ValueEncoder::new(spec, values.len());
+    for value in values {
+        encoder.encode_value(value)?;
     }
-  }
-  Ok(out)
+    Ok(encoder.into_bytes())
+}
+
+fn lookup_instruction_def(name: &str, arch: Architecture) -> Option<&'static InstructionCommonDef> {
+    // First check base ISA (instructions common to all architectures)
+    if let Some(common_def) = crate::isa::base::lookup_common_normalized(name) {
+        return Some(common_def);
+    }
+
+    // Then check arch-specific instructions
+    match arch {
+        Architecture::Rdna35 => {
+            crate::isa::rdna35::lookup_common_def(name)
+        }
+    }
 }
 
 #[cfg(test)]
@@ -573,7 +648,7 @@ mod tests {
     "#;
     let path = write_temp(contents, "header");
     let mut program = program();
-    let info = parse_file(&path, &mut program).expect("parse file");
+    let info = parse_file(&path, &mut program, Architecture::Rdna35).expect("parse file");
     assert_eq!(info.local_launch_size, Dim3::new(2, 1, 1));
     assert_eq!(info.global_launch_size, Dim3::new(3, 1, 1));
     assert_eq!(info.wave_size, Some(WaveSize::Wave32));
@@ -582,8 +657,8 @@ mod tests {
     assert_eq!(info.arguments[0].name, "arg_a");
     assert_eq!(info.output_arguments[0].name, "out_y");
     assert_eq!(info.instructions.len(), 2);
-    assert_eq!(info.instructions[0], "s_mov_b32 s0, 0");
-    assert_eq!(info.instructions[1], "s_waitcnt lgkmcnt(0) vmcnt(0)");
+    assert_eq!(info.instructions[0].name, "s_mov_b32");
+    assert_eq!(info.instructions[1].name, "s_waitcnt");
   }
 
   #[test]
@@ -612,9 +687,18 @@ mod tests {
     let unsigned_spec = spec("u32");
     let err = encode_values(&[Number::Int(-1)], &unsigned_spec).unwrap_err();
     assert_eq!(err, "unsigned value must be >= 0");
-    let mut program = program();
-    let err = parse_argument("arg", "bf16 = 0", &mut program).unwrap_err();
-    assert_eq!(err, "bf16 initializers must use file(...)");
+    let bf16_spec = spec("bf16");
+    let values = parse_initializer("[1.0, -2.5]", &bf16_spec, 2, &[2]).unwrap();
+    let bytes = encode_values(&values, &bf16_spec).unwrap();
+    assert_eq!(bytes.len(), 4);
+    assert_eq!(
+      &bytes[0..2],
+      &bf16::from_f32(1.0).to_bits().to_le_bytes()
+    );
+    assert_eq!(
+      &bytes[2..4],
+      &bf16::from_f32(-2.5).to_bits().to_le_bytes()
+    );
   }
 
   #[test]
@@ -627,7 +711,7 @@ mod tests {
     "#;
     let path = write_temp(contents, "wave64");
     let mut program = program();
-    let err = parse_file(&path, &mut program).unwrap_err();
+    let err = parse_file(&path, &mut program, Architecture::Rdna35).unwrap_err();
     assert_eq!(err, "line 3: wave size 64 not supported yet");
   }
 
@@ -815,7 +899,7 @@ mod tests {
     "#;
     let path = write_temp(contents, "output_zeros");
     let mut program = program();
-    let info = parse_file(&path, &mut program).expect("parse file");
+    let info = parse_file(&path, &mut program, Architecture::Rdna35).expect("parse file");
 
     assert_eq!(info.output_arguments.len(), 2);
 
@@ -898,7 +982,7 @@ mod tests {
     "#;
     let path = write_temp(contents, "full_program");
     let mut program = program();
-    let info = parse_file(&path, &mut program).expect("parse file");
+    let info = parse_file(&path, &mut program, Architecture::Rdna35).expect("parse file");
 
     assert_eq!(info.arguments.len(), 3);
 
@@ -937,7 +1021,7 @@ mod tests {
     "#;
     let path = write_temp(contents, "dim3_parens");
     let mut prog1 = program();
-    let info = parse_file(&path, &mut prog1).expect("parse file");
+    let info = parse_file(&path, &mut prog1, Architecture::Rdna35).expect("parse file");
     assert_eq!(info.local_launch_size, Dim3::new(2, 3, 4));
     assert_eq!(info.global_launch_size, Dim3::new(5, 6, 7));
 
@@ -951,7 +1035,7 @@ mod tests {
     "#;
     let path = write_temp(contents, "dim3_no_parens");
     let mut prog2 = program();
-    let info = parse_file(&path, &mut prog2).expect("parse file");
+    let info = parse_file(&path, &mut prog2, Architecture::Rdna35).expect("parse file");
     assert_eq!(info.local_launch_size, Dim3::new(8, 9, 10));
     assert_eq!(info.global_launch_size, Dim3::new(11, 12, 13));
 
@@ -965,7 +1049,7 @@ mod tests {
     "#;
     let path = write_temp(contents, "dim3_whitespace");
     let mut prog3 = program();
-    let info = parse_file(&path, &mut prog3).expect("parse file");
+    let info = parse_file(&path, &mut prog3, Architecture::Rdna35).expect("parse file");
     assert_eq!(info.local_launch_size, Dim3::new(1, 2, 3));
     assert_eq!(info.global_launch_size, Dim3::new(4, 5, 6));
   }
@@ -981,7 +1065,7 @@ mod tests {
     "#;
     let path = write_temp(contents, "dim3_too_few");
     let mut prog1 = program();
-    let err = parse_file(&path, &mut prog1).unwrap_err();
+    let err = parse_file(&path, &mut prog1, Architecture::Rdna35).unwrap_err();
     assert!(err.contains("expected 3 values"));
 
     // Non-numeric value
@@ -993,7 +1077,7 @@ mod tests {
     "#;
     let path = write_temp(contents, "dim3_non_numeric");
     let mut prog2 = program();
-    let err = parse_file(&path, &mut prog2).unwrap_err();
+    let err = parse_file(&path, &mut prog2, Architecture::Rdna35).unwrap_err();
     assert!(err.contains("line"));
 
     // Empty value
@@ -1005,7 +1089,7 @@ mod tests {
     "#;
     let path = write_temp(contents, "dim3_empty");
     let mut prog3 = program();
-    let err = parse_file(&path, &mut prog3).unwrap_err();
+    let err = parse_file(&path, &mut prog3, Architecture::Rdna35).unwrap_err();
     assert!(err.contains("expected 3 values") || err.contains("line"));
 
     // Just one value
@@ -1017,7 +1101,7 @@ mod tests {
     "#;
     let path = write_temp(contents, "dim3_one_value");
     let mut prog4 = program();
-    let err = parse_file(&path, &mut prog4).unwrap_err();
+    let err = parse_file(&path, &mut prog4, Architecture::Rdna35).unwrap_err();
     assert!(err.contains("expected 3 values"));
   }
 
@@ -1035,7 +1119,7 @@ mod tests {
     "#;
     let path = write_temp(contents, "comments_slash");
     let mut prog1 = program();
-    let info = parse_file(&path, &mut prog1).expect("parse file");
+    let info = parse_file(&path, &mut prog1, Architecture::Rdna35).expect("parse file");
     assert_eq!(info.arguments.len(), 2);
     assert_eq!(info.arguments[0].name, "arg_a");
     assert_eq!(info.arguments[1].name, "arg_b");
@@ -1052,12 +1136,12 @@ mod tests {
     "#;
     let path = write_temp(contents, "comments_semicolon");
     let mut prog2 = program();
-    let info = parse_file(&path, &mut prog2).expect("parse file");
+    let info = parse_file(&path, &mut prog2, Architecture::Rdna35).expect("parse file");
     assert_eq!(info.arguments.len(), 1);
     assert_eq!(info.arguments[0].name, "arg_c");
     assert_eq!(info.instructions.len(), 2);
-    assert_eq!(info.instructions[0], "s_mov_b32 s0, 0");
-    assert_eq!(info.instructions[1], "v_mov_b32 v0, v0");
+    assert_eq!(info.instructions[0].name, "s_mov_b32");
+    assert_eq!(info.instructions[1].name, "v_mov_b32");
 
     // Mixed comment styles
     let contents = r#"
@@ -1067,60 +1151,51 @@ mod tests {
     local = 1, 1, 1
     global = 1, 1, 1
     ---
-    s_nop // slash in instruction
-    s_nop ; semicolon in instruction
+    s_nop 0 // slash in instruction
+    s_nop 0 ; semicolon in instruction
     "#;
     let path = write_temp(contents, "comments_mixed");
     let mut prog3 = program();
-    let info = parse_file(&path, &mut prog3).expect("parse file");
+    let info = parse_file(&path, &mut prog3, Architecture::Rdna35).expect("parse file");
     assert_eq!(info.arguments.len(), 2);
     assert_eq!(info.instructions.len(), 2);
-    assert_eq!(info.instructions[0], "s_nop");
-    assert_eq!(info.instructions[1], "s_nop");
+    assert_eq!(info.instructions[0].name, "s_nop");
+    assert_eq!(info.instructions[1].name, "s_nop");
   }
 
   #[test]
   fn test_value_range_validation() {
     let mut prog1 = program();
 
-    // u8 with value in range should work
     let arg = parse_argument("a", "u8 = 255", &mut prog1).unwrap();
     assert_eq!(arg.len, 1);
 
-    // u8 with value out of range - currently truncates during encoding
     let bytes = encode_values(&[Number::Int(256)], &spec("u8"));
-    // Should either error or truncate to 0
     if let Ok(bytes) = bytes {
       assert_eq!(bytes[0], 0); // Truncated to u8
     }
 
-    // i8 minimum value
     let mut prog2 = program();
     let arg = parse_argument("b", "i8 = -128", &mut prog2).unwrap();
     assert_eq!(arg.len, 1);
 
-    // i8 maximum value
     let mut prog3 = program();
     let arg = parse_argument("c", "i8 = 127", &mut prog3).unwrap();
     assert_eq!(arg.len, 1);
 
-    // i8 out of range - currently truncates
     let bytes = encode_values(&[Number::Int(-129)], &spec("i8"));
     if let Ok(bytes) = bytes {
       assert_eq!(bytes[0] as i8, 127); // Truncated
     }
 
-    // u16 at boundary
     let mut prog4 = program();
     let arg = parse_argument("d", "u16 = 65535", &mut prog4).unwrap();
     assert_eq!(arg.len, 1);
 
-    // u32 at boundary
     let mut prog5 = program();
     let arg = parse_argument("e", "u32 = 4294967295", &mut prog5).unwrap();
     assert_eq!(arg.len, 1);
 
-    // Negative value for unsigned type should error
     let mut prog6 = program();
     let err = parse_argument("f", "u8 = -1", &mut prog6).unwrap_err();
     assert_eq!(err, "unsigned value must be >= 0");

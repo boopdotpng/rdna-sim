@@ -1,12 +1,14 @@
 pub mod isa;
 pub mod ops;
+mod decode;
 mod parse;
+pub mod parse_instruction;
 mod sim;
 pub mod wave;
 
 use std::{path::PathBuf, str::FromStr};
 
-use crate::sim::GlobalAlloc;
+use crate::sim::{GlobalAlloc, MemoryOps};
 
 use clap::ValueEnum;
 
@@ -109,11 +111,62 @@ impl Program {
     pub fn read_global(&self, addr: u64, size: usize) -> Result<Vec<u8>, String> {
         self.global_mem.read(addr, size)
     }
+
+    // max 256 threads per workgroup for now. 1024 can be trivially supported but that's usually not a good idea 
+    pub fn validate_launch_config(&self) -> Result<(), String> {
+        let local = &self.local_launch_size;
+        let global = &self.global_launch_size;
+
+        if local.0 == 0 || local.1 == 0 || local.2 == 0 {
+            return Err(format!(
+                "local launch size cannot have zero dimensions: ({}, {}, {})",
+                local.0, local.1, local.2
+            ));
+        }
+
+        if global.0 == 0 || global.1 == 0 || global.2 == 0 {
+            return Err(format!(
+                "global launch size cannot have zero dimensions: ({}, {}, {})",
+                global.0, global.1, global.2
+            ));
+        }
+
+        if global.0 < local.0 {
+            return Err(format!(
+                "global size x ({}) must be >= local size x ({})",
+                global.0, local.0
+            ));
+        }
+
+        if global.1 < local.1 {
+            return Err(format!(
+                "global size y ({}) must be >= local size y ({})",
+                global.1, local.1
+            ));
+        }
+
+        if global.2 < local.2 {
+            return Err(format!(
+                "global size z ({}) must be >= local size z ({})",
+                global.2, local.2
+            ));
+        }
+
+        let total_threads = local.0 as u64 * local.1 as u64 * local.2 as u64;
+        if total_threads > 256 {
+            return Err(format!(
+                "local launch size ({}, {}, {}) produces {} threads per workgroup (max 256 for RDNA 3.5)",
+                local.0, local.1, local.2, total_threads
+            ));
+        }
+
+        Ok(())
+    }
 }
 
 pub fn run_file(
     file: Option<PathBuf>,
-    _arch: Architecture,
+    arch: Architecture,
     wave_size: WaveSize,
     global_mem_size: usize,
     _debug: bool,
@@ -121,30 +174,138 @@ pub fn run_file(
     if let Some(file_path) = file {
         let mut program = Program::new(
             global_mem_size,
-            Dim3::new(1, 1, 1),
-            Dim3::new(1, 1, 1),
+            Dim3::new(64, 1, 1),
+            Dim3::new(64, 1, 1),
             wave_size,
         );
-        let program_info = parse::parse_file(&file_path, &mut program)?;
+        let program_info = parse::parse_file(&file_path, &mut program, arch)?;
         program.local_launch_size = program_info.local_launch_size;
         program.global_launch_size = program_info.global_launch_size;
         program.wave_size = program_info.wave_size.unwrap_or(program.wave_size);
 
-        println!("output arguments:");
-        for arg in &program_info.output_arguments {
-            println!("  {} : {} @ 0x{:x}", arg.name, arg.type_name, arg.addr);
+        program.validate_launch_config()?;
+
+        println!("non-output arguments:");
+        for arg in &program_info.arguments {
+            println!("  {} : {} @ 0x{:x} in global mem", arg.name, arg.type_name, arg.addr);
         }
 
-        println!("other arguments:");
-        for arg in &program_info.arguments {
-            println!("  {} : {} @ 0x{:x}", arg.name, arg.type_name, arg.addr);
+        println!("output arguments:");
+        for arg in &program_info.output_arguments {
+            println!("  {} : {} @ 0x{:x} in global mem", arg.name, arg.type_name, arg.addr);
         }
 
         println!("local: {:?}", program.local_launch_size);
         println!("global: {:?}", program.global_launch_size);
-        println!("wave{:?}", program.wave_size);
+        println!("wave: {:?}", program.wave_size);
     }
     Ok(())
 }
 
-// add debug run here, invoking repl and other things
+// add debug run here, invoking repl or other stuff
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn make_test_program(local: Dim3, global: Dim3, wave: WaveSize) -> Program {
+        Program::new(1024, local, global, wave)
+    }
+
+    #[test]
+    fn test_valid_launch_config() {
+        let prog = make_test_program(Dim3::new(64, 1, 1), Dim3::new(64, 1, 1), WaveSize::Wave32);
+        assert!(prog.validate_launch_config().is_ok());
+
+        let prog = make_test_program(Dim3::new(256, 1, 1), Dim3::new(512, 1, 1), WaveSize::Wave32);
+        assert!(prog.validate_launch_config().is_ok());
+
+        let prog = make_test_program(Dim3::new(8, 8, 1), Dim3::new(16, 16, 1), WaveSize::Wave64);
+        assert!(prog.validate_launch_config().is_ok());
+
+        let prog = make_test_program(Dim3::new(16, 1, 1), Dim3::new(64, 1, 1), WaveSize::Wave32);
+        assert!(prog.validate_launch_config().is_ok());
+
+        let prog = make_test_program(Dim3::new(17, 1, 1), Dim3::new(100, 1, 1), WaveSize::Wave32);
+        assert!(prog.validate_launch_config().is_ok());
+    }
+
+    #[test]
+    fn test_zero_local_dimensions() {
+        let prog = make_test_program(Dim3::new(0, 1, 1), Dim3::new(64, 1, 1), WaveSize::Wave32);
+        let result = prog.validate_launch_config();
+        assert!(result.is_err());
+        assert!(result.unwrap_err().contains("local launch size cannot have zero dimensions"));
+
+        let prog = make_test_program(Dim3::new(1, 0, 1), Dim3::new(1, 64, 1), WaveSize::Wave32);
+        let result = prog.validate_launch_config();
+        assert!(result.is_err());
+        assert!(result.unwrap_err().contains("local launch size cannot have zero dimensions"));
+
+        let prog = make_test_program(Dim3::new(1, 1, 0), Dim3::new(1, 1, 64), WaveSize::Wave32);
+        let result = prog.validate_launch_config();
+        assert!(result.is_err());
+        assert!(result.unwrap_err().contains("local launch size cannot have zero dimensions"));
+    }
+
+    #[test]
+    fn test_zero_global_dimensions() {
+        let prog = make_test_program(Dim3::new(64, 1, 1), Dim3::new(0, 1, 1), WaveSize::Wave32);
+        let result = prog.validate_launch_config();
+        assert!(result.is_err());
+        assert!(result.unwrap_err().contains("global launch size cannot have zero dimensions"));
+
+        let prog = make_test_program(Dim3::new(1, 64, 1), Dim3::new(1, 0, 1), WaveSize::Wave32);
+        let result = prog.validate_launch_config();
+        assert!(result.is_err());
+        assert!(result.unwrap_err().contains("global launch size cannot have zero dimensions"));
+
+        let prog = make_test_program(Dim3::new(1, 1, 64), Dim3::new(1, 1, 0), WaveSize::Wave32);
+        let result = prog.validate_launch_config();
+        assert!(result.is_err());
+        assert!(result.unwrap_err().contains("global launch size cannot have zero dimensions"));
+    }
+
+    #[test]
+    fn test_global_must_be_greater_or_equal() {
+        let prog = make_test_program(Dim3::new(64, 1, 1), Dim3::new(32, 1, 1), WaveSize::Wave32);
+        let result = prog.validate_launch_config();
+        assert!(result.is_err());
+        let err = result.unwrap_err();
+        assert!(err.contains("global size x"));
+        assert!(err.contains("must be >= local size x"));
+
+        let prog = make_test_program(Dim3::new(1, 32, 1), Dim3::new(1, 16, 1), WaveSize::Wave32);
+        let result = prog.validate_launch_config();
+        assert!(result.is_err());
+        let err = result.unwrap_err();
+        assert!(err.contains("global size y"));
+        assert!(err.contains("must be >= local size y"));
+
+        let prog = make_test_program(Dim3::new(1, 1, 16), Dim3::new(1, 1, 8), WaveSize::Wave32);
+        let result = prog.validate_launch_config();
+        assert!(result.is_err());
+        let err = result.unwrap_err();
+        assert!(err.contains("global size z"));
+        assert!(err.contains("must be >= local size z"));
+    }
+
+    #[test]
+    fn test_thread_limit_per_workgroup() {
+        let prog = make_test_program(Dim3::new(256, 1, 1), Dim3::new(256, 1, 1), WaveSize::Wave32);
+        assert!(prog.validate_launch_config().is_ok());
+
+        let prog = make_test_program(Dim3::new(257, 1, 1), Dim3::new(257, 1, 1), WaveSize::Wave32);
+        let result = prog.validate_launch_config();
+        assert!(result.is_err());
+        let err = result.unwrap_err();
+        assert!(err.contains("produces 257 threads per workgroup"));
+        assert!(err.contains("max 256 for RDNA 3.5"));
+
+        let prog = make_test_program(Dim3::new(16, 16, 2), Dim3::new(32, 32, 4), WaveSize::Wave64);
+        let result = prog.validate_launch_config();
+        assert!(result.is_err());
+        let err = result.unwrap_err();
+        assert!(err.contains("produces 512 threads per workgroup"));
+    }
+}

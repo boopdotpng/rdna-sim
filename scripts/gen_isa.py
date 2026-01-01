@@ -51,20 +51,6 @@ def wrap_rust_string(value: str, indent: int, prefix_len: int = 0) -> str:
   return "\n".join(lines)
 
 
-def format_str_list(items: List[str], indent: int, prefix_len: int = 0) -> str:
-  if not items:
-    return "&[]"
-  rendered = [rust_string_literal(item) for item in items]
-  inline = ", ".join(rendered)
-  if len(inline) + indent + prefix_len + 3 <= MAX_LINE:
-    return f"&[{inline}]"
-  lines = ["&["]
-  for item in rendered:
-    lines.append(" " * (indent + 2) + f"{item},")
-  lines.append(" " * indent + "]")
-  return "\n".join(lines)
-
-
 def to_variant(name: str) -> str:
   parts = [p for p in name.split("_") if p]
   out_parts = []
@@ -122,10 +108,11 @@ def render_common_def(inst: dict) -> str:
   indent = 4
   lines = ["  InstructionCommonDef {"]
   lines.append(f"    name: {rust_string_literal(inst['normalized_name'])},")
-  lines.append(f"    args: {format_arg_specs(inst.get('operands', []), indent + 4, len('args: '))},")
-  lines.append(
-    f"    encodings: {format_str_list(inst.get('available_encodings', []), indent + 4, len('encodings: '))},"
-  )
+  lines.append(f"    args: {format_arg_specs(inst.get('operands', []), indent + 4, len('args: '), inst['normalized_name'])},")
+  supports_abs = "true" if inst.get('supports_abs', False) else "false"
+  supports_neg = "true" if inst.get('supports_neg', False) else "false"
+  lines.append(f"    supports_abs: {supports_abs},")
+  lines.append(f"    supports_neg: {supports_neg},")
   lines.append("  },")
   return "\n".join(lines)
 
@@ -141,10 +128,10 @@ def render_instruction_ref(variant: str, common_ref: str) -> str:
   )
 
 
-def format_arg_specs(operands: List[dict], indent: int, prefix_len: int = 0) -> str:
+def format_arg_specs(operands: List[dict], indent: int, prefix_len: int = 0, inst_name: str = "") -> str:
   if not operands:
     return "&[]"
-  rendered = [render_arg_spec(operand) for operand in operands]
+  rendered = [render_arg_spec(operand, inst_name) for operand in operands]
   inline = ", ".join(rendered)
   if len(inline) + indent + prefix_len + 3 <= MAX_LINE:
     return f"&[{inline}]"
@@ -155,9 +142,19 @@ def format_arg_specs(operands: List[dict], indent: int, prefix_len: int = 0) -> 
   return "\n".join(lines)
 
 
-def render_arg_spec(operand: dict) -> str:
-  kind = operand_kind(operand.get("operand_type", ""))
-  if kind in {"Imm", "RegOrImm"}:
+def render_arg_spec(operand: dict, inst_name: str = "") -> str:
+  operand_type = operand.get("operand_type", "")
+  kind = operand_kind(operand_type)
+
+  # Handle OPR_SRC context-dependently based on instruction prefix
+  if operand_type.upper() == "OPR_SRC":
+    if inst_name.lower().startswith("v_"):
+      kind = "VgprOrImm"
+    elif inst_name.lower().startswith("s_"):
+      kind = "SgprOrImm"
+    # else keep as determined by operand_kind
+
+  if kind in {"Imm", "SgprOrImm", "VgprOrImm"}:
     data_type = data_type_variant(operand.get("data_format") or "")
   else:
     data_type = "None"
@@ -175,9 +172,18 @@ def render_arg_spec(operand: dict) -> str:
   )
 
 
-def arg_spec_key(operand: dict) -> Tuple[str, str, int]:
-  kind = operand_kind(operand.get("operand_type", ""))
-  if kind in {"Imm", "RegOrImm"}:
+def arg_spec_key(operand: dict, inst_name: str = "") -> Tuple[str, str, int]:
+  operand_type = operand.get("operand_type", "")
+  kind = operand_kind(operand_type)
+
+  # Handle OPR_SRC context-dependently based on instruction prefix
+  if operand_type.upper() == "OPR_SRC":
+    if inst_name.lower().startswith("v_"):
+      kind = "VgprOrImm"
+    elif inst_name.lower().startswith("s_"):
+      kind = "SgprOrImm"
+
+  if kind in {"Imm", "SgprOrImm", "VgprOrImm"}:
     data_type = data_type_variant(operand.get("data_format") or "")
   else:
     data_type = "None"
@@ -189,10 +195,10 @@ def arg_spec_key(operand: dict) -> Tuple[str, str, int]:
   return (kind, data_type, width)
 
 
-def instruction_signature(inst: dict) -> Tuple[str, Tuple[Tuple[str, str, int], ...], Tuple[str, ...]]:
-  operands = tuple(arg_spec_key(operand) for operand in inst.get("operands", []))
-  encodings = tuple(inst.get("available_encodings", []))
-  return (inst["normalized_name"], operands, encodings)
+def instruction_signature(inst: dict) -> Tuple[str, Tuple[Tuple[str, str, int], ...]]:
+  inst_name = inst["normalized_name"]
+  operands = tuple(arg_spec_key(operand, inst_name) for operand in inst.get("operands", []))
+  return (inst_name, operands)
 
 
 def data_type_variant(data_format: str) -> str:
@@ -252,10 +258,16 @@ def normalize_name(name: str) -> str:
 
 def operand_kind(operand_type: str) -> str:
   operand = operand_type.upper()
-  if "VGPR_OR_INLINE" in operand:
-    return "RegOrImm"
-  if "VGPR" in operand:
+
+  # Vector register or immediate (for v_* instructions)
+  if "VGPR_OR_INLINE" in operand or operand in {"OPR_VSRC", "OPR_VSRC0", "OPR_VSRC1", "OPR_VSRC2"}:
+    return "VgprOrImm"
+
+  # Vector registers only
+  if "VGPR" in operand or "VDST" in operand:
     return "Vgpr"
+
+  # Special registers
   if operand in {
     "OPR_EXEC",
     "OPR_VCC",
@@ -269,17 +281,58 @@ def operand_kind(operand_type: str) -> str:
     "OPR_HWREG",
   }:
     return "Special"
-  if any(token in operand for token in ["SGPR", "SREG", "SSRC", "SDST", "SCC", "M0"]):
+
+  # Scalar sources and memory offsets accept scalar registers or immediates
+  if operand in {"OPR_SSRC", "OPR_SSRC0", "OPR_SSRC1", "OPR_SSRC2", "OPR_SMEM_OFFSET", "OPR_OFFSET"}:
+    return "SgprOrImm"
+
+  # Scalar registers only (destinations, etc.)
+  if any(token in operand for token in ["SGPR", "SREG", "SDST", "SCC", "M0"]):
     return "Sgpr"
-  if any(token in operand for token in ["SIMM", "LIT", "INLINE", "IMM", "SENDMSG", "VERSION"]):
+
+  # Pure immediates
+  if any(token in operand for token in ["SIMM", "LIT", "INLINE", "IMM", "SENDMSG", "WAITCNT", "VERSION"]):
     return "Imm"
+
+  # Labels
   if any(token in operand for token in ["LABEL", "TGT"]):
     return "Label"
+
+  # Memory operands
   if any(token in operand for token in ["MEM", "DS", "FLAT", "SMEM", "ATTR"]):
     return "Mem"
+
+  # Generic source - shouldn't happen, but default to SgprOrImm
   if operand == "OPR_SRC":
-    return "RegOrImm"
+    return "SgprOrImm"
+
   return "Unknown"
+
+
+def supports_modifiers(enc_name: str) -> Tuple[bool, bool]:
+  """
+  Determine if an encoding supports abs and neg modifiers.
+  Returns (supports_abs, supports_neg)
+  """
+  enc = enc_name.upper()
+
+  # VOP3 and VOP3P support both abs and neg
+  if 'VOP3P' in enc:
+    return (True, True)
+  if 'VOP3' in enc:
+    # VOP3 supports modifiers, but exclude VOP3P (already handled above)
+    return (True, True)
+
+  # SDWA supports both (CDNA only, but we'll allow it)
+  if 'SDWA' in enc:
+    return (True, True)
+
+  # VINTERP supports neg only
+  if 'VINTERP' in enc or 'VINTRP' in enc:
+    return (False, True)
+
+  # All other encodings don't support modifiers
+  return (False, False)
 
 
 def load_instructions(
@@ -304,15 +357,31 @@ def load_instructions(
       subgroup = fg.findtext("Subgroup") or ""
       groups[name] = (group_name, subgroup)
 
-    encodings = [
-      encoding.findtext("EncodingName") or ""
-      for encoding in inst.findall("./InstructionEncodings/InstructionEncoding")
-    ]
-    encodings = sorted({name for name in encodings if name})
+    # Prefer standard encodings over DPP/SDWA variants
+    # Prefer VOP3 over VOP2/VOP1 to support modifiers (abs/neg)
+    # Standard encodings typically have more permissive operand types (OPR_SRC vs OPR_VGPR)
+    all_encodings = inst.findall("./InstructionEncodings/InstructionEncoding")
+    preferred_encodings = ["ENC_VOP3", "ENC_VOP1", "ENC_VOP2", "ENC_SOP1", "ENC_SOP2", "ENC_SOPC", "ENC_SOPK", "ENC_SOPP", "ENC_SMEM", "ENC_VMEM"]
 
-    encoding = inst.find("./InstructionEncodings/InstructionEncoding")
+    # Select encoding based on preference order (not XML order)
+    encoding = None
+    for pref in preferred_encodings:
+      for enc in all_encodings:
+        enc_name = enc.findtext("EncodingName") or ""
+        if pref in enc_name:
+          encoding = enc
+          break
+      if encoding is not None:
+        break
+
+    # Fallback to first encoding if no preferred encoding found
+    if encoding is None and all_encodings:
+      encoding = all_encodings[0]
+
     operands = []
+    enc_name = ""
     if encoding is not None:
+      enc_name = encoding.findtext("EncodingName") or ""
       ordered = []
       for operand in encoding.findall("./Operands/Operand"):
         if operand.attrib.get("IsImplicit", "").lower() == "true":
@@ -334,12 +403,17 @@ def load_instructions(
         )
       ordered.sort(key=lambda item: item[0])
       operands = [item[1] for item in ordered]
+
+    # Determine modifier support from encoding
+    supports_abs, supports_neg = supports_modifiers(enc_name)
+
     instructions.append(
       {
         "name": name,
         "normalized_name": normalize_name(name),
         "operands": operands,
-        "available_encodings": encodings,
+        "supports_abs": supports_abs,
+        "supports_neg": supports_neg,
       }
     )
 
@@ -380,7 +454,7 @@ def build_common_signatures(arch_instructions: Dict[str, List[dict]]) -> set:
 def generate_base(
   common_insts: List[dict],
   out_dir: str,
-) -> Dict[Tuple[str, Tuple[Tuple[str, str, int], ...], Tuple[str, ...]], int]:
+) -> Dict[Tuple[str, Tuple[Tuple[str, str, int], ...]], int]:
   common_insts = sorted(common_insts, key=lambda inst: inst["normalized_name"])
   defs_lines = ["pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &["]
   for inst in common_insts:
@@ -426,7 +500,7 @@ def generate_arch(
   config: ArchConfig,
   instructions: List[dict],
   common_signatures: set,
-  base_index_map: Dict[Tuple[str, Tuple[Tuple[str, str, int], ...], Tuple[str, ...]], int],
+  base_index_map: Dict[Tuple[str, Tuple[Tuple[str, str, int], ...]], int],
 ) -> None:
   instructions = sorted(instructions, key=lambda inst: inst["normalized_name"])
   names = [inst["normalized_name"] for inst in instructions]
@@ -473,6 +547,14 @@ def generate_arch(
     "pub fn lookup_normalized(name: &str) -> Option<Instruction> {",
     "  lookup(&name.to_ascii_lowercase())",
     "}",
+    "",
+    "pub fn lookup_common_def(name: &str) -> Option<&'static InstructionCommonDef> {",
+    "  let instruction = lookup_normalized(name)?;",
+    "  INSTRUCTION_DEFS",
+    "    .iter()",
+    "    .find(|def| def.instruction == instruction)",
+    "    .map(|def| def.common)",
+    "}",
   ]
 
   out_path = os.path.join(config.out_dir, "generated.rs")
@@ -504,8 +586,6 @@ def generate_ops_module(instructions: List[dict], out_path: str) -> None:
   fn_map = unique_fn_names(names)
 
   lines = [
-    "// Generated by scripts/gen_isa.py. Do not edit by hand.",
-    "",
     "use crate::sim::{DecodedInst, ExecContext, ExecError, ExecResult, Handler};",
     "",
   ]
@@ -530,7 +610,7 @@ def generate_ops_module(instructions: List[dict], out_path: str) -> None:
 
 
 def generate_ops_mod(out_dir: str, module_names: List[str]) -> None:
-  lines = ["// Generated by scripts/gen_isa.py. Do not edit by hand."]
+  lines = []
   for name in module_names:
     lines.append(f"pub mod {name};")
   lines.append("")
@@ -540,6 +620,93 @@ def generate_ops_mod(out_dir: str, module_names: List[str]) -> None:
   lines.append("")
 
   out_path = os.path.join(out_dir, "mod.rs")
+  os.makedirs(out_dir, exist_ok=True)
+  with open(out_path, "w", encoding="utf-8") as f:
+    f.write("\n".join(lines))
+    f.write("\n")
+
+
+def generate_types(out_dir: str) -> None:
+  lines = [
+    "// Generated by scripts/gen_isa.py. Do not edit by hand.",
+    "",
+    "#[derive(Copy, Clone, Debug, Eq, PartialEq, Hash)]",
+    "pub enum ArgKind {",
+    "  Sgpr,",
+    "  Vgpr,",
+    "  SgprOrImm,  // Scalar register or immediate (for s_* instructions)",
+    "  VgprOrImm,  // Vector register or immediate (for v_* instructions)",
+    "  Imm,",
+    "  Mem,",
+    "  Label,",
+    "  Special,",
+    "  Unknown,",
+    "}",
+    "",
+    "#[derive(Copy, Clone, Debug, Eq, PartialEq, Hash)]",
+    "pub enum DataType {",
+    "  None,",
+    "  Any,",
+    "  Unknown,",
+    "  B1,",
+    "  B8,",
+    "  B16,",
+    "  B32,",
+    "  B64,",
+    "  B96,",
+    "  B128,",
+    "  F16,",
+    "  F32,",
+    "  F64,",
+    "  BF16,",
+    "  I8,",
+    "  I16,",
+    "  I24,",
+    "  I32,",
+    "  I64,",
+    "  U8,",
+    "  U16,",
+    "  U24,",
+    "  U32,",
+    "  U64,",
+    "  M64,",
+    "  Pk2B16,",
+    "  Pk2BF16,",
+    "  Pk2F16,",
+    "  Pk2I16,",
+    "  Pk2U16,",
+    "  Pk2U8,",
+    "  Pk4B8,",
+    "  Pk4IU8,",
+    "  Pk4U8,",
+    "  Pk8IU4,",
+    "  Pk8U4,",
+    "}",
+    "",
+    "#[derive(Copy, Clone, Debug, Eq, PartialEq, Hash)]",
+    "pub struct ArgSpec {",
+    "  pub kind: ArgKind,",
+    "  pub data_type: DataType,",
+    "  pub width: u16,",
+    "}",
+    "",
+    "#[derive(Copy, Clone, Debug)]",
+    "pub struct InstructionCommonDef {",
+    "  pub name: &'static str,",
+    "  pub args: &'static [ArgSpec],",
+    "  pub supports_abs: bool,",
+    "  pub supports_neg: bool,",
+    "}",
+    "",
+    "#[derive(Copy, Clone, Debug)]",
+    "pub struct InstructionDef<I> {",
+    "  pub instruction: I,",
+    "  pub common: &'static InstructionCommonDef,",
+    "}",
+    "",
+  ]
+
+  out_path = os.path.join(out_dir, "types.rs")
   os.makedirs(out_dir, exist_ok=True)
   with open(out_path, "w", encoding="utf-8") as f:
     f.write("\n".join(lines))
@@ -569,6 +736,11 @@ def main() -> None:
     for config in arch_configs
   }
   common_signatures = build_common_signatures(arch_instructions)
+
+  # Generate types.rs first since other files depend on it
+  types_dir = os.path.dirname(args.base_out_dir)  # src/isa/base -> src/isa
+  generate_types(types_dir)
+
   reference_arch = arch_configs[0].arch
   common_insts = [
     inst for inst in arch_instructions[reference_arch]

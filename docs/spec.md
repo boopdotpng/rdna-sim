@@ -27,6 +27,7 @@ Rules:
 - `repeat(value)` fills the declared shape with a single value.
 - `arange(n)` or `arange(start, end[, step])` produces a sequential range. Works for both scalars and arrays. If the step sign doesn't match the range direction (e.g., start < end with a negative step), parsing fails.
 - `rand()` generates random values: floats in [0.0, 1.0) or integers in [0, 100).
+- Numbers are parsed as `f32` or `i64`, then encoded to the declared type (including `bf16`).
 - `file("path", dtype)` loads raw bytes from a `.bin` file and writes them directly into global memory. The dtype must match the declared type, and the file length must match the flattened size in bytes.
 - `local = x, y, z` or `local = (x, y, z)` is threads per workgroup (CUDA block equivalent). Parentheses are optional.
 - `global = x, y, z` or `global = (x, y, z)` is workgroups (CUDA grid equivalent). Parentheses are optional.
@@ -62,7 +63,7 @@ Maybe we can add some artifical delay that messes up kernels that don't wait. ho
 ### global memory + allocation
 - Parsing allocates each argument in global memory and writes initial values immediately.
 - Global memory is backed by a simple bump allocator with byte-level read/write helpers.
-- `bf16` is supported only via `file("path", bf16)` initializers.
+- `bf16` supports the same initializers as other floats; values are encoded to bf16 on load.
 
 Examples:
 - `weights: f32[2,2] = file("data/weights.bin", f32)`
@@ -71,7 +72,7 @@ Examples:
 - CLI exposes `--global-memsize` (MB) with a default of 32MB.
 
 ## data 
-in `data/` there are xmls for each ISA. gen_isa.py has a script that parses instructions out of one isa file into a generated rust file. is this the best approach? can we do better? we also need to de-duplicate instructions, and maybe have a "base" set of instructions that are the same across all ISAs then go beyond that. and then for intstructions that are unknown in the XML, we can handle them as they come up. 
+in `data/` there are xmls for each ISA. scripts/fetch_isa.sh drops rdna1/rdna2/cdna1/cdna2 because they're too old for this project. gen_isa.py has a script that parses instructions out of one isa file into a generated rust file. is this the best approach? can we do better? we also need to de-duplicate instructions, and maybe have a "base" set of instructions that are the same across all ISAs then go beyond that. and then for intstructions that are unknown in the XML, we can handle them as they come up. 
 F64 instructions are deliberately excluded during ISA generation because they are too slow for compute workloads.
 
 ## ultimate project goals
@@ -146,3 +147,203 @@ Overall: start with RDNA as a wavefront-execution simulator driven by raw GFX IS
 - Each ops module exports a sorted `OPS: &[(&str, Handler)]` table keyed by instruction name.
 - Handlers share a signature that takes `ExecContext` (wave + program state) and a decoded instruction.
 - Dispatch does binary search over arch ops first, then base ops, and calls the handler.
+
+## Instruction Decoding and Validation Pipeline
+
+### Overview
+Instructions flow through a multi-stage pipeline from text to execution-ready format:
+```
+parse_file() → parse_instruction() → decode_instruction() → DecodedInst → Handler
+    ↓               ↓                        ↓                   ↓
+  raw text    ParsedInstruction    validate & convert    pre-validated ops
+```
+
+The decoder validates **all** instructions upfront during program load, implementing a "fail fast" approach. Invalid instructions are rejected before any execution begins, with clear error messages including source line numbers.
+
+### Data Structures
+
+#### `ParsedInstruction` (in `src/parse_instruction.rs`)
+Raw parsed instruction with string-based operands. This is the output of text parsing:
+```rust
+pub struct ParsedInstruction {
+    pub name: String,
+    pub operands: Vec<Operand>,
+}
+
+pub enum Operand {
+    Sgpr(u16), SgprRange(u16, u16),
+    Vgpr(u16), VgprRange(u16, u16),
+    SpecialReg(SpecialRegister),
+    ImmU32(u32), ImmI32(i32), ImmF32(f32),
+    Offset(u32), Flag(String),
+    Negate(Box<Operand>), Abs(Box<Operand>),
+}
+```
+
+Special instructions like `s_waitcnt` and `s_sendmsg` are pre-processed by the parser to pack their named arguments into immediate values.
+
+#### `DecodedInst` (in `src/sim.rs`)
+Validated, execution-ready instruction with type-checked operands:
+```rust
+pub struct DecodedInst {
+    pub name: String,
+    pub def: &'static InstructionCommonDef,  // ISA metadata
+    pub line_num: usize,                      // for error messages
+    pub operands: Vec<DecodedOperand>,
+}
+
+pub enum DecodedOperand {
+    Sgpr(u16), SgprRange(u16, u16),
+    Vgpr(u16), VgprRange(u16, u16),
+    SpecialReg(SpecialRegister),
+    ImmU32(u32), ImmI32(i32), ImmF32(f32),
+    Offset(u32), Flag(String),
+    Negate(Box<DecodedOperand>), Abs(Box<DecodedOperand>),
+}
+```
+
+`DecodedInst` is structurally similar to `ParsedInstruction` but carries additional metadata and the semantic guarantee that all operands have been validated against the ISA specification.
+
+### Validation Rules
+
+The decoder (`src/decode.rs`) validates each instruction against ISA metadata:
+
+1. **Operand Count Matching**
+   - Number of non-flag operands must match `def.args.len()`
+   - Flags are permissive and can appear anywhere
+
+2. **Operand Type Validation**
+   - Each operand is validated against its corresponding `ArgSpec.kind`:
+   ```
+   Operand::Sgpr/SgprRange    → ArgKind::Sgpr
+   Operand::Vgpr/VgprRange    → ArgKind::Vgpr
+   Operand::ImmU32/I32/F32    → ArgKind::Imm
+   Operand::Sgpr/Vgpr/Imm     → ArgKind::RegOrImm (accepts any)
+   Operand::SpecialReg        → ArgKind::Special
+   Operand::Offset            → ArgKind::Mem
+   Operand::Flag              → Always allowed
+   ```
+
+3. **Modifier Validation**
+   - Operand modifiers (`-reg`, `|reg|`, `-|reg|`) are validated based on instruction encoding
+   - Each instruction definition includes `supports_abs` and `supports_neg` flags
+   - Modifiers are only allowed on single registers, not ranges (enforced during parsing)
+   - Validation occurs in two stages:
+     - **Parser validation**: Rejects modifiers on register ranges (e.g., `-v[0:3]`, `|s[2:5]|`)
+     - **Decoder validation**: Rejects modifiers on instructions that don't support them
+
+   **Supported Encodings** (from ISA generation):
+   - `VOP3`: Full support for abs and neg modifiers
+   - `VOP3P`: Full support for abs and neg modifiers (packed operations)
+   - `SDWA`: Full support for abs and neg modifiers (CDNA only)
+   - `VINTERP`: Supports neg only (interpolation instructions)
+   - All other encodings (VOP1, VOP2, SOP, SMEM, VMEM, DS): No modifier support
+
+   **Valid Examples**:
+   ```
+   v_add_f32 v0, -v1, |v2|       ✓ VOP3 encoding supports modifiers
+   v_mul_f32 v0, -|v1|, v2       ✓ Combined modifiers (abs then negate)
+   v_add_f32 v0, -1.0, v1        ✓ Modifiers on immediates (data type compatible)
+   ```
+
+   **Invalid Examples**:
+   ```
+   s_mov_b32 s0, -s1             ✗ Scalar instructions don't support modifiers
+   v_add_f32 v0, -v[1:3], v2     ✗ Modifiers not allowed on ranges
+   v_add_u32 v0, |v1|, v2        ✗ Integer operations don't support modifiers (no VOP3 encoding)
+   ```
+
+   - `Negate` and `Abs` modifiers wrap other operands
+   - Inner operand is validated against the ArgSpec recursively
+   - Modifiers are preserved in `DecodedOperand` for execution
+
+4. **Special Operand Types**
+   - `OPR_SSRC` (scalar source): Maps to `RegOrImm` (accepts registers or immediates)
+   - `OPR_SDST` (scalar destination): Maps to `Sgpr` (must be register)
+   - `OPR_WAITCNT`: Maps to `Imm` (parser converts to packed immediate)
+   - `OPR_SENDMSG`: Maps to `Imm` (parser converts to packed immediate)
+
+### ISA Metadata Generation
+
+The `scripts/gen_isa.py` script parses AMD's ISA XML files and generates:
+- `src/isa/base/generated.rs`: Common instructions shared across all architectures
+- `src/isa/{arch}/generated.rs`: Architecture-specific instructions
+
+Key functions in generated code:
+- `lookup_common_normalized(name)`: Find instruction in base ISA by name
+- `lookup_common_def(name)`: Find instruction common definition for arch-specific ISA
+
+Operand type mapping from XML to ArgKind:
+```python
+def operand_kind(operand_type: str) -> str:
+    # Scalar sources accept both registers and immediates
+    if operand in {"OPR_SSRC", "OPR_SSRC0", "OPR_SSRC1", "OPR_SSRC2"}:
+        return "RegOrImm"
+
+    # Scalar destinations must be registers
+    if "SDST" in operand:
+        return "Sgpr"
+
+    # Special operands for waitcnt, sendmsg
+    if "WAITCNT" in operand or "SENDMSG" in operand:
+        return "Imm"
+
+    # ... etc
+```
+
+### Instruction Lookup Process
+
+When `parse_file()` encounters an instruction:
+
+1. **Parse text** → `ParsedInstruction` via `parse_instruction()`
+2. **Lookup definition**:
+   - First check base ISA: `isa::base::lookup_common_normalized(name)`
+   - Then check arch-specific: `isa::{arch}::lookup_common_def(name)`
+3. **Decode and validate** → `DecodedInst` via `decode_instruction()`
+4. **Store** in `ProgramInfo.instructions: Vec<DecodedInst>`
+
+### Error Handling
+
+All validation errors include source line numbers and detailed messages:
+
+```rust
+pub enum DecodeError {
+    UnknownInstruction(String, usize),
+    OperandCountMismatch { expected, got, instruction, line },
+    OperandTypeMismatch { expected, got, operand_index, instruction, line },
+    InvalidOperand(String, usize),
+}
+```
+
+Example error messages:
+- `line 19: unknown instruction 's_mov_b33'`
+- `line 21: instruction 's_waitcnt' expects 1 operands, got 2`
+- `line 23: instruction 's_mov_b32' operand 2 expects RegOrImm, got Flag("omod")`
+
+### Benefits of This Architecture
+
+✅ **Fail Fast**: Invalid instructions caught during load, not execution
+✅ **Simple Handlers**: Handlers read pre-validated `DecodedInst`, no need to re-check types
+✅ **Centralized Validation**: Single source of truth in `decode.rs`
+✅ **Better Errors**: Line numbers and detailed type mismatch messages
+✅ **Performance**: Decode once, execute many times (future: instruction caching)
+✅ **Type Safety**: Rust type system enforces operand type correctness
+
+### Special Cases
+
+#### Print Directives
+Print pseudo-instructions are filtered out during parsing and not decoded. They will be handled separately via WaveState to print registers, memory, exec mask, etc.
+
+#### Register Ranges
+Some instructions use ranges like `s[0:3]`. `ArgSpec.width` indicates expected width in bits. Future validation may check that range size matches expected width.
+
+#### Flags and Modifiers
+- Flags like `omod`, `clamp`, etc. are permissive and always allowed
+- Operand modifiers (`-v0` for negate, `|v0|` for absolute value) are validated recursively
+
+### Future Work
+
+- Add unit tests for `decode.rs` covering edge cases
+- Implement register range width validation
+- Add data type validation (`ArgSpec.data_type`) for stricter immediate checking
+- Consider caching decoded instructions for repeated program loads

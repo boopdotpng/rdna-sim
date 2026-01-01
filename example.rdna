@@ -16,11 +16,11 @@ global = (2, 1, 1)
 wave = 32
 ---
 
-s_mov_b32 s0, 0
+s_mov_b32 s0, v2
 v_mov_b32 v0, v0
 s_waitcnt lgkmcnt(0) | vmcnt(0)
 s_sendmsg sendmsg(0x1, 0x2)
 
 print wave=0, thread=0, s[0:1], scc, exec
 print thread=all, v[1]
-print wave=1, thread=3, v[2], s[4], exec
+print wave=1, thread=3, v[2], s[4], execv2
