@@ -398,15 +398,17 @@ fn parse_waitcnt(operands_str: &str) -> Result<ParsedInstruction, String> {
         if let Some(inner) = extract_function_arg(part, "vmcnt") {
             vmcnt = parse_counter_value(inner, 63)?;
         } else if let Some(inner) = extract_function_arg(part, "vmcnt_sat") {
-            vmcnt = parse_counter_value(inner, 63)?.min(63);
+            vmcnt = parse_counter_value_any(inner)?.min(63);
         } else if let Some(inner) = extract_function_arg(part, "lgkmcnt") {
             lgkmcnt = parse_counter_value(inner, 63)?;
         } else if let Some(inner) = extract_function_arg(part, "lgkmcnt_sat") {
-            lgkmcnt = parse_counter_value(inner, 63)?.min(63);
+            lgkmcnt = parse_counter_value_any(inner)?.min(63);
         } else if let Some(inner) = extract_function_arg(part, "expcnt") {
             expcnt = parse_counter_value(inner, 7)?;
         } else if let Some(inner) = extract_function_arg(part, "expcnt_sat") {
-            expcnt = parse_counter_value(inner, 7)?.min(7);
+            expcnt = parse_counter_value_any(inner)?.min(7);
+        } else {
+            return Err(format!("invalid s_waitcnt token: {}", part));
         }
     }
 
@@ -431,7 +433,15 @@ fn extract_function_arg<'a>(s: &'a str, func_name: &str) -> Option<&'a str> {
     None
 }
 
-fn parse_counter_value(s: &str, _max: u32) -> Result<u32, String> {
+fn parse_counter_value(s: &str, max: u32) -> Result<u32, String> {
+    let value = parse_number_u32(s)?;
+    if value > max {
+        return Err(format!("s_waitcnt value out of range (max {}): {}", max, s));
+    }
+    Ok(value)
+}
+
+fn parse_counter_value_any(s: &str) -> Result<u32, String> {
     parse_number_u32(s)
 }
 
@@ -988,6 +998,20 @@ mod tests {
         // vmcnt=63, lgkmcnt=63, expcnt=7
         // imm16 = (63 << 10) | (63 << 4) | 7 = 0xFFF7
         assert_eq!(inst.operands, vec![imm_u32(0xFFF7)]);
+    }
+
+    #[test]
+    fn test_waitcnt_invalid_value_rejected() {
+        let err = parse_instruction("s_waitcnt lgkmcnt(64) vmcnt(0) expcnt(0)")
+            .unwrap_err();
+        assert!(err.contains("out of range"));
+    }
+
+    #[test]
+    fn test_waitcnt_invalid_token_rejected() {
+        let err = parse_instruction("s_waitcnt lgkmct(0) vmcnt(0) expcnt(0)")
+            .unwrap_err();
+        assert!(err.contains("invalid s_waitcnt token"));
     }
 
     // s_sendmsg special parsing tests
