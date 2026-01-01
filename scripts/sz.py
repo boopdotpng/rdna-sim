@@ -17,6 +17,7 @@ GENERATED_NAMES = {
 SKIP_DIRS = {
   ".git",
   "__pycache__",
+  "data",
   "docs",
   "target",
 }
@@ -29,7 +30,11 @@ def repo_root() -> Path:
 def list_files(root: Path) -> list[Path]:
   try:
     output = subprocess.check_output(["git", "ls-files"], cwd=root, text=True)
-    files = [root / line for line in output.splitlines() if line.strip()]
+    files = [
+      root / line
+      for line in output.splitlines()
+      if line.strip() and not any(part in SKIP_DIRS for part in Path(line).parts)
+    ]
     if files:
       return files
   except (OSError, subprocess.CalledProcessError):
