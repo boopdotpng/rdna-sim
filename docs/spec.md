@@ -17,7 +17,8 @@ wave = 32
 
 Rules:
 - `name: type` declares a scalar. `name: type[shape]` declares an array.
-- `shape` can be `n` or `r,c,...` in brackets. Shapes are flattened in row-major order.
+- Supported types: `u8`, `u16`, `u32`, `u64`, `i8`, `i16`, `i32`, `i64`, `f32`, `bf16`.
+- `shape` can be `n` or `r,c,...` in brackets; dims must be >= 1. Shapes are flattened in row-major order.
 - `out_*` variables are regular arrays allocated in global memory and printed after the kernel finishes.
 - Arrays must have a size in the header, even if they are outputs only.
 - Number parsing accepts decimal, `0x` hex, and `0b` binary. Floats use standard decimal form.
@@ -25,40 +26,48 @@ Rules:
 - If no initializer is provided, the argument is zero-initialized.
 - Literal list initializers are flat; shapes always come from the declared type.
 - `repeat(value)` fills the declared shape with a single value.
-- `arange(n)` or `arange(start, end[, step])` produces a sequential range. Works for both scalars and arrays. If the step sign doesn't match the range direction (e.g., start < end with a negative step), parsing fails.
+- `arange(n)` or `arange(start, end[, step])` produces a sequential range. The result length must match the flattened size. If the step sign doesn't match the range direction (e.g., start < end with a negative step), parsing fails.
 - `rand()` generates random values: floats in [0.0, 1.0) or integers in [0, 100).
 - Numbers are parsed as `f32` or `i64`, then encoded to the declared type (including `bf16`).
 - `file("path", dtype)` loads raw bytes from a `.bin` file and writes them directly into global memory. The dtype must match the declared type, and the file length must match the flattened size in bytes.
 - `local = x, y, z` or `local = (x, y, z)` is threads per workgroup (CUDA block equivalent). Parentheses are optional.
 - `global = x, y, z` or `global = (x, y, z)` is workgroups (CUDA grid equivalent). Parentheses are optional.
-- `wave = 32` or `wave = 64` picks the wave size for the launch.
+- `wave = 32` picks the wave size for the launch. `wave = 64` is parsed but currently rejected.
 
 Arguments should be copied into global memory and a 64-bit kernarg pointer should be placed in SGPRs.
-Default to `s[3:4]` holding the pointer when `s[0:2]` are used for workgroup IDs.
+The kernarg table is a contiguous list of `u64` addresses (inputs first, then outputs). When any args exist, `s[3:4]` holds the table pointer.
+Workgroup IDs are written to `s0..s2` (only `y/z` if the global size has those dimensions). Local IDs are written to `v0..v2` per lane (only `y/z` if the local size has those dimensions).
 
 ### instruction block
-Instructions are one opcode followed by N arguments. Keep parsing simple: read the first word, then split args by `,`.
+Instructions are one opcode followed by operands. The parser normalizes the opcode to lowercase and strips `_e32`/`_e64` suffixes. Operands are comma-separated with bracket/abs awareness; trailing flags may be space-separated.
 See `example.rdna` at repo root once the syntax is locked in.
 
 Instructions with parentheses must parse the `(...)` arguments, like:
 - `s_sendmsg sendmsg(...)`
 - `s_waitcnt lgkmcnt(0) vmcnt(0)`
+`s_waitcnt` also accepts a raw immediate, plus `*_sat` variants.
 
-#### print queue
-Add a pseudo-instruction to enqueue debug prints. These are collected and emitted after the kernel finishes.
-Prints are not masked by EXEC; they always run, but each entry includes whether the selected lane is active.
+Operand forms:
+- `sN`, `vN`, `s[lo:hi]`, `v[lo:hi]`
+- Special registers: `vcc`, `vcc_lo`, `vcc_hi`, `exec`, `exec_lo`, `exec_hi`, `m0`, `null`, `scc`
+- Immediates: decimal, `0x` hex, `0b` binary, or floats; negative values are allowed
+- Modifiers: `-` or `| |` (not allowed on register ranges)
+- `offset:NN` for memory operands
+- Flags like `glc`, `slc`, `nt`, `offen`, `idxen` are treated as flag operands and do not count toward operand count
 
-Syntax:
+#### print directives (not implemented yet)
+Lines starting with `print` in the instruction block are currently ignored.
+
+Planned syntax/behavior:
 - `print [wave=<id>,] [thread=<id>|thread=all,] <arg>[, <arg>...]`
 - `<arg>` can be `s[n]`, `s[lo:hi]`, `v[n]`, `exec`, `vcc`, or `scc`.
+- `wave` filters by wave id. If it doesn't match, do nothing.
+- `thread` selects which lane to read VGPRs from. Default is `thread=0`. `thread=all` prints one entry per lane.
+- Each entry includes wave id, thread id, `active` (EXEC bit for that thread), and the value(s).
 
-Behavior:
-- `wave` is a filter. If set and it does not match the current wave id, do nothing.
-- `thread` picks which thread to read VGPRs from. Default is `thread=0`. `thread=all` prints one entry per thread.
-- Each print entry includes: wave id, thread id, `active` (EXEC bit for that thread), and the value(s).
-
-We have to ignore some instructions, because this is not a timing simulator (maybe in the future)? So `s_delay_alu` and friends will be completely ignored. 
-Maybe we can add some artifical delay that messes up kernels that don't wait. how to do this? 
+### current limitations
+- `wave = 64` is parsed but currently rejected at load time.
+- `print` directives are parsed as lines but ignored during execution.
 
 ### global memory + allocation
 - Parsing allocates each argument in global memory and writes initial values immediately.
@@ -144,8 +153,8 @@ Overall: start with RDNA as a wavefront-execution simulator driven by raw GFX IS
 - Treat DPP/SDWA and other lane/sub-dword encodings as semantic features, not just metadata.
 
 ## Instruction dispatch + handlers
-- Codegen emits `src/ops/base.rs` and `src/ops/{rdna3,rdna35,rdna4}.rs` with one stub handler per instruction.
-- Each ops module exports a sorted `OPS: &[(&str, Handler)]` table keyed by instruction name.
+- Codegen emits stubs in `src/ops/{base,rdna3,rdna35,rdna4}/{scalar,vector,misc}.rs`.
+- Each arch module exports a sorted `OPS: &[(&str, Handler)]` table keyed by instruction name from its `mod.rs`.
 - Handlers share a signature that takes `ExecContext` (wave + program state) and a decoded instruction.
 - Dispatch does binary search over arch ops first, then base ops, and calls the handler.
 
