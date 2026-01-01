@@ -94,7 +94,7 @@ def unique_fn_names(names: List[str]) -> Dict[str, str]:
   seen: Dict[str, int] = {}
   mapping: Dict[str, str] = {}
   for name in names:
-    base = "op_" + safe_fn_base(name)
+    base = safe_fn_base(name)
     count = seen.get(base, 0)
     seen[base] = count + 1
     if count == 0:
@@ -555,32 +555,160 @@ def ops_module_name(config: ArchConfig) -> str:
   return os.path.basename(config.out_dir)
 
 
-def generate_ops_module(instructions: List[dict], out_dir: str) -> None:
+def is_memory_instruction(name: str) -> bool:
+  """Check if instruction is a memory operation"""
+  # Check for memory keywords
+  if any(kw in name for kw in ["load", "store", "atomic"]):
+    return True
+  # Check for memory prefixes
+  prefixes = ["buffer_", "ds_", "flat_", "global_", "image_", "tbuffer_"]
+  if any(name.startswith(p) for p in prefixes):
+    return True
+  # Scalar memory loads
+  if name.startswith("s_load") or name.startswith("s_buffer_load"):
+    return True
+  return False
+
+
+def is_control_flow_instruction(name: str) -> bool:
+  """Check if instruction is control flow"""
+  patterns = [
+    "s_endpgm", "s_sendmsg", "s_barrier", "s_waitcnt",
+    "s_branch", "s_cbranch", "s_setpc", "s_swappc",
+    "s_call", "s_rfe", "s_getpc", "s_setprio",
+    "s_sleep", "s_trap", "s_sethalt", "s_setkill",
+    "s_wait_", "s_wakeup"
+  ]
+  return any(name.startswith(p) for p in patterns)
+
+
+def categorize_instructions(instructions: List[dict]) -> Dict[str, List[dict]]:
+  """Categorize instructions into vector, scalar, memory, and misc"""
+  categories = {"vector": [], "scalar": [], "memory": [], "misc": []}
+
+  for inst in instructions:
+    name = inst["normalized_name"]
+
+    # Memory: detect by keywords and prefixes
+    if is_memory_instruction(name):
+      categories["memory"].append(inst)
+    # Control flow: specific patterns
+    elif is_control_flow_instruction(name):
+      categories["misc"].append(inst)
+    # Vector ALU
+    elif name.startswith("v_"):
+      categories["vector"].append(inst)
+    # Scalar ALU
+    elif name.startswith("s_"):
+      categories["scalar"].append(inst)
+    # Everything else
+    else:
+      categories["misc"].append(inst)
+
+  return categories
+
+
+def generate_ops_category_file(
+  instructions: List[dict],
+  out_path: str,
+  add_sections: bool = False
+) -> List[Tuple[str, str]]:
+  """Generate a single category file.
+  If add_sections=True (for misc.rs), add section comment headers.
+  Returns list of (instruction_name, fn_name) tuples."""
   instructions = sorted(instructions, key=lambda inst: inst["normalized_name"])
   names = [inst["normalized_name"] for inst in instructions]
   fn_map = unique_fn_names(names)
 
   lines = [
-    "use crate::sim::{DecodedInst, ExecContext, ExecError, ExecResult, Handler};",
+    "use crate::sim::{DecodedInst, ExecContext, ExecError, ExecResult};",
     "",
   ]
-  for inst in instructions:
-    name = inst["normalized_name"]
-    fn_name = fn_map[name]
-    lines.append(f"pub fn {fn_name}(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {{")
-    lines.append("  let _ = (ctx, inst);")
-    lines.append(f"  Err(ExecError::Unimplemented({rust_string_literal(name)}))")
-    lines.append("}")
-    lines.append("")
+
+  if add_sections:
+    # Group instructions by section for misc.rs
+    control_flow = [i for i in instructions if is_control_flow_instruction(i["normalized_name"])]
+    image_ops = [i for i in instructions if i["normalized_name"].startswith("image_")]
+    other = [i for i in instructions if i not in control_flow and i not in image_ops]
+
+    # Generate with section headers
+    groups = [
+      ("// Control Flow Instructions", control_flow),
+      ("// Image Operations", image_ops),
+      ("// Other Special Instructions", other)
+    ]
+
+    for header, group in groups:
+      if group:
+        lines.append(header)
+        lines.append("")
+        for inst in group:
+          name = inst["normalized_name"]
+          fn_name = fn_map[name]
+          lines.append(f"pub fn {fn_name}(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {{")
+          lines.append("  let _ = (ctx, inst);")
+          lines.append(f"  Err(ExecError::Unimplemented({rust_string_literal(name)}))")
+          lines.append("}")
+          lines.append("")
+  else:
+    # Generate without sections (for vector, scalar, memory)
+    for inst in instructions:
+      name = inst["normalized_name"]
+      fn_name = fn_map[name]
+      lines.append(f"pub fn {fn_name}(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {{")
+      lines.append("  let _ = (ctx, inst);")
+      lines.append(f"  Err(ExecError::Unimplemented({rust_string_literal(name)}))")
+      lines.append("}")
+      lines.append("")
+
+  with open(out_path, "w", encoding="utf-8") as f:
+    f.write("\n".join(lines))
+    f.write("\n")
+
+  return [(name, fn_map[name]) for name in names]
+
+
+def generate_ops_module(instructions: List[dict], out_dir: str) -> None:
+  """Generate categorized ops module with vector.rs, scalar.rs, memory.rs, misc.rs, and mod.rs"""
+  os.makedirs(out_dir, exist_ok=True)
+
+  # Categorize instructions
+  categories = categorize_instructions(instructions)
+
+  # Generate each category file
+  all_ops = []
+  category_names = []
+  for category_name in ["vector", "scalar", "memory", "misc"]:
+    category_insts = categories[category_name]
+    if not category_insts:
+      continue
+    category_names.append(category_name)
+    out_path = os.path.join(out_dir, f"{category_name}.rs")
+
+    # Add section comments only for misc.rs
+    add_sections = (category_name == "misc")
+    ops = generate_ops_category_file(category_insts, out_path, add_sections)
+    all_ops.extend([(name, fn_name, category_name) for name, fn_name in ops])
+
+  # Sort all_ops by instruction name for OPS array
+  all_ops.sort(key=lambda x: x[0])
+
+  # Generate mod.rs that declares submodules and builds OPS array
+  lines = [
+    "use crate::sim::Handler;",
+    "",
+  ]
+  for category_name in category_names:
+    lines.append(f"pub mod {category_name};")
+  lines.append("")
 
   lines.append("pub static OPS: &[(&str, Handler)] = &[")
-  for name in names:
-    lines.append(f"  ({rust_string_literal(name)}, {fn_map[name]}),")
+  for inst_name, fn_name, category_name in all_ops:
+    lines.append(f"  ({rust_string_literal(inst_name)}, {category_name}::{fn_name}),")
   lines.append("];")
 
-  os.makedirs(out_dir, exist_ok=True)
-  out_path = os.path.join(out_dir, "mod.rs")
-  with open(out_path, "w", encoding="utf-8") as f:
+  mod_path = os.path.join(out_dir, "mod.rs")
+  with open(mod_path, "w", encoding="utf-8") as f:
     f.write("\n".join(lines))
     f.write("\n")
 
