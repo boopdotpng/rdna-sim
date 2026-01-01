@@ -264,7 +264,7 @@ pub fn format_decode_error(err: DecodeError) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::parse_instruction::parse_instruction;
+    use crate::parse_instruction::{parse_instruction, SpecialRegister};
     use crate::Architecture;
 
     // Helper to lookup instruction definition
@@ -408,5 +408,43 @@ mod tests {
 
         let result = decode_instruction(&parsed, def, 1);
         assert!(result.is_ok(), "Expected success with modifier on immediate");
+    }
+
+    #[test]
+    fn test_flags_do_not_count_as_operands() {
+        let parsed = parse_instruction("v_add_f32 v0, v1, v2 glc").expect("parse failed");
+        let def = lookup_inst_def("v_add_f32");
+
+        let decoded = decode_instruction(&parsed, def, 1).expect("decode failed");
+        assert_eq!(decoded.operands.len(), 4);
+        match decoded.operands.last() {
+            Some(DecodedOperand::Flag(name)) => assert_eq!(name, "glc"),
+            other => panic!("expected flag operand, got {:?}", other),
+        }
+    }
+
+    #[test]
+    fn test_mem_offset_operand() {
+        let parsed = parse_instruction("lds_param_load v0, offset:16").expect("parse failed");
+        let def = lookup_inst_def("lds_param_load");
+
+        let decoded = decode_instruction(&parsed, def, 1).expect("decode failed");
+        match decoded.operands.get(1) {
+            Some(DecodedOperand::Offset(val)) => assert_eq!(*val, 16),
+            other => panic!("expected offset operand, got {:?}", other),
+        }
+    }
+
+    #[test]
+    fn test_special_register_operand() {
+        let parsed = parse_instruction("buffer_atomic_add_f32 v0, v1, s[0:3], vcc")
+            .expect("parse failed");
+        let def = lookup_inst_def("buffer_atomic_add_f32");
+
+        let decoded = decode_instruction(&parsed, def, 1).expect("decode failed");
+        match decoded.operands.last() {
+            Some(DecodedOperand::SpecialReg(reg)) => assert_eq!(reg, &SpecialRegister::Vcc),
+            other => panic!("expected special register operand, got {:?}", other),
+        }
     }
 }

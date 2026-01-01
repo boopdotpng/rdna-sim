@@ -315,6 +315,9 @@ pub fn dispatch(
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::parse_instruction::SpecialRegister;
+    use crate::wave::WaveState;
+    use crate::WaveSize;
 
     fn new_alloc(size: usize) -> GlobalAlloc {
         GlobalAlloc {
@@ -973,5 +976,25 @@ mod tests {
         let result = lds.write(98, &data);
         assert!(result.is_err());
         assert!(result.unwrap_err().contains("out of bounds"));
+    }
+
+    #[test]
+    fn exec_lo_hi_wave32_from_sim() {
+        let mut wave = WaveState::new(WaveSize::Wave32, 1, 0).unwrap();
+        wave.write_special_b32(SpecialRegister::ExecLo, 0xCAFEBABE);
+        wave.write_special_b32(SpecialRegister::ExecHi, 0x1234_5678);
+        assert_eq!(wave.read_special_b32(SpecialRegister::ExecLo), 0xCAFEBABE);
+        assert_eq!(wave.read_special_b32(SpecialRegister::ExecHi), 0);
+        assert_eq!(wave.exec_mask(), 0xCAFEBABE);
+    }
+
+    #[test]
+    fn exec_lo_hi_wave64_from_sim() {
+        let mut wave = WaveState::new(WaveSize::Wave64, 1, 0).unwrap();
+        wave.write_special_b32(SpecialRegister::ExecLo, 0x1020_3040);
+        wave.write_special_b32(SpecialRegister::ExecHi, 0x5060_7080);
+        assert_eq!(wave.read_special_b32(SpecialRegister::ExecLo), 0x1020_3040);
+        assert_eq!(wave.read_special_b32(SpecialRegister::ExecHi), 0x5060_7080);
+        assert_eq!(wave.exec_mask(), 0x5060_7080_1020_3040);
     }
 }

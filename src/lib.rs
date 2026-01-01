@@ -44,6 +44,17 @@ pub enum WaveSize {
 pub struct Dim3(pub u32, pub u32, pub u32);
 impl Dim3 {
     pub const fn new(x: u32, y: u32, z: u32) -> Self { Self(x, y, z) } 
+
+    pub fn linear_len(&self) -> u64 {
+        self.0 as u64 * self.1 as u64 * self.2 as u64
+    }
+
+    pub fn split_linear(&self, linear: u64) -> (u32, u32, u32) {
+        let x = (linear % self.0 as u64) as u32;
+        let y = ((linear / self.0 as u64) % self.1 as u64) as u32;
+        let z = (linear / (self.0 as u64 * self.1 as u64)) as u32;
+        (x, y, z)
+    }
 }
 
 impl FromStr for Dim3 {

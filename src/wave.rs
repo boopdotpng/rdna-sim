@@ -436,4 +436,24 @@ mod tests {
     let wave64 = new_wave_state(WaveSize::Wave64, 0);
     assert!(wave64.execz());
   }
+
+  #[test]
+  fn exec_lo_hi_wave32_masks_high_bits() {
+    let mut wave = WaveState::new(WaveSize::Wave32, 1, 0).unwrap();
+    wave.write_special_b32(SpecialRegister::ExecLo, 0xDEAD_BEEF);
+    wave.write_special_b32(SpecialRegister::ExecHi, 0xAABB_CCDD);
+    assert_eq!(wave.read_special_b32(SpecialRegister::ExecLo), 0xDEAD_BEEF);
+    assert_eq!(wave.read_special_b32(SpecialRegister::ExecHi), 0);
+    assert_eq!(wave.exec_mask(), 0xDEAD_BEEF);
+  }
+
+  #[test]
+  fn exec_lo_hi_wave64_preserves_high_bits() {
+    let mut wave = WaveState::new(WaveSize::Wave64, 1, 0).unwrap();
+    wave.write_special_b32(SpecialRegister::ExecLo, 0x1122_3344);
+    wave.write_special_b32(SpecialRegister::ExecHi, 0x5566_7788);
+    assert_eq!(wave.read_special_b32(SpecialRegister::ExecLo), 0x1122_3344);
+    assert_eq!(wave.read_special_b32(SpecialRegister::ExecHi), 0x5566_7788);
+    assert_eq!(wave.exec_mask(), 0x5566_7788_1122_3344);
+  }
 }

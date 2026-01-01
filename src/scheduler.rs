@@ -2,7 +2,7 @@ use crate::ops::{base, rdna35};
 use crate::parse::ProgramInfo;
 use crate::sim::{dispatch, ExecContext, Handler, KernArg, LDS};
 use crate::wave::{WaveState, VGPR_MAX};
-use crate::{Architecture, Dim3, Program, WaveSize};
+use crate::{Architecture, Program, WaveSize};
 
 pub fn run_program(
   program: &mut Program,
@@ -14,8 +14,8 @@ pub fn run_program(
   let wave_size = info.wave_size.unwrap_or(program.wave_size);
 
   let kernarg = init_kernarg(program, info)?;
-  let total_workgroups = mul_dim3(&info.global_launch_size);
-  let threads_per_wg = mul_dim3(&info.local_launch_size) as usize;
+  let total_workgroups = info.global_launch_size.linear_len();
+  let threads_per_wg = info.local_launch_size.linear_len() as usize;
   let wave_lanes = match wave_size {
     WaveSize::Wave32 => 32,
     WaveSize::Wave64 => 64,
@@ -24,33 +24,16 @@ pub fn run_program(
 
   for wg_id in 0..total_workgroups {
     let mut lds = LDS::new(64 * 1024);
-    let (wg_x, wg_y, wg_z) = split_dim3(wg_id, &info.global_launch_size);
     for wave_idx in 0..waves_per_wg {
-      let wave_start = wave_idx * wave_lanes;
-      let active_lanes = threads_per_wg.saturating_sub(wave_start).min(wave_lanes);
-      let exec_mask = build_exec_mask(wave_size, active_lanes);
-      let mut wave = WaveState::new(wave_size, VGPR_MAX, exec_mask)?;
-      wave.write_sgpr(0, wg_x);
-      if info.global_launch_size.1 > 1 {
-        wave.write_sgpr(1, wg_y);
-      }
-      if info.global_launch_size.2 > 1 {
-        wave.write_sgpr(2, wg_z);
-      }
-      if !kernarg.is_empty() {
-        wave.write_sgpr_pair(3, kernarg.base);
-      }
-      for lane in 0..active_lanes {
-        let local_tid = (wave_start + lane) as u64;
-        let (local_x, local_y, local_z) = split_dim3(local_tid, &info.local_launch_size);
-        wave.write_vgpr(0, lane, local_x);
-        if info.local_launch_size.1 > 1 {
-          wave.write_vgpr(1, lane, local_y);
-        }
-        if info.local_launch_size.2 > 1 {
-          wave.write_vgpr(2, lane, local_z);
-        }
-      }
+      let mut wave = init_wave_state(
+        info,
+        wave_size,
+        &kernarg,
+        wg_id,
+        wave_idx,
+        wave_lanes,
+        threads_per_wg,
+      )?;
       run_wave(&mut wave, &mut lds, program, info, arch_ops, base_ops)?;
     }
   }
@@ -75,15 +58,42 @@ fn init_kernarg(program: &mut Program, info: &ProgramInfo) -> Result<KernArg, St
   KernArg::new(program, &args)
 }
 
-fn mul_dim3(dim: &Dim3) -> u64 {
-  dim.0 as u64 * dim.1 as u64 * dim.2 as u64
-}
-
-fn split_dim3(linear: u64, dim: &Dim3) -> (u32, u32, u32) {
-  let x = (linear % dim.0 as u64) as u32;
-  let y = ((linear / dim.0 as u64) % dim.1 as u64) as u32;
-  let z = (linear / (dim.0 as u64 * dim.1 as u64)) as u32;
-  (x, y, z)
+fn init_wave_state(
+  info: &ProgramInfo,
+  wave_size: WaveSize,
+  kernarg: &KernArg,
+  wg_id: u64,
+  wave_idx: usize,
+  wave_lanes: usize,
+  threads_per_wg: usize,
+) -> Result<WaveState, String> {
+  let (wg_x, wg_y, wg_z) = info.global_launch_size.split_linear(wg_id);
+  let wave_start = wave_idx * wave_lanes;
+  let active_lanes = threads_per_wg.saturating_sub(wave_start).min(wave_lanes);
+  let exec_mask = build_exec_mask(wave_size, active_lanes);
+  let mut wave = WaveState::new(wave_size, VGPR_MAX, exec_mask)?;
+  wave.write_sgpr(0, wg_x);
+  if info.global_launch_size.1 > 1 {
+    wave.write_sgpr(1, wg_y);
+  }
+  if info.global_launch_size.2 > 1 {
+    wave.write_sgpr(2, wg_z);
+  }
+  if !kernarg.is_empty() {
+    wave.write_sgpr_pair(3, kernarg.base);
+  }
+  for lane in 0..active_lanes {
+    let local_tid = (wave_start + lane) as u64;
+    let (local_x, local_y, local_z) = info.local_launch_size.split_linear(local_tid);
+    wave.write_vgpr(0, lane, local_x);
+    if info.local_launch_size.1 > 1 {
+      wave.write_vgpr(1, lane, local_y);
+    }
+    if info.local_launch_size.2 > 1 {
+      wave.write_vgpr(2, lane, local_z);
+    }
+  }
+  Ok(wave)
 }
 
 fn build_exec_mask(wave_size: WaveSize, active_lanes: usize) -> u64 {
@@ -216,5 +226,127 @@ fn wait_targets(inst: &crate::sim::DecodedInst) -> Option<WaitTargets> {
       expcnt: Some(imm as u8),
     }),
     _ => None,
+  }
+}
+
+#[cfg(test)]
+mod tests {
+  use super::*;
+  use crate::Dim3;
+  use crate::parse::ArgInfo;
+
+  fn program_info(local: Dim3, global: Dim3, args: Vec<ArgInfo>, outputs: Vec<ArgInfo>) -> ProgramInfo {
+    ProgramInfo {
+      instructions: Vec::new(),
+      arguments: args,
+      output_arguments: outputs,
+      local_launch_size: local,
+      global_launch_size: global,
+      wave_size: Some(WaveSize::Wave32),
+    }
+  }
+
+  fn alloc_arg(program: &mut Program, name: &str, size: usize) -> ArgInfo {
+    let addr = program.alloc_global(size, 8).expect("alloc");
+    ArgInfo {
+      name: name.to_string(),
+      type_name: "u64".to_string(),
+      shape: Vec::new(),
+      addr,
+      len: 1,
+    }
+  }
+
+  #[test]
+  fn kernarg_base_is_written_when_present() {
+    let mut program = Program::new(1024, Dim3::new(1, 1, 1), Dim3::new(1, 1, 1), WaveSize::Wave32);
+    let args = vec![alloc_arg(&mut program, "arg0", 8)];
+    let outputs = vec![alloc_arg(&mut program, "out0", 8)];
+    let info = program_info(Dim3::new(1, 1, 1), Dim3::new(1, 1, 1), args, outputs);
+    let kernarg = init_kernarg(&mut program, &info).expect("kernarg");
+
+    let wave = init_wave_state(
+      &info,
+      WaveSize::Wave32,
+      &kernarg,
+      0,
+      0,
+      32,
+      info.local_launch_size.linear_len() as usize,
+    )
+    .expect("init wave");
+
+    assert_eq!(wave.read_sgpr_pair(3), kernarg.base);
+  }
+
+  #[test]
+  fn kernarg_base_is_zero_when_absent() {
+    let mut program = Program::new(1024, Dim3::new(1, 1, 1), Dim3::new(1, 1, 1), WaveSize::Wave32);
+    let info = program_info(Dim3::new(1, 1, 1), Dim3::new(1, 1, 1), Vec::new(), Vec::new());
+    let kernarg = init_kernarg(&mut program, &info).expect("kernarg");
+
+    let wave = init_wave_state(
+      &info,
+      WaveSize::Wave32,
+      &kernarg,
+      0,
+      0,
+      32,
+      info.local_launch_size.linear_len() as usize,
+    )
+    .expect("init wave");
+
+    assert_eq!(wave.read_sgpr_pair(3), 0);
+  }
+
+  #[test]
+  fn workgroup_ids_are_written_to_sgprs() {
+    let mut program = Program::new(1024, Dim3::new(1, 1, 1), Dim3::new(2, 3, 4), WaveSize::Wave32);
+    let info = program_info(Dim3::new(1, 1, 1), Dim3::new(2, 3, 4), Vec::new(), Vec::new());
+    let kernarg = init_kernarg(&mut program, &info).expect("kernarg");
+
+    let wg_id = 5;
+    let (wg_x, wg_y, wg_z) = info.global_launch_size.split_linear(wg_id);
+    let wave = init_wave_state(
+      &info,
+      WaveSize::Wave32,
+      &kernarg,
+      wg_id,
+      0,
+      32,
+      info.local_launch_size.linear_len() as usize,
+    )
+    .expect("init wave");
+
+    assert_eq!(wave.read_sgpr(0), wg_x);
+    assert_eq!(wave.read_sgpr(1), wg_y);
+    assert_eq!(wave.read_sgpr(2), wg_z);
+  }
+
+  #[test]
+  fn local_ids_are_written_to_vgprs() {
+    let mut program = Program::new(1024, Dim3::new(2, 2, 2), Dim3::new(1, 1, 1), WaveSize::Wave32);
+    let info = program_info(Dim3::new(2, 2, 2), Dim3::new(1, 1, 1), Vec::new(), Vec::new());
+    let kernarg = init_kernarg(&mut program, &info).expect("kernarg");
+    let wave_lanes = 32;
+    let threads_per_wg = info.local_launch_size.linear_len() as usize;
+
+    let wave = init_wave_state(
+      &info,
+      WaveSize::Wave32,
+      &kernarg,
+      0,
+      0,
+      wave_lanes,
+      threads_per_wg,
+    )
+    .expect("init wave");
+
+    for lane in 0..threads_per_wg {
+      let (x, y, z) = info.local_launch_size.split_linear(lane as u64);
+      assert_eq!(wave.read_vgpr(0, lane), x);
+      assert_eq!(wave.read_vgpr(1, lane), y);
+      assert_eq!(wave.read_vgpr(2, lane), z);
+    }
   }
 }
