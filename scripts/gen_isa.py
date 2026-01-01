@@ -172,33 +172,8 @@ def render_arg_spec(operand: dict, inst_name: str = "") -> str:
   )
 
 
-def arg_spec_key(operand: dict, inst_name: str = "") -> Tuple[str, str, int]:
-  operand_type = operand.get("operand_type", "")
-  kind = operand_kind(operand_type)
-
-  # Handle OPR_SRC context-dependently based on instruction prefix
-  if operand_type.upper() == "OPR_SRC":
-    if inst_name.lower().startswith("v_"):
-      kind = "VgprOrImm"
-    elif inst_name.lower().startswith("s_"):
-      kind = "SgprOrImm"
-
-  if kind in {"Imm", "SgprOrImm", "VgprOrImm"}:
-    data_type = data_type_variant(operand.get("data_format") or "")
-  else:
-    data_type = "None"
-  size_text = operand.get("size") or ""
-  try:
-    width = int(size_text)
-  except ValueError:
-    width = 0
-  return (kind, data_type, width)
-
-
-def instruction_signature(inst: dict) -> Tuple[str, Tuple[Tuple[str, str, int], ...]]:
-  inst_name = inst["normalized_name"]
-  operands = tuple(arg_spec_key(operand, inst_name) for operand in inst.get("operands", []))
-  return (inst_name, operands)
+def instruction_key(inst: dict) -> str:
+  return inst["normalized_name"]
 
 
 def data_type_variant(data_format: str) -> str:
@@ -443,18 +418,18 @@ def load_instructions(
   return [inst for inst in instructions if is_allowed(inst)]
 
 
-def build_common_signatures(arch_instructions: Dict[str, List[dict]]) -> set:
+def build_common_names(arch_instructions: Dict[str, List[dict]]) -> set:
   common = None
   for insts in arch_instructions.values():
-    signatures = {instruction_signature(inst) for inst in insts}
-    common = signatures if common is None else common & signatures
+    names = {instruction_key(inst) for inst in insts}
+    common = names if common is None else common & names
   return common or set()
 
 
 def generate_base(
   common_insts: List[dict],
   out_dir: str,
-) -> Dict[Tuple[str, Tuple[Tuple[str, str, int], ...]], int]:
+) -> Dict[str, int]:
   common_insts = sorted(common_insts, key=lambda inst: inst["normalized_name"])
   defs_lines = ["pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &["]
   for inst in common_insts:
@@ -493,22 +468,22 @@ def generate_base(
     f.write("\n".join(lookup_fn))
     f.write("\n")
 
-  return {instruction_signature(inst): idx for idx, inst in enumerate(common_insts)}
+  return {instruction_key(inst): idx for idx, inst in enumerate(common_insts)}
 
 
 def generate_arch(
   config: ArchConfig,
   instructions: List[dict],
-  common_signatures: set,
-  base_index_map: Dict[Tuple[str, Tuple[Tuple[str, str, int], ...]], int],
+  common_names: set,
+  base_index_map: Dict[str, int],
 ) -> None:
   instructions = sorted(instructions, key=lambda inst: inst["normalized_name"])
   names = [inst["normalized_name"] for inst in instructions]
   mapping = unique_variants(names)
 
-  arch_common = [inst for inst in instructions if instruction_signature(inst) not in common_signatures]
+  arch_common = [inst for inst in instructions if instruction_key(inst) not in common_names]
   arch_common = sorted(arch_common, key=lambda inst: inst["normalized_name"])
-  arch_index_map = {instruction_signature(inst): idx for idx, inst in enumerate(arch_common)}
+  arch_index_map = {instruction_key(inst): idx for idx, inst in enumerate(arch_common)}
 
   enum_lines = ["#[derive(Copy, Clone, Debug, Eq, PartialEq, Hash)]", "pub enum Instruction {"]
   for inst in instructions:
@@ -522,11 +497,11 @@ def generate_arch(
 
   def_lines = ["pub static INSTRUCTION_DEFS: &[InstructionDef<Instruction>] = &["]
   for inst in instructions:
-    signature = instruction_signature(inst)
-    if signature in base_index_map:
-      common_ref = f"&base::INSTRUCTION_COMMON_DEFS[{base_index_map[signature]}]"
+    name = instruction_key(inst)
+    if name in base_index_map:
+      common_ref = f"&base::INSTRUCTION_COMMON_DEFS[{base_index_map[name]}]"
     else:
-      common_ref = f"&ARCH_COMMON_DEFS[{arch_index_map[signature]}]"
+      common_ref = f"&ARCH_COMMON_DEFS[{arch_index_map[name]}]"
     def_lines.append(render_instruction_ref(mapping[inst["normalized_name"]], common_ref))
   def_lines.append("];")
 
@@ -580,7 +555,7 @@ def ops_module_name(config: ArchConfig) -> str:
   return os.path.basename(config.out_dir)
 
 
-def generate_ops_module(instructions: List[dict], out_path: str) -> None:
+def generate_ops_module(instructions: List[dict], out_dir: str) -> None:
   instructions = sorted(instructions, key=lambda inst: inst["normalized_name"])
   names = [inst["normalized_name"] for inst in instructions]
   fn_map = unique_fn_names(names)
@@ -603,7 +578,8 @@ def generate_ops_module(instructions: List[dict], out_path: str) -> None:
     lines.append(f"  ({rust_string_literal(name)}, {fn_map[name]}),")
   lines.append("];")
 
-  os.makedirs(os.path.dirname(out_path), exist_ok=True)
+  os.makedirs(out_dir, exist_ok=True)
+  out_path = os.path.join(out_dir, "mod.rs")
   with open(out_path, "w", encoding="utf-8") as f:
     f.write("\n".join(lines))
     f.write("\n")
@@ -736,7 +712,7 @@ def main() -> None:
     config.arch: load_instructions(config.isa_xml, exclude_groups, exclude_vmem)
     for config in arch_configs
   }
-  common_signatures = build_common_signatures(arch_instructions)
+  common_names = build_common_names(arch_instructions)
 
   # Generate types.rs first since other files depend on it
   types_dir = os.path.dirname(args.base_out_dir)  # src/isa/base -> src/isa
@@ -745,33 +721,40 @@ def main() -> None:
   reference_arch = arch_configs[0].arch
   common_insts = [
     inst for inst in arch_instructions[reference_arch]
-    if instruction_signature(inst) in common_signatures
+    if instruction_key(inst) in common_names
   ]
   base_index_map = generate_base(common_insts, args.base_out_dir)
   for config in arch_configs:
     generate_arch(
       config,
       arch_instructions[config.arch],
-      common_signatures,
+      common_names,
       base_index_map,
     )
 
   arch_specific = {
     config.arch: [
       inst for inst in arch_instructions[config.arch]
-      if instruction_signature(inst) not in common_signatures
+      if instruction_key(inst) not in common_names
     ]
     for config in arch_configs
   }
   if args.write_ops:
-    generate_ops_module(common_insts, os.path.join(args.ops_out_dir, "base.rs"))
+    warning = (
+      "\x1b[31mWARNING: --write-ops will overwrite all op definitions in src/ops. "
+      "Type 'yes' to continue:\x1b[0m "
+    )
+    if input(warning).strip().lower() != "yes":
+      print("Aborting --write-ops.")
+      return
+    generate_ops_module(common_insts, os.path.join(args.ops_out_dir, "base"))
     module_names = ["base"]
     for config in arch_configs:
       module_name = ops_module_name(config)
       module_names.append(module_name)
       generate_ops_module(
         arch_specific[config.arch],
-        os.path.join(args.ops_out_dir, f"{module_name}.rs"),
+        os.path.join(args.ops_out_dir, module_name),
       )
     generate_ops_mod(args.ops_out_dir, module_names)
 
