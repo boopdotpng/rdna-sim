@@ -30,9 +30,8 @@ pub enum Architecture {
 pub enum WaveSize {
     #[value(name = "32", alias = "wave32", alias = "wave-32")]
     Wave32,
-    // unsupported for now, will add when i write support for cdna
-    // #[value(name = "64", alias = "wave64", alias = "wave-64")]
-    // Wave64,
+    #[value(name = "64", alias = "wave64", alias = "wave-64")]
+    Wave64,
 }
 
 // arguments are stored in global memory, then a pointer to those is stored in 2 SGPRs

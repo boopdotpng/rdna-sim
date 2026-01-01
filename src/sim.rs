@@ -175,6 +175,12 @@ pub fn dispatch(
     Err(ExecError::Unimplemented(def.name))
 }
 
+
+// local data store (shared memory, visible to every thread in the WGP)
+pub struct LDS {
+
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
