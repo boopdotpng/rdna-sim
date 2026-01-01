@@ -6,24 +6,42 @@ use rdna_sim::{run_file, Architecture, WaveSize};
 #[derive(Parser, Debug)]
 #[command(name = "rdna-sim", about = "rdna/cdna architecture simulator")]
 struct Cli {
-  #[arg(short, long, value_enum, default_value_t = Architecture::Rdna35)]
+  #[arg(
+    short,
+    long,
+    value_enum,
+    default_value_t = Architecture::Rdna35,
+    help = "Target architecture"
+  )]
   arch: Architecture,
 
-  #[arg(value_name = "PATH")]
+  #[arg(value_name = "PATH", help = "Path to the RDNA assembly file")]
   file: Option<PathBuf>,
 
-  #[arg(long, value_enum, default_value_t = WaveSize::Wave32)]
+  #[arg(
+    short = 'w',
+    long,
+    value_enum,
+    default_value_t = WaveSize::Wave32,
+    help = "Wavefront size (32 only for now)"
+  )]
   wave_size: WaveSize,
 
   // launch TUI debugger, when implemented
-  #[arg(long)]
+  #[arg(short, long, help = "Launch the debugger (not implemented yet)")]
   debug: bool,
 
-  // add argument to supress prints 
+  // suppress print instructions inside the kernel
+  #[arg(short = 's', long, help = "Suppress kernel print directives")]
+  suppress_prints: bool,
 
-  // add an argument to step through one wave -- simplified view in TUI or simple REPL (to begin)
-
-  #[arg(long = "global-memsize", value_name = "MEGABYTES", default_value_t = 32)]
+  #[arg(
+    short = 'm',
+    long = "global-memsize",
+    value_name = "MEGABYTES",
+    default_value_t = 32,
+    help = "Global memory size in megabytes"
+  )]
   global_memsize: usize,
 
 }
