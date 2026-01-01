@@ -160,6 +160,7 @@ fn validate_and_convert_operand(
         // Sgpr operands
         (Operand::Sgpr(_), ArgKind::Sgpr) => true,
         (Operand::SgprRange(_, _), ArgKind::Sgpr) => true,
+        (Operand::SpecialReg(_), ArgKind::Sgpr) => true,
 
         // Vgpr operands
         (Operand::Vgpr(_), ArgKind::Vgpr) => true,
@@ -176,6 +177,7 @@ fn validate_and_convert_operand(
         // SgprOrImm accepts scalar registers or immediates (for s_* instructions)
         (Operand::Sgpr(_), ArgKind::SgprOrImm) => true,
         (Operand::SgprRange(_, _), ArgKind::SgprOrImm) => true,
+        (Operand::SpecialReg(_), ArgKind::SgprOrImm) => true,
         (Operand::ImmU32(_), ArgKind::SgprOrImm) => true,
         (Operand::ImmI32(_), ArgKind::SgprOrImm) => true,
         (Operand::ImmF32(_), ArgKind::SgprOrImm) => true,

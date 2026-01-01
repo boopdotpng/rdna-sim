@@ -1167,7 +1167,7 @@ pub fn op_s_cbranch_vccz(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResul
 
 pub fn op_s_clause(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {
   let _ = (ctx, inst);
-  Err(ExecError::Unimplemented("s_clause"))
+  Ok(())
 }
 
 pub fn op_s_cls_i32(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {

@@ -2219,7 +2219,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
   },
   InstructionCommonDef {
     name: "s_clause",
-    args: &[ArgSpec { kind: ArgKind::Unknown, data_type: DataType::None, width: 16 }],
+    args: &[ArgSpec { kind: ArgKind::Imm, data_type: DataType::B16, width: 16 }],
     supports_abs: false,
     supports_neg: false,
   },

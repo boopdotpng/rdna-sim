@@ -3,12 +3,14 @@ pub mod ops;
 mod decode;
 mod parse;
 pub mod parse_instruction;
+mod scheduler;
 mod sim;
 pub mod wave;
 
 use std::{path::PathBuf, str::FromStr};
 
 use crate::sim::{GlobalAlloc, MemoryOps};
+use half::bf16;
 
 use clap::ValueEnum;
 
@@ -179,8 +181,8 @@ pub fn run_file(
             wave_size,
         );
         let program_info = parse::parse_file(&file_path, &mut program, arch)?;
-        program.local_launch_size = program_info.local_launch_size;
-        program.global_launch_size = program_info.global_launch_size;
+        program.local_launch_size = program_info.local_launch_size.clone();
+        program.global_launch_size = program_info.global_launch_size.clone();
         program.wave_size = program_info.wave_size.unwrap_or(program.wave_size);
 
         program.validate_launch_config()?;
@@ -198,8 +200,115 @@ pub fn run_file(
         println!("local: {:?}", program.local_launch_size);
         println!("global: {:?}", program.global_launch_size);
         println!("wave: {:?}", program.wave_size);
+        scheduler::run_program(&mut program, &program_info, arch)?;
+
+        println!("output values:");
+        for arg in &program_info.output_arguments {
+            let values = read_output_arg(&program, arg)?;
+            if values.len() == 1 {
+                println!("  {} = {}", arg.name, values[0]);
+            } else {
+                println!("  {} = {:?}", arg.name, values);
+            }
+        }
     }
     Ok(())
+}
+
+fn read_output_arg(program: &Program, arg: &parse::ArgInfo) -> Result<Vec<String>, String> {
+    let (base, elem_size) = parse_type_name(&arg.type_name)?;
+    let byte_len = arg.len
+        .checked_mul(elem_size)
+        .ok_or_else(|| "output size overflow".to_string())?;
+    let bytes = program.read_global(arg.addr, byte_len)?;
+    let mut out = Vec::with_capacity(arg.len);
+    for i in 0..arg.len {
+        let offset = i * elem_size;
+        let value = match base {
+            "u8" => format!("{}", bytes[offset]),
+            "i8" => format!("{}", bytes[offset] as i8),
+            "u16" => {
+                let v = u16::from_le_bytes([bytes[offset], bytes[offset + 1]]);
+                format!("{}", v)
+            }
+            "i16" => {
+                let v = i16::from_le_bytes([bytes[offset], bytes[offset + 1]]);
+                format!("{}", v)
+            }
+            "u32" => {
+                let v = u32::from_le_bytes([
+                    bytes[offset],
+                    bytes[offset + 1],
+                    bytes[offset + 2],
+                    bytes[offset + 3],
+                ]);
+                format!("{}", v)
+            }
+            "i32" => {
+                let v = i32::from_le_bytes([
+                    bytes[offset],
+                    bytes[offset + 1],
+                    bytes[offset + 2],
+                    bytes[offset + 3],
+                ]);
+                format!("{}", v)
+            }
+            "u64" => {
+                let v = u64::from_le_bytes([
+                    bytes[offset],
+                    bytes[offset + 1],
+                    bytes[offset + 2],
+                    bytes[offset + 3],
+                    bytes[offset + 4],
+                    bytes[offset + 5],
+                    bytes[offset + 6],
+                    bytes[offset + 7],
+                ]);
+                format!("{}", v)
+            }
+            "i64" => {
+                let v = i64::from_le_bytes([
+                    bytes[offset],
+                    bytes[offset + 1],
+                    bytes[offset + 2],
+                    bytes[offset + 3],
+                    bytes[offset + 4],
+                    bytes[offset + 5],
+                    bytes[offset + 6],
+                    bytes[offset + 7],
+                ]);
+                format!("{}", v)
+            }
+            "f32" => {
+                let v = f32::from_le_bytes([
+                    bytes[offset],
+                    bytes[offset + 1],
+                    bytes[offset + 2],
+                    bytes[offset + 3],
+                ]);
+                format!("{}", v)
+            }
+            "bf16" => {
+                let v = u16::from_le_bytes([bytes[offset], bytes[offset + 1]]);
+                format!("{}", bf16::from_bits(v).to_f32())
+            }
+            _ => return Err(format!("unsupported output type '{}'", base)),
+        };
+        out.push(value);
+    }
+    Ok(out)
+}
+
+fn parse_type_name(value: &str) -> Result<(&str, usize), String> {
+    let base = value.split_once('[').map(|(b, _)| b.trim()).unwrap_or(value.trim());
+    let elem_size = match base {
+        "u8" | "i8" => 1,
+        "u16" | "i16" | "bf16" => 2,
+        "u32" | "i32" | "f32" => 4,
+        "u64" | "i64" => 8,
+        _ => return Err(format!("unsupported type '{}'", base)),
+    };
+    Ok((base, elem_size))
 }
 
 // add debug run here, invoking repl or other stuff

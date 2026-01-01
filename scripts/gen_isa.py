@@ -291,7 +291,7 @@ def operand_kind(operand_type: str) -> str:
     return "Sgpr"
 
   # Pure immediates
-  if any(token in operand for token in ["SIMM", "LIT", "INLINE", "IMM", "SENDMSG", "WAITCNT", "VERSION"]):
+  if any(token in operand for token in ["SIMM", "LIT", "INLINE", "IMM", "SENDMSG", "WAITCNT", "VERSION", "CLAUSE"]):
     return "Imm"
 
   # Labels
@@ -720,6 +720,7 @@ def main() -> None:
   parser.add_argument("--ops-out-dir", default="src/ops")
   parser.add_argument("--exclude-groups", default="EXPORT")
   parser.add_argument("--exclude-vmem-subgroups", default="TEXTURE,SAMPLE,BVH")
+  parser.add_argument("--write-ops", action="store_true", help="overwrite src/ops generated stubs")
   args = parser.parse_args()
   if args.arch:
     arch_configs = [ArchConfig(arch, xml, out_dir) for arch, xml, out_dir in args.arch]
@@ -762,16 +763,17 @@ def main() -> None:
     ]
     for config in arch_configs
   }
-  generate_ops_module(common_insts, os.path.join(args.ops_out_dir, "base.rs"))
-  module_names = ["base"]
-  for config in arch_configs:
-    module_name = ops_module_name(config)
-    module_names.append(module_name)
-    generate_ops_module(
-      arch_specific[config.arch],
-      os.path.join(args.ops_out_dir, f"{module_name}.rs"),
-    )
-  generate_ops_mod(args.ops_out_dir, module_names)
+  if args.write_ops:
+    generate_ops_module(common_insts, os.path.join(args.ops_out_dir, "base.rs"))
+    module_names = ["base"]
+    for config in arch_configs:
+      module_name = ops_module_name(config)
+      module_names.append(module_name)
+      generate_ops_module(
+        arch_specific[config.arch],
+        os.path.join(args.ops_out_dir, f"{module_name}.rs"),
+      )
+    generate_ops_mod(args.ops_out_dir, module_names)
 
   print(f"base: {len(common_insts)} instructions")
   for config in arch_configs:

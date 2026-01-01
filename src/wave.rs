@@ -1,4 +1,5 @@
 // Wave state and register tracking live here.
+use crate::parse_instruction::SpecialRegister;
 use crate::WaveSize;
 
 
@@ -120,7 +121,6 @@ pub struct WaveState {
   sgprs: SGPRs, // scalar general purpose registers (VCC is aliased to s[106:107])
   // user chooses this when launching kernel
   vgprs: VGPRs, // u32 per thread; allocation rounds up to blocks of 16 (wave32) or 8 (wave64)
-  lds: [u32; 128], // 64 kB, change later
   exec: u64,    // only the bottom 32 bits are used in wave32
   scc: bool,
   flat_scratch: u64, // technically 48-bit, ignore top 16 bits
@@ -129,9 +129,186 @@ pub struct WaveState {
   vmcnt: u8,   // actually 6 bit
   vscnt: u8,   // also 6 bit
   lgkmcnt: u8, // also 6 bit
+  expcnt: u8,  // currently unused, but tracked for s_waitcnt
+  pending_vmcnt: u8,
+  pending_vscnt: u8,
+  pending_lgkmcnt: u8,
+  pending_expcnt: u8,
+  halted: bool,
 }
 
 impl WaveState {
+  pub fn new(wave_size: WaveSize, vgpr_count: usize, exec: u64) -> Result<Self, String> {
+    Ok(Self {
+      pc: 0,
+      wave_size,
+      sgprs: SGPRs::new(),
+      vgprs: VGPRs::new(wave_size, vgpr_count)?,
+      exec: mask_exec(wave_size, exec),
+      scc: false,
+      flat_scratch: 0,
+      m0: 0,
+      vmcnt: 0,
+      vscnt: 0,
+      lgkmcnt: 0,
+      expcnt: 0,
+      pending_vmcnt: 0,
+      pending_vscnt: 0,
+      pending_lgkmcnt: 0,
+      pending_expcnt: 0,
+      halted: false,
+    })
+  }
+
+  pub fn wave_lanes(&self) -> usize {
+    match self.wave_size {
+      WaveSize::Wave32 => 32,
+      WaveSize::Wave64 => 64,
+    }
+  }
+
+  pub fn is_halted(&self) -> bool {
+    self.halted
+  }
+
+  pub fn halt(&mut self) {
+    self.halted = true;
+  }
+
+  pub fn exec_mask(&self) -> u64 {
+    self.exec
+  }
+
+  pub fn set_exec(&mut self, exec: u64) {
+    self.exec = mask_exec(self.wave_size, exec);
+  }
+
+  pub fn is_lane_active(&self, lane: usize) -> bool {
+    if lane >= self.wave_lanes() {
+      return false;
+    }
+    (self.exec >> lane) & 1 == 1
+  }
+
+  pub fn read_sgpr(&self, idx: usize) -> u32 {
+    self.sgprs.get(idx).unwrap_or(0)
+  }
+
+  pub fn write_sgpr(&mut self, idx: usize, v: u32) {
+    let _ = self.sgprs.set(idx, v);
+  }
+
+  pub fn read_sgpr_pair(&self, lo: usize) -> u64 {
+    self.sgprs.read_pair(lo)
+  }
+
+  pub fn write_sgpr_pair(&mut self, lo: usize, v: u64) {
+    self.sgprs.write_pair(lo, v);
+  }
+
+  pub fn read_vgpr(&self, idx: usize, lane: usize) -> u32 {
+    self.vgprs.get(idx, lane).unwrap_or(0)
+  }
+
+  pub fn write_vgpr(&mut self, idx: usize, lane: usize, v: u32) {
+    let _ = self.vgprs.set(idx, lane, v);
+  }
+
+  pub fn read_special_b32(&self, reg: SpecialRegister) -> u32 {
+    match reg {
+      SpecialRegister::Vcc => self.read_vcc() as u32,
+      SpecialRegister::VccLo => self.read_vcc() as u32,
+      SpecialRegister::VccHi => (self.read_vcc() >> 32) as u32,
+      SpecialRegister::Exec => self.exec as u32,
+      SpecialRegister::ExecLo => self.exec as u32,
+      SpecialRegister::ExecHi => (self.exec >> 32) as u32,
+      SpecialRegister::M0 => self.m0,
+      SpecialRegister::Null => 0,
+      SpecialRegister::Scc => self.scc as u32,
+    }
+  }
+
+  pub fn write_special_b32(&mut self, reg: SpecialRegister, v: u32) {
+    match reg {
+      SpecialRegister::Vcc => self.write_vcc(v as u64),
+      SpecialRegister::VccLo => {
+        let hi = self.read_vcc() & 0xFFFF_FFFF_0000_0000;
+        self.write_vcc(hi | v as u64);
+      }
+      SpecialRegister::VccHi => {
+        let lo = self.read_vcc() & 0x0000_0000_FFFF_FFFF;
+        self.write_vcc(lo | ((v as u64) << 32));
+      }
+      SpecialRegister::Exec => self.set_exec(v as u64),
+      SpecialRegister::ExecLo => {
+        let hi = self.exec & 0xFFFF_FFFF_0000_0000;
+        self.set_exec(hi | v as u64);
+      }
+      SpecialRegister::ExecHi => {
+        let lo = self.exec & 0x0000_0000_FFFF_FFFF;
+        self.set_exec(lo | ((v as u64) << 32));
+      }
+      SpecialRegister::M0 => self.m0 = v,
+      SpecialRegister::Null => {}
+      SpecialRegister::Scc => self.scc = v != 0,
+    }
+  }
+
+  pub fn vmcnt(&self) -> u8 {
+    self.vmcnt
+  }
+
+  pub fn vscnt(&self) -> u8 {
+    self.vscnt
+  }
+
+  pub fn lgkmcnt(&self) -> u8 {
+    self.lgkmcnt
+  }
+
+  pub fn expcnt(&self) -> u8 {
+    self.expcnt
+  }
+
+  pub fn queue_vmcnt(&mut self, count: u8) {
+    self.vmcnt = self.vmcnt.saturating_add(count);
+    self.pending_vmcnt = self.pending_vmcnt.saturating_add(count);
+  }
+
+  pub fn queue_vscnt(&mut self, count: u8) {
+    self.vscnt = self.vscnt.saturating_add(count);
+    self.pending_vscnt = self.pending_vscnt.saturating_add(count);
+  }
+
+  pub fn queue_lgkmcnt(&mut self, count: u8) {
+    self.lgkmcnt = self.lgkmcnt.saturating_add(count);
+    self.pending_lgkmcnt = self.pending_lgkmcnt.saturating_add(count);
+  }
+
+  pub fn queue_expcnt(&mut self, count: u8) {
+    self.expcnt = self.expcnt.saturating_add(count);
+    self.pending_expcnt = self.pending_expcnt.saturating_add(count);
+  }
+
+  pub fn apply_pending_counters(&mut self) {
+    if self.pending_vmcnt > 0 {
+      self.vmcnt = self.vmcnt.saturating_sub(self.pending_vmcnt);
+      self.pending_vmcnt = 0;
+    }
+    if self.pending_vscnt > 0 {
+      self.vscnt = self.vscnt.saturating_sub(self.pending_vscnt);
+      self.pending_vscnt = 0;
+    }
+    if self.pending_lgkmcnt > 0 {
+      self.lgkmcnt = self.lgkmcnt.saturating_sub(self.pending_lgkmcnt);
+      self.pending_lgkmcnt = 0;
+    }
+    if self.pending_expcnt > 0 {
+      self.expcnt = self.expcnt.saturating_sub(self.pending_expcnt);
+      self.pending_expcnt = 0;
+    }
+  }
+
   /// Read VCC as a 64-bit value (aliased to s[106:107])
   pub fn read_vcc(&self) -> u64 {
     self.sgprs.read_pair(VCC_LO)
@@ -168,6 +345,13 @@ impl WaveState {
   /// Get current PC value
   pub fn pc(&self) -> u64 {
     self.pc
+  }
+}
+
+fn mask_exec(wave_size: WaveSize, exec: u64) -> u64 {
+  match wave_size {
+    WaveSize::Wave32 => exec & 0xFFFF_FFFF,
+    WaveSize::Wave64 => exec,
   }
 }
 
@@ -237,20 +421,7 @@ mod tests {
   }
 
   fn new_wave_state(wave_size: WaveSize, exec: u64) -> WaveState {
-    WaveState {
-      pc: 0,
-      wave_size,
-      sgprs: SGPRs::new(),
-      vgprs: VGPRs::new(wave_size, 1).unwrap(),
-      lds: [0; 128],
-      exec,
-      scc: false,
-      flat_scratch: 0,
-      m0: 0,
-      vmcnt: 0,
-      vscnt: 0,
-      lgkmcnt: 0,
-    }
+    WaveState::new(wave_size, 1, exec).unwrap()
   }
 
   #[test]

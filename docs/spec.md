@@ -34,7 +34,7 @@ Rules:
 - `wave = 32` or `wave = 64` picks the wave size for the launch.
 
 Arguments should be copied into global memory and a 64-bit kernarg pointer should be placed in SGPRs.
-Follow the PAL/ABI layout as closely as possible. If unsure, default to `s[0:1]` holding the pointer.
+Default to `s[3:4]` holding the pointer when `s[0:2]` are used for workgroup IDs.
 
 ### instruction block
 Instructions are one opcode followed by N arguments. Keep parsing simple: read the first word, then split args by `,`.
@@ -74,6 +74,7 @@ Examples:
 ## data 
 in `data/` there are xmls for each ISA. scripts/fetch_isa.sh drops rdna1/rdna2/cdna1/cdna2 because they're too old for this project. gen_isa.py has a script that parses instructions out of one isa file into a generated rust file. is this the best approach? can we do better? we also need to de-duplicate instructions, and maybe have a "base" set of instructions that are the same across all ISAs then go beyond that. and then for intstructions that are unknown in the XML, we can handle them as they come up. 
 F64 instructions are deliberately excluded during ISA generation because they are too slow for compute workloads.
+`scripts/gen_isa.py` only regenerates ops stubs when `--write-ops` is set to avoid clobbering custom handlers.
 
 ## ultimate project goals
 

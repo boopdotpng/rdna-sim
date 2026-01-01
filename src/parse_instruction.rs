@@ -34,7 +34,7 @@ pub enum Operand {
     Flag(String),                 // glc, slc, nt, offen, idxen
 }
 
-#[derive(Clone, Debug, PartialEq)]
+#[derive(Copy, Clone, Debug, PartialEq)]
 pub enum SpecialRegister {
     Vcc,
     VccLo,

@@ -149,6 +149,31 @@ impl GlobalAlloc {
     }
 }
 
+#[derive(Clone, Debug)]
+pub struct KernArg {
+  pub base: u64,
+  pub size: usize,
+}
+
+impl KernArg {
+  pub fn new(program: &mut Program, args: &[u64]) -> Result<Self, String> {
+    if args.is_empty() {
+      return Ok(Self { base: 0, size: 0 });
+    }
+    let size = args.len() * 8;
+    let base = program.alloc_global(size, 8)?;
+    for (idx, addr) in args.iter().enumerate() {
+      let offset = (idx * 8) as u64;
+      program.write_global(base + offset, &addr.to_le_bytes())?;
+    }
+    Ok(Self { base, size })
+  }
+
+  pub fn is_empty(&self) -> bool {
+    self.size == 0
+  }
+}
+
 /// Local Data Store (LDS) - shared memory visible to all threads in a workgroup
 /// Allocated and aligned in u32 (4-byte) chunks
 #[derive(Clone, Debug)]
@@ -263,6 +288,7 @@ pub enum DecodedOperand {
 
 pub struct ExecContext<'a> {
     pub wave: &'a mut WaveState,
+    pub lds: &'a mut LDS,
     pub program: &'a mut Program,
 }
 
