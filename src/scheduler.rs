@@ -140,10 +140,10 @@ fn run_wave(
       continue;
     }
     let mut ctx = ExecContext { wave, lds, program };
-    dispatch(arch_ops, base_ops, inst.def, &mut ctx, inst)
-      .map_err(|e| format!("line {}: {:?}", inst.line_num, e))?;
-    if ctx.wave.is_halted() {
-      return Ok(());
+    match dispatch(arch_ops, base_ops, inst.def, &mut ctx, inst) {
+      Ok(()) => {}
+      Err(crate::sim::ExecError::EndProgram) => return Ok(()),
+      Err(e) => return Err(format!("line {}: {:?}", inst.line_num, e)),
     }
     ctx.wave.increment_pc(1);
   }
@@ -247,7 +247,7 @@ mod tests {
   }
 
   fn alloc_arg(program: &mut Program, name: &str, size: usize) -> ArgInfo {
-    let addr = program.alloc_global(size, 8).expect("alloc");
+    let addr = program.global_mem.alloc(size, 8).expect("alloc");
     ArgInfo {
       name: name.to_string(),
       type_name: "u64".to_string(),

@@ -1,6 +1,6 @@
-use std::fs;
+use std::{fmt, fs};
 
-use crate::sim::DecodedInst;
+use crate::sim::{DecodedInst, MemoryOps};
 use crate::{Dim3, Program, WaveSize};
 
 use super::init::{encode_values, parse_file_initializer, parse_initializer};
@@ -12,6 +12,16 @@ pub struct ArgInfo {
   pub shape: Vec<usize>,
   pub addr: u64,
   pub len: usize,
+}
+
+impl fmt::Display for ArgInfo {
+  fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+    write!(
+      f,
+      "{} : {} @ 0x{:x} in global mem",
+      self.name, self.type_name, self.addr
+    )
+  }
 }
 
 #[derive(Clone, Debug)]
@@ -55,7 +65,7 @@ pub(super) fn parse_argument(
     .checked_mul(spec.element_size())
     .ok_or_else(|| "argument size overflow".to_string())?;
 
-  let addr = program.alloc_global(byte_len, spec.element_size())?;
+  let addr = program.global_mem.alloc(byte_len, spec.element_size())?;
   if let Some(init) = init_part {
     if let Some((path, file_spec)) = parse_file_initializer(init)? {
       if !same_type(&spec, &file_spec) {
@@ -70,7 +80,7 @@ pub(super) fn parse_argument(
           byte_len
         ));
       }
-      program.write_global(addr, &bytes)?;
+      program.global_mem.write(addr, &bytes)?;
     } else {
       let values = parse_initializer(init, &spec, len, &shape)?;
       let bytes = encode_values(&values, &spec)?;
@@ -82,10 +92,10 @@ pub(super) fn parse_argument(
           byte_len
         ));
       }
-      program.write_global(addr, &bytes)?;
+      program.global_mem.write(addr, &bytes)?;
     }
   } else {
-    program.write_global_zeros(addr, byte_len)?;
+    program.global_mem.write_zeros(addr, byte_len)?;
   }
 
   Ok(ArgInfo {

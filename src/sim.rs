@@ -161,10 +161,10 @@ impl KernArg {
       return Ok(Self { base: 0, size: 0 });
     }
     let size = args.len() * 8;
-    let base = program.alloc_global(size, 8)?;
+    let base = program.global_mem.alloc(size, 8)?;
     for (idx, addr) in args.iter().enumerate() {
       let offset = (idx * 8) as u64;
-      program.write_global(base + offset, &addr.to_le_bytes())?;
+      program.global_mem.write(base + offset, &addr.to_le_bytes())?;
     }
     Ok(Self { base, size })
   }
@@ -246,6 +246,7 @@ pub fn generate_arange(start: i32, end: i32, step: i32) -> Result<Vec<i32>, Stri
 #[derive(Debug)]
 pub enum ExecError {
     Unimplemented(&'static str),
+    EndProgram,
 }
 
 pub type ExecResult = Result<(), ExecError>;

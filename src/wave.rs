@@ -123,7 +123,6 @@ pub struct WaveState {
   vgprs: VGPRs, // u32 per thread; allocation rounds up to blocks of 16 (wave32) or 8 (wave64)
   exec: u64,    // only the bottom 32 bits are used in wave32
   scc: bool,
-  flat_scratch: u64, // technically 48-bit, ignore top 16 bits
   m0: u32,
   // not simulating trap registers, otherwise they'd be here
   vmcnt: u8,   // actually 6 bit
@@ -146,7 +145,6 @@ impl WaveState {
       vgprs: VGPRs::new(wave_size, vgpr_count)?,
       exec: mask_exec(wave_size, exec),
       scc: false,
-      flat_scratch: 0,
       m0: 0,
       vmcnt: 0,
       vscnt: 0,

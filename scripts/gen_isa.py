@@ -570,21 +570,98 @@ def is_memory_instruction(name: str) -> bool:
   return False
 
 
-def is_control_flow_instruction(name: str) -> bool:
-  """Check if instruction is control flow"""
+def is_basic_control_flow(name: str) -> bool:
+  """Check if instruction is basic control flow (branches, calls, endpgm, etc.)"""
   patterns = [
     "s_endpgm", "s_sendmsg", "s_barrier", "s_waitcnt",
     "s_branch", "s_cbranch", "s_setpc", "s_swappc",
     "s_call", "s_rfe", "s_getpc", "s_setprio",
     "s_sleep", "s_trap", "s_sethalt", "s_setkill",
-    "s_wait_", "s_wakeup"
+    "s_wait_", "s_wakeup",
+  ]
+  return any(name.startswith(p) for p in patterns)
+
+
+def is_exec_mask_instruction(name: str) -> bool:
+  """Check if instruction is execution mask management"""
+  patterns = [
+    "s_and_not0_saveexec", "s_and_not1_saveexec", "s_and_saveexec",
+    "s_and_not0_wrexec", "s_and_not1_wrexec",
+    "s_or_not0_saveexec", "s_or_not1_saveexec", "s_or_saveexec",
+    "s_nand_saveexec", "s_nor_saveexec",
+    "s_xnor_saveexec", "s_xor_saveexec",
+  ]
+  return any(name.startswith(p) for p in patterns)
+
+
+def is_quad_mode_instruction(name: str) -> bool:
+  """Check if instruction is quad/wave mode control"""
+  return name.startswith("s_wqm_") or name.startswith("s_quadmask_")
+
+
+def is_system_state_instruction(name: str) -> bool:
+  """Check if instruction is system state management"""
+  patterns = [
+    "s_dcache_inv", "s_icache_inv",
+    "s_denorm_mode", "s_round_mode",
+    "s_delay_alu",
+    "s_incperflevel", "s_decperflevel",
+  ]
+  return any(name.startswith(p) for p in patterns)
+
+
+def is_special_register_instruction(name: str) -> bool:
+  """Check if instruction is special register access"""
+  return name.startswith("s_getreg_") or name.startswith("s_setreg_")
+
+
+def is_relative_addressing_instruction(name: str) -> bool:
+  """Check if instruction is relative addressing"""
+  return name.startswith("s_movreld_") or name.startswith("s_movrels")
+
+
+def is_control_flow_instruction(name: str) -> bool:
+  """Check if instruction is control flow or system control"""
+  patterns = [
+    # Original control flow
+    "s_endpgm", "s_sendmsg", "s_barrier", "s_waitcnt",
+    "s_branch", "s_cbranch", "s_setpc", "s_swappc",
+    "s_call", "s_rfe", "s_getpc", "s_setprio",
+    "s_sleep", "s_trap", "s_sethalt", "s_setkill",
+    "s_wait_", "s_wakeup",
+
+    # Execution mask management
+    "s_and_not0_saveexec", "s_and_not1_saveexec", "s_and_saveexec",
+    "s_and_not0_wrexec", "s_and_not1_wrexec",
+    "s_or_not0_saveexec", "s_or_not1_saveexec", "s_or_saveexec",
+    "s_nand_saveexec", "s_nor_saveexec",
+    "s_xnor_saveexec", "s_xor_saveexec",
+
+    # Quad/wave mode
+    "s_wqm_", "s_quadmask_",
+
+    # System state
+    "s_dcache_inv", "s_icache_inv",
+    "s_denorm_mode", "s_round_mode",
+    "s_delay_alu",
+    "s_incperflevel", "s_decperflevel",
+
+    # Special registers
+    "s_getreg_", "s_setreg_",
+
+    # Relative addressing
+    "s_movreld_", "s_movrels",
+
+    # Tracing/debugging/utility
+    "s_ttracedata", "s_code_end", "s_version",
+    "s_nop", "s_clause",
   ]
   return any(name.startswith(p) for p in patterns)
 
 
 def categorize_instructions(instructions: List[dict]) -> Dict[str, List[dict]]:
-  """Categorize instructions into vector, scalar, memory, and misc"""
-  categories = {"vector": [], "scalar": [], "memory": [], "misc": []}
+  """Categorize instructions into vector, scalar, memory, and sys_control"""
+  categories = {"vector": [], "scalar": [], "memory": [], "sys_control": []}
 
   for inst in instructions:
     name = inst["normalized_name"]
@@ -592,18 +669,18 @@ def categorize_instructions(instructions: List[dict]) -> Dict[str, List[dict]]:
     # Memory: detect by keywords and prefixes
     if is_memory_instruction(name):
       categories["memory"].append(inst)
-    # Control flow: specific patterns
+    # System/Control: BEFORE scalar check
     elif is_control_flow_instruction(name):
-      categories["misc"].append(inst)
+      categories["sys_control"].append(inst)
     # Vector ALU
     elif name.startswith("v_"):
       categories["vector"].append(inst)
-    # Scalar ALU
+    # Scalar ALU (only what's left)
     elif name.startswith("s_"):
       categories["scalar"].append(inst)
     # Everything else
     else:
-      categories["misc"].append(inst)
+      categories["sys_control"].append(inst)
 
   return categories
 
@@ -626,16 +703,34 @@ def generate_ops_category_file(
   ]
 
   if add_sections:
-    # Group instructions by section for misc.rs
-    control_flow = [i for i in instructions if is_control_flow_instruction(i["normalized_name"])]
-    image_ops = [i for i in instructions if i["normalized_name"].startswith("image_")]
-    other = [i for i in instructions if i not in control_flow and i not in image_ops]
+    # Group instructions by section for sys_control.rs
+    control_flow = [i for i in instructions if is_basic_control_flow(i["normalized_name"])]
+    exec_mask = [i for i in instructions if is_exec_mask_instruction(i["normalized_name"])]
+    quad_mode = [i for i in instructions if is_quad_mode_instruction(i["normalized_name"])]
+    system_state = [i for i in instructions if is_system_state_instruction(i["normalized_name"])]
+    special_regs = [i for i in instructions if is_special_register_instruction(i["normalized_name"])]
+    rel_addressing = [i for i in instructions if is_relative_addressing_instruction(i["normalized_name"])]
+
+    # Debug/trace/utility: everything not in the above categories
+    categorized_names = set(
+      [i["normalized_name"] for i in control_flow] +
+      [i["normalized_name"] for i in exec_mask] +
+      [i["normalized_name"] for i in quad_mode] +
+      [i["normalized_name"] for i in system_state] +
+      [i["normalized_name"] for i in special_regs] +
+      [i["normalized_name"] for i in rel_addressing]
+    )
+    debug_util = [i for i in instructions if i["normalized_name"] not in categorized_names]
 
     # Generate with section headers
     groups = [
       ("// Control Flow Instructions", control_flow),
-      ("// Image Operations", image_ops),
-      ("// Other Special Instructions", other)
+      ("// Execution Mask Management", exec_mask),
+      ("// Quad/Wave Mode Control", quad_mode),
+      ("// System State Management", system_state),
+      ("// Special Register Access", special_regs),
+      ("// Relative Addressing", rel_addressing),
+      ("// Debug/Trace/Utility", debug_util)
     ]
 
     for header, group in groups:
@@ -669,7 +764,7 @@ def generate_ops_category_file(
 
 
 def generate_ops_module(instructions: List[dict], out_dir: str) -> None:
-  """Generate categorized ops module with vector.rs, scalar.rs, memory.rs, misc.rs, and mod.rs"""
+  """Generate categorized ops module with vector.rs, scalar.rs, memory.rs, sys_control.rs, and mod.rs"""
   os.makedirs(out_dir, exist_ok=True)
 
   # Categorize instructions
@@ -678,15 +773,15 @@ def generate_ops_module(instructions: List[dict], out_dir: str) -> None:
   # Generate each category file
   all_ops = []
   category_names = []
-  for category_name in ["vector", "scalar", "memory", "misc"]:
+  for category_name in ["vector", "scalar", "memory", "sys_control"]:
     category_insts = categories[category_name]
     if not category_insts:
       continue
     category_names.append(category_name)
     out_path = os.path.join(out_dir, f"{category_name}.rs")
 
-    # Add section comments only for misc.rs
-    add_sections = (category_name == "misc")
+    # Add section comments only for sys_control.rs
+    add_sections = (category_name == "sys_control")
     ops = generate_ops_category_file(category_insts, out_path, add_sections)
     all_ops.extend([(name, fn_name, category_name) for name, fn_name in ops])
 

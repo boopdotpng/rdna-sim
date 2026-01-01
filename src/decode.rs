@@ -7,7 +7,6 @@ use crate::sim::{DecodedInst, DecodedOperand};
 
 #[derive(Debug)]
 pub enum DecodeError {
-    UnknownInstruction(String, usize),              // name, line
     OperandCountMismatch {
         expected: usize,
         got: usize,
@@ -240,9 +239,6 @@ fn convert_operand(operand: &Operand) -> Result<DecodedOperand, DecodeError> {
 
 pub fn format_decode_error(err: DecodeError) -> String {
     match err {
-        DecodeError::UnknownInstruction(name, line) => {
-            format!("line {}: unknown instruction '{}'", line, name)
-        }
         DecodeError::OperandCountMismatch { expected, got, instruction, line } => {
             format!("line {}: instruction '{}' expects {} operands, got {}",
                     line, instruction, expected, got)

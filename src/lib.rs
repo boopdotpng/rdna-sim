@@ -14,32 +14,27 @@ use half::bf16;
 
 use clap::ValueEnum;
 
+const MAX_THREADS_PER_WORKGROUP: u64 = 1024;
+
 #[derive(Copy, Clone, Debug, Eq, PartialEq, ValueEnum)]
 pub enum Architecture {
-    // only support 3.5 right now
-    // Rdna1,
-    // Rdna2,
+    // we only support 3.5 right now, 3 should be a trivial lift, most ops are covered in base
     // Rdna3,
-    // rdna 3.5 will get support first. then rdna4. i don't have an rdna3 card
-    #[value(name = "rdna3.5", alias = "rdna3-5", alias = "rdna3_5")]
+    #[value(name = "rdna3.5", alias = "rdna3-5")]
     Rdna35,
-    // Rdna4,
-    // Cdna1,
-    // Cdna2,
     // Cdna3,
-    // Cdna4,
 }
 
 #[derive(Copy, Clone, Debug, Eq, PartialEq, ValueEnum)]
 pub enum WaveSize {
-    #[value(name = "32", alias = "wave32", alias = "wave-32")]
+    #[value(name = "32", alias = "wave32")]
     Wave32,
-    #[value(name = "64", alias = "wave64", alias = "wave-64")]
+    // unsupported right now, wave64 is weird on rdna
+    #[value(name = "64", alias = "wave64")]
     Wave64,
 }
 
-// arguments are stored in global memory, then a pointer to those is stored in 2 SGPRs
-// this is for threads, blocks, and grid size
+// meant to represent local and global launch size (blocks, grids in cuda)
 #[derive(Clone, Debug, PartialEq)]
 pub struct Dim3(pub u32, pub u32, pub u32);
 impl Dim3 {
@@ -79,15 +74,13 @@ impl FromStr for Dim3 {
     }
 }
 
-// state for the entire program 
+// whole program state 
 pub struct Program {
     pub global_mem: GlobalAlloc, // simple bump allocator for simulated global memory
     pub local_launch_size: Dim3, // blocks 
     pub global_launch_size: Dim3, // grids
-    pub wave_size: WaveSize,
-    // ? do we want to simulate traps? probably not
-    // TBA - trap base address
-    // TMA - trap memory address
+    pub wave_size: WaveSize, // 32 by default, 64 not supported
+    // no simulation for trap handling, TMA and TBA don't matter 
 }
 
 impl Program {
@@ -108,24 +101,6 @@ impl Program {
         }
     }
 
-    // these methods need to be here -- program owns global allocation
-    pub fn alloc_global(&mut self, size: usize, align: usize) -> Result<u64, String> {
-        self.global_mem.alloc(size, align)
-    }
-
-    pub fn write_global(&mut self, addr: u64, data: &[u8]) -> Result<(), String> {
-        self.global_mem.write(addr, data)
-    }
-
-    pub fn write_global_zeros(&mut self, addr: u64, size: usize) -> Result<(), String> {
-        self.global_mem.write_zeros(addr, size)
-    }
-
-    pub fn read_global(&self, addr: u64, size: usize) -> Result<Vec<u8>, String> {
-        self.global_mem.read(addr, size)
-    }
-
-    // max 256 threads per workgroup for now. 1024 can be trivially supported but that's usually not a good idea 
     pub fn validate_launch_config(&self) -> Result<(), String> {
         let local = &self.local_launch_size;
         let global = &self.global_launch_size;
@@ -166,10 +141,10 @@ impl Program {
         }
 
         let total_threads = local.0 as u64 * local.1 as u64 * local.2 as u64;
-        if total_threads > 256 {
+        if total_threads > MAX_THREADS_PER_WORKGROUP {
             return Err(format!(
-                "local launch size ({}, {}, {}) produces {} threads per workgroup (max 256 for RDNA 3.5)",
-                local.0, local.1, local.2, total_threads
+                "local launch size ({}, {}, {}) produces {} threads per workgroup (max {})",
+                local.0, local.1, local.2, total_threads, MAX_THREADS_PER_WORKGROUP
             ));
         }
 
@@ -200,12 +175,12 @@ pub fn run_file(
 
         println!("non-output arguments:");
         for arg in &program_info.arguments {
-            println!("  {} : {} @ 0x{:x} in global mem", arg.name, arg.type_name, arg.addr);
+            println!("  {}", arg);
         }
 
         println!("output arguments:");
         for arg in &program_info.output_arguments {
-            println!("  {} : {} @ 0x{:x} in global mem", arg.name, arg.type_name, arg.addr);
+            println!("  {}", arg);
         }
 
         println!("local: {:?}", program.local_launch_size);
@@ -231,7 +206,7 @@ fn read_output_arg(program: &Program, arg: &parse::ArgInfo) -> Result<Vec<String
     let byte_len = arg.len
         .checked_mul(elem_size)
         .ok_or_else(|| "output size overflow".to_string())?;
-    let bytes = program.read_global(arg.addr, byte_len)?;
+    let bytes = program.global_mem.read(arg.addr, byte_len)?;
     let mut out = Vec::with_capacity(arg.len);
     for i in 0..arg.len {
         let offset = i * elem_size;
@@ -415,17 +390,20 @@ mod tests {
         let prog = make_test_program(Dim3::new(256, 1, 1), Dim3::new(256, 1, 1), WaveSize::Wave32);
         assert!(prog.validate_launch_config().is_ok());
 
-        let prog = make_test_program(Dim3::new(257, 1, 1), Dim3::new(257, 1, 1), WaveSize::Wave32);
-        let result = prog.validate_launch_config();
-        assert!(result.is_err());
-        let err = result.unwrap_err();
-        assert!(err.contains("produces 257 threads per workgroup"));
-        assert!(err.contains("max 256 for RDNA 3.5"));
+        let prog = make_test_program(Dim3::new(1024, 1, 1), Dim3::new(1024, 1, 1), WaveSize::Wave32);
+        assert!(prog.validate_launch_config().is_ok());
 
-        let prog = make_test_program(Dim3::new(16, 16, 2), Dim3::new(32, 32, 4), WaveSize::Wave64);
+        let prog = make_test_program(Dim3::new(1025, 1, 1), Dim3::new(1025, 1, 1), WaveSize::Wave32);
         let result = prog.validate_launch_config();
         assert!(result.is_err());
         let err = result.unwrap_err();
-        assert!(err.contains("produces 512 threads per workgroup"));
+        assert!(err.contains("produces 1025 threads per workgroup"));
+        assert!(err.contains("max 1024"));
+
+        let prog = make_test_program(Dim3::new(16, 16, 5), Dim3::new(32, 32, 5), WaveSize::Wave64);
+        let result = prog.validate_launch_config();
+        assert!(result.is_err());
+        let err = result.unwrap_err();
+        assert!(err.contains("produces 1280 threads per workgroup"));
     }
 }
