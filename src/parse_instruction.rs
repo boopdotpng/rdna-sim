@@ -167,30 +167,30 @@ fn parse_operand(op: &str) -> Result<Operand, String> {
         return Ok(Operand::Offset(val));
     }
 
-    // Check for operand modifiers
-    if op.starts_with('-') && op.len() > 1 {
-        let inner = &op[1..];
-        // Could be negative immediate or negated operand
-        if inner.starts_with('|') || inner.starts_with('v') || inner.starts_with('s') {
-            let inner_operand = parse_operand(inner)?;
-            // Reject negation on register ranges
-            if matches!(inner_operand, Operand::SgprRange(_, _) | Operand::VgprRange(_, _)) {
-                return Err(format!("cannot apply negation modifier to register range: {}", op));
-            }
-            return Ok(Operand::Negate(Box::new(inner_operand)));
-        }
-        // Otherwise it's a negative immediate
-        return parse_immediate(op);
+    // Check for operand modifiers (only |vN|, -vN, -|vN|)
+    if op.starts_with("-|") && op.ends_with('|') && op.len() > 3 {
+        let inner = &op[2..op.len() - 1];
+        let inner_operand = parse_vgpr_single(inner, op)?;
+        return Ok(Operand::Negate(Box::new(Operand::Abs(Box::new(inner_operand)))));
     }
 
     if op.starts_with('|') && op.ends_with('|') && op.len() > 2 {
         let inner = &op[1..op.len() - 1];
-        let inner_operand = parse_operand(inner)?;
-        // Reject absolute value on register ranges
-        if matches!(inner_operand, Operand::SgprRange(_, _) | Operand::VgprRange(_, _)) {
-            return Err(format!("cannot apply absolute value modifier to register range: {}", op));
-        }
+        let inner_operand = parse_vgpr_single(inner, op)?;
         return Ok(Operand::Abs(Box::new(inner_operand)));
+    }
+
+    if op.starts_with('-') && op.len() > 1 {
+        let inner = &op[1..];
+
+        // Check if it's a register or special register (which shouldn't have modifiers)
+        if inner.starts_with('v') || inner.starts_with('s') || parse_special_register(inner).is_some() {
+            let inner_operand = parse_vgpr_single(inner, op)?;
+            return Ok(Operand::Negate(Box::new(inner_operand)));
+        }
+
+        // Otherwise it's a negative immediate
+        return parse_immediate(op);
     }
 
     // Check for special registers first (before generic register check)
@@ -228,6 +228,30 @@ fn parse_operand(op: &str) -> Result<Operand, String> {
 
     // Otherwise it's a flag
     Ok(Operand::Flag(op.to_ascii_lowercase()))
+}
+
+fn parse_vgpr_single(inner: &str, full: &str) -> Result<Operand, String> {
+    // Check for special registers first (vcc_lo, vcc_hi, exec_lo, exec_hi, m0, scc, etc.)
+    if parse_special_register(inner).is_some() {
+        return Err(format!("modifier not allowed on special register: {}", full));
+    }
+
+    // Check for SGPR (s0, s[0:1], etc.)
+    if inner.starts_with('s') {
+        return Err(format!("modifier not allowed on scalar register: {}", full));
+    }
+
+    // Must be a VGPR
+    if !inner.starts_with('v') {
+        return Err(format!("modifier only allowed on vgpr: {}", full));
+    }
+
+    let reg = parse_register(inner, false)?;
+    match reg {
+        Operand::Vgpr(_) => Ok(reg),
+        Operand::VgprRange(_, _) => Err(format!("modifier not allowed on vgpr range: {}", full)),
+        _ => Err(format!("modifier only allowed on vgpr: {}", full)),
+    }
 }
 
 fn parse_register(op: &str, is_sgpr: bool) -> Result<Operand, String> {
@@ -1243,8 +1267,8 @@ mod tests {
         let result = parse_instruction("v_add_f32 v0, |v[1:2]|, v3");
         assert!(result.is_err(), "Expected error for absolute value on VGPR range");
         let err = result.unwrap_err();
-        assert!(err.contains("cannot apply absolute value modifier to register range"),
-                "Error message should mention absolute value on range: {}", err);
+        assert!(err.contains("modifier not allowed on vgpr range"),
+                "Error message should mention modifier on range: {}", err);
     }
 
     #[test]
@@ -1261,8 +1285,8 @@ mod tests {
         let result = parse_instruction("v_add_f32 v0, -v[0:3], v1");
         assert!(result.is_err(), "Expected error for negation on VGPR range");
         let err = result.unwrap_err();
-        assert!(err.contains("cannot apply negation modifier to register range"),
-                "Error message should mention negation on range: {}", err);
+        assert!(err.contains("modifier not allowed on vgpr range"),
+                "Error message should mention modifier on range: {}", err);
     }
 
     #[test]
@@ -1271,8 +1295,8 @@ mod tests {
         let result = parse_instruction("v_mul_f32 v0, |s[2:5]|, v1");
         assert!(result.is_err(), "Expected error for absolute value on SGPR range");
         let err = result.unwrap_err();
-        assert!(err.contains("cannot apply absolute value modifier to register range"),
-                "Error message should mention absolute value on range: {}", err);
+        assert!(err.contains("modifier not allowed on scalar register"),
+                "Error message should mention scalar register: {}", err);
     }
 
     #[test]
@@ -1281,8 +1305,7 @@ mod tests {
         let result = parse_instruction("v_mad_f32 v0, -|v[1:2]|, v3, v4");
         assert!(result.is_err(), "Expected error for combined modifiers on VGPR range");
         let err = result.unwrap_err();
-        // Will fail on the abs modifier check
-        assert!(err.contains("cannot apply absolute value modifier to register range"),
+        assert!(err.contains("modifier not allowed on vgpr range"),
                 "Error message should mention modifier on range: {}", err);
     }
 
@@ -1292,7 +1315,194 @@ mod tests {
         let result = parse_instruction("v_add_f32 v0, -s[1:4], v1");
         assert!(result.is_err(), "Expected error for negation on SGPR range");
         let err = result.unwrap_err();
-        assert!(err.contains("cannot apply negation modifier to register range"),
-                "Error message should mention negation on range: {}", err);
+        assert!(err.contains("modifier not allowed on scalar register"),
+                "Error message should mention scalar register: {}", err);
+    }
+
+    // Additional modifier rejection tests - single SGPRs
+    #[test]
+    fn test_reject_negate_on_single_sgpr() {
+        let result = parse_instruction("v_add_f32 v0, -s0, v1");
+        assert!(result.is_err(), "Expected error for negation on single SGPR");
+        let err = result.unwrap_err();
+        assert!(err.contains("modifier not allowed on scalar register"),
+                "Error message should mention scalar register: {}", err);
+    }
+
+    #[test]
+    fn test_reject_abs_on_single_sgpr() {
+        let result = parse_instruction("v_mul_f32 v0, |s1|, v1");
+        assert!(result.is_err(), "Expected error for absolute value on single SGPR");
+        let err = result.unwrap_err();
+        assert!(err.contains("modifier not allowed on scalar register"),
+                "Error message should mention scalar register: {}", err);
+    }
+
+    #[test]
+    fn test_reject_combined_modifiers_on_single_sgpr() {
+        let result = parse_instruction("v_mad_f32 v0, -|s2|, v1, v2");
+        assert!(result.is_err(), "Expected error for combined modifiers on single SGPR");
+        let err = result.unwrap_err();
+        assert!(err.contains("modifier not allowed on scalar register"),
+                "Error message should mention scalar register: {}", err);
+    }
+
+    // Modifier rejection tests - special registers
+    #[test]
+    fn test_reject_negate_on_vcc_lo() {
+        let result = parse_instruction("v_add_f32 v0, -vcc_lo, v1");
+        assert!(result.is_err(), "Expected error for negation on vcc_lo");
+        let err = result.unwrap_err();
+        assert!(err.contains("modifier not allowed on special register"),
+                "Error message should mention special register: {}", err);
+    }
+
+    #[test]
+    fn test_reject_abs_on_vcc_hi() {
+        let result = parse_instruction("v_mul_f32 v0, |vcc_hi|, v1");
+        assert!(result.is_err(), "Expected error for absolute value on vcc_hi");
+        let err = result.unwrap_err();
+        assert!(err.contains("modifier not allowed on special register"),
+                "Error message should mention special register: {}", err);
+    }
+
+    #[test]
+    fn test_reject_negate_on_exec_lo() {
+        let result = parse_instruction("v_add_f32 v0, -exec_lo, v1");
+        assert!(result.is_err(), "Expected error for negation on exec_lo");
+        let err = result.unwrap_err();
+        assert!(err.contains("modifier not allowed on special register"),
+                "Error message should mention special register: {}", err);
+    }
+
+    #[test]
+    fn test_reject_abs_on_exec_hi() {
+        let result = parse_instruction("v_mul_f32 v0, |exec_hi|, v1");
+        assert!(result.is_err(), "Expected error for absolute value on exec_hi");
+        let err = result.unwrap_err();
+        assert!(err.contains("modifier not allowed on special register"),
+                "Error message should mention special register: {}", err);
+    }
+
+    #[test]
+    fn test_reject_negate_on_m0() {
+        let result = parse_instruction("v_add_f32 v0, -m0, v1");
+        assert!(result.is_err(), "Expected error for negation on m0");
+        let err = result.unwrap_err();
+        assert!(err.contains("modifier not allowed on special register"),
+                "Error message should mention special register: {}", err);
+    }
+
+    #[test]
+    fn test_reject_abs_on_scc() {
+        let result = parse_instruction("v_mul_f32 v0, |scc|, v1");
+        assert!(result.is_err(), "Expected error for absolute value on scc");
+        let err = result.unwrap_err();
+        assert!(err.contains("modifier not allowed on special register"),
+                "Error message should mention special register: {}", err);
+    }
+
+    #[test]
+    fn test_reject_combined_modifiers_on_special_register() {
+        let result = parse_instruction("v_mad_f32 v0, -|vcc_lo|, v1, v2");
+        assert!(result.is_err(), "Expected error for combined modifiers on vcc_lo");
+        let err = result.unwrap_err();
+        assert!(err.contains("modifier not allowed on special register"),
+                "Error message should mention special register: {}", err);
+    }
+
+    // Modifier rejection tests - immediates (abs not allowed on immediates at parse level)
+    #[test]
+    fn test_reject_abs_on_integer_immediate() {
+        let result = parse_instruction("v_add_f32 v0, |42|, v1");
+        assert!(result.is_err(), "Expected error for absolute value on integer immediate");
+        // The error comes from parse_vgpr_single expecting a vgpr
+        let err = result.unwrap_err();
+        assert!(err.contains("modifier") && (err.contains("vgpr") || err.contains("special") || err.contains("scalar")),
+                "Error message should mention modifier restriction: {}", err);
+    }
+
+    #[test]
+    fn test_reject_abs_on_float_immediate() {
+        let result = parse_instruction("v_mul_f32 v0, |1.0|, v1");
+        assert!(result.is_err(), "Expected error for absolute value on float immediate");
+        let err = result.unwrap_err();
+        assert!(err.contains("modifier") && (err.contains("vgpr") || err.contains("special") || err.contains("scalar")),
+                "Error message should mention modifier restriction: {}", err);
+    }
+
+    #[test]
+    fn test_reject_abs_on_hex_immediate() {
+        let result = parse_instruction("v_add_u32 v0, |0xFF|, v1");
+        assert!(result.is_err(), "Expected error for absolute value on hex immediate");
+        let err = result.unwrap_err();
+        assert!(err.contains("modifier") && (err.contains("vgpr") || err.contains("special") || err.contains("scalar")),
+                "Error message should mention modifier restriction: {}", err);
+    }
+
+    #[test]
+    fn test_reject_combined_modifiers_on_immediate() {
+        let result = parse_instruction("v_mad_f32 v0, -|1.5|, v1, v2");
+        assert!(result.is_err(), "Expected error for combined modifiers on immediate");
+        let err = result.unwrap_err();
+        assert!(err.contains("modifier") && (err.contains("vgpr") || err.contains("special") || err.contains("scalar")),
+                "Error message should mention modifier restriction: {}", err);
+    }
+
+    // Invalid modifier combination tests
+    // RDNA hardware has exactly 2 modifier bits per VGPR: NEG and ABS
+    // Applied in order: value → abs → negate
+    // Valid: v1, |v1|, -v1, -|v1|
+    // Invalid: --v1, |-v1|, ||v1||
+
+    #[test]
+    fn test_reject_double_negation() {
+        // --v1 is not a valid modifier (only one NEG bit exists)
+        let result = parse_instruction("v_add_f32 v0, --v1, v2");
+        assert!(result.is_err(), "Expected error for double negation");
+        let err = result.unwrap_err();
+        // Parser will try to parse "--v1" as an immediate and fail
+        assert!(err.contains("invalid") || err.contains("modifier"),
+                "Error message should indicate invalid syntax: {}", err);
+    }
+
+    #[test]
+    fn test_reject_abs_after_negate() {
+        // |-v1| is invalid: abs is applied BEFORE negate in hardware, not after
+        let result = parse_instruction("v_add_f32 v0, |-v1|, v2");
+        assert!(result.is_err(), "Expected error for abs(negate(v1)) - wrong order");
+        let err = result.unwrap_err();
+        assert!(err.contains("modifier") && err.contains("vgpr"),
+                "Error message should mention modifier only allowed on vgpr: {}", err);
+    }
+
+    #[test]
+    fn test_reject_double_abs() {
+        // ||v1|| is not valid (only one ABS bit exists)
+        let result = parse_instruction("v_add_f32 v0, ||v1||, v2");
+        assert!(result.is_err(), "Expected error for double absolute value");
+        let err = result.unwrap_err();
+        assert!(err.contains("modifier") && err.contains("vgpr"),
+                "Error message should mention modifier only allowed on vgpr: {}", err);
+    }
+
+    #[test]
+    fn test_accept_valid_modifier_combinations() {
+        // These are the ONLY valid combinations (corresponding to 4 hardware states)
+        // ABS=0, NEG=0: v1
+        let inst = parse_instruction("v_add_f32 v0, v1, v2").unwrap();
+        assert_eq!(inst.operands[1], vgpr(1));
+
+        // ABS=1, NEG=0: |v1|
+        let inst = parse_instruction("v_add_f32 v0, |v1|, v2").unwrap();
+        assert_eq!(inst.operands[1], abs(vgpr(1)));
+
+        // ABS=0, NEG=1: -v1
+        let inst = parse_instruction("v_add_f32 v0, -v1, v2").unwrap();
+        assert_eq!(inst.operands[1], negate(vgpr(1)));
+
+        // ABS=1, NEG=1: -|v1| (this is the ONLY valid combined form)
+        let inst = parse_instruction("v_add_f32 v0, -|v1|, v2").unwrap();
+        assert_eq!(inst.operands[1], negate(abs(vgpr(1))));
     }
 }

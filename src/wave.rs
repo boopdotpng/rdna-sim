@@ -8,6 +8,28 @@ pub const SGPR_COUNT: usize = 128; // user-accessible 106; beyond this is specia
 pub const VGPR_MAX: usize = 256; // user chooses this when running kernel.
 const VCC_LO: usize = 106; // s[106:107] with s106=low, s107=high
 
+pub trait SgprValue: Sized {
+  fn from_bits(bits: u32) -> Self;
+}
+
+impl SgprValue for u32 {
+  fn from_bits(bits: u32) -> Self {
+    bits
+  }
+}
+
+impl SgprValue for i32 {
+  fn from_bits(bits: u32) -> Self {
+    bits as i32
+  }
+}
+
+impl SgprValue for f32 {
+  fn from_bits(bits: u32) -> Self {
+    f32::from_bits(bits)
+  }
+}
+
 pub struct SGPRs {
   sgprs: Box<[u32]>,
 }
@@ -84,11 +106,9 @@ impl VGPRs {
         vgpr_count, VGPR_MAX
       ));
     }
-    let block = if wave == WaveSize::Wave32 { 16 } else { 8 };
-    let vgprs_rounded = ((vgpr_count + block - 1) / block) * block;
     let threads = if wave == WaveSize::Wave32 { 32 } else { 64 };
     Ok(Self {
-      vgpr_file: vec![0; vgprs_rounded * threads].into_boxed_slice(),
+      vgpr_file: vec![0; vgpr_count * threads].into_boxed_slice(),
       threads,
     })
   }
@@ -120,7 +140,7 @@ pub struct WaveState {
   wave_size: WaveSize,
   sgprs: SGPRs, // scalar general purpose registers (VCC is aliased to s[106:107])
   // user chooses this when launching kernel
-  vgprs: VGPRs, // u32 per thread; allocation rounds up to blocks of 16 (wave32) or 8 (wave64)
+  vgprs: VGPRs, // u32 per thread
   exec: u64,    // only the bottom 32 bits are used in wave32
   scc: bool,
   m0: u32,
@@ -188,8 +208,8 @@ impl WaveState {
     (self.exec >> lane) & 1 == 1
   }
 
-  pub fn read_sgpr(&self, idx: usize) -> u32 {
-    self.sgprs.get(idx).unwrap_or(0)
+  pub fn read_sgpr<T: SgprValue>(&self, idx: usize) -> T {
+    T::from_bits(self.sgprs.get(idx).unwrap_or(0))
   }
 
   pub fn write_sgpr(&mut self, idx: usize, v: u32) {
@@ -209,7 +229,9 @@ impl WaveState {
   }
 
   pub fn write_vgpr(&mut self, idx: usize, lane: usize, v: u32) {
-    let _ = self.vgprs.set(idx, lane, v);
+    if self.is_lane_active(lane) {
+      let _ = self.vgprs.set(idx, lane, v);
+    }
   }
 
   pub fn read_special_b32(&self, reg: SpecialRegister) -> u32 {
@@ -309,12 +331,20 @@ impl WaveState {
 
   /// Read VCC as a 64-bit value (aliased to s[106:107])
   pub fn read_vcc(&self) -> u64 {
-    self.sgprs.read_pair(VCC_LO)
+    let vcc = self.sgprs.read_pair(VCC_LO);
+    match self.wave_size {
+      WaveSize::Wave32 => vcc & 0xFFFF_FFFF,
+      WaveSize::Wave64 => vcc,
+    }
   }
 
   /// Write VCC as a 64-bit value (aliased to s[106:107])
   pub fn write_vcc(&mut self, v: u64) {
-    self.sgprs.write_pair(VCC_LO, v);
+    let masked = match self.wave_size {
+      WaveSize::Wave32 => v & 0xFFFF_FFFF,
+      WaveSize::Wave64 => v,
+    };
+    self.sgprs.write_pair(VCC_LO, masked);
   }
 
   /// Check if VCC is zero
@@ -410,12 +440,12 @@ mod tests {
   }
 
   #[test]
-  fn vgprs_rounding_and_indexing() {
+  fn vgprs_count_and_indexing() {
     let mut vgprs = VGPRs::new(WaveSize::Wave32, 17).unwrap();
-    assert!(vgprs.set(31, 0, 7));
-    assert!(!vgprs.set(32, 0, 7));
-    assert_eq!(vgprs.get(31, 0), Some(7));
-    assert_eq!(vgprs.get(32, 0), None);
+    assert!(vgprs.set(16, 0, 7));
+    assert!(!vgprs.set(17, 0, 7));
+    assert_eq!(vgprs.get(16, 0), Some(7));
+    assert_eq!(vgprs.get(17, 0), None);
   }
 
   fn new_wave_state(wave_size: WaveSize, exec: u64) -> WaveState {
@@ -453,5 +483,35 @@ mod tests {
     assert_eq!(wave.read_special_b32(SpecialRegister::ExecLo), 0x1122_3344);
     assert_eq!(wave.read_special_b32(SpecialRegister::ExecHi), 0x5566_7788);
     assert_eq!(wave.exec_mask(), 0x5566_7788_1122_3344);
+  }
+
+  #[test]
+  fn vcc_wave32_masks_high_bits() {
+    let mut wave = WaveState::new(WaveSize::Wave32, 1, 0).unwrap();
+    wave.write_vcc(0xAABB_CCDD_1122_3344);
+    assert_eq!(wave.read_vcc(), 0x1122_3344);
+    assert_eq!(wave.read_special_b32(SpecialRegister::VccHi), 0);
+  }
+
+  #[test]
+  fn vgpr_write_respects_exec_wave32() {
+    let mut wave = WaveState::new(WaveSize::Wave32, 1, 1).unwrap();
+    wave.write_vgpr(0, 0, 7);
+    assert_eq!(wave.read_vgpr(0, 0), 7);
+
+    wave.set_exec(0);
+    wave.write_vgpr(0, 0, 9);
+    assert_eq!(wave.read_vgpr(0, 0), 7);
+  }
+
+  #[test]
+  fn vgpr_write_respects_exec_wave64_hi_bits() {
+    let mut wave = WaveState::new(WaveSize::Wave64, 1, 1u64 << 40).unwrap();
+    wave.write_vgpr(0, 40, 123);
+    assert_eq!(wave.read_vgpr(0, 40), 123);
+
+    wave.set_exec(0);
+    wave.write_vgpr(0, 40, 321);
+    assert_eq!(wave.read_vgpr(0, 40), 123);
   }
 }

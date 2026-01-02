@@ -698,7 +698,7 @@ def generate_ops_category_file(
   fn_map = unique_fn_names(names)
 
   lines = [
-    "use crate::sim::{DecodedInst, ExecContext, ExecError, ExecResult};",
+    "use crate::sim::{Ctx, ExecError, ExecResult, MemoryOps};",
     "",
   ]
 
@@ -740,8 +740,8 @@ def generate_ops_category_file(
         for inst in group:
           name = inst["normalized_name"]
           fn_name = fn_map[name]
-          lines.append(f"pub fn {fn_name}(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {{")
-          lines.append("  let _ = (ctx, inst);")
+          lines.append(f"pub fn {fn_name}(ctx: &mut Ctx) -> ExecResult {{")
+          lines.append("  let _ = ctx;")
           lines.append(f"  Err(ExecError::Unimplemented({rust_string_literal(name)}))")
           lines.append("}")
           lines.append("")
@@ -750,8 +750,8 @@ def generate_ops_category_file(
     for inst in instructions:
       name = inst["normalized_name"]
       fn_name = fn_map[name]
-      lines.append(f"pub fn {fn_name}(ctx: &mut ExecContext, inst: &DecodedInst) -> ExecResult {{")
-      lines.append("  let _ = (ctx, inst);")
+      lines.append(f"pub fn {fn_name}(ctx: &mut Ctx) -> ExecResult {{")
+      lines.append("  let _ = ctx;")
       lines.append(f"  Err(ExecError::Unimplemented({rust_string_literal(name)}))")
       lines.append("}")
       lines.append("")

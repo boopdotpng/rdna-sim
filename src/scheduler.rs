@@ -1,6 +1,6 @@
 use crate::ops::{base, rdna35};
 use crate::parse::ProgramInfo;
-use crate::sim::{dispatch, ExecContext, Handler, KernArg, LDS};
+use crate::sim::{dispatch, Handler, KernArg, LDS};
 use crate::wave::{WaveState, VGPR_MAX};
 use crate::{Architecture, Program, WaveSize};
 
@@ -139,13 +139,12 @@ fn run_wave(
     if handle_waitcnt(wave, inst) {
       continue;
     }
-    let mut ctx = ExecContext { wave, lds, program };
-    match dispatch(arch_ops, base_ops, inst.def, &mut ctx, inst) {
+    match dispatch(arch_ops, base_ops, inst.def, wave, lds, program, inst) {
       Ok(()) => {}
       Err(crate::sim::ExecError::EndProgram) => return Ok(()),
       Err(e) => return Err(format!("line {}: {:?}", inst.line_num, e)),
     }
-    ctx.wave.increment_pc(1);
+    wave.increment_pc(1);
   }
 }
 
@@ -234,6 +233,7 @@ mod tests {
   use super::*;
   use crate::Dim3;
   use crate::parse::ArgInfo;
+  use crate::parse_instruction::SpecialRegister;
 
   fn program_info(local: Dim3, global: Dim3, args: Vec<ArgInfo>, outputs: Vec<ArgInfo>) -> ProgramInfo {
     ProgramInfo {
@@ -318,9 +318,9 @@ mod tests {
     )
     .expect("init wave");
 
-    assert_eq!(wave.read_sgpr(0), wg_x);
-    assert_eq!(wave.read_sgpr(1), wg_y);
-    assert_eq!(wave.read_sgpr(2), wg_z);
+    assert_eq!(wave.read_sgpr::<u32>(0), wg_x);
+    assert_eq!(wave.read_sgpr::<u32>(1), wg_y);
+    assert_eq!(wave.read_sgpr::<u32>(2), wg_z);
   }
 
   #[test]
@@ -348,5 +348,39 @@ mod tests {
       assert_eq!(wave.read_vgpr(1, lane), y);
       assert_eq!(wave.read_vgpr(2, lane), z);
     }
+  }
+
+  #[test]
+  fn exec_mask_matches_active_lanes() {
+    let mut program = Program::new(1024, Dim3::new(1, 1, 1), Dim3::new(16, 1, 1), WaveSize::Wave32);
+    let info = program_info(Dim3::new(16, 1, 1), Dim3::new(1, 1, 1), Vec::new(), Vec::new());
+    let kernarg = init_kernarg(&mut program, &info).expect("kernarg");
+
+    let wave = init_wave_state(
+      &info,
+      WaveSize::Wave32,
+      &kernarg,
+      0,
+      0,
+      32,
+      info.local_launch_size.linear_len() as usize,
+    )
+    .expect("init wave");
+    assert_eq!(wave.read_special_b32(SpecialRegister::ExecLo), 0x0000_FFFF);
+
+    let mut program = Program::new(1024, Dim3::new(1, 1, 1), Dim3::new(32, 1, 1), WaveSize::Wave32);
+    let info = program_info(Dim3::new(32, 1, 1), Dim3::new(1, 1, 1), Vec::new(), Vec::new());
+    let kernarg = init_kernarg(&mut program, &info).expect("kernarg");
+    let wave = init_wave_state(
+      &info,
+      WaveSize::Wave32,
+      &kernarg,
+      0,
+      0,
+      32,
+      info.local_launch_size.linear_len() as usize,
+    )
+    .expect("init wave");
+    assert_eq!(wave.read_special_b32(SpecialRegister::ExecLo), 0xFFFF_FFFF);
   }
 }

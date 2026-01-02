@@ -22,7 +22,7 @@ This was taken from the RDNA3.5 ISA pdf.
 | State        | Description                                                         | Width / Range    |
 | ------------ | ------------------------------------------------------------------- | ---------------- |
 | SGPRs        | scalar general purpose registers                                    | s0–s105          |
-| VGPRs        | vector general purpose registers                                    | v0–v255 (32-bit) |
+| VGPRs        | vector general purpose registers                                    | v0–v255, per-lane u32 |
 | LDS          | do we need to emulate cache? scratch ram                            | —                |
 | EXEC         | top half not used in wave32                                         | 64-bit           |
 | EXECZ        | exec is zero                                                        | 1-bit            |
@@ -43,12 +43,12 @@ Program counter: Next shader instruction to execute. Read/write only via scalar 
 
 **EXECute Mask**
 
-Controls which threads in the vector are executed. 1=execute, 0=do not execute. Exec can be read/written via scalar instructions. 
+Controls which threads in the vector are executed. 1=execute, 0=do not execute. Exec can be read/written via scalar instructions.
 Can be written as a result of vector-alu compare. 
 
 Exec affects: vector-alu, vector-memory, LDS, GDS, and export instructions. No effect on scalar execution / branches. 
 
-Wave64 uses all 64 bits, wave32 only uses 31:0. 
+Wave64 uses all 64 bits, wave32 only uses 31:0. In wave32, exec_hi is always 0.
 
 *Instruction skipping (exec=0):*
 **todo: this makes no sense right now**
@@ -65,12 +65,17 @@ Other notes:
 - Writes to an out-of-range SGPR are ignored
 
 **VCC**
-Vector condition code written by V_CMP and integer vector add/sub instructions. vcc is read by many instructions. 
+Vector condition code written by V_CMP and integer vector add/sub instructions. vcc is read by many instructions.
+Wave64 uses all 64 bits, wave32 only uses 31:0. In wave32, vcc_hi is always 0.
 named SGPR pair, subject to same dependency checks (?) as toher SGPRs. 
 
 
 **VGPRs**
-Can be modeled by a 32-long array of 32-bit values. 
+Each VGPR index holds one u32 per lane. Model as a 2D file:
+
+VGPR[reg][lane]
+
+reg in 0..VGPR_COUNT-1, lane in 0..wave_size-1 (32 or 64). Writes are masked by EXEC: lane writes only happen when EXEC[lane] is 1.
 
 ## data types 
 - b32 (binary untyped 32-bit), this is not really used 

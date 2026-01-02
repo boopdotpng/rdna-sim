@@ -45,6 +45,13 @@ fn validate_modifier(
                 });
             }
 
+            if matches!(**inner, Operand::Sgpr(_) | Operand::SgprRange(_, _) | Operand::SpecialReg(_)) {
+                return Err(DecodeError::InvalidOperand(
+                    "modifier not allowed on scalar register".to_string(),
+                    line_num,
+                ));
+            }
+
             // Recursively validate inner operand
             validate_modifier(inner, def, inst_name, line_num)?;
         }
@@ -57,6 +64,13 @@ fn validate_modifier(
                     instruction: inst_name.to_string(),
                     line: line_num,
                 });
+            }
+
+            if matches!(**inner, Operand::Sgpr(_) | Operand::SgprRange(_, _) | Operand::SpecialReg(_)) {
+                return Err(DecodeError::InvalidOperand(
+                    "modifier not allowed on scalar register".to_string(),
+                    line_num,
+                ));
             }
 
             // Recursively validate inner operand
@@ -145,11 +159,11 @@ fn validate_and_convert_operand(
     let operand = match operand {
         Operand::Negate(inner) => {
             let decoded_inner = validate_and_convert_operand(inner, spec, operand_idx, inst_name, line_num)?;
-            return Ok(DecodedOperand::Negate(Box::new(decoded_inner)));
+            return Ok(apply_negate(decoded_inner));
         }
         Operand::Abs(inner) => {
             let decoded_inner = validate_and_convert_operand(inner, spec, operand_idx, inst_name, line_num)?;
-            return Ok(DecodedOperand::Abs(Box::new(decoded_inner)));
+            return Ok(apply_abs(decoded_inner));
         }
         _ => operand,
     };
@@ -228,13 +242,27 @@ fn convert_operand(operand: &Operand) -> Result<DecodedOperand, DecodeError> {
         Operand::ImmF32(val) => DecodedOperand::ImmF32(*val),
         Operand::Offset(val) => DecodedOperand::Offset(*val),
         Operand::Flag(name) => DecodedOperand::Flag(name.clone()),
-        Operand::Negate(inner) => {
-            DecodedOperand::Negate(Box::new(convert_operand(inner)?))
-        }
-        Operand::Abs(inner) => {
-            DecodedOperand::Abs(Box::new(convert_operand(inner)?))
-        }
+        Operand::Negate(inner) => apply_negate(convert_operand(inner)?),
+        Operand::Abs(inner) => apply_abs(convert_operand(inner)?),
     })
+}
+
+fn apply_negate(operand: DecodedOperand) -> DecodedOperand {
+    match operand {
+        DecodedOperand::ImmU32(val) => DecodedOperand::ImmU32((-(val as i32)) as u32),
+        DecodedOperand::ImmI32(val) => DecodedOperand::ImmI32(-val),
+        DecodedOperand::ImmF32(val) => DecodedOperand::ImmF32(-val),
+        other => DecodedOperand::Negate(Box::new(other)),
+    }
+}
+
+fn apply_abs(operand: DecodedOperand) -> DecodedOperand {
+    match operand {
+        DecodedOperand::ImmU32(val) => DecodedOperand::ImmU32((val as i32).abs() as u32),
+        DecodedOperand::ImmI32(val) => DecodedOperand::ImmI32(val.abs()),
+        DecodedOperand::ImmF32(val) => DecodedOperand::ImmF32(val.abs()),
+        other => DecodedOperand::Abs(Box::new(other)),
+    }
 }
 
 pub fn format_decode_error(err: DecodeError) -> String {
@@ -342,8 +370,8 @@ mod tests {
     // Modifier validation tests
     #[test]
     fn test_reject_modifiers_on_scalar_instructions() {
-        // s_mov_b32 s0, -s1 should be rejected (scalar instruction doesn't support modifiers)
-        let parsed = parse_instruction("s_mov_b32 s0, -s1").expect("parse failed");
+        // s_mov_b32 s0, -v1 should be rejected (scalar instruction doesn't support modifiers)
+        let parsed = parse_instruction("s_mov_b32 s0, -v1").expect("parse failed");
         let def = lookup_inst_def("s_mov_b32");
 
         let result = decode_instruction(&parsed, def, 1);
@@ -359,8 +387,8 @@ mod tests {
 
     #[test]
     fn test_reject_abs_on_scalar_instruction() {
-        // s_mov_b32 s0, |s1| should be rejected
-        let parsed = parse_instruction("s_mov_b32 s0, |s1|").expect("parse failed");
+        // s_mov_b32 s0, |v1| should be rejected (scalar instruction doesn't support modifiers)
+        let parsed = parse_instruction("s_mov_b32 s0, |v1|").expect("parse failed");
         let def = lookup_inst_def("s_mov_b32");
 
         let result = decode_instruction(&parsed, def, 1);
