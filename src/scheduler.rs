@@ -72,25 +72,25 @@ fn init_wave_state(
   let active_lanes = threads_per_wg.saturating_sub(wave_start).min(wave_lanes);
   let exec_mask = build_exec_mask(wave_size, active_lanes);
   let mut wave = WaveState::new(wave_size, VGPR_MAX, exec_mask)?;
-  wave.write_sgpr(0, wg_x);
+  wave.write_sgpr_pair(0, kernarg.base);
+  wave.write_sgpr(2, wg_x);
   if info.global_launch_size.1 > 1 {
-    wave.write_sgpr(1, wg_y);
+    wave.write_sgpr(3, wg_y);
   }
   if info.global_launch_size.2 > 1 {
-    wave.write_sgpr(2, wg_z);
+    wave.write_sgpr(4, wg_z);
   }
-  if !kernarg.is_empty() {
-    wave.write_sgpr_pair(3, kernarg.base);
-  }
+  let pack_local_ids = info.local_launch_size.1 > 1 || info.local_launch_size.2 > 1;
   for lane in 0..active_lanes {
     let local_tid = (wave_start + lane) as u64;
     let (local_x, local_y, local_z) = info.local_launch_size.split_linear(local_tid);
-    wave.write_vgpr(0, lane, local_x);
-    if info.local_launch_size.1 > 1 {
-      wave.write_vgpr(1, lane, local_y);
-    }
-    if info.local_launch_size.2 > 1 {
-      wave.write_vgpr(2, lane, local_z);
+    if pack_local_ids {
+      let packed = (local_x & 0x3FF)
+        | ((local_y & 0x3FF) << 10)
+        | ((local_z & 0x3FF) << 20);
+      wave.write_vgpr(0, lane, packed);
+    } else {
+      wave.write_vgpr(0, lane, local_x);
     }
   }
   Ok(wave)
@@ -276,7 +276,7 @@ mod tests {
     )
     .expect("init wave");
 
-    assert_eq!(wave.read_sgpr_pair(3), kernarg.base);
+    assert_eq!(wave.read_sgpr_pair(0), kernarg.base);
   }
 
   #[test]
@@ -296,7 +296,7 @@ mod tests {
     )
     .expect("init wave");
 
-    assert_eq!(wave.read_sgpr_pair(3), 0);
+    assert_eq!(wave.read_sgpr_pair(0), 0);
   }
 
   #[test]
@@ -318,13 +318,13 @@ mod tests {
     )
     .expect("init wave");
 
-    assert_eq!(wave.read_sgpr::<u32>(0), wg_x);
-    assert_eq!(wave.read_sgpr::<u32>(1), wg_y);
-    assert_eq!(wave.read_sgpr::<u32>(2), wg_z);
+    assert_eq!(wave.read_sgpr::<u32>(2), wg_x);
+    assert_eq!(wave.read_sgpr::<u32>(3), wg_y);
+    assert_eq!(wave.read_sgpr::<u32>(4), wg_z);
   }
 
   #[test]
-  fn local_ids_are_written_to_vgprs() {
+  fn local_ids_are_packed_in_vgpr0_for_2d_or_3d() {
     let mut program = Program::new(1024, Dim3::new(2, 2, 2), Dim3::new(1, 1, 1), WaveSize::Wave32);
     let info = program_info(Dim3::new(2, 2, 2), Dim3::new(1, 1, 1), Vec::new(), Vec::new());
     let kernarg = init_kernarg(&mut program, &info).expect("kernarg");
@@ -344,9 +344,125 @@ mod tests {
 
     for lane in 0..threads_per_wg {
       let (x, y, z) = info.local_launch_size.split_linear(lane as u64);
+      let expected = (x & 0x3FF) | ((y & 0x3FF) << 10) | ((z & 0x3FF) << 20);
+      assert_eq!(wave.read_vgpr(0, lane), expected);
+    }
+  }
+
+  #[test]
+  fn local_ids_are_packed_in_vgpr0_for_3d() {
+    let mut program = Program::new(1024, Dim3::new(3, 4, 2), Dim3::new(1, 1, 1), WaveSize::Wave32);
+    let info = program_info(Dim3::new(3, 4, 2), Dim3::new(1, 1, 1), Vec::new(), Vec::new());
+    let kernarg = init_kernarg(&mut program, &info).expect("kernarg");
+    let wave_lanes = 32;
+    let threads_per_wg = info.local_launch_size.linear_len() as usize;
+
+    let wave = init_wave_state(
+      &info,
+      WaveSize::Wave32,
+      &kernarg,
+      0,
+      0,
+      wave_lanes,
+      threads_per_wg,
+    )
+    .expect("init wave");
+
+    for lane in 0..threads_per_wg {
+      let (x, y, z) = info.local_launch_size.split_linear(lane as u64);
+      let expected = (x & 0x3FF) | ((y & 0x3FF) << 10) | ((z & 0x3FF) << 20);
+      assert_eq!(wave.read_vgpr(0, lane), expected);
+    }
+  }
+
+  #[test]
+  fn local_ids_use_vgpr0_for_1d() {
+    let mut program = Program::new(1024, Dim3::new(8, 1, 1), Dim3::new(1, 1, 1), WaveSize::Wave32);
+    let info = program_info(Dim3::new(8, 1, 1), Dim3::new(1, 1, 1), Vec::new(), Vec::new());
+    let kernarg = init_kernarg(&mut program, &info).expect("kernarg");
+    let wave_lanes = 32;
+    let threads_per_wg = info.local_launch_size.linear_len() as usize;
+
+    let wave = init_wave_state(
+      &info,
+      WaveSize::Wave32,
+      &kernarg,
+      0,
+      0,
+      wave_lanes,
+      threads_per_wg,
+    )
+    .expect("init wave");
+
+    for lane in 0..threads_per_wg {
+      let (x, _, _) = info.local_launch_size.split_linear(lane as u64);
       assert_eq!(wave.read_vgpr(0, lane), x);
-      assert_eq!(wave.read_vgpr(1, lane), y);
-      assert_eq!(wave.read_vgpr(2, lane), z);
+    }
+  }
+
+  #[test]
+  fn workgroup_ids_are_written_to_sgprs_per_wave_in_3d() {
+    let mut program = Program::new(1024, Dim3::new(1, 1, 1), Dim3::new(2, 3, 4), WaveSize::Wave32);
+    let info = program_info(Dim3::new(1, 1, 1), Dim3::new(2, 3, 4), Vec::new(), Vec::new());
+    let kernarg = init_kernarg(&mut program, &info).expect("kernarg");
+    let wave_lanes = 32;
+    let threads_per_wg = info.local_launch_size.linear_len() as usize;
+    let wg_id = 7;
+    let (wg_x, wg_y, wg_z) = info.global_launch_size.split_linear(wg_id);
+
+    let wave0 = init_wave_state(
+      &info,
+      WaveSize::Wave32,
+      &kernarg,
+      wg_id,
+      0,
+      wave_lanes,
+      threads_per_wg,
+    )
+    .expect("init wave");
+    let wave1 = init_wave_state(
+      &info,
+      WaveSize::Wave32,
+      &kernarg,
+      wg_id,
+      1,
+      wave_lanes,
+      threads_per_wg,
+    )
+    .expect("init wave");
+
+    assert_eq!(wave0.read_sgpr::<u32>(2), wg_x);
+    assert_eq!(wave0.read_sgpr::<u32>(3), wg_y);
+    assert_eq!(wave0.read_sgpr::<u32>(4), wg_z);
+    assert_eq!(wave1.read_sgpr::<u32>(2), wg_x);
+    assert_eq!(wave1.read_sgpr::<u32>(3), wg_y);
+    assert_eq!(wave1.read_sgpr::<u32>(4), wg_z);
+  }
+
+  #[test]
+  fn partial_wave_exec_mask_prevents_vgpr_writes() {
+    let mut program = Program::new(1024, Dim3::new(16, 1, 1), Dim3::new(64, 1, 1), WaveSize::Wave32);
+    let info = program_info(Dim3::new(16, 1, 1), Dim3::new(64, 1, 1), Vec::new(), Vec::new());
+    let kernarg = init_kernarg(&mut program, &info).expect("kernarg");
+    let wave_lanes = 32;
+    let threads_per_wg = info.local_launch_size.linear_len() as usize;
+
+    let wave = init_wave_state(
+      &info,
+      WaveSize::Wave32,
+      &kernarg,
+      0,
+      0,
+      wave_lanes,
+      threads_per_wg,
+    )
+    .expect("init wave");
+
+    for lane in 0..16 {
+      assert_eq!(wave.read_vgpr(0, lane), lane as u32);
+    }
+    for lane in 16..32 {
+      assert_eq!(wave.read_vgpr(0, lane), 0);
     }
   }
 

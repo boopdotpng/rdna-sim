@@ -86,9 +86,8 @@ impl SGPRs {
 
 /*
 Each thread in the wave gets a u32.
-v0 is usually threadIdx.x (work-item id).
-v1 is threadIdx.y
-at least from kernels i've read
+v0 holds the packed local thread id when local launch has >1 dimension.
+Bits are: [31:30] empty, [29:20]=z, [19:10]=y, [9:0]=x.
 */
 pub struct VGPRs {
   vgpr_file: Box<[u32]>,

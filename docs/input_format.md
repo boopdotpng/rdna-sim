@@ -66,11 +66,11 @@ out_result: f32[16]    # Allocated and printed after execution
 
 #### Memory Layout
 
-Arguments are allocated in global memory with a 64-bit kernarg pointer placed in SGPRs. The kernarg table is a contiguous list of `u64` addresses (inputs first, then outputs). When args exist, `s[3:4]` holds the table pointer.
+Arguments are allocated in global memory with a 64-bit kernarg pointer placed in SGPRs. The kernarg table is a contiguous list of `u64` addresses (inputs first, then outputs). `s[0:1]` always holds the table pointer (zero when no args exist).
 
 **Thread/workgroup IDs:**
-- Workgroup IDs: `s0`, `s1`, `s2` (only present if global size has those dimensions)
-- Local (thread) IDs: `v0`, `v1`, `v2` per lane (only present if local size has those dimensions)
+- Workgroup IDs: `s2` (x), `s3` (y), `s4` (z). `s3`/`s4` only present when the global size has those dimensions.
+- Local (thread) IDs: packed into `v0` when local size is 2D/3D. Bit layout is `[31:30]=0, [29:20]=z, [19:10]=y, [9:0]=x`. For 1D, `v0` is just `x`.
 
 ### Instruction Block
 

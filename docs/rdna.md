@@ -99,8 +99,7 @@ Take hand-written RDNA and run it. To inject data into global memory (for the ke
 arg_1: i64 = []...  or a scalar
 arg_2: 
 
-**copy these into global memory and then fill two SGPRs with a pointer to the argument (64-bit).**
-**todo: determine what SGPRs these go into, maybe s[0:1]?**
+**copy these into global memory and then fill s[0:1] with a 64-bit pointer to the argument table.**
 
 ---
 
