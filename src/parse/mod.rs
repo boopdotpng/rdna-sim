@@ -17,7 +17,7 @@ pub(super) mod test_support {
 
   static TEMP_COUNTER: AtomicUsize = AtomicUsize::new(0);
 
-  pub fn temp_path(name: &str) -> PathBuf {
+  pub(super) fn temp_path(name: &str) -> PathBuf {
     let id = TEMP_COUNTER.fetch_add(1, Ordering::Relaxed);
     let mut path = std::env::temp_dir();
     path.push(format!(
@@ -29,21 +29,21 @@ pub(super) mod test_support {
     path
   }
 
-  pub fn write_temp(contents: &str, name: &str) -> PathBuf {
+  pub(super) fn write_temp(contents: &str, name: &str) -> PathBuf {
     let path = temp_path(name);
     fs::write(&path, contents).expect("write temp rdna");
     path
   }
 
-  pub fn program() -> Program {
+  pub(super) fn program() -> Program {
     Program::new(1024, Dim3::new(1, 1, 1), Dim3::new(1, 1, 1), WaveSize::Wave32)
   }
 
-  pub fn spec(name: &str) -> TypeSpec {
+  pub(super) fn spec(name: &str) -> TypeSpec {
     parse_type(name).expect("type spec")
   }
 
-  pub fn numbers_to_f32(values: &[Number]) -> Vec<f32> {
+  pub(super) fn numbers_to_f32(values: &[Number]) -> Vec<f32> {
     values
       .iter()
       .map(|value| match *value {
@@ -53,7 +53,7 @@ pub(super) mod test_support {
       .collect()
   }
 
-  pub fn numbers_to_i64(values: &[Number]) -> Vec<i64> {
+  pub(super) fn numbers_to_i64(values: &[Number]) -> Vec<i64> {
     values
       .iter()
       .map(|value| match *value {

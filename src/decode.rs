@@ -261,8 +261,6 @@ pub fn format_decode_error(err: DecodeError) -> String {
 mod tests {
     use super::*;
     use crate::parse_instruction::{parse_instruction, SpecialRegister};
-    use crate::Architecture;
-
     // Helper to lookup instruction definition
     fn lookup_inst_def(name: &str) -> &'static InstructionCommonDef {
         // Try base ISA first

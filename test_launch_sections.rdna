@@ -1,0 +1,25 @@
+// Test RDNA assembly file with launch sizes in sections
+// This is a sample file for testing our parsing functionality
+
+// Local launch size section
+local: 1,2,3
+
+// Global launch size section  
+global: 4,5,6
+
+// Regular arguments section
+---
+arg1: u32
+arg2: f32
+out_result: u32
+---
+
+// Instructions
+add v0, v1, v2
+mov v3, v4
+// More instructions would go here...
+
+// Print addresses section
+printing section
+0x1000: u32
+0x2000: f32
