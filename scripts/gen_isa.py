@@ -109,10 +109,8 @@ def render_common_def(inst: dict) -> str:
   lines = ["  InstructionCommonDef {"]
   lines.append(f"    name: {rust_string_literal(inst['normalized_name'])},")
   lines.append(f"    args: {format_arg_specs(inst.get('operands', []), indent + 4, len('args: '), inst['normalized_name'])},")
-  supports_abs = "true" if inst.get('supports_abs', False) else "false"
-  supports_neg = "true" if inst.get('supports_neg', False) else "false"
-  lines.append(f"    supports_abs: {supports_abs},")
-  lines.append(f"    supports_neg: {supports_neg},")
+  supports_modifiers = "true" if inst.get('supports_modifiers', False) else "false"
+  lines.append(f"    supports_modifiers: {supports_modifiers},")
   lines.append("  },")
   return "\n".join(lines)
 
@@ -284,30 +282,23 @@ def operand_kind(operand_type: str) -> str:
   return "Unknown"
 
 
-def supports_modifiers(enc_name: str) -> Tuple[bool, bool]:
-  """
-  Determine if an encoding supports abs and neg modifiers.
-  Returns (supports_abs, supports_neg)
-  """
+def supports_modifiers(enc_name: str) -> bool:
+  """Determine if an encoding supports abs/neg modifiers."""
   enc = enc_name.upper()
 
   # VOP3 and VOP3P support both abs and neg
   if 'VOP3P' in enc:
-    return (True, True)
+    return True
   if 'VOP3' in enc:
     # VOP3 supports modifiers, but exclude VOP3P (already handled above)
-    return (True, True)
+    return True
 
   # SDWA supports both (CDNA only, but we'll allow it)
   if 'SDWA' in enc:
-    return (True, True)
-
-  # VINTERP supports neg only
-  if 'VINTERP' in enc or 'VINTRP' in enc:
-    return (False, True)
+    return True
 
   # All other encodings don't support modifiers
-  return (False, False)
+  return False
 
 
 def load_instructions(
@@ -380,15 +371,27 @@ def load_instructions(
       operands = [item[1] for item in ordered]
 
     # Determine modifier support from encoding
-    supports_abs, supports_neg = supports_modifiers(enc_name)
+    supports_mods_by_encoding = supports_modifiers(enc_name)
+
+    def is_float_data_format(value: str) -> bool:
+      upper = value.upper()
+      return any(token in upper for token in ["F16", "F32", "F64", "BF16"])
+
+    def name_has_float_hint(value: str) -> bool:
+      lower = value.lower()
+      return any(token in lower for token in ["_f16", "_f32", "_f64", "_bf16", "fma"])
+
+    is_float_instruction = name_has_float_hint(name) or any(
+      is_float_data_format(op.get("data_format") or "") for op in operands
+    )
+    supports_mods = supports_mods_by_encoding and is_float_instruction
 
     instructions.append(
       {
         "name": name,
         "normalized_name": normalize_name(name),
         "operands": operands,
-        "supports_abs": supports_abs,
-        "supports_neg": supports_neg,
+        "supports_modifiers": supports_mods,
       }
     )
 
@@ -893,8 +896,7 @@ def generate_types(out_dir: str) -> None:
     "pub struct InstructionCommonDef {",
     "  pub name: &'static str,",
     "  pub args: &'static [ArgSpec],",
-    "  pub supports_abs: bool,",
-    "  pub supports_neg: bool,",
+    "  pub supports_modifiers: bool,",
     "}",
     "",
     "#[derive(Copy, Clone, Debug)]",

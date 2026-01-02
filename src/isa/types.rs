@@ -64,8 +64,7 @@ pub struct ArgSpec {
 pub struct InstructionCommonDef {
   pub name: &'static str,
   pub args: &'static [ArgSpec],
-  pub supports_abs: bool,
-  pub supports_neg: bool,
+  pub supports_modifiers: bool,
 }
 
 #[derive(Copy, Clone, Debug)]

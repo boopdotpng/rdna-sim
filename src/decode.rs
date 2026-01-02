@@ -36,8 +36,8 @@ fn validate_modifier(
 ) -> Result<(), DecodeError> {
     match operand {
         Operand::Negate(inner) => {
-            // Check if instruction supports negation
-            if !def.supports_neg {
+            // Check if instruction supports modifiers
+            if !def.supports_modifiers {
                 return Err(DecodeError::ModifierNotSupported {
                     modifier: "negation".to_string(),
                     instruction: inst_name.to_string(),
@@ -57,8 +57,8 @@ fn validate_modifier(
         }
 
         Operand::Abs(inner) => {
-            // Check if instruction supports absolute value
-            if !def.supports_abs {
+            // Check if instruction supports modifiers
+            if !def.supports_modifiers {
                 return Err(DecodeError::ModifierNotSupported {
                     modifier: "absolute value".to_string(),
                     instruction: inst_name.to_string(),
@@ -393,6 +393,40 @@ mod tests {
 
         let result = decode_instruction(&parsed, def, 1);
         assert!(result.is_err(), "Expected error for abs on scalar instruction");
+
+        match result.unwrap_err() {
+            DecodeError::ModifierNotSupported { modifier, .. } => {
+                assert_eq!(modifier, "absolute value");
+            }
+            other => panic!("Expected ModifierNotSupported, got {:?}", other),
+        }
+    }
+
+    #[test]
+    fn test_reject_neg_on_integer_vector() {
+        // v_add_nc_u32 v0, -v1, v2 should be rejected (integer instruction doesn't support modifiers)
+        let parsed = parse_instruction("v_add_nc_u32 v0, -v1, v2").expect("parse failed");
+        let def = lookup_inst_def("v_add_nc_u32");
+
+        let result = decode_instruction(&parsed, def, 1);
+        assert!(result.is_err(), "Expected error for negation on integer vector instruction");
+
+        match result.unwrap_err() {
+            DecodeError::ModifierNotSupported { modifier, .. } => {
+                assert_eq!(modifier, "negation");
+            }
+            other => panic!("Expected ModifierNotSupported, got {:?}", other),
+        }
+    }
+
+    #[test]
+    fn test_reject_abs_on_integer_vector() {
+        // v_add_nc_u32 v0, |v1|, v2 should be rejected (integer instruction doesn't support modifiers)
+        let parsed = parse_instruction("v_add_nc_u32 v0, |v1|, v2").expect("parse failed");
+        let def = lookup_inst_def("v_add_nc_u32");
+
+        let result = decode_instruction(&parsed, def, 1);
+        assert!(result.is_err(), "Expected error for abs on integer vector instruction");
 
         match result.unwrap_err() {
             DecodeError::ModifierNotSupported { modifier, .. } => {
