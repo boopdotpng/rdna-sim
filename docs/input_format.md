@@ -148,21 +148,9 @@ s_waitcnt 0x0000
 s_sendmsg sendmsg(MSG_GS_DONE, GS_OP_NOP)
 ```
 
-#### Print Directives (Planned)
-
-Lines starting with `print` are parsed but currently ignored during execution.
-
-**Planned syntax:**
-```
-print [wave=<id>,] [thread=<id>|thread=all,] <arg>[, <arg>...]
-```
-
-Where `<arg>` can be `s[n]`, `s[lo:hi]`, `v[n]`, `vcc`, `vcc_lo`, `vcc_hi`, `exec`, `exec_lo`, `exec_hi`, or `scc`.
-
 ### Current Limitations
 
 - `wave = 64` is parsed but currently rejected at load time
-- `print` directives are parsed but not executed
 - F64 instructions deliberately excluded (too slow for compute workloads)
 
 ### Global Memory

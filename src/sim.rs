@@ -188,13 +188,12 @@ impl GlobalAlloc {
 #[derive(Clone, Debug)]
 pub struct KernArg {
   pub base: u64,
-  pub size: usize,
 }
 
 impl KernArg {
   pub fn new(program: &mut Program, args: &[u64]) -> Result<Self, String> {
     if args.is_empty() {
-      return Ok(Self { base: 0, size: 0 });
+      return Ok(Self { base: 0 });
     }
     let size = args.len() * 8;
     let base = program.global_mem.alloc(size, 8)?;
@@ -202,11 +201,7 @@ impl KernArg {
       let offset = (idx * 8) as u64;
       program.global_mem.write(base + offset, &addr.to_le_bytes())?;
     }
-    Ok(Self { base, size })
-  }
-
-  pub fn is_empty(&self) -> bool {
-    self.size == 0
+    Ok(Self { base })
   }
 }
 

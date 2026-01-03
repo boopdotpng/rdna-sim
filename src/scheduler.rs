@@ -251,7 +251,6 @@ mod tests {
     ArgInfo {
       name: name.to_string(),
       type_name: "u64".to_string(),
-      shape: Vec::new(),
       addr,
       len: 1,
     }

@@ -9,7 +9,6 @@ use super::init::{encode_values, parse_file_initializer, parse_initializer};
 pub struct ArgInfo {
   pub name: String,
   pub type_name: String,
-  pub shape: Vec<usize>,
   pub addr: u64,
   pub len: usize,
 }
@@ -101,7 +100,6 @@ pub(super) fn parse_argument(
   Ok(ArgInfo {
     name: name.to_string(),
     type_name,
-    shape,
     addr,
     len,
   })
@@ -128,7 +126,7 @@ fn parse_shape(value: &str) -> Result<Vec<usize>, String> {
   for token in value.split(',') {
     let token = token.trim();
     if token.is_empty() {
-      continue;
+      return Err("empty shape dim".to_string());
     }
     let dim = token
       .parse::<usize>()
@@ -199,6 +197,15 @@ mod tests {
   fn parse_shapes() {
     let err = parse_type_and_shape("i32[0]").unwrap_err();
     assert_eq!(err, "shape dims must be >= 1");
+
+    let err = parse_type_and_shape("i32[]").unwrap_err();
+    assert_eq!(err, "empty shape dim");
+
+    let err = parse_type_and_shape("i32[1,a]").unwrap_err();
+    assert_eq!(err, "invalid shape dim 'a'");
+
+    let err = parse_type_and_shape("f32[16, , 3]").unwrap_err();
+    assert_eq!(err, "empty shape dim");
   }
 
   #[test]
@@ -221,45 +228,26 @@ mod tests {
   #[test]
   fn parse_uninitialized_scalar() {
     let mut program = program();
-    let s1 = parse_argument("s1", "i32", &mut program).unwrap();
-    assert_eq!(s1.len, 1);
-    assert_eq!(s1.type_name, "i32");
-
-    let s2 = parse_argument("s2", "f32", &mut program).unwrap();
-    assert_eq!(s2.len, 1);
-    assert_eq!(s2.type_name, "f32");
-
-    let s3 = parse_argument("s3", "u64", &mut program).unwrap();
-    assert_eq!(s3.len, 1);
-    assert_eq!(s3.type_name, "u64");
+    for (name, ty) in [("s1", "i32"), ("s2", "f32"), ("s3", "u64")] {
+      let arg = parse_argument(name, ty, &mut program).unwrap();
+      assert_eq!(arg.len, 1);
+      assert_eq!(arg.type_name, ty);
+    }
   }
 
   #[test]
-  fn parse_uninitialized_array() {
+  fn parse_array_lengths() {
     let mut program = program();
-    let a1 = parse_argument("a1", "i32[4]", &mut program).unwrap();
-    assert_eq!(a1.shape, vec![4]);
-    assert_eq!(a1.len, 4);
-
-    let a2 = parse_argument("a2", "f32[2,3]", &mut program).unwrap();
-    assert_eq!(a2.shape, vec![2, 3]);
-    assert_eq!(a2.len, 6);
-
-    let a3 = parse_argument("a3", "u8[8]", &mut program).unwrap();
-    assert_eq!(a3.shape, vec![8]);
-    assert_eq!(a3.len, 8);
-  }
-
-  #[test]
-  fn parse_multidimensional_shapes() {
-    let mut program = program();
-    let a1 = parse_argument("a1", "i32[2,3,4] = arange(24)", &mut program).unwrap();
-    assert_eq!(a1.shape, vec![2, 3, 4]);
-    assert_eq!(a1.len, 24);
-
-    let a2 = parse_argument("a2", "f32[2,2,2,2] = arange(16)", &mut program).unwrap();
-    assert_eq!(a2.shape, vec![2, 2, 2, 2]);
-    assert_eq!(a2.len, 16);
+    for (name, spec, len) in [
+      ("a1", "i32[4]", 4),
+      ("a2", "f32[2,3]", 6),
+      ("a3", "u8[8]", 8),
+      ("a4", "i32[2,3,4] = arange(24)", 24),
+      ("a5", "f32[2,2,2,2] = arange(16)", 16),
+    ] {
+      let arg = parse_argument(name, spec, &mut program).unwrap();
+      assert_eq!(arg.len, len);
+    }
   }
 
   #[test]

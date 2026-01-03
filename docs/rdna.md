@@ -107,11 +107,4 @@ arg_2:
 see `example.rdna` at repo root. 
 
 
----
-printing section. after a program runs, you place your results back in global memory for the computer to read back. list the addresses you want printed here and what datatype.
-
-**todo: determine format of this?**
-0xfff : i64 
----
-
 We have to ignore some instructions, because this is not a timing simulator (maybe in the future)? So `s_delay_alu` and friends will be completely ignored. 

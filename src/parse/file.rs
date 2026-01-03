@@ -84,10 +84,6 @@ pub fn parse_file(
         return Err(format!("line {}: malformed header entry", line_no + 1));
       }
     } else {
-      if line.starts_with("print") {
-        continue;
-      }
-
       let parsed = parse_instruction(line)
         .map_err(|e| format!("line {}: {}", line_no + 1, e))?;
 

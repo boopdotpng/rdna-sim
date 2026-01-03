@@ -31,10 +31,6 @@ struct Cli {
   #[arg(short, long, help = "Launch the debugger (not implemented yet)")]
   debug: bool,
 
-  // suppress print instructions inside the kernel
-  #[arg(short = 's', long, help = "Suppress kernel print directives")]
-  suppress_prints: bool,
-
   #[arg(
     short = 'm',
     long = "global-memsize",
