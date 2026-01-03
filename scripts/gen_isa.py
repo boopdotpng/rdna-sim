@@ -109,6 +109,15 @@ def render_common_def(inst: dict) -> str:
   lines = ["  InstructionCommonDef {"]
   lines.append(f"    name: {rust_string_literal(inst['normalized_name'])},")
   lines.append(f"    args: {format_arg_specs(inst.get('operands', []), indent + 4, len('args: '), inst['normalized_name'])},")
+  dual_args = "&[]"
+  if inst.get("is_v_dual"):
+    dual_args = format_arg_specs(
+      inst.get('operands', []),
+      indent + 4,
+      len('dual_args: '),
+      inst['normalized_name'],
+    )
+  lines.append(f"    dual_args: {dual_args},")
   supports_modifiers = "true" if inst.get('supports_modifiers', False) else "false"
   lines.append(f"    supports_modifiers: {supports_modifiers},")
   lines.append("  },")
@@ -391,6 +400,7 @@ def load_instructions(
         "name": name,
         "normalized_name": normalize_name(name),
         "operands": operands,
+        "is_v_dual": normalize_name(name).startswith("v_dual_"),
         "supports_modifiers": supports_mods,
       }
     )
@@ -896,6 +906,7 @@ def generate_types(out_dir: str) -> None:
     "pub struct InstructionCommonDef {",
     "  pub name: &'static str,",
     "  pub args: &'static [ArgSpec],",
+    "  pub dual_args: &'static [ArgSpec],",
     "  pub supports_modifiers: bool,",
     "}",
     "",

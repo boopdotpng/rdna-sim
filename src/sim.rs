@@ -291,6 +291,16 @@ pub struct DecodedInst {
 
     /// Decoded operand values
     pub operands: Vec<DecodedOperand>,
+
+    /// Optional paired instruction for VOPD dual-issue
+    pub dual: Option<DualInst>,
+}
+
+#[derive(Clone, Debug)]
+pub struct DualInst {
+    pub name: String,
+    pub def: &'static InstructionCommonDef,
+    pub operands: Vec<DecodedOperand>,
 }
 
 #[derive(Clone, Debug)]
@@ -460,6 +470,10 @@ pub fn dispatch(
     program: &mut Program,
     decoded: &DecodedInst,
 ) -> ExecResult {
+    if decoded.dual.is_some() {
+        return Err(ExecError::Unimplemented("vopd"));
+    }
+
     // Create Ctx with all necessary context
     let mut ctx = Ctx {
         wave,
@@ -1175,6 +1189,7 @@ mod tests {
             def,
             line_num: 1,
             operands: vec![DecodedOperand::Vgpr(0)],
+            dual: None,
         };
         let mut wave = WaveState::new(WaveSize::Wave32, 2, 1).unwrap();
         let mut lds = LDS::new(0);
@@ -1202,6 +1217,7 @@ mod tests {
             def,
             line_num: 1,
             operands: vec![DecodedOperand::Vgpr(0)],
+            dual: None,
         };
         let mut wave = WaveState::new(WaveSize::Wave32, 2, 1).unwrap();
         let mut lds = LDS::new(0);
@@ -1229,6 +1245,7 @@ mod tests {
             def,
             line_num: 1,
             operands: vec![DecodedOperand::Vgpr(0)],
+            dual: None,
         };
         let mut wave = WaveState::new(WaveSize::Wave32, 2, 1).unwrap();
         let mut lds = LDS::new(0);
@@ -1257,6 +1274,7 @@ mod tests {
             def,
             line_num: 1,
             operands: vec![DecodedOperand::Vgpr(0)],
+            dual: None,
         };
         let mut wave = WaveState::new(WaveSize::Wave32, 2, 1).unwrap();
         let mut lds = LDS::new(0);

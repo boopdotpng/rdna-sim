@@ -15,7 +15,7 @@ struct Cli {
   )]
   arch: Architecture,
 
-  #[arg(value_name = "PATH", help = "Path to the RDNA assembly file")]
+  #[arg(value_name = "PATH", help = "path to the RDNA assembly file")]
   file: Option<PathBuf>,
 
   #[arg(
@@ -28,7 +28,7 @@ struct Cli {
   wave_size: WaveSize,
 
   // launch TUI debugger, when implemented
-  #[arg(short, long, help = "Launch the debugger (not implemented yet)")]
+  #[arg(short, long, help = "launch the debugger (not implemented yet)")]
   debug: bool,
 
   #[arg(
@@ -36,7 +36,7 @@ struct Cli {
     long = "global-memsize",
     value_name = "MEGABYTES",
     default_value_t = 32,
-    help = "Global memory size in megabytes"
+    help = "global memory size in megabytes"
   )]
   global_memsize: usize,
 

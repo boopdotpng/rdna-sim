@@ -64,6 +64,7 @@ pub struct ArgSpec {
 pub struct InstructionCommonDef {
   pub name: &'static str,
   pub args: &'static [ArgSpec],
+  pub dual_args: &'static [ArgSpec],
   pub supports_modifiers: bool,
 }
 

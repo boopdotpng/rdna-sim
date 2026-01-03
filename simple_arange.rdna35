@@ -1,7 +1,6 @@
 ---
 a: f32[16] = arange(16)
 out_a: f32[16]
-out_b: f32[16, , 3]
 local =  (16, 1, 1)
 global = (16, 1, 1)
 wave = 32

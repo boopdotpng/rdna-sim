@@ -5,6 +5,7 @@ use std::str::FromStr;
 use crate::decode::{decode_instruction, format_decode_error};
 use crate::isa::types::InstructionCommonDef;
 use crate::parse_instruction::parse_instruction;
+use crate::sim::{DecodedInst, DecodedOperand, DualInst};
 use crate::{Architecture, Dim3, Program, WaveSize};
 
 use super::args::{parse_argument, ProgramInfo};
@@ -84,17 +85,62 @@ pub fn parse_file(
         return Err(format!("line {}: malformed header entry", line_no + 1));
       }
     } else {
-      let parsed = parse_instruction(line)
-        .map_err(|e| format!("line {}: {}", line_no + 1, e))?;
+      if let Some((left, right)) = split_vopd_line(line)
+        .map_err(|e| format!("line {}: {}", line_no + 1, e))? {
+        let left_parsed = parse_instruction(left)
+          .map_err(|e| format!("line {}: {}", line_no + 1, e))?;
+        let right_parsed = parse_instruction(right)
+          .map_err(|e| format!("line {}: {}", line_no + 1, e))?;
 
-      let def = lookup_instruction_def(&parsed.name, arch)
-        .ok_or_else(|| format!("line {}: unknown instruction '{}'",
-          line_no + 1, parsed.name))?;
+        if !is_v_dual(&left_parsed.name) || !is_v_dual(&right_parsed.name) {
+          return Err(format!(
+            "line {}: vopd pair requires v_dual_* on both sides",
+            line_no + 1
+          ));
+        }
 
-      let decoded = decode_instruction(&parsed, def, line_no + 1)
-        .map_err(|e| format_decode_error(e))?;
+        let left_def = lookup_instruction_def(&left_parsed.name, arch)
+          .ok_or_else(|| format!("line {}: unknown instruction '{}'",
+            line_no + 1, left_parsed.name))?;
+        let right_def = lookup_instruction_def(&right_parsed.name, arch)
+          .ok_or_else(|| format!("line {}: unknown instruction '{}'",
+            line_no + 1, right_parsed.name))?;
 
-      instructions.push(decoded);
+        let left_decoded = decode_instruction(&left_parsed, left_def, line_no + 1)
+          .map_err(|e| format_decode_error(e))?;
+        let right_decoded = decode_instruction(&right_parsed, right_def, line_no + 1)
+          .map_err(|e| format_decode_error(e))?;
+
+        validate_vopd_pair(&left_decoded, &right_decoded, line_no + 1)?;
+        let dual = DualInst {
+          name: right_decoded.name,
+          def: right_decoded.def,
+          operands: right_decoded.operands,
+        };
+
+        let mut combined = left_decoded;
+        combined.dual = Some(dual);
+        instructions.push(combined);
+      } else {
+        let parsed = parse_instruction(line)
+          .map_err(|e| format!("line {}: {}", line_no + 1, e))?;
+
+        if is_v_dual(&parsed.name) {
+          return Err(format!(
+            "line {}: v_dual_* must be paired with '::'",
+            line_no + 1
+          ));
+        }
+
+        let def = lookup_instruction_def(&parsed.name, arch)
+          .ok_or_else(|| format!("line {}: unknown instruction '{}'",
+            line_no + 1, parsed.name))?;
+
+        let decoded = decode_instruction(&parsed, def, line_no + 1)
+          .map_err(|e| format_decode_error(e))?;
+
+        instructions.push(decoded);
+      }
     }
   }
 
@@ -138,6 +184,147 @@ fn lookup_instruction_def(name: &str, arch: Architecture) -> Option<&'static Ins
   match arch {
     Architecture::Rdna35 => crate::isa::rdna35::lookup_common_def(name),
   }
+}
+
+fn split_vopd_line(line: &str) -> Result<Option<(&str, &str)>, String> {
+  let Some((left, right)) = line.split_once("::") else {
+    return Ok(None);
+  };
+  if right.contains("::") {
+    return Err("vopd supports a single '::' separator".to_string());
+  }
+  let left = left.trim();
+  let right = right.trim();
+  if left.is_empty() {
+    return Err("vopd missing instruction before '::'".to_string());
+  }
+  if right.is_empty() {
+    return Err("vopd missing instruction after '::'".to_string());
+  }
+  Ok(Some((left, right)))
+}
+
+fn is_v_dual(name: &str) -> bool {
+  name.starts_with("v_dual_")
+}
+
+#[derive(Copy, Clone, Debug, PartialEq)]
+enum LiteralValue {
+  U32(u32),
+  I32(i32),
+  F32(u32),
+}
+
+fn literal_value(op: &DecodedOperand) -> Option<LiteralValue> {
+  match op {
+    DecodedOperand::ImmU32(v) => Some(LiteralValue::U32(*v)),
+    DecodedOperand::ImmI32(v) => Some(LiteralValue::I32(*v)),
+    DecodedOperand::ImmF32(v) => Some(LiteralValue::F32(v.to_bits())),
+    DecodedOperand::Negate(inner) => literal_value(inner),
+    DecodedOperand::Abs(inner) => literal_value(inner),
+    _ => None,
+  }
+}
+
+fn literal_from_sources(
+  operands: &[&DecodedOperand],
+  half_label: &str,
+  line_num: usize,
+) -> Result<Option<LiteralValue>, String> {
+  let mut literal = None;
+  for operand in operands {
+    if let Some(found) = literal_value(*operand) {
+      if literal.is_some() {
+        return Err(format!(
+          "line {}: vopd {} half uses more than one literal constant",
+          line_num, half_label
+        ));
+      }
+      literal = Some(found);
+    }
+  }
+  Ok(literal)
+}
+
+fn vgpr_index(op: &DecodedOperand) -> Option<u16> {
+  match op {
+    DecodedOperand::Vgpr(idx) => Some(*idx),
+    _ => None,
+  }
+}
+
+fn validate_vopd_pair(
+  left: &DecodedInst,
+  right: &DecodedInst,
+  line_num: usize,
+) -> Result<(), String> {
+  let left_ops: Vec<&DecodedOperand> = left.operands
+    .iter()
+    .filter(|op| !matches!(op, DecodedOperand::Flag(_)))
+    .collect();
+  let right_ops: Vec<&DecodedOperand> = right.operands
+    .iter()
+    .filter(|op| !matches!(op, DecodedOperand::Flag(_)))
+    .collect();
+
+  let left_dst = left_ops
+    .get(0)
+    .and_then(|op| vgpr_index(op))
+    .ok_or_else(|| format!(
+      "line {}: vopd left half destination must be a vgpr",
+      line_num
+    ))?;
+  let right_dst = right_ops
+    .get(0)
+    .and_then(|op| vgpr_index(op))
+    .ok_or_else(|| format!(
+      "line {}: vopd right half destination must be a vgpr",
+      line_num
+    ))?;
+
+  if (left_dst & 1) == (right_dst & 1) {
+    return Err(format!(
+      "line {}: vopd vdst parity requires one even and one odd (got v{} and v{})",
+      line_num, left_dst, right_dst
+    ));
+  }
+
+  let left_sources = if left_ops.len() > 1 { &left_ops[1..] } else { &[] };
+  let right_sources = if right_ops.len() > 1 { &right_ops[1..] } else { &[] };
+  let left_literal = literal_from_sources(left_sources, "left", line_num)?;
+  let right_literal = literal_from_sources(right_sources, "right", line_num)?;
+  if let (Some(left_val), Some(right_val)) = (left_literal, right_literal) {
+    if left_val != right_val {
+      return Err(format!(
+        "line {}: vopd literal must match across halves",
+        line_num
+      ));
+    }
+  }
+
+  let left_src0 = left_ops.get(1).and_then(|op| vgpr_index(op));
+  let right_src0 = right_ops.get(1).and_then(|op| vgpr_index(op));
+  if let (Some(left_idx), Some(right_idx)) = (left_src0, right_src0) {
+    if (left_idx % 4) == (right_idx % 4) {
+      return Err(format!(
+        "line {}: vopd src0 bank conflict between v{} and v{}",
+        line_num, left_idx, right_idx
+      ));
+    }
+  }
+
+  let left_src1 = left_ops.get(2).and_then(|op| vgpr_index(op));
+  let right_src1 = right_ops.get(2).and_then(|op| vgpr_index(op));
+  if let (Some(left_idx), Some(right_idx)) = (left_src1, right_src1) {
+    if (left_idx % 4) == (right_idx % 4) {
+      return Err(format!(
+        "line {}: vopd src1 bank conflict between v{} and v{}",
+        line_num, left_idx, right_idx
+      ));
+    }
+  }
+
+  Ok(())
 }
 
 #[cfg(test)]
@@ -397,5 +584,86 @@ mod tests {
     assert_eq!(info.instructions.len(), 2);
     assert_eq!(info.instructions[0].name, "s_nop");
     assert_eq!(info.instructions[1].name, "s_nop");
+  }
+
+  #[test]
+  fn parse_vopd_pair() {
+    let contents = r#"
+    v_dual_add_f32 v0, v1, v2 :: v_dual_mul_f32 v1, v3, v4
+    "#;
+    let path = write_temp(contents, "vopd_pair");
+    let mut program = program();
+    let info = parse_file(&path, &mut program, Architecture::Rdna35).expect("parse file");
+    assert_eq!(info.instructions.len(), 1);
+    let inst = &info.instructions[0];
+    assert_eq!(inst.name, "v_dual_add_f32");
+    let dual = inst.dual.as_ref().expect("dual");
+    assert_eq!(dual.name, "v_dual_mul_f32");
+  }
+
+  #[test]
+  fn parse_vopd_requires_dual() {
+    let contents = r#"
+    v_dual_add_f32 v0, v1, v2
+    "#;
+    let path = write_temp(contents, "vopd_missing");
+    let mut program = program();
+    let err = parse_file(&path, &mut program, Architecture::Rdna35).unwrap_err();
+    assert!(err.contains("v_dual_* must be paired"), "{}", err);
+  }
+
+  #[test]
+  fn parse_vopd_requires_dual_on_both_sides() {
+    let contents = r#"
+    v_add_f32 v0, v1, v2 :: v_dual_add_f32 v1, v2, v3
+    "#;
+    let path = write_temp(contents, "vopd_non_dual");
+    let mut program = program();
+    let err = parse_file(&path, &mut program, Architecture::Rdna35).unwrap_err();
+    assert!(err.contains("vopd pair requires v_dual_*"), "{}", err);
+  }
+
+  #[test]
+  fn parse_vopd_rejects_missing_right_half() {
+    let contents = r#"
+    v_dual_add_f32 v0, v1, v2 ::
+    "#;
+    let path = write_temp(contents, "vopd_missing_right");
+    let mut program = program();
+    let err = parse_file(&path, &mut program, Architecture::Rdna35).unwrap_err();
+    assert!(err.contains("missing instruction after"), "{}", err);
+  }
+
+  #[test]
+  fn parse_vopd_rejects_vdst_parity_conflict() {
+    let contents = r#"
+    v_dual_add_f32 v0, v1, v2 :: v_dual_mul_f32 v2, v3, v4
+    "#;
+    let path = write_temp(contents, "vopd_vdst_parity");
+    let mut program = program();
+    let err = parse_file(&path, &mut program, Architecture::Rdna35).unwrap_err();
+    assert!(err.contains("vdst parity"), "{}", err);
+  }
+
+  #[test]
+  fn parse_vopd_rejects_literal_mismatch() {
+    let contents = r#"
+    v_dual_add_f32 v0, 1.0, v2 :: v_dual_add_f32 v1, 2.0, v3
+    "#;
+    let path = write_temp(contents, "vopd_literal_mismatch");
+    let mut program = program();
+    let err = parse_file(&path, &mut program, Architecture::Rdna35).unwrap_err();
+    assert!(err.contains("literal must match"), "{}", err);
+  }
+
+  #[test]
+  fn parse_vopd_rejects_src0_bank_conflict() {
+    let contents = r#"
+    v_dual_add_f32 v0, v1, v2 :: v_dual_add_f32 v1, v5, v7
+    "#;
+    let path = write_temp(contents, "vopd_src0_bank");
+    let mut program = program();
+    let err = parse_file(&path, &mut program, Architecture::Rdna35).unwrap_err();
+    assert!(err.contains("src0 bank conflict"), "{}", err);
   }
 }

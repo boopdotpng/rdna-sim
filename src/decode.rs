@@ -145,6 +145,7 @@ pub fn decode_instruction(
         def,
         line_num,
         operands: decoded_operands,
+        dual: None,
     })
 }
 

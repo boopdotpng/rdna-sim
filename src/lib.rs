@@ -14,6 +14,7 @@ use half::bf16;
 
 use clap::ValueEnum;
 
+// pretty stable across all amdgpu generations
 const MAX_THREADS_PER_WORKGROUP: u64 = 1024;
 
 #[derive(Copy, Clone, Debug, Eq, PartialEq, ValueEnum)]

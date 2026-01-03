@@ -11,6 +11,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -21,6 +22,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -31,6 +33,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -41,6 +44,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -51,6 +55,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -61,6 +66,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -71,6 +77,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -81,6 +88,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -91,6 +99,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -101,6 +110,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -111,6 +121,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -121,6 +132,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -131,6 +143,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -141,6 +154,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -151,6 +165,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -161,6 +176,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -171,6 +187,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -181,6 +198,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -191,6 +209,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -201,6 +220,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -211,6 +231,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -221,6 +242,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -231,6 +253,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -241,6 +264,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -251,6 +275,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -261,6 +286,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -271,6 +297,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -281,6 +308,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -291,6 +319,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -301,6 +330,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -311,6 +341,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -321,6 +352,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -331,6 +363,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -341,6 +374,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -351,6 +385,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -361,6 +396,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -371,6 +407,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -381,6 +418,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -391,6 +429,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -401,6 +440,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -411,6 +451,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -421,6 +462,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -431,6 +473,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -441,6 +484,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -451,6 +495,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -459,6 +504,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -468,6 +514,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -477,6 +524,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -486,6 +534,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -494,6 +543,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -502,6 +552,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -510,6 +561,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -518,6 +570,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -527,6 +580,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -536,11 +590,13 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "ds_append",
     args: &[ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -550,6 +606,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -559,6 +616,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -568,6 +626,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -578,6 +637,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -588,6 +648,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -597,11 +658,13 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "ds_consume",
     args: &[ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -611,6 +674,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -620,6 +684,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -628,6 +693,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -636,6 +702,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -645,6 +712,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -654,6 +722,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -662,6 +731,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -670,6 +740,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -678,6 +749,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -686,6 +758,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -694,6 +767,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -702,11 +776,13 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "ds_load_addtid_b32",
     args: &[ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -715,6 +791,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -723,6 +800,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -731,6 +809,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -739,6 +818,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 96 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -747,6 +827,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -755,6 +836,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -763,6 +845,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -771,6 +854,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -779,6 +863,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -787,6 +872,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -795,6 +881,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -803,6 +890,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -811,6 +899,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -819,6 +908,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -827,6 +917,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -835,6 +926,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -844,6 +936,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -853,6 +946,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -862,6 +956,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -871,6 +966,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -879,6 +975,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -887,6 +984,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -895,6 +993,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -903,6 +1002,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -912,6 +1012,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -921,6 +1022,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -930,6 +1032,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -939,6 +1042,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -947,6 +1051,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -955,6 +1060,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -964,6 +1070,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -973,6 +1080,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -983,6 +1091,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -993,11 +1102,13 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "ds_nop",
     args: &[],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1006,6 +1117,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1014,6 +1126,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1023,6 +1136,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1032,6 +1146,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1041,6 +1156,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1050,6 +1166,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1059,6 +1176,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1067,6 +1185,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1075,6 +1194,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1084,6 +1204,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1093,6 +1214,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1102,6 +1224,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1111,11 +1234,13 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "ds_store_addtid_b32",
     args: &[ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1124,6 +1249,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1132,6 +1258,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1140,6 +1267,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1148,6 +1276,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1156,6 +1285,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1164,6 +1294,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 8 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1172,6 +1303,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1180,6 +1312,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 96 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1190,6 +1323,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1200,6 +1334,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1210,6 +1345,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1220,6 +1356,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1229,6 +1366,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1238,6 +1376,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1247,6 +1386,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1256,6 +1396,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1264,6 +1405,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1272,6 +1414,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1280,6 +1423,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1288,6 +1432,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1296,6 +1441,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1305,6 +1451,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1314,6 +1461,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1323,6 +1471,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1332,6 +1481,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1341,6 +1491,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1350,6 +1501,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1359,6 +1511,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1368,6 +1521,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1377,6 +1531,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1386,6 +1541,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1395,6 +1551,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1404,6 +1561,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1413,6 +1571,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1422,6 +1581,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1431,6 +1591,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1440,6 +1601,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1449,6 +1611,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1458,6 +1621,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1467,6 +1631,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1476,6 +1641,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1485,6 +1651,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1494,6 +1661,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1503,6 +1671,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1512,6 +1681,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1521,6 +1691,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1530,6 +1701,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1539,6 +1711,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1548,6 +1721,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1557,6 +1731,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1565,6 +1740,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1573,6 +1749,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1581,6 +1758,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1589,6 +1767,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 96 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1597,6 +1776,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1605,6 +1785,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1613,6 +1794,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1621,6 +1803,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1629,6 +1812,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1637,6 +1821,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1645,6 +1830,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1653,6 +1839,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1661,6 +1848,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1669,6 +1857,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1677,6 +1866,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1685,6 +1875,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1693,6 +1884,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1701,6 +1893,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1709,6 +1902,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1717,6 +1911,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 96 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1725,6 +1920,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1733,6 +1929,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1743,6 +1940,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1753,6 +1951,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1763,6 +1962,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1773,6 +1973,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1783,6 +1984,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1793,6 +1995,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1803,6 +2006,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1813,6 +2017,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1823,6 +2028,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1833,6 +2039,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1843,6 +2050,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1853,6 +2061,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1863,6 +2072,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1873,6 +2083,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1883,6 +2094,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1893,6 +2105,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1903,6 +2116,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1913,6 +2127,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1923,6 +2138,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1933,6 +2149,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1943,6 +2160,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1953,6 +2171,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1963,6 +2182,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1973,6 +2193,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1983,6 +2204,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -1993,6 +2215,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2003,6 +2226,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2012,6 +2236,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 256 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2021,6 +2246,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 256 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2030,6 +2256,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 256 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2039,6 +2266,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 256 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2048,6 +2276,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 256 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2056,6 +2285,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2065,6 +2295,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2074,6 +2305,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2083,6 +2315,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2091,6 +2324,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2099,6 +2333,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2107,6 +2342,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2115,6 +2351,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2124,6 +2361,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2133,6 +2371,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2141,6 +2380,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2149,6 +2389,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2157,6 +2398,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2165,6 +2407,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2173,6 +2416,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2181,6 +2425,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2190,6 +2435,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2199,6 +2445,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I64, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2207,6 +2454,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2215,6 +2463,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2223,6 +2472,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2231,6 +2481,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2240,6 +2491,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2249,6 +2501,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I64, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2258,6 +2511,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2267,6 +2521,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2276,6 +2531,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2285,6 +2541,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2293,6 +2550,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2301,6 +2559,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2309,6 +2568,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2317,6 +2577,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2325,6 +2586,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2333,6 +2595,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2341,6 +2604,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2349,6 +2613,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2357,11 +2622,13 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_branch",
     args: &[ArgSpec { kind: ArgKind::Label, data_type: DataType::None, width: 16 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2370,6 +2637,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2378,6 +2646,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2387,6 +2656,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2396,6 +2666,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2405,6 +2676,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2414,6 +2686,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2423,6 +2696,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2431,41 +2705,49 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Label, data_type: DataType::None, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_cbranch_execnz",
     args: &[ArgSpec { kind: ArgKind::Label, data_type: DataType::None, width: 16 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_cbranch_execz",
     args: &[ArgSpec { kind: ArgKind::Label, data_type: DataType::None, width: 16 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_cbranch_scc0",
     args: &[ArgSpec { kind: ArgKind::Label, data_type: DataType::None, width: 16 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_cbranch_scc1",
     args: &[ArgSpec { kind: ArgKind::Label, data_type: DataType::None, width: 16 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_cbranch_vccnz",
     args: &[ArgSpec { kind: ArgKind::Label, data_type: DataType::None, width: 16 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_cbranch_vccz",
     args: &[ArgSpec { kind: ArgKind::Label, data_type: DataType::None, width: 16 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_clause",
     args: &[ArgSpec { kind: ArgKind::Imm, data_type: DataType::B16, width: 16 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2474,6 +2756,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2482,6 +2765,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2490,6 +2774,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2498,6 +2783,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2506,6 +2792,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2514,6 +2801,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2522,6 +2810,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::I16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2530,6 +2819,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2538,6 +2828,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2546,6 +2837,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2554,6 +2846,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2562,6 +2855,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2570,6 +2864,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2578,6 +2873,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2586,6 +2882,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2594,6 +2891,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2602,6 +2900,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2610,6 +2909,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2618,6 +2918,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2626,6 +2927,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2634,11 +2936,13 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_code_end",
     args: &[],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2648,6 +2952,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2657,6 +2962,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B64, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2665,6 +2971,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2673,41 +2980,49 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_dcache_inv",
     args: &[],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_decperflevel",
     args: &[ArgSpec { kind: ArgKind::Imm, data_type: DataType::B16, width: 16 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_delay_alu",
     args: &[ArgSpec { kind: ArgKind::Unknown, data_type: DataType::None, width: 16 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_denorm_mode",
     args: &[ArgSpec { kind: ArgKind::Imm, data_type: DataType::B16, width: 16 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_endpgm",
     args: &[],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_endpgm_saved",
     args: &[],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_getpc_b64",
     args: &[ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2716,16 +3031,19 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_icache_inv",
     args: &[],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_incperflevel",
     args: &[ArgSpec { kind: ArgKind::Imm, data_type: DataType::B16, width: 16 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2735,6 +3053,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2744,6 +3063,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2753,6 +3073,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2762,6 +3083,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2771,6 +3093,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2780,6 +3103,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2789,6 +3113,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2798,6 +3123,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2807,6 +3133,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2816,6 +3143,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2825,6 +3153,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2834,6 +3163,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2843,6 +3173,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2852,6 +3183,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2861,6 +3193,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2870,6 +3203,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2879,6 +3213,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2887,6 +3222,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2895,6 +3231,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2903,6 +3240,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::I16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2911,6 +3249,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2919,6 +3258,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2927,6 +3267,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2935,6 +3276,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2943,6 +3285,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2952,6 +3295,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2961,6 +3305,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2970,6 +3315,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2978,6 +3324,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::I16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2987,6 +3334,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -2996,6 +3344,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3004,6 +3353,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3012,11 +3362,13 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_nop",
     args: &[ArgSpec { kind: ArgKind::Imm, data_type: DataType::B16, width: 16 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3026,6 +3378,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3035,6 +3388,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3043,6 +3397,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3051,6 +3406,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3059,6 +3415,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3067,6 +3424,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3076,6 +3434,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3085,6 +3444,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3093,6 +3453,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3101,6 +3462,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3110,6 +3472,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3119,6 +3482,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3127,6 +3491,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3135,6 +3500,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3143,6 +3509,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3151,6 +3518,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3160,6 +3528,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3169,6 +3538,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3178,6 +3548,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B16, width: 16 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3187,6 +3558,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B16, width: 16 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3195,6 +3567,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3203,21 +3576,25 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_rfe_b64",
     args: &[ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_round_mode",
     args: &[ArgSpec { kind: ArgKind::Imm, data_type: DataType::B16, width: 16 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_sendmsg",
     args: &[ArgSpec { kind: ArgKind::Imm, data_type: DataType::B16, width: 16 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3226,6 +3603,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3234,31 +3612,37 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_sendmsghalt",
     args: &[ArgSpec { kind: ArgKind::Imm, data_type: DataType::B16, width: 16 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_sethalt",
     args: &[ArgSpec { kind: ArgKind::Imm, data_type: DataType::B16, width: 16 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_setkill",
     args: &[ArgSpec { kind: ArgKind::Imm, data_type: DataType::B16, width: 16 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_setpc_b64",
     args: &[ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_setprio",
     args: &[ArgSpec { kind: ArgKind::Imm, data_type: DataType::B16, width: 16 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3267,6 +3651,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 16 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3275,6 +3660,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 16 },
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3283,6 +3669,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3291,11 +3678,13 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::I16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_sleep",
     args: &[ArgSpec { kind: ArgKind::Imm, data_type: DataType::B16, width: 16 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3304,41 +3693,49 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_trap",
     args: &[ArgSpec { kind: ArgKind::Imm, data_type: DataType::B16, width: 16 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_ttracedata",
     args: &[],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_ttracedata_imm",
     args: &[ArgSpec { kind: ArgKind::Imm, data_type: DataType::B16, width: 16 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_version",
     args: &[ArgSpec { kind: ArgKind::Imm, data_type: DataType::B16, width: 16 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_wait_event",
     args: &[ArgSpec { kind: ArgKind::Imm, data_type: DataType::B16, width: 16 }],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_wait_idle",
     args: &[],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "s_wakeup",
     args: &[],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3347,6 +3744,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3355,6 +3753,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3364,6 +3763,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3373,6 +3773,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3381,6 +3782,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3389,6 +3791,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3398,6 +3801,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3407,6 +3811,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3415,6 +3820,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3423,6 +3829,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3433,6 +3840,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3443,6 +3851,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3453,6 +3862,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3463,6 +3873,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3473,6 +3884,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3483,6 +3895,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3493,6 +3906,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3503,6 +3917,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3513,6 +3928,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3523,6 +3939,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3533,6 +3950,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3543,6 +3961,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3553,6 +3972,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3563,6 +3983,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3573,6 +3994,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3583,6 +4005,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3593,6 +4016,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3604,6 +4028,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3614,6 +4039,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3623,6 +4049,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -3632,6 +4059,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -3642,6 +4070,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3651,6 +4080,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3660,6 +4090,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3669,6 +4100,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3678,6 +4110,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3688,6 +4121,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3698,6 +4132,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3707,6 +4142,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3716,6 +4152,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3726,6 +4163,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3735,6 +4173,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3744,6 +4183,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3753,6 +4193,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3762,6 +4203,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3772,6 +4214,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3782,6 +4225,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3792,6 +4236,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3801,6 +4246,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3809,6 +4255,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3817,6 +4264,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -3825,6 +4273,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -3833,6 +4282,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3841,6 +4291,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3850,6 +4301,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -3859,6 +4311,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -3868,6 +4321,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -3877,6 +4331,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -3886,6 +4341,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3895,6 +4351,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3904,6 +4361,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3913,6 +4371,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3922,6 +4381,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3931,6 +4391,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3940,6 +4401,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -3949,6 +4411,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -3958,6 +4421,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3967,6 +4431,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3976,6 +4441,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3985,6 +4451,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -3994,6 +4461,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4003,6 +4471,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4012,6 +4481,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4021,6 +4491,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4030,6 +4501,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4039,6 +4511,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4048,6 +4521,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4057,6 +4531,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4066,6 +4541,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4075,6 +4551,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4084,6 +4561,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4093,6 +4571,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4102,6 +4581,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4111,6 +4591,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4120,6 +4601,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4129,6 +4611,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4138,6 +4621,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4147,6 +4631,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4156,6 +4641,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4165,6 +4651,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4174,6 +4661,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4183,6 +4671,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4192,6 +4681,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4201,6 +4691,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4210,6 +4701,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4219,6 +4711,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4228,6 +4721,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4237,6 +4731,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4246,6 +4741,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4255,6 +4751,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4264,6 +4761,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4273,6 +4771,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4282,6 +4781,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4291,6 +4791,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4300,6 +4801,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4309,6 +4811,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4318,6 +4821,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4327,6 +4831,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4336,6 +4841,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4345,6 +4851,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4354,6 +4861,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4363,6 +4871,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4372,6 +4881,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4381,6 +4891,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4390,6 +4901,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4399,6 +4911,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4408,6 +4921,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4417,6 +4931,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4426,6 +4941,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4435,6 +4951,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4444,6 +4961,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4453,6 +4971,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4462,6 +4981,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4471,6 +4991,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4480,6 +5001,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4489,6 +5011,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4498,6 +5021,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4507,6 +5031,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4516,6 +5041,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4525,6 +5051,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4534,6 +5061,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4543,6 +5071,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4552,6 +5081,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4561,6 +5091,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4570,6 +5101,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4579,6 +5111,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4588,6 +5121,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4597,6 +5131,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4606,6 +5141,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4615,6 +5151,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4624,6 +5161,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4633,6 +5171,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4642,6 +5181,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4651,6 +5191,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4660,6 +5201,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4669,6 +5211,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4678,6 +5221,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4687,6 +5231,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4696,6 +5241,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4705,6 +5251,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4714,6 +5261,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4723,6 +5271,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4732,6 +5281,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4741,6 +5291,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4750,6 +5301,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4759,6 +5311,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4768,6 +5321,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4777,6 +5331,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4786,6 +5341,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4795,6 +5351,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4804,6 +5361,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4813,6 +5371,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4822,6 +5381,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4831,6 +5391,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4840,6 +5401,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4849,6 +5411,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4858,6 +5421,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4867,6 +5431,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4876,6 +5441,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4885,6 +5451,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -4894,6 +5461,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4903,6 +5471,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4912,6 +5481,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4921,6 +5491,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4930,6 +5501,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4939,6 +5511,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4948,6 +5521,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4957,6 +5531,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4966,6 +5541,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4975,6 +5551,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4984,6 +5561,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -4993,6 +5571,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5002,6 +5581,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5011,6 +5591,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5020,6 +5601,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5029,6 +5611,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5039,6 +5622,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B16, width: 16 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -5049,6 +5633,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B32, width: 32 },
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -5057,6 +5642,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5065,6 +5651,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5073,6 +5660,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -5083,6 +5671,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5093,6 +5682,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5103,6 +5693,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5113,6 +5704,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5121,6 +5713,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5129,6 +5722,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5137,6 +5731,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5145,6 +5740,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5153,6 +5749,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5161,6 +5758,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5169,6 +5767,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5177,6 +5776,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5185,6 +5785,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5193,6 +5794,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5201,6 +5803,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5209,6 +5812,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5217,6 +5821,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5225,6 +5830,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -5233,6 +5839,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5241,6 +5848,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5249,6 +5857,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5257,6 +5866,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5266,6 +5876,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5275,6 +5886,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -5284,6 +5896,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5293,6 +5906,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5302,6 +5916,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5311,6 +5926,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5320,6 +5936,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5329,6 +5946,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5338,6 +5956,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -5348,6 +5967,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5356,6 +5976,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5364,6 +5985,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5372,6 +5994,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -5382,6 +6005,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5392,6 +6016,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5402,6 +6027,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5413,6 +6039,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5423,6 +6050,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2BF16, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::BF16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5433,6 +6061,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2F16, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5443,6 +6072,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2BF16, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5453,6 +6083,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2F16, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5463,6 +6094,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk4IU8, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -5473,6 +6105,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk4U8, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -5483,6 +6116,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk8IU4, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -5493,11 +6127,17 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk8U4, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "v_dual_add_f32",
     args: &[
+          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+        ],
+    dual_args: &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
@@ -5511,11 +6151,21 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[
+          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
+          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+        ],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "v_dual_and_b32",
     args: &[
+          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B32, width: 32 },
+          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+        ],
+    dual_args: &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B32, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
@@ -5530,6 +6180,12 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[
+          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B32, width: 32 },
+          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 64 },
+        ],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -5539,11 +6195,21 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2BF16, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[
+          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2BF16, width: 32 },
+          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+        ],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "v_dual_dot2acc_f32_f16",
     args: &[
+          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2F16, width: 32 },
+          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+        ],
+    dual_args: &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2F16, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
@@ -5558,11 +6224,22 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[
+          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::Imm, data_type: DataType::F32, width: 32 },
+        ],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "v_dual_fmac_f32",
     args: &[
+          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+        ],
+    dual_args: &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
@@ -5577,11 +6254,22 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[
+          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::Imm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+        ],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "v_dual_lshlrev_b32",
     args: &[
+          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B32, width: 32 },
+          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+        ],
+    dual_args: &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B32, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
@@ -5594,11 +6282,20 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[
+          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B32, width: 32 },
+        ],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "v_dual_mul_dx9_zero_f32",
     args: &[
+          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+        ],
+    dual_args: &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
@@ -5612,11 +6309,21 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[
+          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+        ],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "v_dual_sub_f32",
     args: &[
+          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+        ],
+    dual_args: &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
@@ -5630,6 +6337,11 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[
+          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+          ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
+          ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
+        ],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -5638,6 +6350,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5646,6 +6359,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5654,6 +6368,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5662,6 +6377,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5672,6 +6388,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5682,6 +6399,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5692,6 +6410,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5702,6 +6421,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5712,6 +6432,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5722,6 +6443,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5732,6 +6454,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::F16, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -5742,6 +6465,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -5751,6 +6475,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5760,6 +6485,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5770,6 +6496,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -5780,6 +6507,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Imm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -5788,6 +6516,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5796,6 +6525,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5804,6 +6534,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5812,6 +6543,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5820,6 +6552,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5828,6 +6561,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5838,6 +6572,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -5848,6 +6583,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -5858,6 +6594,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -5868,6 +6605,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -5878,6 +6616,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -5888,6 +6627,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -5897,6 +6637,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5906,6 +6647,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5916,6 +6658,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -5924,6 +6667,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5932,6 +6676,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -5942,6 +6687,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -5952,6 +6698,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -5961,6 +6708,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -5970,6 +6718,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -5979,6 +6728,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -5988,6 +6738,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -5997,6 +6748,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6006,6 +6758,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6016,6 +6769,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6026,6 +6780,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6036,6 +6791,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I24, width: 24 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6046,6 +6802,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6056,6 +6813,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6066,6 +6824,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U24, width: 24 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6076,6 +6835,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6086,6 +6846,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6096,6 +6857,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6106,6 +6868,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6115,6 +6878,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6124,6 +6888,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6133,6 +6898,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6142,6 +6908,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6152,6 +6919,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6162,6 +6930,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6171,6 +6940,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6180,6 +6950,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6190,6 +6961,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6200,6 +6972,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6210,6 +6983,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6220,6 +6994,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6230,6 +7005,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6240,6 +7016,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6250,6 +7027,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6260,6 +7038,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6269,6 +7048,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6278,6 +7058,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6287,6 +7068,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6296,6 +7078,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6306,6 +7089,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6316,6 +7100,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6324,6 +7109,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6332,6 +7118,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6340,6 +7127,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6348,6 +7136,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6356,6 +7145,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6364,6 +7154,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6374,6 +7165,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6384,6 +7176,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B32, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6394,6 +7187,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6403,6 +7197,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -6412,6 +7207,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -6421,6 +7217,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -6430,6 +7227,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6439,6 +7237,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6448,6 +7247,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6457,6 +7257,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6466,6 +7267,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6475,6 +7277,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6484,6 +7287,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6493,6 +7297,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6503,11 +7308,13 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
     name: "v_nop",
     args: &[],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6516,6 +7323,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6524,6 +7332,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6534,6 +7343,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6543,6 +7353,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6552,6 +7363,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6561,6 +7373,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -6571,6 +7384,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6581,6 +7395,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6589,6 +7404,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6599,11 +7415,13 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B32, width: 32 },
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
     name: "v_pipeflush",
     args: &[],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6613,6 +7431,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2F16, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2F16, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -6622,6 +7441,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2I16, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2I16, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6631,6 +7451,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2U16, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2U16, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6640,6 +7461,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2U16, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2I16, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6650,6 +7472,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2F16, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2F16, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -6659,6 +7482,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2F16, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6668,6 +7492,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2U16, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2U16, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6677,6 +7502,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2U16, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2U16, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6687,6 +7513,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2I16, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2I16, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6697,6 +7524,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2U16, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2U16, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6706,6 +7534,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2I16, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2I16, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6715,6 +7544,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2U16, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2U16, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6724,6 +7554,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2I16, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2I16, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6733,6 +7564,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2U16, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2U16, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6742,6 +7574,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2F16, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2F16, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -6751,6 +7584,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2U16, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2U16, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6760,6 +7594,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2I16, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2I16, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6769,6 +7604,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2U16, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2U16, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6779,6 +7615,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::B64, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6787,6 +7624,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -6795,6 +7633,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -6803,6 +7642,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -6811,6 +7651,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Sgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6820,6 +7661,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6828,6 +7670,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -6836,6 +7679,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -6844,6 +7688,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -6852,6 +7697,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -6862,6 +7708,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk4U8, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6872,6 +7719,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2U16, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6882,6 +7730,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6892,6 +7741,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk4U8, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6900,6 +7750,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Pk2I16, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6908,6 +7759,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -6916,6 +7768,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -6924,6 +7777,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -6932,6 +7786,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -6943,6 +7798,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6953,6 +7809,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6962,6 +7819,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -6971,6 +7829,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -6980,6 +7839,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6989,6 +7849,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::I32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -6998,6 +7859,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -7007,6 +7869,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -7018,6 +7881,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 64 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -7028,6 +7892,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -7037,6 +7902,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -7046,6 +7912,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -7055,6 +7922,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -7063,6 +7931,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -7071,6 +7940,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -7079,6 +7949,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -7087,6 +7958,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -7095,6 +7967,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::F32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -7105,6 +7978,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 256 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Unknown, width: 256 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -7115,6 +7989,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 256 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Unknown, width: 256 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -7125,6 +8000,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 256 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Unknown, width: 256 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -7135,6 +8011,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 256 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Unknown, width: 256 },
         ],
+    dual_args: &[],
     supports_modifiers: true,
   },
   InstructionCommonDef {
@@ -7145,6 +8022,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 64 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Unknown, width: 256 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -7155,6 +8033,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::Vgpr, data_type: DataType::None, width: 128 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::Unknown, width: 256 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -7164,6 +8043,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::SgprOrImm, data_type: DataType::B32, width: 32 },
           ArgSpec { kind: ArgKind::Special, data_type: DataType::None, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -7174,6 +8054,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -7183,6 +8064,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -7193,6 +8075,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -7202,6 +8085,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U16, width: 16 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
   InstructionCommonDef {
@@ -7211,6 +8095,7 @@ pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &[
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
           ArgSpec { kind: ArgKind::VgprOrImm, data_type: DataType::U32, width: 32 },
         ],
+    dual_args: &[],
     supports_modifiers: false,
   },
 ];
