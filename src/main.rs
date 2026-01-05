@@ -11,7 +11,7 @@ struct Cli {
     long,
     value_enum,
     default_value_t = Architecture::Rdna35,
-    help = "Target architecture"
+    help = "target architecture"
   )]
   arch: Architecture,
 
@@ -23,7 +23,7 @@ struct Cli {
     long,
     value_enum,
     default_value_t = WaveSize::Wave32,
-    help = "Wavefront size (32 only for now)"
+    help = "wavefront size (32 only for now)"
   )]
   wave_size: WaveSize,
 

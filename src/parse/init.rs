@@ -1,6 +1,6 @@
 use half::bf16;
 
-use super::args::{parse_type, TypeSpec};
+use super::args::{parse_type, ArgType};
 use crate::sim::generate_arange;
 
 #[derive(Clone, Debug)]
@@ -11,7 +11,7 @@ pub(super) enum Number {
 
 pub(super) fn parse_initializer(
   value: &str,
-  spec: &TypeSpec,
+  spec: &ArgType,
   expected_len: usize,
   _shape: &[usize],
 ) -> Result<Vec<Number>, String> {
@@ -49,7 +49,7 @@ pub(super) fn parse_initializer(
       .collect()
   } else if value.strip_prefix("rand(").and_then(|v| v.strip_suffix(')')).is_some() {
     let mut rng = rand::thread_rng();
-    if spec.is_float {
+    if spec.is_float() {
       (0..expected_len)
         .map(|_| Number::Float(rng.r#gen::<f32>()))
         .collect()
@@ -93,7 +93,7 @@ fn parse_call_tokens(value: &str) -> Vec<&str> {
     .collect()
 }
 
-pub(super) fn parse_file_initializer(value: &str) -> Result<Option<(String, TypeSpec)>, String> {
+pub(super) fn parse_file_initializer(value: &str) -> Result<Option<(String, ArgType)>, String> {
   let args = match value.strip_prefix("file(").and_then(|v| v.strip_suffix(')')) {
     Some(args) => args,
     None => return Ok(None),
@@ -151,12 +151,12 @@ pub(super) fn parse_number(value: &str) -> Result<Number, String> {
 }
 
 struct ValueEncoder<'a> {
-  spec: &'a TypeSpec,
+  spec: &'a ArgType,
   bytes: Vec<u8>,
 }
 
 impl<'a> ValueEncoder<'a> {
-  fn new(spec: &'a TypeSpec, capacity: usize) -> Self {
+  fn new(spec: &'a ArgType, capacity: usize) -> Self {
     Self {
       spec,
       bytes: Vec::with_capacity(capacity * spec.element_size()),
@@ -164,13 +164,13 @@ impl<'a> ValueEncoder<'a> {
   }
 
   fn encode_value(&mut self, value: &Number) -> Result<(), String> {
-    if self.spec.is_float {
+    if self.spec.is_float() {
       let float_val = match *value {
         Number::Int(v) => v as f32,
         Number::Float(v) => v,
       };
 
-      match (self.spec.bits, self.spec.is_bfloat) {
+      match (self.spec.bits(), self.spec.is_bfloat()) {
         (16, true) => {
           self.bytes.extend_from_slice(
             &bf16::from_f32(float_val).to_bits().to_le_bytes()
@@ -182,7 +182,7 @@ impl<'a> ValueEncoder<'a> {
         _ => {
           return Err(format!(
             "unsupported float type: {} bits, bfloat={}",
-            self.spec.bits, self.spec.is_bfloat
+            self.spec.bits(), self.spec.is_bfloat()
           ));
         }
       }
@@ -193,15 +193,15 @@ impl<'a> ValueEncoder<'a> {
           if v.fract() != 0.0 {
             return Err(format!(
               "cannot convert {:.3} to integer type {}",
-              v, self.spec.name
+              v, self.spec.name()
             ));
           }
           v as i64
         }
       };
 
-      if self.spec.is_signed {
-        match self.spec.bits {
+      if self.spec.is_signed() {
+        match self.spec.bits() {
           8 => self.bytes.extend_from_slice(&(int_val as i8).to_le_bytes()),
           16 => self.bytes.extend_from_slice(&(int_val as i16).to_le_bytes()),
           32 => self.bytes.extend_from_slice(&(int_val as i32).to_le_bytes()),
@@ -209,7 +209,7 @@ impl<'a> ValueEncoder<'a> {
           _ => {
             return Err(format!(
               "unsupported signed integer width: {} bits",
-              self.spec.bits
+              self.spec.bits()
             ));
           }
         }
@@ -219,7 +219,7 @@ impl<'a> ValueEncoder<'a> {
         }
         let uint_val = int_val as u64;
 
-        match self.spec.bits {
+        match self.spec.bits() {
           8 => self.bytes.extend_from_slice(&(uint_val as u8).to_le_bytes()),
           16 => self.bytes.extend_from_slice(&(uint_val as u16).to_le_bytes()),
           32 => self.bytes.extend_from_slice(&(uint_val as u32).to_le_bytes()),
@@ -227,7 +227,7 @@ impl<'a> ValueEncoder<'a> {
           _ => {
             return Err(format!(
               "unsupported unsigned integer width: {} bits",
-              self.spec.bits
+              self.spec.bits()
             ));
           }
         }
@@ -242,7 +242,7 @@ impl<'a> ValueEncoder<'a> {
   }
 }
 
-pub(super) fn encode_values(values: &[Number], spec: &TypeSpec) -> Result<Vec<u8>, String> {
+pub(super) fn encode_values(values: &[Number], spec: &ArgType) -> Result<Vec<u8>, String> {
   let mut encoder = ValueEncoder::new(spec, values.len());
   for value in values {
     encoder.encode_value(value)?;

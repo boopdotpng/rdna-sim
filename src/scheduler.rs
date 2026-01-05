@@ -232,7 +232,7 @@ fn wait_targets(inst: &crate::sim::DecodedInst) -> Option<WaitTargets> {
 mod tests {
   use super::*;
   use crate::Dim3;
-  use crate::parse::ArgInfo;
+  use crate::parse::{ArgInfo, ArgType};
   use crate::parse_instruction::SpecialRegister;
 
   fn program_info(local: Dim3, global: Dim3, args: Vec<ArgInfo>, outputs: Vec<ArgInfo>) -> ProgramInfo {
@@ -250,9 +250,10 @@ mod tests {
     let addr = program.global_mem.alloc(size, 8).expect("alloc");
     ArgInfo {
       name: name.to_string(),
-      type_name: "u64".to_string(),
+      arg_type: ArgType::U64,
       addr,
       len: 1,
+      shape: Vec::new(),
     }
   }
 

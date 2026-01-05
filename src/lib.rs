@@ -15,6 +15,7 @@ use half::bf16;
 use clap::ValueEnum;
 
 // pretty stable across all amdgpu generations
+// should be max threads per workgroup
 const MAX_THREADS_PER_WORKGROUP: u64 = 1024;
 
 #[derive(Copy, Clone, Debug, Eq, PartialEq, ValueEnum)]
@@ -35,7 +36,7 @@ pub enum WaveSize {
     Wave64,
 }
 
-// meant to represent local and global launch size (blocks, grids in cuda)
+// represents local and global launch size (blocks, grids in cuda)
 #[derive(Clone, Debug, PartialEq)]
 pub struct Dim3(pub u32, pub u32, pub u32);
 impl Dim3 {
@@ -78,8 +79,8 @@ impl FromStr for Dim3 {
 // whole program state 
 pub struct Program {
     pub global_mem: GlobalAlloc, // simple bump allocator for simulated global memory
-    pub local_launch_size: Dim3, // blocks 
-    pub global_launch_size: Dim3, // grids
+    pub local_launch_size: Dim3, // cuda blocks
+    pub global_launch_size: Dim3, // cuda grids
     pub wave_size: WaveSize, // 32 by default, 64 not supported
     // no simulation for trap handling, TMA and TBA don't matter 
 }
@@ -203,99 +204,31 @@ pub fn run_file(
 }
 
 fn read_output_arg(program: &Program, arg: &parse::ArgInfo) -> Result<Vec<String>, String> {
-    let (base, elem_size) = parse_type_name(&arg.type_name)?;
-    let byte_len = arg.len
+    let elem_size = arg.arg_type.element_size();
+    arg.len
         .checked_mul(elem_size)
         .ok_or_else(|| "output size overflow".to_string())?;
-    let bytes = program.global_mem.read(arg.addr, byte_len)?;
     let mut out = Vec::with_capacity(arg.len);
     for i in 0..arg.len {
-        let offset = i * elem_size;
-        let value = match base {
-            "u8" => format!("{}", bytes[offset]),
-            "i8" => format!("{}", bytes[offset] as i8),
-            "u16" => {
-                let v = u16::from_le_bytes([bytes[offset], bytes[offset + 1]]);
-                format!("{}", v)
+        let addr = arg.addr + (i * elem_size) as u64;
+        let value = match arg.arg_type {
+            parse::ArgType::U8 => format!("{}", program.global_mem.read_value::<u8>(addr)?),
+            parse::ArgType::I8 => format!("{}", program.global_mem.read_value::<i8>(addr)?),
+            parse::ArgType::U16 => format!("{}", program.global_mem.read_value::<u16>(addr)?),
+            parse::ArgType::I16 => format!("{}", program.global_mem.read_value::<i16>(addr)?),
+            parse::ArgType::U32 => format!("{}", program.global_mem.read_value::<u32>(addr)?),
+            parse::ArgType::I32 => format!("{}", program.global_mem.read_value::<i32>(addr)?),
+            parse::ArgType::U64 => format!("{}", program.global_mem.read_value::<u64>(addr)?),
+            parse::ArgType::I64 => format!("{}", program.global_mem.read_value::<i64>(addr)?),
+            parse::ArgType::F32 => format!("{}", program.global_mem.read_value::<f32>(addr)?),
+            parse::ArgType::BF16 => {
+                let bits = program.global_mem.read_value::<u16>(addr)?;
+                format!("{}", bf16::from_bits(bits).to_f32())
             }
-            "i16" => {
-                let v = i16::from_le_bytes([bytes[offset], bytes[offset + 1]]);
-                format!("{}", v)
-            }
-            "u32" => {
-                let v = u32::from_le_bytes([
-                    bytes[offset],
-                    bytes[offset + 1],
-                    bytes[offset + 2],
-                    bytes[offset + 3],
-                ]);
-                format!("{}", v)
-            }
-            "i32" => {
-                let v = i32::from_le_bytes([
-                    bytes[offset],
-                    bytes[offset + 1],
-                    bytes[offset + 2],
-                    bytes[offset + 3],
-                ]);
-                format!("{}", v)
-            }
-            "u64" => {
-                let v = u64::from_le_bytes([
-                    bytes[offset],
-                    bytes[offset + 1],
-                    bytes[offset + 2],
-                    bytes[offset + 3],
-                    bytes[offset + 4],
-                    bytes[offset + 5],
-                    bytes[offset + 6],
-                    bytes[offset + 7],
-                ]);
-                format!("{}", v)
-            }
-            "i64" => {
-                let v = i64::from_le_bytes([
-                    bytes[offset],
-                    bytes[offset + 1],
-                    bytes[offset + 2],
-                    bytes[offset + 3],
-                    bytes[offset + 4],
-                    bytes[offset + 5],
-                    bytes[offset + 6],
-                    bytes[offset + 7],
-                ]);
-                format!("{}", v)
-            }
-            "f32" => {
-                let v = f32::from_le_bytes([
-                    bytes[offset],
-                    bytes[offset + 1],
-                    bytes[offset + 2],
-                    bytes[offset + 3],
-                ]);
-                format!("{}", v)
-            }
-            "bf16" => {
-                let v = u16::from_le_bytes([bytes[offset], bytes[offset + 1]]);
-                format!("{}", bf16::from_bits(v).to_f32())
-            }
-            _ => return Err(format!("unsupported output type '{}'", base)),
         };
         out.push(value);
     }
     Ok(out)
-}
-
-fn parse_type_name(value: &str) -> Result<(&str, usize), String> {
-    let base = value.split_once('[').map(|(b, _)| b.trim()).unwrap_or(value.trim());
-    let elem_size = match base {
-        "u8" | "i8" => 1,
-        "u16" | "i16" | "bf16" => 2,
-        "u32" | "i32" | "f32" => 4,
-        "u64" | "i64" => 8,
-        _ => return Err(format!("unsupported type '{}'", base)),
-    };
-    Ok((base, elem_size))
 }
 
 // add debug run here, invoking repl or other stuff

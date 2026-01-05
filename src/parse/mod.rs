@@ -2,7 +2,7 @@ mod args;
 mod file;
 mod init;
 
-pub use args::{ArgInfo, ProgramInfo};
+pub use args::{ArgInfo, ArgType, ProgramInfo};
 pub use file::parse_file;
 
 #[cfg(test)]
@@ -11,7 +11,7 @@ pub(super) mod test_support {
   use std::path::PathBuf;
   use std::sync::atomic::{AtomicUsize, Ordering};
 
-  use super::args::{parse_type, TypeSpec};
+  use super::args::{parse_type, ArgType};
   use super::init::Number;
   use crate::{Dim3, Program, WaveSize};
 
@@ -39,7 +39,7 @@ pub(super) mod test_support {
     Program::new(1024, Dim3::new(1, 1, 1), Dim3::new(1, 1, 1), WaveSize::Wave32)
   }
 
-  pub(super) fn spec(name: &str) -> TypeSpec {
+  pub(super) fn spec(name: &str) -> ArgType {
     parse_type(name).expect("type spec")
   }
 
