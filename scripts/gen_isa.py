@@ -6,6 +6,9 @@ from dataclasses import dataclass
 from typing import Dict, List, Tuple
 
 MAX_LINE = 150
+COMPACT_LINE = 300
+
+TYPE_SUFFIXES = ["f16", "f32", "bf16", "i8", "i16", "i32", "i64", "u8", "u16", "u32", "u64"]
 
 
 @dataclass(frozen=True)
@@ -37,18 +40,6 @@ def rust_string_literal(value: str) -> str:
   return "".join(out)
 
 
-def wrap_rust_string(value: str, indent: int, prefix_len: int = 0) -> str:
-  literal = rust_string_literal(value)
-  if len(literal) + indent + prefix_len <= MAX_LINE:
-    return literal
-  inner = literal[1:-1]
-  chunk_size = 80
-  chunks = [inner[i:i + chunk_size] for i in range(0, len(inner), chunk_size)]
-  lines = ["concat!("]
-  for chunk in chunks:
-    lines.append(" " * (indent + 2) + rust_string_literal(chunk) + ",")
-  lines.append(" " * indent + ")")
-  return "\n".join(lines)
 
 
 def to_variant(name: str) -> str:
@@ -105,48 +96,31 @@ def unique_fn_names(names: List[str]) -> Dict[str, str]:
 
 
 def render_common_def(inst: dict) -> str:
-  indent = 4
-  lines = ["  InstructionCommonDef {"]
-  lines.append(f"    name: {rust_string_literal(inst['normalized_name'])},")
-  lines.append(f"    args: {format_arg_specs(inst.get('operands', []), indent + 4, len('args: '), inst['normalized_name'])},")
+  name = rust_string_literal(inst["normalized_name"])
+  args = format_arg_specs(inst.get("operands", []), inst["normalized_name"])
   dual_args = "&[]"
   if inst.get("is_v_dual"):
-    dual_args = format_arg_specs(
-      inst.get('operands', []),
-      indent + 4,
-      len('dual_args: '),
-      inst['normalized_name'],
-    )
-  lines.append(f"    dual_args: {dual_args},")
-  supports_modifiers = "true" if inst.get('supports_modifiers', False) else "false"
-  lines.append(f"    supports_modifiers: {supports_modifiers},")
-  lines.append("  },")
-  return "\n".join(lines)
-
-
-def render_instruction_ref(variant: str, common_ref: str) -> str:
-  return "\n".join(
-    [
-      "  InstructionDef {",
-      f"    instruction: Instruction::{variant},",
-      f"    common: {common_ref},",
-      "  },",
-    ]
+    dual_args = format_arg_specs(inst.get("operands", []), inst["normalized_name"])
+  supports_modifiers = "true" if inst.get("supports_modifiers", False) else "false"
+  return (
+    "InstructionCommonDef { "
+    f"name: {name}, "
+    f"args: {args}, "
+    f"dual_args: {dual_args}, "
+    f"supports_modifiers: {supports_modifiers} "
+    "}"
   )
 
 
-def format_arg_specs(operands: List[dict], indent: int, prefix_len: int = 0, inst_name: str = "") -> str:
+def render_instruction_ref(variant: str, common_ref: str) -> str:
+  return f"InstructionDef {{ instruction: Instruction::{variant}, common: {common_ref} }}"
+
+
+def format_arg_specs(operands: List[dict], inst_name: str = "") -> str:
   if not operands:
     return "&[]"
   rendered = [render_arg_spec(operand, inst_name) for operand in operands]
-  inline = ", ".join(rendered)
-  if len(inline) + indent + prefix_len + 3 <= MAX_LINE:
-    return f"&[{inline}]"
-  lines = ["&["]
-  for item in rendered:
-    lines.append(" " * (indent + 2) + f"{item},")
-  lines.append(" " * indent + "]")
-  return "\n".join(lines)
+  return f"&[{', '.join(rendered)}]"
 
 
 def render_arg_spec(operand: dict, inst_name: str = "") -> str:
@@ -230,12 +204,89 @@ def render_instruction_pair(name: str, variant: str) -> str:
   return f"  ({rust_string_literal(name)}, Instruction::{variant}),"
 
 
+def pack_items(items: List[str], indent: int, max_len: int) -> List[str]:
+  if not items:
+    return []
+  lines = []
+  prefix = " " * indent
+  current = ""
+  for item in items:
+    entry = f"{item},"
+    if not current:
+      current = prefix + entry
+      continue
+    candidate = current + " " + entry
+    if len(candidate) <= max_len:
+      current = candidate
+    else:
+      lines.append(current)
+      current = prefix + entry
+  if current:
+    lines.append(current)
+  return lines
+
+
+def unique_instruction_count(instructions: List[dict]) -> int:
+  names = [inst["normalized_name"] for inst in instructions]
+  unique = set()
+  for name in names:
+    base, dtype = extract_base_and_type(name)
+    unique.add(base if dtype else name)
+  return len(unique)
+
+
 def parse_csv(value: str) -> List[str]:
   return [item.strip() for item in value.split(",") if item.strip()]
 
 
 def normalize_name(name: str) -> str:
   return name.lower()
+
+
+def extract_base_and_type(name: str) -> tuple:
+  """
+  Extract operation base and data type from instruction name.
+
+  Examples:
+      v_add_f16 → ("v_add", "f16")
+      v_add_f32 → ("v_add", "f32")
+      v_and_b32 → ("v_and_b32", None)  # bitwise keeps suffix
+      s_mov_b32 → ("s_mov_b32", None)  # not a type variant
+  """
+  for suffix in TYPE_SUFFIXES:
+    if name.endswith(f"_{suffix}"):
+      base = name[:-len(suffix)-1]
+      # Bitwise ops keep suffix (not genericizable)
+      if any(op in base for op in ["_and_", "_or_", "_xor_", "_not_"]):
+        return (name, None)
+      return (base, suffix)
+  return (name, None)
+
+
+def instruction_category(name: str) -> str:
+  if name.startswith("v_"):
+    return "v"
+  if name.startswith("s_"):
+    return "s"
+  if name.startswith(("ds_", "buffer_", "flat_", "global_", "image_")):
+    return "mem"
+  return "misc"
+
+
+def build_typed_bases(instructions: List[dict]) -> Dict[str, set]:
+  bases: Dict[str, Dict[str, set]] = {"v": {}, "s": {}, "mem": {}, "misc": {}}
+  for inst in instructions:
+    name = inst["normalized_name"]
+    base, dtype = extract_base_and_type(name)
+    if not dtype:
+      continue
+    category = instruction_category(name)
+    bases.setdefault(category, {})
+    bases[category].setdefault(base, set()).add(dtype)
+  typed = {}
+  for category, base_map in bases.items():
+    typed[category] = {base for base, dtypes in base_map.items() if len(dtypes) > 1}
+  return typed
 
 
 def operand_kind(operand_type: str) -> str:
@@ -445,15 +496,15 @@ def generate_base(
 ) -> Dict[str, int]:
   common_insts = sorted(common_insts, key=lambda inst: inst["normalized_name"])
   defs_lines = ["pub static INSTRUCTION_COMMON_DEFS: &[InstructionCommonDef] = &["]
-  for inst in common_insts:
-    defs_lines.append(render_common_def(inst))
+  def_items = [render_common_def(inst) for inst in common_insts]
+  defs_lines.extend(pack_items(def_items, 2, COMPACT_LINE))
   defs_lines.append("];")
 
   lookup_pairs = [(inst["normalized_name"], idx) for idx, inst in enumerate(common_insts)]
   lookup_pairs.sort(key=lambda item: item[0])
   lookup_lines = ["pub static INSTRUCTION_COMMON_BY_NAME: &[(&str, usize)] = &["]
-  for name, idx in lookup_pairs:
-    lookup_lines.append(f"  ({rust_string_literal(name)}, {idx}),")
+  lookup_items = [f"({rust_string_literal(name)}, {idx})" for name, idx in lookup_pairs]
+  lookup_lines.extend(pack_items(lookup_items, 2, COMPACT_LINE))
   lookup_lines.append("];")
 
   lookup_fn = [
@@ -499,29 +550,31 @@ def generate_arch(
   arch_index_map = {instruction_key(inst): idx for idx, inst in enumerate(arch_common)}
 
   enum_lines = ["#[derive(Copy, Clone, Debug, Eq, PartialEq, Hash)]", "pub enum Instruction {"]
-  for inst in instructions:
-    enum_lines.append(f"  {mapping[inst['normalized_name']]},")
+  enum_items = [mapping[inst["normalized_name"]] for inst in instructions]
+  enum_lines.extend(pack_items(enum_items, 2, COMPACT_LINE))
   enum_lines.append("}")
 
   arch_defs = ["pub static ARCH_COMMON_DEFS: &[InstructionCommonDef] = &["]
-  for inst in arch_common:
-    arch_defs.append(render_common_def(inst))
+  arch_items = [render_common_def(inst) for inst in arch_common]
+  arch_defs.extend(pack_items(arch_items, 2, COMPACT_LINE))
   arch_defs.append("];")
 
   def_lines = ["pub static INSTRUCTION_DEFS: &[InstructionDef<Instruction>] = &["]
+  def_items = []
   for inst in instructions:
     name = instruction_key(inst)
     if name in base_index_map:
       common_ref = f"&base::INSTRUCTION_COMMON_DEFS[{base_index_map[name]}]"
     else:
       common_ref = f"&ARCH_COMMON_DEFS[{arch_index_map[name]}]"
-    def_lines.append(render_instruction_ref(mapping[inst["normalized_name"]], common_ref))
+    def_items.append(render_instruction_ref(mapping[inst["normalized_name"]], common_ref))
+  def_lines.extend(pack_items(def_items, 2, COMPACT_LINE))
   def_lines.append("];")
 
   lookup_pairs = sorted(mapping.items(), key=lambda item: item[0])
   lookup_lines = ["pub static INSTRUCTION_BY_NAME: &[(&str, Instruction)] = &["]
-  for name, variant in lookup_pairs:
-    lookup_lines.append(render_instruction_pair(name, variant))
+  lookup_items = [f"({rust_string_literal(name)}, Instruction::{variant})" for name, variant in lookup_pairs]
+  lookup_lines.extend(pack_items(lookup_items, 2, COMPACT_LINE))
   lookup_lines.append("];")
 
   lookup_fn = [
@@ -698,121 +751,181 @@ def categorize_instructions(instructions: List[dict]) -> Dict[str, List[dict]]:
   return categories
 
 
-def generate_ops_category_file(
-  instructions: List[dict],
-  out_path: str,
-  add_sections: bool = False
-) -> List[Tuple[str, str]]:
-  """Generate a single category file.
-  If add_sections=True (for misc.rs), add section comment headers.
-  Returns list of (instruction_name, fn_name) tuples."""
-  instructions = sorted(instructions, key=lambda inst: inst["normalized_name"])
-  names = [inst["normalized_name"] for inst in instructions]
-  fn_map = unique_fn_names(names)
-
-  lines = [
-    "use crate::sim::{Ctx, ExecError, ExecResult, MemoryOps};",
-    "",
-  ]
-
-  if add_sections:
-    # Group instructions by section for sys_control.rs
-    control_flow = [i for i in instructions if is_basic_control_flow(i["normalized_name"])]
-    exec_mask = [i for i in instructions if is_exec_mask_instruction(i["normalized_name"])]
-    quad_mode = [i for i in instructions if is_quad_mode_instruction(i["normalized_name"])]
-    system_state = [i for i in instructions if is_system_state_instruction(i["normalized_name"])]
-    special_regs = [i for i in instructions if is_special_register_instruction(i["normalized_name"])]
-    rel_addressing = [i for i in instructions if is_relative_addressing_instruction(i["normalized_name"])]
-
-    # Debug/trace/utility: everything not in the above categories
-    categorized_names = set(
-      [i["normalized_name"] for i in control_flow] +
-      [i["normalized_name"] for i in exec_mask] +
-      [i["normalized_name"] for i in quad_mode] +
-      [i["normalized_name"] for i in system_state] +
-      [i["normalized_name"] for i in special_regs] +
-      [i["normalized_name"] for i in rel_addressing]
-    )
-    debug_util = [i for i in instructions if i["normalized_name"] not in categorized_names]
-
-    # Generate with section headers
-    groups = [
-      ("// Control Flow Instructions", control_flow),
-      ("// Execution Mask Management", exec_mask),
-      ("// Quad/Wave Mode Control", quad_mode),
-      ("// System State Management", system_state),
-      ("// Special Register Access", special_regs),
-      ("// Relative Addressing", rel_addressing),
-      ("// Debug/Trace/Utility", debug_util)
-    ]
-
-    for header, group in groups:
-      if group:
-        lines.append(header)
-        lines.append("")
-        for inst in group:
-          name = inst["normalized_name"]
-          fn_name = fn_map[name]
-          lines.append(f"pub fn {fn_name}(ctx: &mut Ctx) -> ExecResult {{")
-          lines.append("  let _ = ctx;")
-          lines.append(f"  Err(ExecError::Unimplemented({rust_string_literal(name)}))")
-          lines.append("}")
-          lines.append("")
-  else:
-    # Generate without sections (for vector, scalar, memory)
-    for inst in instructions:
-      name = inst["normalized_name"]
-      fn_name = fn_map[name]
-      lines.append(f"pub fn {fn_name}(ctx: &mut Ctx) -> ExecResult {{")
-      lines.append("  let _ = ctx;")
-      lines.append(f"  Err(ExecError::Unimplemented({rust_string_literal(name)}))")
-      lines.append("}")
-      lines.append("")
-
+def write_manual_ops_file(out_path: str, instruction_names: List[str]) -> None:
+  if not instruction_names:
+    if os.path.exists(out_path):
+      os.remove(out_path)
+    return
+  fn_map = unique_fn_names(instruction_names)
+  lines = ["use crate::sim::{Ctx, ExecError, ExecResult};", ""]
+  for name in instruction_names:
+    fn_name = fn_map[name]
+    lines.append(f"pub fn {fn_name}(ctx: &mut Ctx) -> ExecResult {{")
+    lines.append("  let _ = ctx;")
+    lines.append(f"  Err(ExecError::Unimplemented({rust_string_literal(name)}))")
+    lines.append("}")
+    lines.append("")
   with open(out_path, "w", encoding="utf-8") as f:
     f.write("\n".join(lines))
-    f.write("\n")
-
-  return [(name, fn_map[name]) for name in names]
 
 
-def generate_ops_module(instructions: List[dict], out_dir: str) -> None:
-  """Generate categorized ops module with vector.rs, scalar.rs, memory.rs, sys_control.rs, and mod.rs"""
+def generate_ops_module(
+  module_name: str,
+  instructions: List[dict],
+  out_dir: str,
+  typed_bases: Dict[str, set],
+) -> None:
   os.makedirs(out_dir, exist_ok=True)
 
-  # Categorize instructions
-  categories = categorize_instructions(instructions)
+  # Map operation bases to BinaryOp enum variants (vector only)
+  V_BINARY_OPS = {
+    "v_add": "Add",
+    "v_sub": "Sub",
+    "v_mul": "Mul",
+    "v_div": "Div",
+    "v_min": "Min",
+    "v_max": "Max",
+  }
 
-  # Generate each category file
-  all_ops = []
-  category_names = []
-  for category_name in ["vector", "scalar", "memory", "sys_control"]:
-    category_insts = categories[category_name]
-    if not category_insts:
-      continue
-    category_names.append(category_name)
-    out_path = os.path.join(out_dir, f"{category_name}.rs")
+  V_CMP_OPS = {
+    "v_cmp_eq": ("Eq", False),
+    "v_cmp_ne": ("Ne", False),
+    "v_cmp_lt": ("Lt", False),
+    "v_cmp_le": ("Le", False),
+    "v_cmp_gt": ("Gt", False),
+    "v_cmp_ge": ("Ge", False),
+    "v_cmp_lg": ("Lg", False),
+    "v_cmp_neq": ("Neq", False),
+    "v_cmp_nlt": ("Nlt", False),
+    "v_cmp_nle": ("Nle", False),
+    "v_cmp_ngt": ("Ngt", False),
+    "v_cmp_nge": ("Nge", False),
+    "v_cmp_nlg": ("Nlg", False),
+    "v_cmp_o": ("O", False),
+    "v_cmp_u": ("U", False),
+    "v_cmpx_eq": ("Eq", True),
+    "v_cmpx_ne": ("Ne", True),
+    "v_cmpx_lt": ("Lt", True),
+    "v_cmpx_le": ("Le", True),
+    "v_cmpx_gt": ("Gt", True),
+    "v_cmpx_ge": ("Ge", True),
+    "v_cmpx_lg": ("Lg", True),
+    "v_cmpx_neq": ("Neq", True),
+    "v_cmpx_nlt": ("Nlt", True),
+    "v_cmpx_nle": ("Nle", True),
+    "v_cmpx_ngt": ("Ngt", True),
+    "v_cmpx_nge": ("Nge", True),
+    "v_cmpx_nlg": ("Nlg", True),
+    "v_cmpx_o": ("O", True),
+    "v_cmpx_u": ("U", True),
+  }
 
-    # Add section comments only for sys_control.rs
-    add_sections = (category_name == "sys_control")
-    ops = generate_ops_category_file(category_insts, out_path, add_sections)
-    all_ops.extend([(name, fn_name, category_name) for name, fn_name in ops])
+  DTYPE_MAP = {
+    "f16": "F16",
+    "f32": "F32",
+    "bf16": "BF16",
+    "i8": "I8",
+    "i16": "I16",
+    "i32": "I32",
+    "i64": "I64",
+    "u8": "U8",
+    "u16": "U16",
+    "u32": "U32",
+    "u64": "U64",
+  }
 
-  # Sort all_ops by instruction name for OPS array
-  all_ops.sort(key=lambda x: x[0])
+  typed_ops = []
+  manual_by_category = {"v": [], "s": [], "mem": [], "misc": []}
 
-  # Generate mod.rs that declares submodules and builds OPS array
-  lines = [
-    "use crate::sim::Handler;",
-    "",
-  ]
-  for category_name in category_names:
-    lines.append(f"pub mod {category_name};")
+  for inst in sorted(instructions, key=lambda inst: inst["normalized_name"]):
+    name = inst["normalized_name"]
+    base, dtype = extract_base_and_type(name)
+    category = instruction_category(name)
+    is_typed = dtype is not None and base in typed_bases.get(category, set())
+    if is_typed and dtype in DTYPE_MAP:
+      dt = DTYPE_MAP[dtype]
+      if category == "v":
+        if base in V_BINARY_OPS:
+          typed_ops.append((name, "V_BINARY", dt, V_BINARY_OPS[base], False))
+        elif base in V_CMP_OPS:
+          op, update_exec = V_CMP_OPS[base]
+          typed_ops.append((name, "V_CMP", dt, op, update_exec))
+        else:
+          typed_ops.append((name, "V_UNKNOWN", dt, "", False))
+      elif category == "s":
+        typed_ops.append((name, "S_UNKNOWN", dt, "", False))
+      elif category == "mem":
+        typed_ops.append((name, "MEM_UNKNOWN", dt, "", False))
+      else:
+        manual_by_category["misc"].append(name)
+    else:
+      manual_by_category[category].append(name)
+
+  manual_files = {
+    "v": "manual_v_ops.rs",
+    "s": "manual_s_ops.rs",
+    "mem": "manual_mem_ops.rs",
+    "misc": "manual_misc_ops.rs",
+  }
+
+  manual_modules = []
+  manual_ops = []
+  for category, names in manual_by_category.items():
+    out_path = os.path.join(out_dir, manual_files[category])
+    write_manual_ops_file(out_path, names)
+    if names:
+      module_name = manual_files[category][:-3]
+      manual_modules.append(module_name)
+      fn_map = unique_fn_names(names)
+      for name in names:
+        manual_ops.append((name, fn_map[name], module_name))
+
+  manual_ops.sort(key=lambda x: x[0])
+  typed_ops.sort(key=lambda x: x[0])
+
+  uses_v_binary = any(kind == "V_BINARY" for _, kind, _, _, _ in typed_ops)
+  uses_v_cmp = any(kind == "V_CMP" for _, kind, _, _, _ in typed_ops)
+  uses_typed = len(typed_ops) > 0
+
+  lines = ["use crate::sim::Handler;"]
+  if uses_typed:
+    lines.append("use crate::ops::typed::TypedHandler;")
+    lines.append("use crate::isa::types::DataType;")
+    lines.append("use crate::ops::typed_mem_ops::TypedMemHandler;")
+    lines.append("use crate::ops::typed_s_ops::TypedSHandler;")
+    lines.append("use crate::ops::typed_v_ops::TypedVHandler;")
+  if uses_v_binary:
+    lines.append("use crate::ops::typed_v_ops::BinaryOp;")
+  if uses_v_cmp:
+    lines.append("use crate::ops::typed_v_ops::CmpOp;")
   lines.append("")
 
+  for module in manual_modules:
+    lines.append(f"pub mod {module};")
+  if manual_modules:
+    lines.append("")
+
   lines.append("pub static OPS: &[(&str, Handler)] = &[")
-  for inst_name, fn_name, category_name in all_ops:
-    lines.append(f"  ({rust_string_literal(inst_name)}, {category_name}::{fn_name}),")
+  for inst_name, fn_name, module_name in manual_ops:
+    lines.append(f"  ({rust_string_literal(inst_name)}, {module_name}::{fn_name}),")
+  lines.append("];")
+  lines.append("")
+
+  lines.append("pub static TYPED_OPS: &[(&str, TypedHandler)] = &[")
+  for inst_name, kind, dt, op, update_exec in typed_ops:
+    if kind == "V_BINARY":
+      lines.append(f"  ({rust_string_literal(inst_name)}, TypedHandler::V(TypedVHandler::Binary {{ dtype: DataType::{dt}, op: BinaryOp::{op} }})),")
+    elif kind == "V_CMP":
+      update_exec_str = "true" if update_exec else "false"
+      lines.append(
+        f"  ({rust_string_literal(inst_name)}, TypedHandler::V(TypedVHandler::Cmp {{ dtype: DataType::{dt}, op: CmpOp::{op}, update_exec: {update_exec_str} }})),"
+      )
+    elif kind == "S_UNKNOWN":
+      lines.append(f"  ({rust_string_literal(inst_name)}, TypedHandler::S(TypedSHandler::Unknown {{ dtype: DataType::{dt} }})),")
+    elif kind == "MEM_UNKNOWN":
+      lines.append(f"  ({rust_string_literal(inst_name)}, TypedHandler::Mem(TypedMemHandler::Unknown {{ dtype: DataType::{dt} }})),")
+    else:
+      lines.append(f"  ({rust_string_literal(inst_name)}, TypedHandler::V(TypedVHandler::Unknown {{ dtype: DataType::{dt} }})),")
   lines.append("];")
 
   mod_path = os.path.join(out_dir, "mod.rs")
@@ -822,13 +935,19 @@ def generate_ops_module(instructions: List[dict], out_dir: str) -> None:
 
 
 def generate_ops_mod(out_dir: str, module_names: List[str]) -> None:
-  lines = []
+  lines = [
+    "pub mod typed;",
+    "pub mod typed_mem_ops;",
+    "pub mod typed_s_ops;",
+    "pub mod typed_v_ops;",
+  ]
   for name in module_names:
     lines.append(f"pub mod {name};")
   lines.append("")
   for name in module_names:
     alias = name.upper()
     lines.append(f"pub use {name}::OPS as {alias}_OPS;")
+    lines.append(f"pub use {name}::TYPED_OPS as {alias}_TYPED_OPS;")
   lines.append("")
 
   out_path = os.path.join(out_dir, "mod.rs")
@@ -975,6 +1094,7 @@ def main() -> None:
     ]
     for config in arch_configs
   }
+  typed_bases = build_typed_bases([inst for insts in arch_instructions.values() for inst in insts])
   if args.write_ops:
     warning = (
       "\x1b[31mWARNING: --write-ops will overwrite all op definitions in src/ops. "
@@ -983,21 +1103,23 @@ def main() -> None:
     if input(warning).strip().lower() != "yes":
       print("Aborting --write-ops.")
       return
-    generate_ops_module(common_insts, os.path.join(args.ops_out_dir, "base"))
+    generate_ops_module("base", common_insts, os.path.join(args.ops_out_dir, "base"), typed_bases)
     module_names = ["base"]
     for config in arch_configs:
       module_name = ops_module_name(config)
       module_names.append(module_name)
       generate_ops_module(
+        module_name,
         arch_specific[config.arch],
         os.path.join(args.ops_out_dir, module_name),
+        typed_bases,
       )
     generate_ops_mod(args.ops_out_dir, module_names)
 
-  print(f"base: {len(common_insts)} instructions")
+  print(f"base: {unique_instruction_count(common_insts)} instructions")
   for config in arch_configs:
-    total = len(arch_instructions[config.arch])
-    unique = len(arch_specific[config.arch])
+    total = unique_instruction_count(arch_instructions[config.arch])
+    unique = unique_instruction_count(arch_specific[config.arch])
     print(f"{config.arch}: {total} instructions ({unique} arch-specific)")
 
 

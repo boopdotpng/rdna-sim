@@ -42,6 +42,32 @@ ctx.global_mem.*         // Global memory (MemoryOps)
 - Immediate negation (`-42`, `-1.0`) is folded at **parse time** into `ImmI32(-42)` / `ImmF32(-1.0)`, not wrapped in `Negate`
 - SGPRs, special registers, and register ranges never accept modifiers (rejected at parse time)
 
+---
+
+## Dispatch & Generated Tables
+
+Instruction execution is routed through two generated tables per ISA:
+
+- `OPS`: manual handler stubs for non-typed instructions
+- `TYPED_OPS`: typed variants that share implementations across data types
+
+Typed handlers live in:
+- `src/ops/typed_v_ops.rs` for vector ops (`v_*`)
+- `src/ops/typed_s_ops.rs` for scalar ops (`s_*`)
+- `src/ops/typed_mem_ops.rs` for memory/lds ops (`ds_*`, `buffer_*`, `flat_*`, `global_*`, `image_*`)
+
+---
+
+## Adding New Handlers
+
+### Typed variants
+If an instruction has multiple datatype variants (e.g. `v_add_f16`, `v_add_f32`), it is routed through `TYPED_OPS`.
+Add new typed behavior by extending the mappings in `scripts/gen_isa.py` and implementing the handler in the appropriate `typed_*_ops` file.
+
+### Manual handlers
+Instructions that do not have multiple datatype variants are emitted as manual stubs in the `src/ops/*/manual_*_ops.rs` files.
+To implement one, edit its stub directly. Regenerating ops will recreate these stubs, so finish manual edits in one pass before re-running `--write-ops`.
+
 ### Example Implementations
 
 **Scalar Memory Load (`s_load_b64`):**
@@ -85,4 +111,3 @@ pub fn v_add_f32(ctx: &mut Ctx) -> ExecResult {
 - **Type-safe**: Rust enforces correctness at compile time
 
 ---
-

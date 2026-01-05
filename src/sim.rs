@@ -1,6 +1,7 @@
-use half::bf16;
+use half::{bf16, f16};
 
 use crate::isa::types::InstructionCommonDef;
+use crate::ops::typed::{run_typed, TypedHandler};
 use crate::parse_instruction::SpecialRegister;
 use crate::wave::WaveState;
 use crate::Program;
@@ -380,6 +381,118 @@ impl VgprValue for f32 {
     }
 }
 
+/// Trait for numeric types that can be used in generic instruction handlers.
+/// Provides conversion to/from bits and common arithmetic operations.
+pub trait NumericType: Copy + std::fmt::Debug + PartialEq {
+  fn from_bits(bits: u32) -> Self;
+  fn to_bits(self) -> u32;
+  fn add(self, rhs: Self) -> Self;
+  fn sub(self, rhs: Self) -> Self;
+  fn mul(self, rhs: Self) -> Self;
+  fn div(self, rhs: Self) -> Self;
+  fn min(self, rhs: Self) -> Self;
+  fn max(self, rhs: Self) -> Self;
+}
+
+impl NumericType for f16 {
+  fn from_bits(bits: u32) -> Self { f16::from_bits(bits as u16) }
+  fn to_bits(self) -> u32 { self.to_bits() as u32 }
+  fn add(self, rhs: Self) -> Self { self + rhs }
+  fn sub(self, rhs: Self) -> Self { self - rhs }
+  fn mul(self, rhs: Self) -> Self { self * rhs }
+  fn div(self, rhs: Self) -> Self { self / rhs }
+  fn min(self, rhs: Self) -> Self { if self < rhs { self } else { rhs } }
+  fn max(self, rhs: Self) -> Self { if self > rhs { self } else { rhs } }
+}
+
+impl NumericType for f32 {
+  fn from_bits(bits: u32) -> Self { f32::from_bits(bits) }
+  fn to_bits(self) -> u32 { self.to_bits() }
+  fn add(self, rhs: Self) -> Self { self + rhs }
+  fn sub(self, rhs: Self) -> Self { self - rhs }
+  fn mul(self, rhs: Self) -> Self { self * rhs }
+  fn div(self, rhs: Self) -> Self { self / rhs }
+  fn min(self, rhs: Self) -> Self { self.min(rhs) }
+  fn max(self, rhs: Self) -> Self { self.max(rhs) }
+}
+
+impl NumericType for bf16 {
+  fn from_bits(bits: u32) -> Self { bf16::from_bits(bits as u16) }
+  fn to_bits(self) -> u32 { self.to_bits() as u32 }
+  fn add(self, rhs: Self) -> Self { bf16::from_f32(self.to_f32() + rhs.to_f32()) }
+  fn sub(self, rhs: Self) -> Self { bf16::from_f32(self.to_f32() - rhs.to_f32()) }
+  fn mul(self, rhs: Self) -> Self { bf16::from_f32(self.to_f32() * rhs.to_f32()) }
+  fn div(self, rhs: Self) -> Self { bf16::from_f32(self.to_f32() / rhs.to_f32()) }
+  fn min(self, rhs: Self) -> Self { if self < rhs { self } else { rhs } }
+  fn max(self, rhs: Self) -> Self { if self > rhs { self } else { rhs } }
+}
+
+impl NumericType for i8 {
+  fn from_bits(bits: u32) -> Self { bits as i8 }
+  fn to_bits(self) -> u32 { self as u8 as u32 }
+  fn add(self, rhs: Self) -> Self { self.wrapping_add(rhs) }
+  fn sub(self, rhs: Self) -> Self { self.wrapping_sub(rhs) }
+  fn mul(self, rhs: Self) -> Self { self.wrapping_mul(rhs) }
+  fn div(self, rhs: Self) -> Self { self.wrapping_div(rhs) }
+  fn min(self, rhs: Self) -> Self { Ord::min(self, rhs) }
+  fn max(self, rhs: Self) -> Self { Ord::max(self, rhs) }
+}
+
+impl NumericType for i16 {
+  fn from_bits(bits: u32) -> Self { bits as i16 }
+  fn to_bits(self) -> u32 { self as u16 as u32 }
+  fn add(self, rhs: Self) -> Self { self.wrapping_add(rhs) }
+  fn sub(self, rhs: Self) -> Self { self.wrapping_sub(rhs) }
+  fn mul(self, rhs: Self) -> Self { self.wrapping_mul(rhs) }
+  fn div(self, rhs: Self) -> Self { self.wrapping_div(rhs) }
+  fn min(self, rhs: Self) -> Self { Ord::min(self, rhs) }
+  fn max(self, rhs: Self) -> Self { Ord::max(self, rhs) }
+}
+
+impl NumericType for i32 {
+  fn from_bits(bits: u32) -> Self { bits as i32 }
+  fn to_bits(self) -> u32 { self as u32 }
+  fn add(self, rhs: Self) -> Self { self.wrapping_add(rhs) }
+  fn sub(self, rhs: Self) -> Self { self.wrapping_sub(rhs) }
+  fn mul(self, rhs: Self) -> Self { self.wrapping_mul(rhs) }
+  fn div(self, rhs: Self) -> Self { self.wrapping_div(rhs) }
+  fn min(self, rhs: Self) -> Self { Ord::min(self, rhs) }
+  fn max(self, rhs: Self) -> Self { Ord::max(self, rhs) }
+}
+
+impl NumericType for u8 {
+  fn from_bits(bits: u32) -> Self { bits as u8 }
+  fn to_bits(self) -> u32 { self as u32 }
+  fn add(self, rhs: Self) -> Self { self.wrapping_add(rhs) }
+  fn sub(self, rhs: Self) -> Self { self.wrapping_sub(rhs) }
+  fn mul(self, rhs: Self) -> Self { self.wrapping_mul(rhs) }
+  fn div(self, rhs: Self) -> Self { self.wrapping_div(rhs) }
+  fn min(self, rhs: Self) -> Self { Ord::min(self, rhs) }
+  fn max(self, rhs: Self) -> Self { Ord::max(self, rhs) }
+}
+
+impl NumericType for u16 {
+  fn from_bits(bits: u32) -> Self { bits as u16 }
+  fn to_bits(self) -> u32 { self as u32 }
+  fn add(self, rhs: Self) -> Self { self.wrapping_add(rhs) }
+  fn sub(self, rhs: Self) -> Self { self.wrapping_sub(rhs) }
+  fn mul(self, rhs: Self) -> Self { self.wrapping_mul(rhs) }
+  fn div(self, rhs: Self) -> Self { self.wrapping_div(rhs) }
+  fn min(self, rhs: Self) -> Self { Ord::min(self, rhs) }
+  fn max(self, rhs: Self) -> Self { Ord::max(self, rhs) }
+}
+
+impl NumericType for u32 {
+  fn from_bits(bits: u32) -> Self { bits }
+  fn to_bits(self) -> u32 { self }
+  fn add(self, rhs: Self) -> Self { self.wrapping_add(rhs) }
+  fn sub(self, rhs: Self) -> Self { self.wrapping_sub(rhs) }
+  fn mul(self, rhs: Self) -> Self { self.wrapping_mul(rhs) }
+  fn div(self, rhs: Self) -> Self { self.wrapping_div(rhs) }
+  fn min(self, rhs: Self) -> Self { Ord::min(self, rhs) }
+  fn max(self, rhs: Self) -> Self { Ord::max(self, rhs) }
+}
+
 impl<'a> Ctx<'a> {
     pub fn dst_sgpr(&self) -> usize {
         match &self.inst.operands[0] {
@@ -464,6 +577,8 @@ pub type Handler = fn(&mut Ctx) -> ExecResult;
 pub fn dispatch(
     arch_ops: &[(&'static str, Handler)],
     base_ops: &[(&'static str, Handler)],
+    arch_typed_ops: &[(&'static str, TypedHandler)],
+    base_typed_ops: &[(&'static str, TypedHandler)],
     def: &InstructionCommonDef,
     wave: &mut WaveState,
     lds: &mut LDS,
@@ -486,8 +601,14 @@ pub fn dispatch(
     if let Ok(idx) = arch_ops.binary_search_by(|(name, _)| name.cmp(&def.name)) {
         return (arch_ops[idx].1)(&mut ctx);
     }
+    if let Ok(idx) = arch_typed_ops.binary_search_by(|(name, _)| name.cmp(&def.name)) {
+        return run_typed(&mut ctx, def.name, arch_typed_ops[idx].1);
+    }
     if let Ok(idx) = base_ops.binary_search_by(|(name, _)| name.cmp(&def.name)) {
         return (base_ops[idx].1)(&mut ctx);
+    }
+    if let Ok(idx) = base_typed_ops.binary_search_by(|(name, _)| name.cmp(&def.name)) {
+        return run_typed(&mut ctx, def.name, base_typed_ops[idx].1);
     }
     Err(ExecError::Unimplemented(def.name))
 }

@@ -11,9 +11,13 @@ GENERATED_MARKERS = (
   "auto-generated",
   "do not edit by hand",
 )
-GENERATED_NAMES = {
-  "generated.rs",
-}
+GENERATED_GLOBS = (
+  "src/isa/**/generated.rs",
+  "src/isa/types.rs",
+  "src/ops/mod.rs",
+  "src/ops/*/mod.rs",
+  "src/ops/*/manual_*_ops.rs",
+)
 SKIP_DIRS = {
   ".git",
   "__pycache__",
@@ -30,15 +34,14 @@ def repo_root() -> Path:
 def list_files(root: Path) -> list[Path]:
   try:
     output = subprocess.check_output(["git", "ls-files"], cwd=root, text=True)
-    files = [
+  except (OSError, subprocess.CalledProcessError):
+    output = ""
+  if output:
+    return [
       root / line
       for line in output.splitlines()
       if line.strip() and not any(part in SKIP_DIRS for part in Path(line).parts)
     ]
-    if files:
-      return files
-  except (OSError, subprocess.CalledProcessError):
-    pass
   return [
     path
     for path in root.rglob("*")
@@ -46,8 +49,9 @@ def list_files(root: Path) -> list[Path]:
   ]
 
 
-def is_generated(path: Path) -> bool:
-  if path.name in GENERATED_NAMES:
+def is_generated(root: Path, path: Path) -> bool:
+  rel = path.relative_to(root)
+  if any(rel.match(pattern) for pattern in GENERATED_GLOBS):
     return True
   try:
     head = path.read_bytes()[:4096]
@@ -72,17 +76,17 @@ def main() -> None:
   rust_generated = 0
 
   for path in files:
-    # Count Rust code separately (including generated)
+    generated = is_generated(root, path)
     if path.suffix == ".rs":
       try:
         lines = count_lines(path)
         rust_total += lines
-        if is_generated(path):
+        if generated:
           rust_generated += lines
       except OSError:
         pass
 
-    if is_generated(path):
+    if generated:
       skipped += 1
       continue
     try:

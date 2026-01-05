@@ -1,4 +1,5 @@
 use crate::ops::{base, rdna35};
+use crate::ops::typed::TypedHandler;
 use crate::parse::ProgramInfo;
 use crate::sim::{dispatch, Handler, KernArg, LDS};
 use crate::wave::{WaveState, VGPR_MAX};
@@ -10,7 +11,9 @@ pub fn run_program(
   arch: Architecture,
 ) -> Result<(), String> {
   let arch_ops = select_arch_ops(arch);
+  let arch_typed_ops = select_arch_typed_ops(arch);
   let base_ops = base::OPS;
+  let base_typed_ops = base::TYPED_OPS;
   let wave_size = info.wave_size.unwrap_or(program.wave_size);
 
   let kernarg = init_kernarg(program, info)?;
@@ -34,7 +37,16 @@ pub fn run_program(
         wave_lanes,
         threads_per_wg,
       )?;
-      run_wave(&mut wave, &mut lds, program, info, arch_ops, base_ops)?;
+      run_wave(
+        &mut wave,
+        &mut lds,
+        program,
+        info,
+        arch_ops,
+        base_ops,
+        arch_typed_ops,
+        base_typed_ops,
+      )?;
     }
   }
 
@@ -44,6 +56,12 @@ pub fn run_program(
 fn select_arch_ops(arch: Architecture) -> &'static [(&'static str, Handler)] {
   match arch {
     Architecture::Rdna35 => rdna35::OPS,
+  }
+}
+
+fn select_arch_typed_ops(arch: Architecture) -> &'static [(&'static str, TypedHandler)] {
+  match arch {
+    Architecture::Rdna35 => rdna35::TYPED_OPS,
   }
 }
 
@@ -125,6 +143,8 @@ fn run_wave(
   info: &ProgramInfo,
   arch_ops: &[(&'static str, Handler)],
   base_ops: &[(&'static str, Handler)],
+  arch_typed_ops: &[(&'static str, TypedHandler)],
+  base_typed_ops: &[(&'static str, TypedHandler)],
 ) -> Result<(), String> {
   loop {
     if wave.is_halted() {
@@ -139,7 +159,17 @@ fn run_wave(
     if handle_waitcnt(wave, inst) {
       continue;
     }
-    match dispatch(arch_ops, base_ops, inst.def, wave, lds, program, inst) {
+    match dispatch(
+      arch_ops,
+      base_ops,
+      arch_typed_ops,
+      base_typed_ops,
+      inst.def,
+      wave,
+      lds,
+      program,
+      inst,
+    ) {
       Ok(()) => {}
       Err(crate::sim::ExecError::EndProgram) => return Ok(()),
       Err(e) => return Err(format!("line {}: {:?}", inst.line_num, e)),

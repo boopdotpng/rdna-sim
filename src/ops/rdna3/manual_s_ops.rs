@@ -1,6 +1,14 @@
 use crate::sim::{Ctx, ExecError, ExecResult};
 
-// Control Flow Instructions
+pub fn s_addc_u32(ctx: &mut Ctx) -> ExecResult {
+  let _ = ctx;
+  Err(ExecError::Unimplemented("s_addc_u32"))
+}
+
+pub fn s_addk_i32(ctx: &mut Ctx) -> ExecResult {
+  let _ = ctx;
+  Err(ExecError::Unimplemented("s_addk_i32"))
+}
 
 pub fn s_barrier(ctx: &mut Ctx) -> ExecResult {
   let _ = ctx;
@@ -32,6 +40,21 @@ pub fn s_endpgm_ordered_ps_done(ctx: &mut Ctx) -> ExecResult {
   Err(ExecError::Unimplemented("s_endpgm_ordered_ps_done"))
 }
 
+pub fn s_gl1_inv(ctx: &mut Ctx) -> ExecResult {
+  let _ = ctx;
+  Err(ExecError::Unimplemented("s_gl1_inv"))
+}
+
+pub fn s_set_inst_prefetch_distance(ctx: &mut Ctx) -> ExecResult {
+  let _ = ctx;
+  Err(ExecError::Unimplemented("s_set_inst_prefetch_distance"))
+}
+
+pub fn s_subb_u32(ctx: &mut Ctx) -> ExecResult {
+  let _ = ctx;
+  Err(ExecError::Unimplemented("s_subb_u32"))
+}
+
 pub fn s_waitcnt(ctx: &mut Ctx) -> ExecResult {
   let _ = ctx;
   Err(ExecError::Unimplemented("s_waitcnt"))
@@ -61,4 +84,3 @@ pub fn s_waitcnt_vscnt(ctx: &mut Ctx) -> ExecResult {
   let _ = ctx;
   Err(ExecError::Unimplemented("s_waitcnt_vscnt"))
 }
-
